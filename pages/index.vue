@@ -27,4 +27,8 @@ export default Vue.extend({})
   margin-top: 5%;
   margin-bottom: 10%;
 }
+.memo-container {
+  text-align: center;
+  margin: 5%;
+}
 </style>
