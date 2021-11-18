@@ -1,22 +1,21 @@
 <template>
-  <div class="health-main">
+  <div class="unchi-main">
     <div><nuxt-link to="/">🔙</nuxt-link></div>
-    <div class="health-title">健康管理</div>
+    <div class="unchi-title">うんち管理</div>
 
-    <div class="health-container">
+    <div class="unchi-container">
       <div>unchi</div>
-      <div>food</div>
     </div>
   </div>
 </template>
 
 <style>
-.health-title {
+.unchi-title {
   text-align: center;
   font-size: 200%;
   margin-top: 10%;
 }
-.health-container {
+.unchi-container {
   display: flex;
   margin: 5%;
 }

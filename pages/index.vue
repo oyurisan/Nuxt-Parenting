@@ -3,7 +3,8 @@
     <div class="home-title">Home</div>
 
     <div class="link">
-      <nuxt-link to="health">💊</nuxt-link>
+      <nuxt-link to="unchi">💩</nuxt-link>
+      <nuxt-link to="urine">💧</nuxt-link>
     </div>
 
   </div>
