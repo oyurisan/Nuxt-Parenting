@@ -7,7 +7,7 @@
 
       <DateTime />
 
-      <div>
+      <div class="color-main">
         色 :
         <label class="radio-label">
           <input type="radio" name="open-page" value="brown" checked />
@@ -31,7 +31,7 @@
         </label>
       </div>
 
-      <div>
+      <div class="form-main">
         形 :
         <input
           id="radio1"
@@ -113,6 +113,9 @@ export default {
 }
 
 /* 色のボタン */
+.color-main {
+  margin-top:  2%;
+}
 input[type='radio'] {
   display: none;
 }
@@ -237,10 +240,19 @@ input[type='radio']:checked + .radio-text-yellow:before {
 }
 
 /* 形のボタン */
+.form-main {
+  margin-top:  2%;
+  margin-bottom: 2%;
+}
 .radio-folm {
   display: none;
 }
 .radio-folm:checked + label {
   background-color: pink;
+  padding-top: 1.5%;
+  padding-right: 3%;
+  padding-bottom: 1.5%;
+  padding-left: 3%;
+  border-radius: 50%;
 }
 </style>
