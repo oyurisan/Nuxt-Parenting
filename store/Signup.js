@@ -2,7 +2,6 @@
 import { firestoreAction } from 'vuexfire'
 import firebase from '~/plugins/firebase'
 
-
 const db=firebase.firestore()
 const UserRef=db.collection(`User`)
 
