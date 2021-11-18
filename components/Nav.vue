@@ -9,7 +9,7 @@
 <style>
 .Nav-main {
     width: 100%;
-    background-color: darkgrey;
+    background-color: rgb(158, 116, 116);
     text-align: center;
     padding: 5%;
 }
