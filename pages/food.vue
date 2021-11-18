@@ -1,9 +1,9 @@
 <template>
-  <div class="urine-main">
-    <div class="urine-title">おしっこ管理</div>
+  <div class="food-main">
+    <div class="food-title">ごはん管理</div>
 
-    <div class="urine-container">
-      <div>💧urine💧</div>
+    <div class="food-container">
+      <div>🍽food🍴</div>
       <DateTime />
       <Memo />
 
@@ -26,7 +26,7 @@ export default {
   },
 
   head: {
-    title: 'おしっこ'
+    title: 'ごはん'
   },
 
   methods: {
@@ -38,12 +38,12 @@ export default {
 </script>
 
 <style>
-.urine-title {
+.food-title {
   text-align: center;
   font-size: 200%;
   margin-top: 10%;
 }
-.urine-container {
+.food-container {
   text-align: center;
   margin: 5%;
 }

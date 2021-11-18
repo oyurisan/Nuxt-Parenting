@@ -5,6 +5,7 @@
     <div class="link">
       <nuxt-link to="unchi">💩</nuxt-link>
       <nuxt-link to="urine">💧</nuxt-link>
+      <nuxt-link to="food">🍽</nuxt-link>
     </div>
 
   </div>

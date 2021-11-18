@@ -1,6 +1,5 @@
 <template>
   <div class="unchi-main">
-    <div><nuxt-link to="/">🔙</nuxt-link></div>
     <div class="unchi-title">うんち管理</div>
 
     <div class="unchi-container">
