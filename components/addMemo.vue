@@ -1,30 +1,32 @@
 <template>
-  <div class="memo-container">
-    <div>
-      <input type="date" name="Date" />
-    </div>
-    <div>
-      <input type="time" name="Time" />
-    </div>
+  <div>
     <div>
       <textarea
+        v-model.trim="message"
+        class="textarea"
         cols="30"
         rows="5"
-        style="border: 1px solid rgb(136, 80, 80)"
         name="Memo"
+        placeholder=" メモ"
+        maxlength="500"
       />
-    </div>
-
-    <div>
-      <button>保存</button>
-      <button>消去</button>
+      <p>{{ message.length }}/500 文字</p>
     </div>
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      message: '',
+    }
+  },
+}
+</script>
+
 <style>
-.memo-container {
-  text-align: center;
-  margin: 5%;
+.textarea {
+  border: 1px solid rgb(136, 80, 80);
 }
 </style>
