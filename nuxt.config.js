@@ -18,10 +18,13 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/css/tailwind.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    // vue-apexcharts グラフのやつ
+    '@/plugins/vue-apexcharts',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -39,6 +42,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

@@ -61,6 +61,26 @@
             <option value="280">280</option>
             <option value="290">290</option>
             <option value="300">300</option>
+            <option value="310">310</option>
+            <option value="320">320</option>
+            <option value="330">330</option>
+            <option value="340">340</option>
+            <option value="350">350</option>
+            <option value="360">360</option>
+            <option value="370">370</option>
+            <option value="380">380</option>
+            <option value="390">390</option>
+            <option value="400">400</option>
+            <option value="410">410</option>
+            <option value="420">420</option>
+            <option value="430">430</option>
+            <option value="440">440</option>
+            <option value="450">450</option>
+            <option value="460">460</option>
+            <option value="470">470</option>
+            <option value="480">480</option>
+            <option value="490">490</option>
+            <option value="500">500</option>
             
           </select>
           <span class="cp_sl02_highlight"></span>
@@ -134,7 +154,7 @@ export default {
 /* 量のプルダウン */
 .cp_ipselect {
   position: relative;
-  width: 40%;
+  width: 30%;
   margin: 2em auto;
   text-align: center;
 }
