@@ -26,10 +26,10 @@
 </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
+// import Vue from 'vue'
 
-export default Vue.extend({
+export default {
 data(){
   return{
 foodduty:[
@@ -67,7 +67,7 @@ foodreco:[
 ]
   }
 }
-})
+}
 
 
 </script>

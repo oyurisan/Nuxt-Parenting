@@ -23,8 +23,6 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    // vue-apexcharts グラフのやつ
-    '@/plugins/vue-apexcharts',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -42,7 +40,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     // '@nuxtjs/axios',
-    // '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

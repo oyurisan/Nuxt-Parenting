@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 
 const config={
-  projectId:process.env.FIREBASE_PROJECT_ID
+  projectId:process.env.VUE_APP_FIREBASE_PROJECT_ID
 }
 
 if(!firebase.apps.length){
