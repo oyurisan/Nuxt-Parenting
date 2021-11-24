@@ -28,9 +28,9 @@ export const actions = {
         firebase.auth().onAuthStateChanged(function (user) {
           if (user) {
             console.log(user.email)
+            commit('setLoginUser')
             commit('getData', { uid: user.uid, email: user.email })
             commit('switchlogin')
-            commit('setLoginUser')
             $nuxt.$router.push(`/SignUp`)
           } else {
             console.log(`nasi`)
@@ -42,7 +42,7 @@ export const actions = {
       })
   },
   setLoginUser({ commit }, user) {
-    commit('setLoginUser', user)
+    commit('setLoginUser',user)
   },
   logout({ context }) {
     firebase

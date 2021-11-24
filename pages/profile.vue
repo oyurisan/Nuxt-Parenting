@@ -23,7 +23,6 @@ export default {
       picture: null,
     }
   },
-
   head: {
     title: 'プロフィール画面',
   },
