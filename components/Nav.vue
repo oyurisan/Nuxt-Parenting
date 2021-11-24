@@ -2,11 +2,17 @@
 <div class="Nav-main">
     <div>Hellow World!!!</div>
     <div>Navピースだよ!!!</div>
- <button class="roguin">ログイン</button>
- <button class="roguin">ログアウト</button>
+
 </div>
 </template>
 <script>
+// import firebase from '~/plugins/firebase'
+
+export default{
+
+    methods: {
+    },
+}
 </script>
 
 <style>
@@ -16,12 +22,12 @@
     text-align: center;
     padding: 5%;
 }
-.roguin{
+.login{
   border: 2px solid #000;
   border-radius: 0;
   background: #fff;
 }
-.roguin:hover {
+.login:hover {
   color: #fff;
   background: #000;
 }

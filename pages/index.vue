@@ -1,8 +1,6 @@
 <template>
  <div>
- <!-- <h3>育児アプリ（未満児）</h3>
- <nuxt-link to="/SignUp">ここ</nuxt-link> -->
-
+   <Login/>
     <div class="home-title">Home</div>
 
     <div class="link"> 
@@ -21,18 +19,19 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-
+import Login from '~/components/Login.vue'
+// import firebase from '~/plugins/firebase'
 export default {
-  data(){
-    return{
-    }
-  },
-  created(){
-  
-  // this.$store.dispatch('Signup/add')
-  }
+ components: {
+   Login,
+ },
+ computed: {
+   user () {
+     return this.$store.getters.user
+   },
+ },
 }
+
 </script>
 
 <style>
