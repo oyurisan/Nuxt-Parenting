@@ -1,14 +1,16 @@
 <template>
  <div>
- <h3>育児アプリ（未満児）</h3>
- <nuxt-link to="/SignUp">ここ</nuxt-link>
+ <!-- <h3>育児アプリ（未満児）</h3>
+ <nuxt-link to="/SignUp">ここ</nuxt-link> -->
 
     <div class="home-title">Home</div>
 
     <div class="link">
+      <nuxt-link to="SignUp">新規登録</nuxt-link>
+       <nuxt-link to="food">🍼</nuxt-link>
       <nuxt-link to="unchi">💩</nuxt-link>
       <nuxt-link to="urine">💧</nuxt-link>
-      <nuxt-link to="food">🍼</nuxt-link>
+      <nuxt-link to="allergy">アレルギー</nuxt-link>
   </div>
    </div>
   </template>
@@ -18,7 +20,14 @@
 // import Vue from 'vue'
 
 export default {
-
+  data(){
+    return{
+    }
+  },
+  created(){
+  
+  // this.$store.dispatch('Signup/add')
+  }
 }
 </script>
 
