@@ -6,6 +6,10 @@
     <div class="home-title">Home</div>
 
     <div class="link"> 
+      <nuxt-link to="profile">My Page</nuxt-link>
+    </div>
+
+    <div class="link"> 
       <nuxt-link to="graph">成長曲線</nuxt-link>
     </div>
 
