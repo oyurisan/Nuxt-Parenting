@@ -22,14 +22,6 @@ export default{
     text-align: center;
     padding: 5%;
 }
-.login{
-  border: 2px solid #000;
-  border-radius: 0;
-  background: #fff;
-}
-.login:hover {
-  color: #fff;
-  background: #000;
-}
+
 
 </style>
