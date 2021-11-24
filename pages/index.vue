@@ -5,6 +5,10 @@
 
     <div class="home-title">Home</div>
 
+    <div class="link"> 
+      <nuxt-link to="graph">成長曲線</nuxt-link>
+    </div>
+
     <div class="link">
       <nuxt-link to="SignUp">新規登録</nuxt-link>
        <nuxt-link to="food">🍼</nuxt-link>
@@ -12,8 +16,8 @@
       <nuxt-link to="urine">💧</nuxt-link>
       <nuxt-link to="allergy">アレルギー</nuxt-link>
   </div>
-   </div>
-  </template>
+ </div>
+</template>
 </template>
 
 <script>
