@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .graph-title {
     text-align: center;
     margin: 10% 0 5% 0;

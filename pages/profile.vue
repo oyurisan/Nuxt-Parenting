@@ -31,7 +31,7 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
 .profileImg {
   width: 70%;
   margin: 5% auto 10% auto

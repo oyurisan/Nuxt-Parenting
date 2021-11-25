@@ -38,7 +38,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 .home-title {
   text-align: center;
   font-size: 200%;

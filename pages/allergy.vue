@@ -1,36 +1,35 @@
 <template>
   <div class="allergy">
-      <div class="title">
-        <h2>アレルギーリスト登録画面</h2>
-      </div>
-      <p>表示義務７品目</p>
-      <div class="container">
-    <div v-for="item in foodduty" :key="item.foodname">
+    <div class="title">
+      <h2>アレルギーリスト登録画面</h2>
+    </div>
+    <p>表示義務７品目</p>
+    <div class="container">
+      <div v-for="item in foodduty" :key="item.foodname">
         <img
           :src="require(`~/assets/` + item.icon)"
           width="30px"
           height="30px"
         />
         <div class="boxs">
-         <label name="allergy" class="label">
-        {{ item.foodname }}
-          <input type="checkbox" name="allergy" class="checkbox">
-        </label>
+          <label name="allergy" class="label">
+            {{ item.foodname }}
+            <input type="checkbox" name="allergy" class="checkbox" />
+          </label>
         </div>
       </div>
-      </div>
-      <p></p>
-<p>表示推奨２０品目</p>
-<div class="container">
-    <div v-for="item in foodreco" :key="item.foodname">
-      
+    </div>
+    <p></p>
+    <p>表示推奨２０品目</p>
+    <div class="container">
+      <div v-for="item in foodreco" :key="item.foodname">
         <img
           :src="require(`~/assets/` + item.icon)"
           width="30px"
           height="30px"
         />
         <label name="allergy">
-           {{ item.foodname }}
+          {{ item.foodname }}
           <input type="checkbox" name="allergy" />
         </label>
       </div>
@@ -83,17 +82,16 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
 .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 10px ;
+  gap: 10px 10px;
 }
-.title{
+.title {
   text-align: center;
 }
-.item{
+.item {
   flex-wrap: wrap;
 }
 .allergy {
@@ -101,21 +99,29 @@ export default {
   width: 400px;
   margin: auto;
 }
-.touroku{
+.touroku {
   border: 2px solid #000;
   border-radius: 0;
   background: #fff;
+  &:hover {
+    color: #fff;
+    background: #000;
+  }
 }
-.touroku:hover {
-  color: #fff;
-  background: #000;
-}
-.checkbox  {
+.checkbox {
   font-family: FontAwesome;
   display: inline-block;
 }
-.checkbox { content: "\f096"; }
-.checkbox { letter-spacing: 10px; }
-.checkbox { content: "\f046"; }
-.checkbox { letter-spacing: 5px; }
+.checkbox {
+  content: '\f096';
+}
+.checkbox {
+  letter-spacing: 10px;
+}
+.checkbox {
+  content: '\f046';
+}
+.checkbox {
+  letter-spacing: 5px;
+}
 </style>

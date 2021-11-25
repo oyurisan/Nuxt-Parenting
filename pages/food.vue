@@ -81,7 +81,6 @@
             <option value="480">480</option>
             <option value="490">490</option>
             <option value="500">500</option>
-            
           </select>
           <span class="cp_sl02_highlight"></span>
           <span class="cp_sl02_selectbar"></span>
@@ -121,7 +120,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .food-title {
   text-align: center;
   font-size: 200%;
@@ -141,14 +140,14 @@ export default {
   display: none;
   margin-right: 2%;
   margin-left: 2%;
-}
-.radio-food:checked + label {
-  background-color: pink;
-  padding-top: 1.5%;
-  padding-right: 3%;
-  padding-bottom: 1.5%;
-  padding-left: 3%;
-  border-radius: 50%;
+  &:checked + label {
+    background-color: pink;
+    padding-top: 1.5%;
+    padding-right: 3%;
+    padding-bottom: 1.5%;
+    padding-left: 3%;
+    border-radius: 50%;
+  }
 }
 
 /* 量のプルダウン */
@@ -168,10 +167,10 @@ export default {
   border-radius: 0;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-}
-.cp_sl02:focus {
-  outline: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+  }
 }
 .cp_ipselect .cp_sl02 {
   appearance: none;
@@ -214,16 +213,16 @@ export default {
   position: relative;
   display: block;
   width: 100%;
-}
-.cp_sl02_selectbar:before,
-.cp_sl02_selectbar:after {
-  content: '';
-  height: 2px;
-  width: 0;
-  bottom: 1px;
-  position: absolute;
-  background: #da3c41;
-  transition: 0.2s ease all;
+  &:before,
+  &:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #da3c41;
+    transition: 0.2s ease all;
+  }
 }
 .cp_sl02_selectbar:before {
   left: 50%;
