@@ -9,8 +9,8 @@
       type="password"
       placeholder="password"
     />
-    <button class="logins" @click="login">ログイン</button>
-    <button class="logins" @click="logout">ログアウト</button>
+    <div v-if="!isLogin"><button class="logins" @click="login">ログイン</button></div>
+    <div v-if="isLogin"><button class="logins" @click="logout">ログアウト</button></div>
     <p v-if="user.login">
       ログインに成功<br />
       {{ user }}
@@ -19,17 +19,33 @@
 </template>
 
 <script>
+import firebase from '~/plugins/firebase'
+
 export default {
   data() {
     return {
       email: '',
       password: '',
+      isLogin: false, 
+      userData: null,
     }
   },
   computed: {
     user() {
       return this.$store.getters.user
     },
+  },
+  mounted () {
+    firebase.auth().onAuthStateChanged(user => {
+      console.log(user);
+      if (user) {
+        this.isLogin = true;
+        this.userData = user;
+      } else {
+        this.isLogin = false;
+        this.userData = null;
+      };
+    });
   },
   methods: {
     login(email, password) {
@@ -42,6 +58,7 @@ export default {
       this.$store.dispatch('logout')
     },
   },
+  
 }
 </script>
 
