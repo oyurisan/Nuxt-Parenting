@@ -1,6 +1,11 @@
 <template>
   <div class="signup">
     <h3>新規登録画面</h3>
+
+    <div class="profileImg">
+      <upload v-model="picture" />
+    </div>
+
     <p>赤ちゃんのニックネーム</p>
     <input v-model="babyname" type="text" />
     <br />
@@ -42,9 +47,15 @@
 </template>
 
 <script>
+import Upload from '../components/imgUpLoad'
+
 export default {
+  components: {
+    Upload,
+  },
   data() {
     return {
+      picture: null,
       babyname: '',
       gender: '',
       birthday: '',
@@ -96,5 +107,10 @@ export default {
     color: #fff;
     background: #000;
   }
+}
+
+.profileImg {
+  width: 50%;
+  margin: 5% auto 10% auto;
 }
 </style>

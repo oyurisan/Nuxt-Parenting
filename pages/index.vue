@@ -1,6 +1,8 @@
 <template>
  <div>
    <Login/>
+
+   <Calender />
     <div class="home-title">Home</div>
 
     <div class="link"> 
@@ -20,14 +22,16 @@
   </div>
  </div>
 </template>
-</template>
+
 
 <script>
 import Login from '~/components/Login.vue'
+import Calender from '~/components/Calender.vue'
 // import firebase from '~/plugins/firebase'
 export default {
  components: {
    Login,
+   Calender,
  },
  computed: {
    user () {
