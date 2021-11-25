@@ -10,15 +10,13 @@
       placeholder="password"
     />
     <button class="logins" @click="login">ログイン</button>
-    <button class="logins">ログアウト</button>
+    <button class="logins" @click="logout">ログアウト</button>
     <p v-if="user.login">
       ログインに成功<br />
       {{ user }}
     </p>
-
-    <div>こんにちは, {{ user.email }}さん</div>
   </div>
-</template>貰い
+</template>
 
 <script>
 export default {
@@ -40,20 +38,21 @@ export default {
         password: this.password,
       })
     },
+    logout() {
+      this.$store.dispatch('logout')
+    },
   },
 }
 </script>
 
-<style>
+<style lang="scss">
 .logins {
   border: 2px solid #000;
   border-radius: 0;
   background: #fff;
+  &:hover {
+    color: #fff;
+    background: #000;
+  }
 }
-.logins:hover {
-  color: #fff;
-  background: #000;
-}
-</style>
-
 </style>
