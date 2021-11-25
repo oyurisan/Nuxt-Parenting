@@ -2,7 +2,7 @@
  <div>
    <Login/>
     <div class="home-title">Home</div>
-
+<button @click="data">日付</button>
     <div class="link"> 
       <nuxt-link to="profile">My Page</nuxt-link>
     </div>
@@ -20,19 +20,24 @@
   </div>
  </div>
 </template>
-</template>
 
 <script>
 import Login from '~/components/Login.vue'
-// import firebase from '~/plugins/firebase'
+
 export default {
  components: {
    Login,
+  //  alert
  },
  computed: {
    user () {
      return this.$store.getters.user
    },
+ },
+  methods: {
+   data(){
+     console.log(new Date())
+   }
  },
 }
 

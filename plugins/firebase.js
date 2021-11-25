@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import 'firebase/auth'
 
 const config = {
   projectId: process.env.FIREBASE_PROJECT_ID,
@@ -15,3 +16,4 @@ if (!firebase.apps.length) {
 }
 
 export default firebase
+export const auth = firebase.auth()

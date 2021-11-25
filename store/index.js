@@ -8,7 +8,6 @@ export const state = () => ({
     // ログイン状態の真偽値
     login: false,
   },
-  login_user:null
 })
 
 export const getters = {
@@ -28,7 +27,6 @@ export const actions = {
         firebase.auth().onAuthStateChanged(function (user) {
           if (user) {
             console.log(user.email)
-            commit('setLoginUser')
             commit('getData', { uid: user.uid, email: user.email })
             commit('switchlogin')
             $nuxt.$router.push(`/SignUp`)
@@ -40,9 +38,6 @@ export const actions = {
       .catch((error) => {
         alert(error)
       })
-  },
-  setLoginUser({ commit }, user) {
-    commit('setLoginUser',user)
   },
   logout({ context }) {
     firebase
@@ -61,13 +56,13 @@ export const actions = {
 export const mutations = {
   ...vuexfireMutations,
   getData(state, payload) {
+    console.log(payload)
     state.user.uid = payload.uid
     state.user.email = payload.email
   },
   switchlogin(state) {
     state.user.login = true
+    console.log(state.user.login)
   },
-  setLoginUser(state,user){
-    state.login_user=user
-  }
+
 }

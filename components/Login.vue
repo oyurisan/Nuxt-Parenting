@@ -29,6 +29,8 @@ export default {
         },
         logout(){
           this.$store.dispatch('logout')
+          this.email=""
+          this.password=""
         }
     },
 }
