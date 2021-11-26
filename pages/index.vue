@@ -2,8 +2,9 @@
  <div>
    <Login/>
 
+   <div class="home-title">Home</div>
+
    <Calender />
-    <div class="home-title">Home</div>
 
     <div class="link"> 
       <nuxt-link to="profile">My Page</nuxt-link>
@@ -15,10 +16,12 @@
 
     <div class="link">
       <nuxt-link to="SignUp">新規登録</nuxt-link>
-       <nuxt-link to="food">🍼</nuxt-link>
+      <nuxt-link to="allergy">アレルギー</nuxt-link>
+      
+      <nuxt-link to="food">🍼</nuxt-link>
       <nuxt-link to="unchi">💩</nuxt-link>
       <nuxt-link to="urine">💧</nuxt-link>
-      <nuxt-link to="allergy">アレルギー</nuxt-link>
+
   </div>
  </div>
 </template>
@@ -56,5 +59,8 @@ export default {
 .memo-container {
   text-align: center;
   margin: 5%;
+}
+.icon-img {
+  width: 20%;
 }
 </style>
