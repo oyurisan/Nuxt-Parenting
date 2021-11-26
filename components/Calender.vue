@@ -30,7 +30,7 @@
 import FullCalendar from '@fullcalendar/vue'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import listPlugin from '@fullcalendar/list';
+import listPlugin from '@fullcalendar/list'
 import timegrid from '@fullcalendar/timegrid'
 
 export default {
@@ -40,10 +40,10 @@ export default {
   data() {
     return {
       calendarOptions: {
-        plugins: [dayGridPlugin, interactionPlugin, timegrid, listPlugin ],
+        plugins: [dayGridPlugin, interactionPlugin, timegrid, listPlugin],
         initialView: 'dayGridMonth',
         headerToolbar: {
-          left: 'prev,next today',
+          left: 'prev,today,next',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
         },
@@ -51,7 +51,7 @@ export default {
           {
             title: '給料日',
             start: '2021-11-25',
-            allDay : true,
+            allDay: true,
             constraint: '予定１',
             color: 'rgb(252, 115, 61)',
           },
@@ -59,11 +59,11 @@ export default {
             title: '休日',
             start: '2021-11-27T00:00:00',
             end: '2021-11-28T23:59:59',
-            memo:'aaaaa',
+            memo: 'aaaaa',
             constraint: '予定１',
             color: 'rgb(252, 115, 61)',
           },
-        ]
+        ],
       },
     }
   },
@@ -72,50 +72,127 @@ export default {
 
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Estonia&family=Righteous&display=swap');
+
+$fc-width: 70%;
+
+@mixin bar-style(
+  $color: rgb(253, 232, 237),
+  $background-color: #290202,
+  $border: none
+) {
+  color: $color;
+  background-color: $background-color;
+  border: $border;
+}
+
+@mixin table-frame($border: 1px #976f6f solid) {
+  border: $border;
+}
+
 .sample {
   color: rgb(252, 61, 86);
 }
 
 .calender {
-  width: 70%;
   margin: 5% auto 5% auto;
 }
-
 .fc {
-color: rgb(128, 0, 11);
+  color: rgb(43, 1, 5);
+  width: $fc-width;
+  margin: 5% auto 5% auto;
+  background-color: #976f6f;
+  padding: 3%;
+  border-radius: 5%;
+
+  .fc-header-toolbar {
+    border-bottom: 5px #d6b2b2 dotted;
+  }
+  .fc-toolbar-title {
+    font-size: 30px;
+    padding: 5px 10px 0px;
+    color: rgb(247, 225, 227);
+    text-align: center;
+    font-family: 'Righteous', cursive;
+  }
+  .fc-toolbar-chunk {
+    margin: 1%;
+  }
+  .fc-button-group {
+  }
+
+  .fc-prev-button {
+    @include bar-style();
+    margin-right: 2.5%;
+  }
+  .fc-next-button {
+    @include bar-style();
+    margin-left: 2.5%;
+  }
+  .fc-today-button {
+    @include bar-style();
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
+  .fc-dayGridMonth-button {
+    @include bar-style();
+  }
+  .fc-timeGridWeek-button {
+    @include bar-style();
+  }
+  .fc-timeGridDay-button {
+    @include bar-style();
+  }
+  .fc-listMonth-button {
+    @include bar-style();
+  }
+}
+
+th {
+  .fc-day {
+    @include table-frame();
+  }
+  .fc-day-sat {
+    background-color: #fff0d1;
+  }
+  .fc-day-sun {
+    background-color: #fff0d1;
+  }
+  .fc-day-sat .fc-col-header-cell-cushion {
+    color: blue;
+  }
+  .fc-day-sun .fc-col-header-cell-cushion {
+    color: red;
+  }
+}
+
+td {
+  .fc-day {
+    @include table-frame();
+  }
+  .fc-day-sat {
+    background-color: #eaf4ff;
+  }
+  .fc-day-sun {
+    background-color: #ffeaea;
+  }
+  .fc-day-sat .fc-daygrid-day-number {
+    color: blue;
+  }
+  .fc-day-sun .fc-daygrid-day-number {
+    color: red;
+  }
+  .fc-timegrid-slot {
+    height: 2.5em !important;
+    border-bottom: 0 !important;
+  }
 }
 
 .fc-day {
-  background-color: rgb(240, 214, 206);
+  background-color: rgb(255, 255, 255);
 }
 .fc-daygrid {
-  border: 2px #ff0000 solid;
-}
-th.fc-day {
-  border: 2px #ff0000 solid;
-}
-td.fc-day {
-  border: 2px #ff0000 solid;
-}
-
-
-th.fc-day-sat {
-  background-color: #eaf4ff;
-}
-th.fc-day-sun {
-  background-color: #ffeaea;
-}
-th.fc-day-sat .fc-col-header-cell-cushion {
-  color: blue;
-}
-th.fc-day-sun .fc-col-header-cell-cushion{
-  color: red;
-}
-td.fc-day-sat {
-  background-color: #eaf4ff;
-}
-td.fc-day-sun {
-  background-color: #ffeaea;
+  @include table-frame();
 }
 .fc-col-header-cell-cushion {
   color: black;
@@ -123,25 +200,12 @@ td.fc-day-sun {
 .fc-daygrid-day-number {
   color: black;
 }
-td.fc-day-sat .fc-daygrid-day-number {
-  color: blue;
+.fc-scroller {
+  background-color: #faf1e1;
 }
-td.fc-day-sun .fc-daygrid-day-number {
-  color: red;
+.fc-col-header-cell {
+  background-color: #fff0d1;
 }
-td.fc-timegrid-slot {
-  height: 2.5em !important;
-  border-bottom: 0 !important;
-}
-// 各日のヘッダー背景色 
-// .fc-daygrid-day-top { background-color: #f4ffff; } 
 
-// 本日のヘッダー背景色 
-// .fc-day-today .fc-daygrid-day-top { background-color: #fddcab; }
 
-// 各日のイベント背景色 
-// .fc-daygrid-day-frame { background-color: #f3f3f3; } 
-
-// ツールバー内の日付を他の h2 より小さくしたかった 
-.fc .fc-toolbar-title { font-size: 32px; padding: 5px 10px 0px; }
 </style>
