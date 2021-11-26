@@ -1,9 +1,11 @@
 <template>
  <div>
    <Login/>
-   <!-- <alert/> -->
-    <div class="home-title">Home</div>
-<button @click="data">日付</button>
+
+   <div class="home-title">Home</div>
+
+   <Calender />
+
     <div class="link"> 
       <nuxt-link to="profile">My Page</nuxt-link>
     </div>
@@ -60,5 +62,8 @@ export default {
 .memo-container {
   text-align: center;
   margin: 5%;
+}
+.icon-img {
+  width: 20%;
 }
 </style>
