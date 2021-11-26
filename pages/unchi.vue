@@ -87,13 +87,11 @@ export default {
   },
 
   head: {
-    title: 'うんち',
+    title: 'うんちっち',
   },
 
   methods: {
-    save() {
-
-    },
+    save() {},
     back() {
       this.$router.push({ name: 'index' })
     },
@@ -101,7 +99,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .unchi-title {
   text-align: center;
   font-size: 200%;
@@ -114,7 +112,7 @@ export default {
 
 /* 色のボタン */
 .color-main {
-  margin-top:  2%;
+  margin-top: 2%;
 }
 input[type='radio'] {
   display: none;
@@ -241,18 +239,18 @@ input[type='radio']:checked + .radio-text-yellow:before {
 
 /* 形のボタン */
 .form-main {
-  margin-top:  2%;
+  margin-top: 2%;
   margin-bottom: 2%;
 }
 .radio-folm {
   display: none;
-}
-.radio-folm:checked + label {
-  background-color: pink;
-  padding-top: 1.5%;
-  padding-right: 3%;
-  padding-bottom: 1.5%;
-  padding-left: 3%;
-  border-radius: 50%;
+  &:checked + label {
+    background-color: pink;
+    padding-top: 1.5%;
+    padding-right: 3%;
+    padding-bottom: 1.5%;
+    padding-left: 3%;
+    border-radius: 50%;
+  }
 }
 </style>

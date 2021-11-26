@@ -108,7 +108,7 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
 .user-photo {
   cursor: pointer;
   outline: none;
@@ -128,14 +128,12 @@ export default {
   height: 50px;
   padding: 0 3%;
   max-width: 175px;
-}
-
-.user-photo.default:hover {
-  background-color: #4c9dfc;
-}
-
-.user-photo.default:active {
-  background-color: #0051b0;
+  &:hover {
+    background-color: #4c9dfc;
+  }
+  &:active {
+    background-color: #0051b0;
+  }
 }
 
 .user-photo-image1 {
@@ -154,10 +152,9 @@ export default {
   object-fit: cover;
   border: 1.5px solid #972c50;
   border-radius: 50%;
-}
-
-.user-photo-image:hover {
-  opacity: 0.8;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .file-button {
@@ -173,10 +170,9 @@ export default {
   border: none;
   color: #0074fb;
   padding: 0;
-}
-
-.delete-button:hover {
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .error-messages {

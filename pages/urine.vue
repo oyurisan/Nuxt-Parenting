@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .urine-title {
   text-align: center;
   font-size: 200%;

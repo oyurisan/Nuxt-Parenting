@@ -1,6 +1,7 @@
 <template>
  <div>
    <Login/>
+   <!-- <alert/> -->
     <div class="home-title">Home</div>
 <button @click="data">日付</button>
     <div class="link"> 
@@ -12,11 +13,13 @@
     </div>
 
     <div class="link">
-      <nuxt-link to="SignUp">新規登録</nuxt-link>
+      <nuxt-link to="SignUp">登録画面</nuxt-link>
        <nuxt-link to="food">🍼</nuxt-link>
+        <nuxt-link to="growth">成長</nuxt-link>
       <nuxt-link to="unchi">💩</nuxt-link>
       <nuxt-link to="urine">💧</nuxt-link>
       <nuxt-link to="allergy">アレルギー</nuxt-link>
+      <nuxt-link to="NewSignUp">新規登録</nuxt-link>
   </div>
  </div>
 </template>
@@ -24,11 +27,11 @@
 <script>
 import Login from '~/components/Login.vue'
 
+
 export default {
  components: {
-   Login,
-  //  alert
- },
+    Login
+},
  computed: {
    user () {
      return this.$store.getters.user
@@ -43,7 +46,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 .home-title {
   text-align: center;
   font-size: 200%;
