@@ -6,23 +6,7 @@
 
    <Calender />
 
-    <div class="link"> 
-      <nuxt-link to="profile">My Page</nuxt-link>
-    </div>
 
-    <div class="link"> 
-      <nuxt-link to="graph">成長曲線</nuxt-link>
-    </div>
-
-    <div class="link">
-      <nuxt-link to="SignUp">新規登録</nuxt-link>
-      <nuxt-link to="allergy">アレルギー</nuxt-link>
-      
-      <nuxt-link to="food">🍼</nuxt-link>
-      <nuxt-link to="unchi">💩</nuxt-link>
-      <nuxt-link to="urine">💧</nuxt-link>
-
-  </div>
  </div>
 </template>
 

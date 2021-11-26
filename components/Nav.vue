@@ -289,7 +289,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .Nav-main {
   width: 100%;
   background-color: rgb(158, 116, 116);

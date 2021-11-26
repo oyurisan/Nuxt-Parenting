@@ -1,24 +1,3 @@
-<!-- <template>
-    <FullCalendar defaultView="dayGridMonth" :plugins="calendarPlugins" />
-</template>
-
-<script>
-    import FullCalendar from '@fullcalendar/vue'
-    import dayGridPlugin from '@fullcalendar/daygrid'
-
-    export default {
-        components: {
-            FullCalendar // make the <FullCalendar> tag available
-        },
-        data() {
-            return {
-                calendarPlugins: [ dayGridPlugin ]
-            }
-        }
-    }
-</script> -->
-
-
 <template>
   <div class="calender">
     <FullCalendar :options="calendarOptions" />
@@ -107,9 +86,10 @@ $fc-width: 70%;
 
   .fc-header-toolbar {
     border-bottom: 5px #d6b2b2 dotted;
+    flex-shrink: 0;
   }
   .fc-toolbar-title {
-    font-size: 30px;
+    font-size: 200%;
     padding: 5px 10px 0px;
     color: rgb(247, 225, 227);
     text-align: center;
@@ -119,6 +99,7 @@ $fc-width: 70%;
     margin: 1%;
   }
   .fc-button-group {
+    flex-shrink: 0;
   }
 
   .fc-prev-button {
@@ -206,6 +187,5 @@ td {
 .fc-col-header-cell {
   background-color: #fff0d1;
 }
-
 
 </style>
