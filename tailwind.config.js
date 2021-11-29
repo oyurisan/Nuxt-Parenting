@@ -1,9 +1,19 @@
 module.exports = {
   mode: "jit",
-  purge: [],
+  // Purgeオプションを設定することで使用したクラスのみビルド対象となり、ファイルサイズを小さくできます。
+  purge: [
+    './components/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        // 'カラー名': 'カラーコード'
+        'dark-red': 'rgb(150, 50, 50)',
+        'light-red': 'rgb(180, 98, 98)',
+      },
+    },
   },
   variants: {
     extend: {},

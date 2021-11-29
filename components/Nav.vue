@@ -37,10 +37,9 @@
           <a
             href="/"
             class="
-              text-lg
+              text-dark-red text-lg
               font-bold
               tracking-tighter
-              text-blue-600
               transition
               duration-500
               ease-in-out
@@ -51,10 +50,8 @@
           >
             PARENTING APP
           </a>
-          
         </div>
-        <nav
-        >
+        <nav>
           <a
             class="
               px-4
@@ -62,7 +59,7 @@
               mt-2
               text-sm text-gray-500
               md:mt-0
-              hover:text-blue-600
+              hover:text-dark-red
               focus:outline-none focus:shadow-outline
             "
             href="/"
@@ -75,7 +72,7 @@
               mt-2
               text-sm text-gray-500
               md:mt-0
-              hover:text-blue-600
+              hover:text-dark-red
               focus:outline-none focus:shadow-outline
             "
             href="/profile"
@@ -88,7 +85,7 @@
               mt-2
               text-sm text-gray-500
               md:mt-0
-              hover:text-blue-600
+              hover:text-dark-red
               focus:outline-none focus:shadow-outline
             "
             href="/graph"
@@ -104,7 +101,7 @@
                 py-2.5
                 text-base
                 font-medium
-                text-center text-blue-600
+                text-center text-dark-red
                 transition
                 duration-500
                 ease-in-out
@@ -118,7 +115,7 @@
                 focus:ring-gray-500
               "
             >
-              Sign in
+              <nuxt-link to="/login">Sign in</nuxt-link>
             </button>
             <button
               class="
@@ -133,16 +130,16 @@
                 duration-500
                 ease-in-out
                 transform
-                bg-blue-600
+                bg-dark-red
                 rounded-xl
-                hover:bg-blue-700
+                hover:bg-light-red
                 focus:outline-none
                 focus:ring-2
                 focus:ring-offset-2
-                focus:ring-blue-500
+                focus:ring-dark-red
               "
             >
-              <nuxt-link to="/SignUp">Sign up</nuxt-link>
+              <nuxt-link to="/NewSignUp">Sign up</nuxt-link>
             </button>
           </div>
         </nav>
@@ -168,7 +165,7 @@
                 rounded-md
                 focus:shadow-outline focus:outline-none focus:ring-2
                 ring-offset-current ring-offset-2
-                hover:text-blue-600
+                hover:text-dark-red
               "
               >Unchi</a
             >
@@ -188,7 +185,7 @@
                 rounded-md
                 focus:shadow-outline focus:outline-none focus:ring-2
                 ring-offset-current ring-offset-2
-                hover:text-blue-600
+                hover:text-dark-red
               "
               >Urine</a
             >
@@ -208,14 +205,14 @@
                 rounded-md
                 focus:shadow-outline focus:outline-none focus:ring-2
                 ring-offset-current ring-offset-2
-                hover:text-blue-600
+                hover:text-dark-red
               "
               >Milk</a
             >
           </li>
           <li>
             <a
-              href="/"
+              href="/growth"
               class="
                 px-4
                 py-1
@@ -228,14 +225,14 @@
                 rounded-md
                 focus:shadow-outline focus:outline-none focus:ring-2
                 ring-offset-current ring-offset-2
-                hover:text-blue-600
+                hover:text-dark-red
               "
-              >Height</a
+              >Height &amp; Wight</a
             >
           </li>
           <li>
             <a
-              href="/"
+              href="/diary"
               class="
                 px-4
                 py-1
@@ -248,9 +245,9 @@
                 rounded-md
                 focus:shadow-outline focus:outline-none focus:ring-2
                 ring-offset-current ring-offset-2
-                hover:text-blue-600
+                hover:text-dark-red
               "
-              >Wight</a
+              >Diary</a
             >
           </li>
           <li>
@@ -268,7 +265,7 @@
                 rounded-md
                 focus:shadow-outline focus:outline-none focus:ring-2
                 ring-offset-current ring-offset-2
-                hover:text-blue-600
+                hover:text-dark-red
               "
               >Allergy</a
             >
@@ -309,7 +306,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.sample {
+  color: rgb(150, 50, 50);
+  color: rgb(180, 98, 98);
+}
+
 .Nav-main {
   width: 100%;
   background-color: rgb(158, 116, 116);

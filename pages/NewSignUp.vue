@@ -1,6 +1,6 @@
 <template>
   <div class="newsignup">
-    <h2>新規登録</h2>
+    <div class="newSignUp-title">新規登録</div>
     <div class="login">
       メールアドレス<br /><input
         v-model="email"
@@ -18,7 +18,9 @@
         type="password"
         placeholder="password"
       />
-      <button class="touroku" @click="register">新規登録</button>
+      <div>
+        <button class="touroku" @click="register">新規登録</button>
+      </div>
     </div>
   </div>
 </template>
@@ -45,15 +47,22 @@ export default {
       })
       this.email = ''
       this.password = ''
+      this.$router.push({ name: 'SignUp' })
     },
   },
 }
 </script>
 
 <style lang="scss">
+.newSignUp-title {
+  text-align: center;
+  margin: 7% 0 5% 0;
+  font-size: 150%;
+}
 .touroku {
   border: 2px solid #000;
   border-radius: 0;
+  margin-left: 70%;
   background: #fff;
   &:hover {
     color: #fff;
@@ -68,4 +77,5 @@ export default {
 .mail {
   width: 60%;
 }
+
 </style>

@@ -1,39 +1,16 @@
 <template>
  <div>
-   <Login/>
-
    <div class="home-title">Home</div>
 
    <Calender />
 
-    <div class="link"> 
-      <nuxt-link to="profile">My Page</nuxt-link>
-    </div>
 
-    <div class="link"> 
-      <nuxt-link to="graph">成長曲線</nuxt-link>
-    </div>
-
-    <div class="link">
-      <nuxt-link to="SignUp">登録画面</nuxt-link>
-       <nuxt-link to="food">🍼</nuxt-link>
-        <nuxt-link to="growth">成長</nuxt-link>
-      <nuxt-link to="unchi">💩</nuxt-link>
-      <nuxt-link to="urine">💧</nuxt-link>
-      <nuxt-link to="allergy">アレルギー</nuxt-link>
-      <nuxt-link to="NewSignUp">新規登録</nuxt-link>
-  </div>
  </div>
 </template>
 
 <script>
-import Login from '~/components/Login.vue'
-
-
 export default {
- components: {
-    Login
-},
+
  computed: {
    user () {
      return this.$store.getters.user

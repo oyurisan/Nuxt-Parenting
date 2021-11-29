@@ -67,18 +67,20 @@
         <label for="water">水っぽい</label>
       </div>
 
-      <Memo />
+      <memo v-model="unchimemo" />
 
       <div>
-        <button>保存</button>
+        <button @click="save_unchi">保存</button>
         <button @click="back">戻る</button>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import Memo from '../components/addMemo'
 import DateTime from '../components/addDateTime'
+
 
 export default {
   components: {
@@ -86,15 +88,42 @@ export default {
     DateTime,
   },
 
+  data () {
+    return {
+            unchiecolor: '',
+            shape: '',
+            unchimemo: 'あああああああああ',
+    }
+  },
+
   head: {
     title: 'うんちっち',
   },
 
+  computed:{
+    ...mapGetters (['getUnchi', 'getUserItems'])
+  },
+
   methods: {
-    save() {},
+    save_unchi() {
+      console.log('aaaaa');
+      console.log(this.getUnchi);
+      console.log(this.getUserItems);
+      const item = []
+      item.push ({
+          shape: this.shape,
+          color: this.unchiecolor,
+          memo: this.unchimemo,
+      })
+      console.log(item);
+      this.unchiupdate(item);
+      console.log(this.getUserItems);
+      // this.$router.push({ name: 'index' })
+    },
     back() {
       this.$router.push({ name: 'index' })
     },
+    ...mapActions (['unchiupdate'])
   },
 }
 </script>

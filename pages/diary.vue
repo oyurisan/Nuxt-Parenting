@@ -1,12 +1,11 @@
 <template>
-    <full-calendar :event="events" />
+    <div>日記帳</div>
 </template>
 <script>
 export default {
-  async asyncData({ app, params }) {
-    const data = await app.$axios.$get(`/api/events/${params.id}`)
+  data () {
     return {
-      events: data
+
     }
   }
 }

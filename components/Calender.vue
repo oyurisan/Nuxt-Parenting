@@ -53,7 +53,7 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Estonia&family=Righteous&display=swap');
 
-$fc-width: 70%;
+$fc-width: 95%;
 
 @mixin bar-style(
   $color: rgb(253, 232, 237),
@@ -86,9 +86,10 @@ $fc-width: 70%;
 
   .fc-header-toolbar {
     border-bottom: 5px #d6b2b2 dotted;
+    flex-shrink: 0;
   }
   .fc-toolbar-title {
-    font-size: 30px;
+    font-size: 200%;
     padding: 5px 10px 0px;
     color: rgb(247, 225, 227);
     text-align: center;
@@ -98,6 +99,7 @@ $fc-width: 70%;
     margin: 1%;
   }
   .fc-button-group {
+    flex-shrink: 0;
   }
 
   .fc-prev-button {
@@ -185,6 +187,5 @@ td {
 .fc-col-header-cell {
   background-color: #fff0d1;
 }
-
 
 </style>

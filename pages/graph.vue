@@ -1,13 +1,16 @@
 <template>
   <div>
-    <div class="graph-title">成長曲線 (身長・体重)</div>
+    <div class="graph-title">
+      成長曲線
+      <div>(身長・体重)</div>
+    </div>
 
     <div class="hw-button-frame">
       <button class="hw-button" @click="active1">~ 1歳</button>
       <button class="hw-button" @click="active2">1歳 ~ 2歳</button>
       <button class="hw-button" @click="active3">2歳 ~ 3歳</button>
     </div>
-    
+
     <div v-if="isActive"><Chart /></div>
     <div v-if="isActive2"><Chart2 /></div>
     <div v-if="isActive3"><Chart3 /></div>
@@ -30,7 +33,7 @@ export default {
     Chart3,
   },
 
-  data () {
+  data() {
     return {
       isActive: false,
       isActive2: false,
@@ -38,18 +41,17 @@ export default {
     }
   },
 
-
   methods: {
-    active1 () {
-            this.isActive = !this.isActive;
+    active1() {
+      this.isActive = !this.isActive
     },
-    active2 () {
-      this.isActive2 = !this.isActive2;
+    active2() {
+      this.isActive2 = !this.isActive2
     },
-    active3 () {
-      this.isActive3 = !this.isActive3;
-    }
-  }
+    active3() {
+      this.isActive3 = !this.isActive3
+    },
+  },
 }
 </script>
 
