@@ -28,28 +28,17 @@ export const getters = {
   },
 }
 export const actions = {
-  // ユーザー情報取得
-  // fetchuserinfo(){
-  // firebase.firestore().collection(`User/${getters.userid}`)
-  // .get()
-  // .then(snapshot=>{
-  //   console.log(snapshot)
-  //   // if(!snapshot){
-  //     id:document.id
-  //     this.dispatch("adds")
-  //   // }
-  // })
-  // },
-
   // ユーザー情報更新
-  updateusers({ getters }, updateuser) {
-    if (getters.userid) {
-      firebase
-        .firestore()
-        .collection(`User`)
-        .doc(`Jb5bgeSF2P7gTr6IMnJJ`)
-        .update({ User })
-    }
+  userupdate(commit,users) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+    .update({
+    babyname:users.babyname,
+    gender:users.gender,
+    birthday:users.birthday
+    })
+    .then(() => {
+      commit("userupdate", users)
+    })
   },
   // ご飯更新
   foodupdate(commit, foods) {
