@@ -42,11 +42,13 @@
       リセット
     </button>
     <br />
-    <button @click="addinfo" class="touroku">登録</button>
+    <button class="touroku" @click="addinfo">登録</button>
+    <button @click="test">kakuninn</button>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Upload from '../components/imgUpLoad'
 
 export default {
@@ -59,21 +61,55 @@ export default {
       babyname: '',
       gender: '',
       birthday: '',
+      food: [{}],
+      customerinfo: '',
     }
   },
   created() {
     this.$store.dispatch('Signup/init')
-    console.log(this.$store.dispatch('Signup/init'))
+    this.new=this.$store.state.UserInfo
+    console.log(this.new)
   },
   methods: {
-    addinfo() {
-      console.log(this.birthday)
-      alert(`この内容で登録してもよろしいでしょうか`)
-      this.$store.dispatch('Signup/add', {
+    test() {
+      this.$store.dispatch('Signup/adduserinfo', {
+        id: this.id,
         babyname: this.babyname,
         birthday: this.birthday,
         gender: this.gender,
       })
+    },
+    addinfo() {
+      this.$store.dispatch('adds', {
+        babyname: this.babyname,
+        birthday: this.birthday,
+        gender: this.gender,
+      })
+      this.$router.push ({ name:'index' })
+      //  const customerinfo={
+      //     babyname:this.babyname,
+      //     birthday:this.birthday,
+      //     gender:this.gender
+      //   }
+      //   console.log(customerinfo)
+      //   console.log(this.adds)
+      //   this.$store.dispatch('adds,{customerinfo}')
+      // console.log(this.birthday)
+      // alert(`この内容で登録してもよろしいでしょうか`)
+      // this.$store.dispatch('adds', {
+      //   babyname: this.babyname,
+      //   birthday: this.birthday,
+      //   gender: this.gender,
+      //   kinds: '',
+      //   foodmemo: '',
+      //   height:"",
+      //   weight:"",
+      //   unchiecolor:"",
+      //   shape:"",
+      //   unchimemo:"",
+      //   urinecolor:"",
+      //   urinememo:"",
+      // })
     },
     // resetinfo(){
     //   this.babyname="",
@@ -81,6 +117,7 @@ export default {
     //   this.gender=""
     // }
   },
+  ...mapActions(['adds']),
 }
 </script>
 
@@ -108,7 +145,6 @@ export default {
     background: #000;
   }
 }
-
 .profileImg {
   width: 50%;
   margin: 5% auto 10% auto;

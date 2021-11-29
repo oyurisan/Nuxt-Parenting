@@ -53,7 +53,7 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Estonia&family=Righteous&display=swap');
 
-$fc-width: 70%;
+$fc-width: 95%;
 
 @mixin bar-style(
   $color: rgb(253, 232, 237),

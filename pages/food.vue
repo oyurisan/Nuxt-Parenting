@@ -107,15 +107,25 @@ export default {
     Memo,
     DateTime,
   },
-
+  data() {
+    return {
+      food:""
+    }
+  },
   head: {
     title: 'ごはん',
   },
-
   methods: {
     back() {
       this.$router.push({ name: 'index' })
     },
+    addfood(){
+    //   alert(`この内容で登録してもよろしいでしょうか`)
+    //   this.$store.dispatch('Signup/add', {
+    //   message:this.message=""
+
+    // }
+    }
   },
 }
 </script>

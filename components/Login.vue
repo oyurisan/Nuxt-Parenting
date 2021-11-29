@@ -1,20 +1,18 @@
 <template>
   <div class="login">
-    email:<input
+    メールアドレス<br /><input
       v-model="email"
       type="email"
       placeholder="email"
-    /><br />password:<input
-      v-model="password"
-      type="password"
-      placeholder="password"
-    />
-    <div v-if="!isLogin"><button class="logins" @click="login">ログイン</button></div>
-    <div v-if="isLogin"><button class="logins" @click="logout">ログアウト</button></div>
-    <p v-if="user.login">
-      ログインに成功<br />
-      {{ user }}
-    </p>
+    /><br />パスワード<br />
+    <input v-model="password" type="password" placeholder="password" />
+    <div class="loginOut-btn" v-if="!isLogin">
+      <button class="logins" @click="login">ログイン</button>
+    </div>
+    <div class="loginOut-btn" v-if="isLogin">
+      <button class="logins" @click="logout">ログアウト</button>
+    </div>
+    <p v-if="user.login">ログインに成功<br /></p>
   </div>
 </template>
 
@@ -26,7 +24,7 @@ export default {
     return {
       email: '',
       password: '',
-      isLogin: false, 
+      isLogin: false,
       userData: null,
     }
   },
@@ -35,17 +33,17 @@ export default {
       return this.$store.getters.user
     },
   },
-  mounted () {
-    firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
+  mounted() {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user)
       if (user) {
-        this.isLogin = true;
-        this.userData = user;
+        this.isLogin = true
+        this.userData = user
       } else {
-        this.isLogin = false;
-        this.userData = null;
-      };
-    });
+        this.isLogin = false
+        this.userData = null
+      }
+    })
   },
   methods: {
     login(email, password) {
@@ -56,9 +54,10 @@ export default {
     },
     logout() {
       this.$store.dispatch('logout')
+      this.email = ''
+      this.password = ''
     },
   },
-  
 }
 </script>
 
@@ -71,5 +70,8 @@ export default {
     color: #fff;
     background: #000;
   }
+}
+.loginOut-btn {
+  margin-top: 2%;
 }
 </style>

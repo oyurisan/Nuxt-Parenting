@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  // "expr" : true,
   env: {
     browser: true,
     node: true
@@ -14,6 +15,6 @@ module.exports = {
   // add your custom rules here
   rules: {
 'no-unused-vars': 'off',
- '@typescript-eslint/no-unused-vars': 'warn'
+ '@typescript-eslint/no-unused-vars': 'warn',
   }
 }
