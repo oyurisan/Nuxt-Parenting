@@ -77,6 +77,9 @@ export default {
         babyname: this.babyname,
         birthday: this.birthday,
         gender: this.gender,
+        food:[{
+          kinds:this.kinds
+        }]
       })
     },
     addinfo() {
@@ -85,36 +88,7 @@ export default {
         birthday: this.birthday,
         gender: this.gender,
       })
-      //  const customerinfo={
-      //     babyname:this.babyname,
-      //     birthday:this.birthday,
-      //     gender:this.gender
-      //   }
-      //   console.log(customerinfo)
-      //   console.log(this.adds)
-      //   this.$store.dispatch('adds,{customerinfo}')
-      // console.log(this.birthday)
-      // alert(`この内容で登録してもよろしいでしょうか`)
-      // this.$store.dispatch('adds', {
-      //   babyname: this.babyname,
-      //   birthday: this.birthday,
-      //   gender: this.gender,
-      //   kinds: '',
-      //   foodmemo: '',
-      //   height:"",
-      //   weight:"",
-      //   unchiecolor:"",
-      //   shape:"",
-      //   unchimemo:"",
-      //   urinecolor:"",
-      //   urinememo:"",
-      // })
     },
-    // resetinfo(){
-    //   this.babyname="",
-    //   this.birthday="",
-    //   this.gender=""
-    // }
   },
   ...mapActions(['adds']),
 }

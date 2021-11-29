@@ -1,27 +1,16 @@
 <template>
 <div>
-  <button @click="start">osu</button>
-</div>
+    <!-- <link rel="stylesheet" href="timer.css"> -->
+    <title>Timer</title>
 
-</template>
-<script>
-// import {Howl} from 'howler';
-
-// const sound=new Howl({
-//   // src: '~/assets/music.m4a'
-// })
-
-export default{
-data(){
-  return{
-
-  }
-},
-methods:{
-  start(){
-sound.play()
-  }
-}
-}
-
-</script>
+    <h3>Timer</h3>
+    <div class="content">
+        <p id="timer">03:00:00</p>
+    </div>
+    <div class="button">
+        <button id="start">
+            START
+        </button>
+    </div>
+    </div>
+  </template>

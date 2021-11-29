@@ -18,9 +18,9 @@ export const actions = {
     // console.log(doc)
     UserRef.doc(info.id).update({
       id,
-      babyname,
-      birthday,
-      gender,
+      babyname:`78`,
+      birthday:`8`,
+      gender:`8`,
     })
     // console.log(doc)
   }),

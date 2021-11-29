@@ -273,6 +273,26 @@
               >Allergy</a
             >
           </li>
+           <li>
+            <a
+              href="/alert"
+              class="
+                px-4
+                py-1
+                mr-1
+                text-base text-gray-500
+                transition
+                duration-500
+                ease-in-out
+                transform
+                rounded-md
+                focus:shadow-outline focus:outline-none focus:ring-2
+                ring-offset-current ring-offset-2
+                hover:text-blue-600
+              "
+              >alert</a
+            >
+          </li>
         </ul>
       </div>
     </div>

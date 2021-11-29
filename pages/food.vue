@@ -87,11 +87,10 @@
           <label class="cp_sl02_selectlabel">ml</label>
         </div>
       </div>
-
       <Memo />
-
+      <button @click="Foods">ここ</button>
       <div>
-        <button>保存</button>
+        <button @click="addfood">保存</button>
         <button @click="back">戻る</button>
       </div>
     </div>
@@ -99,6 +98,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Memo from '../components/addMemo'
 import DateTime from '../components/addDateTime'
 
@@ -107,29 +107,39 @@ export default {
     Memo,
     DateTime,
   },
+  props:[
+// 'message'
+  ],
   data() {
     return {
-      food:""
+      food: '',
+      message: '',
     }
   },
   head: {
     title: 'ごはん',
   },
+  computed: {
+    Foods() {
+      return this.$store.getters.Food
+    },
+  },
   methods: {
     back() {
       this.$router.push({ name: 'index' })
     },
-    addfood(){
-    //   alert(`この内容で登録してもよろしいでしょうか`)
-    //   this.$store.dispatch('Signup/add', {
-    //   message:this.message=""
-
-    // }
-    }
+    addfood() {
+      alert(`この内容で登録してもよろしいでしょうか`)
+      const foods = {
+       foodmemo: this.message,
+       kinds:`aaaa`
+      }
+      this.foodupdate(foods)
+    },
+    ...mapActions(['foodupdate']),
   },
 }
 </script>
-
 <style lang="scss">
 .food-title {
   text-align: center;
