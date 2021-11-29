@@ -1,5 +1,5 @@
 import { vuexfireMutations } from 'vuexfire'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+// import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import firebase from '~/plugins/firebase'
 
 const db = firebase.firestore()
@@ -13,12 +13,7 @@ export const state = () => ({
     login: false,
   },
   UserInfo: [],
-  userItems: ['aaaaa'],
-  unchiItem: {
-    shape: 'やわらかい',
-    color: 'ちゃ',
-    memo: 'いい感じ',
-  },
+  FoodList: [],
 })
 
 export const getters = {
@@ -28,8 +23,9 @@ export const getters = {
   userid: (state) => {
     return state.user ? state.user.uid : null
   },
-  getUnchi: (state) => state.unchiItem,
-  getUserItems: (state) => state.userItems,
+  Food: (state) => {
+    return state.FoodList
+  },
 }
 export const actions = {
   // ユーザー情報取得
@@ -56,58 +52,62 @@ export const actions = {
     }
   },
   // ご飯更新
-  foodupdate() {
-    firebase
-      .firestore()
-      .collection(`User/${getters.userid}`)
+  foodupdate(commit, foods) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
-        food: [
-          {
-            kinds: '',
-            foodmemo: '',
-          },
-        ],
+        food: firebase.firestore.FieldValue.arrayUnion({
+          foodmemo: foods.foodmemo,
+          kinds: foods.foodmemo,
+          fooddate:foods.fooddate
+        }),
+      })
+      .then(() => {
+        commit('foodupdate', foods)
       })
   },
   // 成長更新
-  growthupdate() {
-    firebase
-      .firestore()
-      .collection(`User/${getters.userid}`)
+  growthupdate(commit, growths) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
-        growth: [
-          {
-            height: '',
-            weight: '',
-          },
-        ],
+        growth: firebase.firestore.FieldValue.arrayUnion({
+          height: growths.height,
+          weight: growths.weight,
+          growthdate:growths.growthdate
+        }),
+      })
+      .then(() => {
+        commit('growthupdate', growths)
       })
   },
   // うんち更新
-  unchiupdate({ getters, commit }, item) {
-    if (getters.userid) {
-      firebase
-        .firestore()
-        .collection(`User/${getters.userid}`)
-        .doc("V7Gzp2Xz1y52uoZzoed1")
-        .update(getters.getUserItems)
-        .then(() => {
-          commit('setUserItems', item)
-        })
-    }
+  unchiupdate(commit, unchis) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+      .update({
+        unchi: firebase.firestore.FieldValue.arrayUnion({
+          unchishape: unchis.unchishape,
+          unchicolor: unchis.unchicolor,
+          unchimemo: unchis.unchimemo,
+          unchidate:unchis.unchidate
+
+        }),
+      })
+      .then(() => {
+        commit('unchiupdate', unchis)
+      })
   },
   // おしっこ更新
-  urineupdate() {
-    firebase
-      .firestore()
-      .collection(`User/${getters.userid}`)
+  urineupdate(commit,urines) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
-        urine: [
-          {
-            urinecolor: '',
-            nrinememo: '',
-          },
-        ],
+        urine: firebase.firestore.FieldValue.arrayUnion({
+          urineshape: urines.urineshape,
+          urinecolor: urines.urinecolor,
+          urinememo: urines.urinememo,
+          urinedate:urines.urinedate
+        }),
+      })
+      .then(() => {
+        commit('urineupdate', urines)
       })
   },
   // 初期情報追加
@@ -123,12 +123,14 @@ export const actions = {
           {
             kinds: '',
             foodmemo: '',
+            fooddate:""
           },
         ],
         growth: [
           {
             height: '',
             weight: '',
+            growthdate:""
           },
         ],
         unchi: [
@@ -136,18 +138,20 @@ export const actions = {
             unchiecolor: '',
             shape: '',
             unchimemo: '',
+            unchidate:""
           },
         ],
         urine: [
           {
             urinecolor: '',
             urinememo: '',
+            urinedate:""
           },
         ],
       })
   },
   // 新規登録
-  register({ dispatch, commit }, payload) {
+  register({ dispatch }, payload) {
     firebase
       .auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
@@ -207,13 +211,11 @@ export const mutations = {
     state.user.login = true
     console.log(state.user.login)
   },
-  // adds(state,{id,info}){
-  // info.id=id,
-  // console.log(info)
-  // state.UserInfo=info
-  // console.log(UserInfo)
-  //   }
-  setUserItems(state, item) {
-    state.userItems = item
+  adds(state, { info }) {
+    state.UserInfo = info
+    // console.log(UserInfo)
+  },
+  FoodList(state, foods) {
+    state.FoodList.push(foods)
   },
 }
