@@ -107,9 +107,9 @@ export default {
     Memo,
     DateTime,
   },
-  props:[
-// 'message'
-  ],
+//   props:[
+// message
+//   ],
   data() {
     return {
       food: '',
@@ -131,7 +131,7 @@ export default {
     addfood() {
       alert(`この内容で登録してもよろしいでしょうか`)
       const foods = {
-       foodmemo: this.message,
+       foodmemo: `阪本由莉`,
        kinds:`aaaa`
       }
       this.foodupdate(foods)

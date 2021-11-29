@@ -40,6 +40,7 @@ export const actions = {
   //   // }
   // })
   // },
+
   // ユーザー情報更新
   updateusers({ getters }, updateuser) {
     if (getters.userid) {
@@ -51,53 +52,62 @@ export const actions = {
     }
   },
   // ご飯更新
-  foodupdate(commit,foods) {
-    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`).update({food: firebase.firestore.FieldValue.arrayUnion({foodmemo:foods.foodmemo, kinds:foods.foodmemo})})
-    .then(()=>{
-      commit("foodupdate",foods)
-    })
+  foodupdate(commit, foods) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+      .update({
+        food: firebase.firestore.FieldValue.arrayUnion({
+          foodmemo: foods.foodmemo,
+          kinds: foods.foodmemo,
+          fooddate:foods.fooddate
+        }),
+      })
+      .then(() => {
+        commit('foodupdate', foods)
+      })
   },
   // 成長更新
-  growthupdate() {
-    firebase
-      .firestore()
-      .collection(`User/${getters.userid}`)
+  growthupdate(commit, growths) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
-        growth: [
-          {
-            height: '',
-            weight: '',
-          },
-        ],
+        growth: firebase.firestore.FieldValue.arrayUnion({
+          height: growths.height,
+          weight: growths.weight,
+          growthdate:growths.growthdate
+        }),
+      })
+      .then(() => {
+        commit('growthupdate', growths)
       })
   },
   // うんち更新
-  unchiupdate() {
-    firebase
-      .firestore()
-      .collection(`User/${getters.userid}`)
+  unchiupdate(commit, unchis) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
-        unchi: [
-          {
-            unchicolor: '',
-            shape: '',
-            unchimemo: '',
-          },
-        ],
+        unchi: firebase.firestore.FieldValue.arrayUnion({
+          unchishape: unchis.unchishape,
+          unchicolor: unchis.unchicolor,
+          unchimemo: unchis.unchimemo,
+          unchidate:unchis.unchidate
+
+        }),
+      })
+      .then(() => {
+        commit('unchiupdate', unchis)
       })
   },
   // おしっこ更新
-  urineupdate() {
-    firebase
-      .firestore()
-      .collection(`User/${getters.userid}`)
+  urineupdate(commit,urines) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
-        urine: [
-          {
-            urinecolor: '',
-            nrinememo: '',
-          },
-        ],
+        urine: firebase.firestore.FieldValue.arrayUnion({
+          urineshape: urines.urineshape,
+          urinecolor: urines.urinecolor,
+          urinememo: urines.urinememo,
+          urinedate:urines.urinedate
+        }),
+      })
+      .then(() => {
+        commit('urineupdate', urines)
       })
   },
   // 初期情報追加
@@ -113,12 +123,14 @@ export const actions = {
           {
             kinds: '',
             foodmemo: '',
+            fooddate:""
           },
         ],
         growth: [
           {
             height: '',
             weight: '',
+            growthdate:""
           },
         ],
         unchi: [
@@ -126,12 +138,14 @@ export const actions = {
             unchiecolor: '',
             shape: '',
             unchimemo: '',
+            unchidate:""
           },
         ],
         urine: [
           {
             urinecolor: '',
             urinememo: '',
+            urinedate:""
           },
         ],
       })
