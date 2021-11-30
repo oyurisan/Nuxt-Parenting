@@ -135,6 +135,7 @@ export default {
        kinds:`aaaa`
       }
       this.foodupdate(foods)
+      this.$router.push({ name: 'index' })
     },
     ...mapActions(['foodupdate']),
   },

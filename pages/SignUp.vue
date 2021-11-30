@@ -88,6 +88,7 @@ export default {
         birthday: this.birthday,
         gender: this.gender,
       })
+      this.$router.push({ name: 'index' })
     },
   },
   ...mapActions(['adds']),

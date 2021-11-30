@@ -1,32 +1,19 @@
 <!-- ここで注意すべき点は、<template>タグを記載してはいけないということだ。-->
 <script>
 import { Line } from 'vue-chartjs'
+import { mapGetters } from 'vuex'
 
 export default {
   extends: Line,
   data() {
     return {
       chartData: {
-        labels: [
-          '0',
-          '1',
-          '2',
-          '3',
-          '4',
-          '5',
-          '6',
-          '7',
-          '8',
-          '9',
-          '10',
-          '11',
-          '12',
-        ],
+        labels: this.$store.state.heightDatas.months,
         datasets: [
           {
             type: 'line',
             label: '身長',
-            data: [50, 51, 53, 55, 56, 58, 61, 63, 65, 68, 70, 71, 73],
+            data: this.$store.state.heightDatas.height,
             backgroundColor: 'rgba(177, 60, 89)',
             borderColor: 'rgb(209, 117, 140)',
             // 線下を塗りつぶすかどうか
@@ -36,9 +23,7 @@ export default {
           {
             type: 'line',
             label: '体重',
-            data: [
-              3, 3.4, 3.7, 4.1, 4.5, 4.8, 5.3, 5.6, 5.8, 6.1, 6.6, 7.4, 7.9,
-            ],
+            data: this.$store.state.chartDataW,
             backgroundColor: 'rgba(43, 70, 119)',
             borderColor: 'rgba(95, 137, 185)',
             fill: false,
@@ -73,7 +58,7 @@ export default {
               ticks: {
                 fontColor: 'black',
                 beginAtZero: true,
-                suggestedMax: 80,
+                suggestedMax: 100,
                 stepSize: 10,
               },
             },
@@ -129,9 +114,17 @@ export default {
       },
     }
   },
+  computed: {
+    ...mapGetters (['getChartData', 'getChartDataW', 'getChartHeight'])
+  },
+
   mounted() {
     this.renderChart(this.chartData, this.options)
   },
+
+  methods: {
+  }
+
 }
 </script>
 

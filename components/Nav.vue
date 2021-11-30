@@ -94,6 +94,7 @@
 
           <div class="inline-flex items-center gap-2 list-none lg:ml-auto">
             <button
+            v-if="!isLogin"
               class="
                 items-center
                 block
@@ -117,6 +118,32 @@
             >
               <nuxt-link to="/login">Sign in</nuxt-link>
             </button>
+            <button
+            v-if="isLogin"
+              class="
+                items-center
+                block
+                px-10
+                py-2.5
+                text-base
+                font-medium
+                text-center text-dark-red
+                transition
+                duration-500
+                ease-in-out
+                transform
+                border-2 border-white
+                shadow-md
+                rounded-xl
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-gray-500
+              "
+            >
+              <nuxt-link to="/login">Sign out</nuxt-link>
+            </button>
+
             <button
               class="
                 items-center
@@ -299,9 +326,25 @@
 
 
 <script>
+import firebase from '~/plugins/firebase'
+
 export default {
   data() {
-    return {}
+    return {
+      isLogin: false,
+    }
+  },
+  mounted() {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user)
+      if (user) {
+        this.isLogin = true
+        this.userData = user
+      } else {
+        this.isLogin = false
+        this.userData = null
+      }
+    })
   },
 }
 </script>

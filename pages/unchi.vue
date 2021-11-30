@@ -106,19 +106,19 @@ export default {
 
   methods: {
     save_unchi() {
-      console.log('aaaaa');
-      console.log(this.getUnchi);
-      console.log(this.getUserItems);
-      const item = []
-      item.push ({
-          shape: this.shape,
-          color: this.unchiecolor,
-          memo: this.unchimemo,
-      })
-      console.log(item);
-      this.unchiupdate(item);
-      console.log(this.getUserItems);
-      // this.$router.push({ name: 'index' })
+      // console.log('aaaaa');
+      // console.log(this.getUnchi);
+      // console.log(this.getUserItems);
+      // const item = []
+      // item.push ({
+      //     shape: this.shape,
+      //     color: this.unchiecolor,
+      //     memo: this.unchimemo,
+      // })
+      // console.log(item);
+      // this.unchiupdate(item);
+      // console.log(this.getUserItems);
+      this.$router.push({ name: 'index' })
     },
     back() {
       this.$router.push({ name: 'index' })

@@ -8,7 +8,7 @@
       <Memo />
 
       <div>
-        <button>保存</button>
+        <button @click="saveUrine">保存</button>
         <button @click="back">戻る</button>
       </div>
     </div>
@@ -30,6 +30,9 @@ export default {
   },
 
   methods: {
+    saveUrine () {
+      this.$router.push({ name: 'index' })
+    },
     back() {
       this.$router.push ({name:'index'})
     }

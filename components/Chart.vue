@@ -6,6 +6,8 @@ export default {
   extends: Line,
   data() {
     return {
+      chart1: [],
+
       chartData: {
         labels: [
           '0',
@@ -20,7 +22,6 @@ export default {
           '9',
           '10',
           '11',
-          '12',
         ],
         datasets: [
           {
@@ -93,8 +94,8 @@ export default {
               ticks: {
                 fontColor: 'black',
                 beginAtZero: true,
-                max: 15,
-                stepSize: 3,
+                max: 10,
+                stepSize: 2,
                 // callback (val) {
                 //     return val + 'kg';
                 // }
@@ -129,9 +130,13 @@ export default {
       },
     }
   },
+
   mounted() {
     this.renderChart(this.chartData, this.options)
   },
+
+  methods: {
+  }
 }
 </script>
 

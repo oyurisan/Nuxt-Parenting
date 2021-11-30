@@ -34,7 +34,7 @@
         </label>
       </div>
     </div>
-    <button class="touroku">アレルギー登録</button>
+    <button class="touroku" @click="addAllergy">アレルギー登録</button>
   </div>
 </template>
 
@@ -79,6 +79,11 @@ export default {
       ],
     }
   },
+  methods :{
+    addAllergy () {
+      this.$router.push({ name: 'index' })
+    }
+  }
 }
 </script>
 

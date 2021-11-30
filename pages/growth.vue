@@ -30,7 +30,7 @@ cm
 </select>&nbsp;
 kg
 </div>
-<button class="touroku">成長を登録する</button>
+<button class="touroku" @click="addGrowth">成長を登録する</button>
 
 </div>
 </template>
@@ -68,6 +68,11 @@ DateTime
       weights:[
         {g:`1`},{g:`2`},{g:`3`},{g:`4`},{g:`5`},{g:`6`},{g:`7`},{g:`8`},{g:`9`}
       ]
+    }
+  },
+  methods: {
+    addGrowth() {
+      this.$router.push({ name: 'index' })
     }
   }
 }
