@@ -2,7 +2,7 @@
   <div>
     <div>
       <textarea
-        v-model.trim="message"
+        v-model="message"
         class="textarea"
         cols="30"
         rows="5"
@@ -11,6 +11,7 @@
         maxlength="500"
       />
       <p>{{ message.length }}/500 文字</p>
+
     </div>
   </div>
 </template>
@@ -22,6 +23,10 @@ export default {
       message: '',
     }
   },
+  mounted(){
+    this.$emit(this.message)
+    console.log(this.message)
+  }
 }
 </script>
 

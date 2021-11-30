@@ -69,29 +69,20 @@ export default {
     this.$store.dispatch('Signup/init')
     this.new=this.$store.state.UserInfo
     console.log(this.new)
+    this.$store.dispatch("adds")
   },
   methods: {
-    test() {
-      this.$store.dispatch('Signup/adduserinfo', {
-        id: this.id,
-        babyname: this.babyname,
-        birthday: this.birthday,
-        gender: this.gender,
-        food:[{
-          kinds:this.kinds
-        }]
-      })
-    },
     addinfo() {
-      this.$store.dispatch('adds', {
+       const users={
         babyname: this.babyname,
         birthday: this.birthday,
         gender: this.gender,
-      })
+       }
+      this.userupdate(users)
       this.$router.push({ name: 'index' })
     },
   },
-  ...mapActions(['adds']),
+  ...mapActions(['adds',"userupdate"]),
 }
 </script>
 

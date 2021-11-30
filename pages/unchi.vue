@@ -5,28 +5,36 @@
     <div class="unchi-container">
       <div>💩unchi💩</div>
 
-      <DateTime />
+      <div>
+        日時 : <input v-model="unchidate" type="datetime-local" name="Date" />
+      </div>
 
       <div class="color-main">
         色 :
         <label class="radio-label">
-          <input type="radio" name="open-page" value="brown" checked />
+          <input
+            v-model="color"
+            type="radio"
+            name="open-page"
+            value="茶色"
+            checked
+          />
           <span class="radio-text-brown">茶</span>
         </label>
         <label class="radio-label">
-          <input type="radio" name="open-page" value="black" />
+          <input v-model="color" type="radio" name="open-page" value="黒色" />
           <span class="radio-text-black">黒</span>
         </label>
         <label class="radio-label">
-          <input type="radio" name="open-page" value="red" />
+          <input v-model="color" type="radio" name="open-page" value="赤色" />
           <span class="radio-text-red">赤</span>
         </label>
         <label class="radio-label">
-          <input type="radio" name="open-page" value="green" />
+          <input v-model="color" type="radio" name="open-page" value="緑色" />
           <span class="radio-text-green">緑</span>
         </label>
         <label class="radio-label">
-          <input type="radio" name="open-page" value="yellow" />
+          <input v-model="color" type="radio" name="open-page" value="黄色" />
           <span class="radio-text-yellow">黄</span>
         </label>
       </div>
@@ -35,42 +43,53 @@
         形 :
         <input
           id="radio1"
+          v-model="shape"
           class="radio-folm"
           name="folm"
           type="radio"
-          value="hard"
+          value="かため"
         />
         <label for="radio1" class="back">かため</label>
         <input
           id="radio2"
+          v-model="shape"
           class="radio-folm"
           name="folm"
           type="radio"
-          value="nomal"
+          value="ふつう"
         />
         <label for="radio2">ふつう</label>
         <input
           id="radio3"
+          v-model="shape"
           class="radio-folm"
           name="folm"
           type="radio"
-          value="soft"
+          value="やわらかめ"
         />
         <label for="radio3">やわらかめ</label>
         <input
           id="water"
+          v-model="shape"
           class="radio-folm"
           name="folm"
           type="radio"
-          value="water"
+          value="水っぽい"
         />
         <label for="water">水っぽい</label>
       </div>
-
-      <memo v-model="unchimemo" />
-
+      <textarea
+        v-model="unchimemo"
+        class="textarea"
+        cols="30"
+        rows="5"
+        name="Memo"
+        placeholder=" メモ"
+        maxlength="500"
+      />
+      <!-- <p>{{ message.length }}/500 文字</p> -->
       <div>
-        <button @click="save_unchi">保存</button>
+        <button @click="addunchi">保存</button>
         <button @click="back">戻る</button>
       </div>
     </div>
@@ -78,21 +97,21 @@
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import Memo from '../components/addMemo'
-import DateTime from '../components/addDateTime'
-
+// import Memo from '../components/addMemo'
+// import DateTime from '../components/addDateTime'
 
 export default {
   components: {
-    Memo,
-    DateTime,
+    // Memo,
+    // DateTime,
   },
 
-  data () {
+  data() {
     return {
-            unchiecolor: '',
-            shape: '',
-            unchimemo: 'あああああああああ',
+      unchimemo: '',
+      shape: '',
+      color: '',
+      unchidate: '',
     }
   },
 
@@ -100,30 +119,25 @@ export default {
     title: 'うんちっち',
   },
 
-  computed:{
-    ...mapGetters (['getUnchi', 'getUserItems'])
+  computed: {
+    ...mapGetters(['getUnchi', 'getUserItems']),
   },
-
   methods: {
-    save_unchi() {
-      // console.log('aaaaa');
-      // console.log(this.getUnchi);
-      // console.log(this.getUserItems);
-      // const item = []
-      // item.push ({
-      //     shape: this.shape,
-      //     color: this.unchiecolor,
-      //     memo: this.unchimemo,
-      // })
-      // console.log(item);
-      // this.unchiupdate(item);
-      // console.log(this.getUserItems);
+    addunchi() {
+      alert(`この内容で登録してもよろしいでしょうか`)
+      const unchis = {
+        unchimemo: this.unchimemo,
+        unchishape: this.shape,
+        unchidate: this.unchidate,
+        unchicolor:this.color
+      }
+      this.unchiupdate(unchis)
       this.$router.push({ name: 'index' })
     },
     back() {
       this.$router.push({ name: 'index' })
     },
-    ...mapActions (['unchiupdate'])
+    ...mapActions(['unchiupdate']),
   },
 }
 </script>

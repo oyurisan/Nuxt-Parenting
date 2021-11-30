@@ -4,31 +4,33 @@
 
     <div class="food-container">
       <div>🍼food🍴</div>
-      <DateTime />
-
+          <div>
+      日時 : <input  v-model="fooddate"  type="datetime-local" name="Date">
+    </div>
       <div class="form-main">
         中身 :
         <input
-          id="titi"
+         id="titi"
+        v-model="kinds"
           class="radio-food"
           name="folm"
           type="radio"
-          value="hard"
+          value="母乳"
         />
         <label for="titi" class="back">母乳</label>
         <input
           id="milk"
+          v-model="kinds"
           class="radio-food"
           name="folm"
           type="radio"
-          value="nomal"
+          value="ミルク"
         />
         <label for="milk">ミルク</label>
       </div>
-
       <div class="amount-main">
         <div class="cp_ipselect">
-          <select class="cp_sl02" required>
+          <select v-model="ml" class="cp_sl02" required>
             <option value="" disabled selected></option>
             <option value="0">0</option>
             <option value="10">10</option>
@@ -87,8 +89,17 @@
           <label class="cp_sl02_selectlabel">ml</label>
         </div>
       </div>
-      <Memo />
-      <button @click="Foods">ここ</button>
+       <textarea
+        v-model="message"
+        class="textarea"
+        cols="30"
+        rows="5"
+        name="Memo"
+        placeholder=" メモ"
+        maxlength="500"
+      />
+      <p>{{ message.length }}/500 文字</p>
+     
       <div>
         <button @click="addfood">保存</button>
         <button @click="back">戻る</button>
@@ -99,21 +110,19 @@
 
 <script>
 import { mapActions } from 'vuex'
-import Memo from '../components/addMemo'
-import DateTime from '../components/addDateTime'
+// import Memo from '../components/addMemo'
+// import DateTime from '../components/addDateTime'
 
 export default {
   components: {
-    Memo,
-    DateTime,
   },
-//   props:[
-// message
-//   ],
   data() {
     return {
       food: '',
       message: '',
+      fooddate:"",
+      kinds:"",
+      ml:""
     }
   },
   head: {
@@ -131,8 +140,10 @@ export default {
     addfood() {
       alert(`この内容で登録してもよろしいでしょうか`)
       const foods = {
-       foodmemo: `阪本由莉`,
-       kinds:`aaaa`
+       foodmemo: this.message,
+       kinds:this.kinds,
+       ml:this.ml,
+       fooddate:this.fooddate
       }
       this.foodupdate(foods)
       this.$router.push({ name: 'index' })
