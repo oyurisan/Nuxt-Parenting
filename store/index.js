@@ -46,28 +46,41 @@ export const actions = {
       .update({
         food: firebase.firestore.FieldValue.arrayUnion({
           foodmemo: foods.foodmemo,
-          kinds: foods.foodmemo,
-          fooddate:foods.fooddate
+          kinds: foods.kinds,
+          fooddate:foods.fooddate,
+          ml:foods.ml
         }),
       })
       .then(() => {
         commit('foodupdate', foods)
       })
   },
-  // 成長更新
-  growthupdate(commit, growths) {
+  // 身長更新
+  heightupdate(commit, heights) {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
-        growth: firebase.firestore.FieldValue.arrayUnion({
-          height: growths.height,
-          weight: growths.weight,
-          growthdate:growths.growthdate
+        height: firebase.firestore.FieldValue.arrayUnion({
+          height: heights.heightcm+heights.heightmm,
+          heightdate:heights.heightyear+heights.month
         }),
       })
       .then(() => {
-        commit('growthupdate', growths)
+        commit('heightupdate', heights)
       })
   },
+// 体重更新
+weightupdate(commit,weights) {
+  UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+    .update({
+      weight: firebase.firestore.FieldValue.arrayUnion({
+        weight: weights.weight,
+        weightdate:weights.weightdate
+      }),
+    })
+    .then(() => {
+      commit('weightupdate', weights)
+    })
+},
   // うんち更新
   unchiupdate(commit, unchis) {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
@@ -77,7 +90,6 @@ export const actions = {
           unchicolor: unchis.unchicolor,
           unchimemo: unchis.unchimemo,
           unchidate:unchis.unchidate
-
         }),
       })
       .then(() => {
@@ -89,8 +101,6 @@ export const actions = {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
         urine: firebase.firestore.FieldValue.arrayUnion({
-          urineshape: urines.urineshape,
-          urinecolor: urines.urinecolor,
           urinememo: urines.urinememo,
           urinedate:urines.urinedate
         }),
@@ -112,14 +122,20 @@ export const actions = {
           {
             kinds: '',
             foodmemo: '',
-            fooddate:""
+            fooddate:"",
+            ml:""
           },
         ],
-        growth: [
+        height: [
           {
             height: '',
+            heightdate:""
+          },
+        ],
+        weight: [
+          {
             weight: '',
-            growthdate:""
+            weightdate:""
           },
         ],
         unchi: [

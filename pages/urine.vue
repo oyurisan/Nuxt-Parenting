@@ -4,11 +4,21 @@
 
     <div class="urine-container">
       <div>💧urine💧</div>
-      <DateTime />
-      <Memo />
-
       <div>
-        <button>保存</button>
+        日時 : <input v-model="urinedate" type="datetime-local" name="Date" />
+      </div>
+      <textarea
+        v-model="urinememo"
+        class="textarea"
+        cols="30"
+        rows="5"
+        name="Memo"
+        placeholder=" メモ"
+        maxlength="500"
+      />
+      <!-- <p>{{ message.length }}/500 文字</p> -->
+      <div>
+        <button @click="addurine">保存</button>
         <button @click="back">戻る</button>
       </div>
     </div>
@@ -16,24 +26,39 @@
 </template>
 
 <script>
-import Memo from '../components/addMemo'
-import DateTime from '../components/addDateTime'
+import { mapActions } from 'vuex'
+// import Memo from '../components/addMemo'
+// import DateTime from '../components/addDateTime'
 
 export default {
   components: {
-    Memo,
-    DateTime,
+    // Memo,
+    // DateTime,
   },
-
+  data() {
+    return {
+      urinememo: '',
+      urinedate: '',
+    }
+  },
   head: {
-    title: 'おしっこ'
+    title: 'おしっこ',
   },
 
   methods: {
     back() {
-      this.$router.push ({name:'index'})
-    }
-  }
+      this.$router.push({ name: 'index' })
+    },
+    addurine() {
+      alert(`この内容で登録してもよろしいでしょうか`)
+      const urines = {
+        urinememo: this.urinememo,
+        urinedate: this.urinedate,
+      }
+      this.urineupdate(urines)
+    },
+    ...mapActions(['urineupdate']),
+  },
 }
 </script>
 
