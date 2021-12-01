@@ -29,8 +29,8 @@
       <div class="button">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;
-身長を登録する</div></button></div>
+</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+保存</div></button></div>
       <div>体重</div>
          <input v-model="weightdate" type="date" name="Date" /><br>
       <select v-model="weightk">
@@ -58,8 +58,8 @@
       <div class="button">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;
-体重を登録する</div></button></div>
+</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+保存</div></button></div>
     {{weightg}}
     {{weightk}}{{weightyear}}{{weightmonth}}
    
@@ -116,7 +116,6 @@ export default {
       babyyear:this.heightyear+`歳`+this.heightmonth+`ヶ月`
       }
       this.heightupdate(heights)
-      this.$router.push({ name: 'index' })
     },
     addweight() {
       alert(`この内容で登録してもよろしいでしょうか`)
@@ -126,7 +125,6 @@ export default {
        babyyear:this.weightyear+`歳`+this.weightmonth+`ヶ月`
       }
       this.weightupdate(weights)
-      
     },
     ...mapActions(['heightupdate',"weightupdate"]),
   }

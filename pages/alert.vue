@@ -1,16 +1,43 @@
 <template>
+<div class="timer">
   <div id="timer">
     <div class="timer">
       <div class="time">
         次の授乳まで残り🍼<br />
-        <button @click="countup">+</button>
-        {{ CountTime }}<button @click="countups">+</button>
+        <div class="container">
+        <div class="m-3">
+    <button class="w-12 h-12  bg-blue-400 text-lg text-white font-semibold rounded-full hover:bg-blue-500" @click="countup">+</button>
+        </div>
+        <div class="math">{{ CountTime }}</div>
+        <div class="m-3">
+    <button class="w-12 h-12  bg-blue-400 text-lg text-white font-semibold rounded-full hover:bg-blue-500" @click="countups">+</button>
+</div>
+</div>
       </div>
-      <button @click="start">start🦓</button>
-      <button @click="stop">stop🦓</button>
+      <div class="container">
+      <div class="m-3">
+    <button class="shadow-lg px-2 py-1  bg-blue-600 text-lg text-white font-semibold rounded  hover:bg-blue-700 hover:shadow-sm hover:translate-y-0.5 transform transition " @click="start">
+      <div class="button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+      開始</div></button>
+</div>
+<div class="m-3">
+    <button class="shadow-lg px-2 py-1  bg-blue-600 text-lg text-white font-semibold rounded  hover:bg-blue-700 hover:shadow-sm hover:translate-y-0.5 transform transition " @click="stop">
+      <div class="button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+</svg>
+      停止</div></button>
+</div>
+</div>
       <!-- <audio controls autoplay src="~/assets/baby.mp3"></audio> -->
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -89,4 +116,18 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.container{
+  display: flex;
+}
+.math{
+  font-size: 30px;
+}
+.button{
+  display: flex;
+}
+.timer{
+  width: 400px;
+  margin: auto;
+}
+</style>
