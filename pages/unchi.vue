@@ -144,7 +144,10 @@ export default {
       }
       this.unchiupdate(unchis)
       this.$router.push({ name: 'index' })
-      this.unchis=""
+      this.unchimemo=""
+      this.unchishape=""
+      this.unchidate=""
+      this.unchicolor=""
     },
     back() {
       this.$router.push({ name: 'index' })

@@ -1,7 +1,7 @@
 <template>
   <div class="growth">
-    <div class="food-title">成長管理</div>
-      <div>身長</div>
+    <div class="growth-title">成長管理</div>
+      <div>👶身長👶</div>
     <input v-model="heightdate" type="date" name="Date" /><br>
       <select v-model="heightcm">
         <option v-for="item in height" :key="item.cm" :value="item.cm">
@@ -13,7 +13,7 @@
           {{ item.mm }}
         </option>
         </select>&nbsp; cm<br>
-        赤ちゃんの年齢
+        
       <select v-model="heightyear">
         <option v-for="item in year" :key="item.y" :value="item.y">
 {{item.y}}歳
@@ -31,7 +31,7 @@
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
 </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 保存</div></button></div>
-      <div>体重</div>
+      <div>👶体重👶</div>
          <input v-model="weightdate" type="date" name="Date" /><br>
       <select v-model="weightk">
         <option v-for="item in weight" :key="item.k" :value="item.k">
@@ -60,8 +60,7 @@
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
 </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 保存</div></button></div>
-    {{weightg}}
-    {{weightk}}{{weightyear}}{{weightmonth}}
+
    
   </div>
 </template>
@@ -116,6 +115,11 @@ export default {
       babyyear:this.heightyear+`歳`+this.heightmonth+`ヶ月`
       }
       this.heightupdate(heights)
+      this.heightcm=""
+      this.heightmm=""
+      this.heightdate=""
+      this.heightyear=""
+      this.heightmonth=""
     },
     addweight() {
       alert(`この内容で登録してもよろしいでしょうか`)
@@ -125,6 +129,11 @@ export default {
        babyyear:this.weightyear+`歳`+this.weightmonth+`ヶ月`
       }
       this.weightupdate(weights)
+      this.weightk=""
+      this.weightg=""
+      this.weightupdate=""
+      this.weightyear=""
+      this.weightmonth=""
     },
     ...mapActions(['heightupdate',"weightupdate"]),
   }
@@ -151,7 +160,7 @@ export default {
     background: #000;
   }
 }
-.food-title {
+.growth-title {
   text-align: center;
   font-size: 200%;
   margin-top: 10%;

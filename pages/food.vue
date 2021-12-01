@@ -161,7 +161,10 @@ export default {
       }
       this.foodupdate(foods)
       this.$router.push({ name: 'index' })
-      this.foods=""
+      this.foodmemo=""
+      this.kinds=""
+      this.ml=""
+      this.fooddate=""
     },
     ...mapActions(['foodupdate']),
   },

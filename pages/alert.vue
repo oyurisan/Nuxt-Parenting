@@ -4,6 +4,13 @@
     <div class="timer">
       <div class="time">
         次の授乳まで残り🍼<br />
+        <div class="relative mb-4">
+          <div class="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
+            <div style="width:30%"
+              class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500">
+            </div>
+          </div>
+        </div>
         <div class="container">
         <div class="m-3">
     <button class="w-12 h-12  bg-blue-400 text-lg text-white font-semibold rounded-full hover:bg-blue-500" @click="countup">+</button>

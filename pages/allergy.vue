@@ -5,7 +5,7 @@
     </div>
     <p>表示義務７品目</p>
     <div class="container">
-      <div v-for="item in foodduty" :key="item.foodname" :value="item.foodname">
+      <div v-for="item in foodduty" :key="item.foodname">
         <img
           :src="require(`~/assets/` + item.icon)"
           width="30px"

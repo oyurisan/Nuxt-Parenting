@@ -74,7 +74,8 @@ export default {
       }
       this.urineupdate(urines)
       this.$router.push({ name: 'index' })
-      this.urines=""
+      this.urinememo=""
+      this.urinedate=""
     },
     ...mapActions(['urineupdate']),
   },
