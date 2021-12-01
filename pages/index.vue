@@ -1,28 +1,52 @@
 <template>
- <div>
-   <div class="home-title">Home</div>
+  <div>
+    <div class="home-title">Home</div>
 
-   <Calender />
+    <Calender />
 
+    <div v-for="unchiItem in getAllData.unchi" :key="unchiItem.id">
+      unchi : {{ unchiItem.unchidate }}
+    </div>
 
- </div>
+    <div v-for="foodItem in getAllData.food" :key="foodItem.id">
+      food : {{ foodItem.kinds }}
+    </div>
+
+    <div v-for="urineItem in getAllData.urine" :key="urineItem.id">
+      urine : {{ urineItem.urinememo }}
+    </div>
+
+    <div v-for="heightItem in getAllData.height" :key="heightItem.id">
+      height : {{ heightItem.height }}
+    </div>
+
+    <div v-for="wightItem in getAllData.weight" :key="wightItem.id">
+      weight : {{ wightItem.weight }}
+    </div>
+
+  </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
+  computed: {
+    user() {
+      return this.$store.getters.user
+    },
 
- computed: {
-   user () {
-     return this.$store.getters.user
-   },
- },
+    ...mapGetters(['getAllData']),
+  },
+  created() {
+    this.$store.dispatch('fetchAllData')
+  },
+
   methods: {
-   data(){
-     console.log(new Date())
-   }
- },
+    data() {
+      console.log(new Date())
+    },
+  },
 }
-
 </script>
 
 <style lang="scss">
