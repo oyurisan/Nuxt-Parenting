@@ -1,5 +1,6 @@
 <template>
 <div class="timer">
+   <div class="food-title">タイマー</div>
   <div id="timer">
     <div class="timer">
       <div class="time">
@@ -41,13 +42,13 @@
       停止</div></button>
 </div>
 </div>
-      <!-- <audio controls autoplay src="~/assets/baby.mp3"></audio> -->
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import {Howl} from "howler"
 
 export default {
   data() {
@@ -116,8 +117,15 @@ export default {
       alert(`授乳の時間になりました`)
     },
     musicstart() {
-     const music = new Audio(require("~/assets/baby.mp3"));
-      music.play()
+    //  const music = new Audio(require("~/assets/baby.mp3"));
+    //   music.play()
+    const music=new Howl({
+      src:['~/assets/audios/.baby.mp3'],
+      autoplay: true,
+    })
+    music.load()
+    // music.play()
+    // music.duration()
     },
   },
 }
@@ -136,5 +144,10 @@ export default {
 .timer{
   width: 400px;
   margin: auto;
+}
+.food-title {
+  text-align: center;
+  font-size: 200%;
+  margin-top: 10%;
 }
 </style>
