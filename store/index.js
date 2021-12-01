@@ -29,16 +29,29 @@ export const getters = {
 }
 export const actions = {
   // ユーザー情報更新
-  userupdate(commit,users) {
+  userupdate(commit, users) {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
-    .update({
-    babyname:users.babyname,
-    gender:users.gender,
-    birthday:users.birthday
-    })
-    .then(() => {
-      commit("userupdate", users)
-    })
+      .update({
+        babyname: users.babyname,
+        gender: users.gender,
+        birthday: users.birthday,
+        picture: users.picture,
+      })
+      .then(() => {
+        commit('userupdate', users)
+      })
+  },
+  // アレルギー更新
+  allergyupdate(commit, allergys) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+      .update({
+        allergy: firebase.firestore.FieldValue.arrayUnion({
+          allergylist: allergys.allergy,
+        }),
+      })
+      .then(() => {
+        commit('allergyupdate', allergys)
+      })
   },
   // ご飯更新
   foodupdate(commit, foods) {
@@ -47,8 +60,8 @@ export const actions = {
         food: firebase.firestore.FieldValue.arrayUnion({
           foodmemo: foods.foodmemo,
           kinds: foods.kinds,
-          fooddate:foods.fooddate,
-          ml:foods.ml
+          fooddate: foods.fooddate,
+          ml: foods.ml,
         }),
       })
       .then(() => {
@@ -60,27 +73,29 @@ export const actions = {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
         height: firebase.firestore.FieldValue.arrayUnion({
-          height: heights.heightcm+heights.heightmm,
-          heightdate:heights.heightyear+heights.month
+        height: heights.height,
+        heightdate:heights.heightdate,
+        babyyear:heights.babyyear
         }),
       })
       .then(() => {
         commit('heightupdate', heights)
       })
   },
-// 体重更新
-weightupdate(commit,weights) {
-  UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
-    .update({
-      weight: firebase.firestore.FieldValue.arrayUnion({
-        weight: weights.weight,
-        weightdate:weights.weightdate
-      }),
-    })
-    .then(() => {
-      commit('weightupdate', weights)
-    })
-},
+  // 体重更新
+  weightupdate(commit, weights) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+      .update({
+        weight: firebase.firestore.FieldValue.arrayUnion({
+          weight: weights.weight ,
+          weightdate: weights.weightdate,
+          babyyear:weights.babyyear
+        }),
+      })
+      .then(() => {
+        commit('weightupdate', weights)
+      })
+  },
   // うんち更新
   unchiupdate(commit, unchis) {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
@@ -89,7 +104,7 @@ weightupdate(commit,weights) {
           unchishape: unchis.unchishape,
           unchicolor: unchis.unchicolor,
           unchimemo: unchis.unchimemo,
-          unchidate:unchis.unchidate
+          unchidate: unchis.unchidate,
         }),
       })
       .then(() => {
@@ -97,12 +112,12 @@ weightupdate(commit,weights) {
       })
   },
   // おしっこ更新
-  urineupdate(commit,urines) {
+  urineupdate(commit, urines) {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
         urine: firebase.firestore.FieldValue.arrayUnion({
           urinememo: urines.urinememo,
-          urinedate:urines.urinedate
+          urinedate: urines.urinedate,
         }),
       })
       .then(() => {
@@ -122,20 +137,20 @@ weightupdate(commit,weights) {
           {
             kinds: '',
             foodmemo: '',
-            fooddate:"",
-            ml:""
+            fooddate: '',
+            ml: '',
           },
         ],
         height: [
           {
             height: '',
-            heightdate:""
+            heightdate: '',
           },
         ],
         weight: [
           {
             weight: '',
-            weightdate:""
+            weightdate: '',
           },
         ],
         unchi: [
@@ -143,14 +158,14 @@ weightupdate(commit,weights) {
             unchiecolor: '',
             shape: '',
             unchimemo: '',
-            unchidate:""
+            unchidate: '',
           },
         ],
         urine: [
           {
             urinecolor: '',
             urinememo: '',
-            urinedate:""
+            urinedate: '',
           },
         ],
       })

@@ -43,7 +43,6 @@
     </button>
     <br />
     <button class="touroku" @click="addinfo">登録</button>
-    <button @click="test">kakuninn</button>
   </div>
 </template>
 
@@ -77,6 +76,7 @@ export default {
         babyname: this.babyname,
         birthday: this.birthday,
         gender: this.gender,
+        picture:this.picture
        }
       this.userupdate(users)
     },

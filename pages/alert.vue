@@ -69,22 +69,22 @@ export default {
         self.count()
       }, 1000)
       this.timerOn = true
-      // timerがONであることを状態として保持
+      // timerがONであることを保持
     },
     stop() {
       clearInterval(this.timerObj)
       this.timerOn = false
-      // timerがOFFであることを状態として保持
+      // timerがOFFであることを保持
     },
     // 時間が経過したら
     complete() {
       clearInterval(this.timerObj)
       alert(`授乳の時間になりました`)
     },
-    // musicstart() {
-    //  const music = new Audio(require("@/assets/baby.mp3"));
-    //   music.play()
-    // },
+    musicstart() {
+     const music = new Audio(require("~/assets/baby.mp3"));
+      music.play()
+    },
   },
 }
 </script>
