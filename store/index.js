@@ -53,12 +53,27 @@ export const actions = {
   userupdate(commit, users) {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
-        babyname: users.babyname,
-        gender: users.gender,
-        birthday: users.birthday,
+        users:firebase.firestore.FieldValue.arrayUnion({
+          babyname: users.babyname,
+          gender: users.gender,
+          birthday: users.birthday,
+          // picture: users.picture,
+        })
       })
       .then(() => {
         commit('userupdate', users)
+      })
+  },
+  // アレルギー更新
+  allergyupdate(commit, allergys) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+      .update({
+        allergy: firebase.firestore.FieldValue.arrayUnion({
+          allergylist: allergys.allergy,
+        }),
+      })
+      .then(() => {
+        commit('allergyupdate', allergys)
       })
   },
   // ご飯更新
@@ -81,8 +96,9 @@ export const actions = {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
         height: firebase.firestore.FieldValue.arrayUnion({
-          height: heights.heightcm + heights.heightmm,
-          heightdate: heights.heightyear + heights.month,
+        height: heights.height,
+        heightdate:heights.heightdate,
+        babyyear:heights.babyyear
         }),
       })
       .then(() => {
@@ -94,8 +110,9 @@ export const actions = {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
         weight: firebase.firestore.FieldValue.arrayUnion({
-          weight: weights.weight,
+          weight: weights.weight ,
           weightdate: weights.weightdate,
+          babyyear:weights.babyyear
         }),
       })
       .then(() => {
@@ -132,48 +149,39 @@ export const actions = {
   },
   // 初期情報追加
   adds({ getters }) {
-    firebase
-      .firestore()
-      .collection(`User/${getters.userid}`)
+   db.collection(`User/${getters.userid}`)
       .add({
-        babyname: '',
-        birthday: '',
-        gender: '',
-        food: [
-          {
+        users:[{
+          babyname: '',
+          birthday: '',
+          gender: '',
+        }],
+        allergy:[],
+        food: [{
             kinds: '',
             foodmemo: '',
             fooddate: '',
             ml: '',
-          },
-        ],
-        height: [
-          {
+          }],
+        height: [{
             height: '',
             heightdate: '',
-          },
-        ],
-        weight: [
-          {
+          }],
+        weight: [{
             weight: '',
             weightdate: '',
-          },
-        ],
+          }],
         unchi: [
-          {
-            unchiecolor: '',
+          {unchiecolor: '',
             shape: '',
             unchimemo: '',
             unchidate: '',
-          },
-        ],
-        urine: [
-          {
+          }],
+        urine: [{
             urinecolor: '',
             urinememo: '',
             urinedate: '',
-          },
-        ],
+          }],
       })
   },
   // 新規登録

@@ -14,7 +14,7 @@
         <div class="boxs">
           <label name="allergy" class="label">
             {{ item.foodname }}
-            <input type="checkbox" name="allergy" class="checkbox" />
+            <input type="checkbox" name="allergy" class="allergy">
           </label>
         </div>
       </div>
@@ -34,6 +34,7 @@
         </label>
       </div>
     </div>
+    <button class="touroku" @click="allergy">アレルギー登録</button>
     <button class="touroku" @click="addAllergy">アレルギー登録</button>
   </div>
 </template>
@@ -69,7 +70,6 @@ export default {
         { foodname: `鶏肉`, icon: '21.jpg' },
         { foodname: `豚肉`, icon: '22.jpg' },
         { foodname: `バナナ`, icon: '23.jpg' },
-        { foodname: `豚肉`, icon: '24.jpg' },
         { foodname: `まつたけ`, icon: '25.jpg' },
         { foodname: `もも`, icon: '26.jpg' },
         { foodname: `ヤマイモ`, icon: '27.jpg' },
@@ -78,12 +78,22 @@ export default {
       ],
     }
   },
-  methods :{
+  methods:{
     addAllergy () {
       this.$router.push({ name: 'index' })
-    }
-  }
+    },
+    allergy(){
+    const allergy=document.getElementByIdClassName('allergy')
+    let str="";
+    for(i=0;i<7;i++){
+if(allergy[i].checked===true){
+  str+=allergy[i].value+"";
 }
+    }
+    alert(str)
+    console.log(str)
+}
+  }}
 </script>
 
 <style lang="scss">

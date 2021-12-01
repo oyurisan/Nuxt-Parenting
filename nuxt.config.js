@@ -51,13 +51,25 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    // mp3ファイル再生のための拡張
+    extend (config, ctx) {
+      if (ctx.isClient) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
+      })
+    }
+    },
     loaders: {
       scss: {
         implementation: Sass,
         // sassOptions: {
         //   fiber: Fiber
         // }
-      }
+      },
     }
   }
 }
