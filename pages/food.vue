@@ -146,6 +146,7 @@ export default {
        fooddate:this.fooddate
       }
       this.foodupdate(foods)
+      this.$router.push({ name: 'index' })
     },
     ...mapActions(['foodupdate']),
   },

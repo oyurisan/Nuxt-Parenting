@@ -46,6 +46,9 @@ export default {
   },
 
   methods: {
+    saveUrine () {
+      this.$router.push({ name: 'index' })
+    },
     back() {
       this.$router.push({ name: 'index' })
     },

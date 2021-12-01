@@ -79,6 +79,7 @@ export default {
         picture:this.picture
        }
       this.userupdate(users)
+      this.$router.push({ name: 'index' })
     },
   },
   ...mapActions(['adds',"userupdate"]),

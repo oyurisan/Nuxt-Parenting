@@ -20,7 +20,6 @@ export default {
           '9',
           '10',
           '11',
-          '12',
         ],
         datasets: [
           {
@@ -73,7 +72,7 @@ export default {
               ticks: {
                 fontColor: 'black',
                 beginAtZero: true,
-                suggestedMax: 80,
+                suggestedMax: 90,
                 stepSize: 10,
               },
             },

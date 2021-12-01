@@ -168,6 +168,7 @@ export default {
         unchicolor: this.color,
       }
       this.unchiupdate(unchis)
+      this.$router.push({ name: 'index' })
     },
     back() {
       this.$router.push({ name: 'index' })

@@ -11,9 +11,11 @@
       <button class="hw-button" @click="active3">2歳 ~ 3歳</button>
     </div>
 
-    <div v-if="isActive"><Chart /></div>
-    <div v-if="isActive2"><Chart2 /></div>
-    <div v-if="isActive3"><Chart3 /></div>
+    <div class="chart">
+    <div v-if="isActive" ><Chart /></div>
+    <div v-if="isActive2" ><Chart2 /></div>
+    <div v-if="isActive3" ><Chart3 /></div>
+    </div>
 
     <div class="backHome">
       <nuxt-link to="/">Home</nuxt-link>
@@ -82,5 +84,9 @@ export default {
   &:hover {
     opacity: 0.8;
   }
+}
+.chart  {
+  width: 80%;
+  margin: 5% auto 5% auto;
 }
 </style>

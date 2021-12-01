@@ -1,6 +1,6 @@
 <template>
   <div class="newsignup">
-    <div class="newSignUp-title">新規登録</div>
+    <div class="newSignUp-title">新規アカウント作成</div>
     <div class="login">
       メールアドレス<br /><input
         v-model="email"
@@ -35,7 +35,7 @@ export default {
   },
   computed: {
     user() {
-      return tthis.$store.getters.user
+      return this.$store.getters.user
     },
   },
   methods: {
@@ -47,7 +47,7 @@ export default {
       })
       this.email = ''
       this.password = ''
-      this.$router.push({ name: 'SignUp' })
+      this.$router.push({ name: 'login' })
     },
   },
 }

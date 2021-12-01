@@ -104,6 +104,7 @@ export default {
       babyyear:this.heightyear+`歳`+this.heightmonth+`ヶ月`
       }
       this.heightupdate(heights)
+      this.$router.push({ name: 'index' })
     },
     addweight() {
       alert(`この内容で登録してもよろしいでしょうか`)
@@ -113,6 +114,7 @@ export default {
        babyyear:this.weightyear+`歳`+this.weightmonth+`ヶ月`
       }
       this.weightupdate(weights)
+      
     },
     ...mapActions(['heightupdate',"weightupdate"]),
   }

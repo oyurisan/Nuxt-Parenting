@@ -3,11 +3,6 @@
     <div class="profile-title">プロフィール画面</div>
     <div class="profile-container">
       <div class="upload-img">
-        <div class="h-48 w-full checker-bg flex items-center justify-center p-4 text-blue-500">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" viewBox="0 0 20 20" fill="currentColor">
-  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
-</svg>
-    </div>
         <upload v-model="picture" />
       </div>
       <div class="profile-main">
@@ -28,7 +23,36 @@
       </div>
     </div>
 
-    <div>アレルギー :</div>
+    <div>
+      アレルギー :
+      <div class="container">
+        <div v-for="item in foodduty" :key="item.foodname">
+          <img
+            :src="require(`~/assets/` + item.icon)"
+            width="30px"
+            height="30px"
+          />
+          <div class="boxs">
+            <label name="allergy" class="label">
+              {{ item.foodname }}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div v-for="item in foodreco" :key="item.foodname">
+          <img
+            :src="require(`~/assets/` + item.icon)"
+            width="30px"
+            height="30px"
+          />
+          <label name="allergy">
+            {{ item.foodname }}
+          </label>
+        </div>
+      </div>
+    </div>
 
     <div class="backHome">
       <nuxt-link to="/">Home</nuxt-link>
@@ -45,11 +69,43 @@ export default {
   },
   data() {
     return {
-        name: '崚平',
-        gender: '男の子',
-        birth: '1996/3/24',
-        picture: null,
-        aaa:'可愛いおんなんのこ'
+      name: '崚平',
+      gender: '男の子',
+      birth: '1996/3/24',
+      picture: null,
+
+      foodduty: [
+        { foodname: `えび`, icon: '1.jpg' },
+        { foodname: `かに`, icon: '2.jpg' },
+        { foodname: `小麦`, icon: '3.jpg' },
+        { foodname: `そば`, icon: '4.jpg' },
+        { foodname: `卵`, icon: '5.jpg' },
+        { foodname: `乳`, icon: '6.jpg' },
+        { foodname: `落花生`, icon: '7.jpg' },
+      ],
+      foodreco: [
+        { foodname: `あわび`, icon: '8.jpg' },
+        { foodname: `イカ`, icon: '9.jpg' },
+        { foodname: `いくら`, icon: '10.jpg' },
+        { foodname: `オレンジ`, icon: '11.jpg' },
+        { foodname: `カシューナッツ`, icon: '12.jpg' },
+        { foodname: `キウイフルーツ`, icon: '13.jpg' },
+        { foodname: `牛肉`, icon: '15.jpg' },
+        { foodname: `くるみ`, icon: '16.jpg' },
+        { foodname: `ごま`, icon: '17.jpg' },
+        { foodname: `さけ`, icon: '18.jpg' },
+        { foodname: `さば`, icon: '19.jpg' },
+        { foodname: `大豆`, icon: '20.jpg' },
+        { foodname: `鶏肉`, icon: '21.jpg' },
+        { foodname: `豚肉`, icon: '22.jpg' },
+        { foodname: `バナナ`, icon: '23.jpg' },
+        { foodname: `豚肉`, icon: '24.jpg' },
+        { foodname: `まつたけ`, icon: '25.jpg' },
+        { foodname: `もも`, icon: '26.jpg' },
+        { foodname: `ヤマイモ`, icon: '27.jpg' },
+        { foodname: `りんご`, icon: '28.jpg' },
+        { foodname: `ゼラチン`, icon: '29.jpg' },
+      ],
     }
   },
   head: {
@@ -60,16 +116,21 @@ export default {
 
 
 <style lang="scss">
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 10px;
+}
 .profile-container {
   display: flex;
-  margin: 10% auto 10% auto;
+  margin: 10% 0 10% auto;
 }
 .profileImg {
   width: 70%;
   margin: 5% auto 10% auto;
 }
 .profile-main {
-  margin: 10% auto 10% auto;
+  margin: 8% auto 10% auto;
   font-size: 20px;
 }
 .profile-title {
@@ -77,6 +138,7 @@ export default {
 }
 .upload-img {
   text-align: center;
+  margin-left: 20%;
 }
 .backHome {
   text-align: center;
