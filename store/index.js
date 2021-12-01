@@ -151,6 +151,7 @@ export const actions = {
         babyname: '',
         birthday: '',
         gender: '',
+        allergy:[],
         food: [
           {
             kinds: '',

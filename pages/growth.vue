@@ -24,8 +24,16 @@
 {{item.m}}ヶ月
         </option>
       </select>
-   <button class="touroku" @click="addheight">身長を登録する</button>
-  
+    <div class="m-3">
+    <button class="px-2 py-1 bg-red-700 text-xl text-white font-semibold rounded hover:bg-red-800 w-40" @click="addweight">
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+</svg> -->
+身長を登録する</button>
+</div>
+   <svg xmlns="http://www.w3.org/2000/svg" className="h-1 w-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20px" height="20px">
+  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+</svg>
       <div>体重</div>
          <input v-model="weightdate" type="date" name="Date" /><br>
       <select v-model="weightk">
@@ -66,7 +74,8 @@ export default {
   data() {
     return {
       height: [
-        { cm: `40` },{ cm: `41` }, { cm: `43` },{ cm: `44` },{ cm: `45` },{ cm: `46` },{ cm: `47` },{ cm: `48` },{ cm: `49` },{ cm: `50` },{ cm: `51` },{ cm: `52` },{ cm: `53` },{ cm: `54` },
+        { cm: `30` },{ cm: `31` }, { cm: `32` },{ cm: `33` },{ cm: `34` },{ cm: `35` },{ cm: `36` },{ cm: `37` },{ cm: `38` },{ cm: `39` },
+        { cm: `40` },{ cm: `41` }, {cm:`42`},{ cm: `43` },{ cm: `44` },{ cm: `45` },{ cm: `46` },{ cm: `47` },{ cm: `48` },{ cm: `49` },{ cm: `50` },{ cm: `51` },{ cm: `52` },{ cm: `53` },{ cm: `54` },
         { cm: `55` },{ cm: `56` },{ cm: `57` },{ cm: `58` }, { cm: `59` },{ cm: `60` },{ cm: `61` },{ cm: `62` },{ cm: `63` },{ cm: `64` },{ cm: `65` },{ cm: `66` },{ cm: `67` },{ cm: `68` },{ cm: `69` },{ cm: `70` },
         { cm: `71` },{ cm: `72` },{ cm: `73` },{ cm: `74` },{ cm: `75` },{ cm: `76` },{ cm: `77` },{ cm: `78` }, { cm: `79` },{ cm: `80` },{ cm: `81` },{ cm: `82` },{ cm: `83` }, { cm: `84` },{ cm: `85` },
         { cm: `86` },{ cm: `87` },{ cm: `88` },{ cm: `89` },{ cm: `90` },{ cm: `91` },{ cm: `92` },{ cm: `93` },{ cm: `94` }, { cm: `95` },{ cm: `96` },{ cm: `97` },

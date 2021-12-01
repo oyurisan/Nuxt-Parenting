@@ -80,56 +80,31 @@
       </div>
       <textarea
         v-model="unchimemo"
-        class="textarea"
+      placeholder="タップしてテキストを入力"
         cols="30"
         rows="5"
         name="Memo"
-        placeholder=" メモ"
         maxlength="500"
       />
       <p>{{ unchimemo.length }}/500 文字</p>
       <div class="container">
-        <div class="m-2">
-          <button
-            class="
-              px-2
-              py-1
-              bg-opacity-75 bg-red-800
-              text-lg text-white
-              font-semibold
-              rounded-full
-              hover:bg-red-900
-            "
-            @click="addunchi"
-          >
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        </div>
+        <div class="m-3">
+    <button class="px-2 py-1 bg-red-900 text-xl text-white font-semibold rounded hover:bg-red-900 w-56" @click="addunchi">
+      <div class="button">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg> -->
-保存
-          </button>
-        </div>
-             <div class="m-2">
-          <button
-            class="
-              px-2
-              py-1
-              bg-opacity-75 bg-blue-800
-              text-lg text-white
-              font-semibold
-              rounded-full
-              hover:bg-blue-900
-            "
-            @click="back"
-          >
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+保存</div></button></div>
+        <div class="m-3">
+    <button class="px-2 py-1 bg-blue-900 text-xl text-white font-semibold rounded hover:bg-blue-900 w-56" @click="back">
+      <div class="button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-</svg> -->
-戻る
-          </button>
-        </div>
+</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+戻る</div></button></div>
       </div>
     </div>
-  </div>
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
@@ -169,6 +144,7 @@ export default {
       }
       this.unchiupdate(unchis)
       this.$router.push({ name: 'index' })
+      this.unchis=""
     },
     back() {
       this.$router.push({ name: 'index' })
@@ -336,5 +312,8 @@ input[type='radio']:checked + .radio-text-yellow:before {
   display: flex;
   flex-wrap: wrap;
   display:inline-block
+}
+.button{
+  display: flex;
 }
 </style>
