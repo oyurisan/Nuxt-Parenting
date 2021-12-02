@@ -39,18 +39,6 @@ export default {
         //   constraint: '予定１',
         //   color: 'rgb(252, 115, 61)',
         // },
-        // {
-        //   title: '休日',
-        //   start: '2021-11-27T00:00:00',
-        //   end: '2021-11-28T23:59:59',
-        //   color: 'rgb(252, 115, 61)',
-        // },
-        //   {
-        //     title: 'うんち',
-        //     // start: this.$store.state.allData.unchi.unchidate + ":00",
-        //     start: "2021-11-20T11:09" + ":00",
-        //     color: 'rgb(252, 115, 61)',
-        //   },
         // ],
         events: this.events,
       },
