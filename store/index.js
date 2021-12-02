@@ -236,7 +236,7 @@ export const actions = {
   fetchAllData({ commit }) {
     UserRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log(doc.data());
+        // console.log(doc.data());
         commit('fetchItems', doc.data())
       })
     })
