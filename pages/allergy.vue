@@ -5,19 +5,19 @@
     </div>
     <p>表示義務７品目</p>
     <div class="container">
-      <div v-for="item in foodduty" :key="item.foodname">
+      <div v-for="item in foodduty" :key="item.foodname" class="allergy">
         <img
           :src="require(`~/assets/` + item.icon)"
           width="30px"
           height="30px"
         />
-          <label name="allergy" class="label">
-            {{ item.foodname }}
-            <input type="checkbox" name="allergy" class="allergy">
-          </label>
+        <label name="allergy">
+          {{ item.foodname }}
+          <input type="checkbox" name="allergy" class="allergy" :value="item.foodname" >
+        </label>
       </div>
     </div>
-    <p></p>
+
     <p>表示推奨２０品目</p>
     <div class="container">
       <div v-for="item in foodreco" :key="item.foodname">
@@ -28,17 +28,24 @@
         />
         <label name="allergy">
           {{ item.foodname }}
-          <input type="checkbox" name="allergy" />
+          <input type="checkbox" name="allergy" class="allergy" :value="item.foodname">
         </label>
       </div>
     </div>
-    <button class="touroku" @click="allergy">アレルギー登録</button>
-    <button class="touroku" @click="addAllergy">アレルギー登録</button>
+
+      <div class="m-3">
+    <button class="px-2 py-1 bg-red-900 text-xl text-white font-semibold rounded hover:bg-red-900 w-56" @click="getallergy">
+      <div class="button">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
+  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+保存</div></button></div>
   </div>
 </template>
 
 <script>
-// import Vue from 'vue'
+import { mapActions } from 'vuex'
+
 
 export default {
   data() {
@@ -76,22 +83,26 @@ export default {
       ],
     }
   },
-  methods:{
-    addAllergy () {
+  methods: {
+    addAllergy() {
       this.$router.push({ name: 'index' })
     },
-    allergy(){
-    const allergy=document.getElementByIdClassName('allergy')
-    let str="";
-    for(i=0;i<7;i++){
-if(allergy[i].checked===true){
-  str+=allergy[i].value+"";
+    getallergy() {
+      const allergy = document.getElementsByClassName('allergy')
+     let newallergy = []
+      for (let i = 0; i < allergy.length; i++) {
+        if (allergy[i].checked === true) {
+          newallergy += allergy[i].value + `、`
+        }
+      }
+      const allergys={
+          newallergy
+        }
+        this.allergyupdate(allergys)
+      },
+    ...mapActions(["allergyupdate"])
+  },
 }
-    }
-    alert(str)
-    console.log(str)
-}
-  }}
 </script>
 
 <style lang="scss">
@@ -100,17 +111,10 @@ if(allergy[i].checked===true){
   flex-wrap: wrap;
   gap: 10px 10px;
 }
-.boxs{
-  flex-wrap: wrap;
-}
 .title {
   text-align: center;
 }
-.item {
-  flex-wrap: wrap;
-}
 .allergy {
-  font-family: Meiyou, Georgia, 'Times New Roman', Times, serif;
   width: 400px;
   margin: auto;
 }
@@ -123,20 +127,7 @@ if(allergy[i].checked===true){
     background: #000;
   }
 }
-.checkbox {
-  font-family: FontAwesome;
-  display: inline-block;
-}
-.checkbox {
-  content: '\f096';
-}
-.checkbox {
-  letter-spacing: 10px;
-}
-.checkbox {
-  content: '\f046';
-}
-.checkbox {
-  letter-spacing: 5px;
+.button{
+  display: flex;
 }
 </style>

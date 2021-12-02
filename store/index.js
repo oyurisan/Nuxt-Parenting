@@ -69,7 +69,7 @@ export const actions = {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
         allergy: firebase.firestore.FieldValue.arrayUnion({
-          allergylist: allergys.allergy,
+         newallergy: allergys.newallergy,
         }),
       })
       .then(() => {
