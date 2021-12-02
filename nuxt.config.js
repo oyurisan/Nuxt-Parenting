@@ -37,6 +37,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -44,6 +45,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     // '@nuxtjs/axios',
     '@nuxtjs/dotenv',
+    "vue2-editor/nuxt"
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -52,16 +54,14 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     // mp3ファイル再生のための拡張
-    extend (config, ctx) {
-      if (ctx.isClient) {
+    extend(config, ctx) {
       config.module.rules.push({
         test: /\.(ogg|mp3|wav|mpe?g)$/i,
         loader: 'file-loader',
         options: {
-          name: '[path][name].[ext]'
-        }
+          name: '[path][name].[ext]',
+        },
       })
-    }
     },
     loaders: {
       scss: {

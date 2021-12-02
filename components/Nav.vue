@@ -314,7 +314,7 @@
                 ring-offset-current ring-offset-2
                 hover:text-blue-600
               "
-              >Timer</a
+              >Timer &amp; Musci</a
             >
           </li>
         </ul>

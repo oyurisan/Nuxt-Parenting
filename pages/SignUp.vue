@@ -38,7 +38,7 @@
     </label>
     <br />
     <div>生年月日</div>
-    
+    <input v-model="birthday" type="date">  
     <br />
      <div class="m-3">
     <button class="px-2 py-1 bg-red-900 text-xl text-white font-semibold rounded hover:bg-red-900 w-56" @click="addinfo">
@@ -83,7 +83,7 @@ export default {
       this.$router.push({ name: 'index' })
     },
   },
-  ...mapActions(['adds',"userupdate"]),
+  ...mapActions(["userupdate"]),
 }
 </script>
 

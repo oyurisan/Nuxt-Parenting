@@ -1,14 +1,15 @@
 <template>
 <div class="timer">
-   <div class="food-title">タイマー</div>
+   <div class="food-title">授乳タイマー</div>
+   
   <div id="timer">
     <div class="timer">
       <div class="time">
         次の授乳まで残り🍼<br />
         <div class="relative mb-4">
-          <div class="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
+          <div class="overflow-hidden h-2 text-xs flex rounded bg-blue-400">
             <div style="width:30%"
-              class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500">
+              class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500">
             </div>
           </div>
         </div>
@@ -44,11 +45,18 @@
 </div>
     </div>
   </div>
+   <div class="food-title">子守唄</div>
+   <button @click="musicstart">
+   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="100px" height="100px">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+</svg></button>
+
 </div>
 </template>
 
 <script>
-import {Howl} from "howler"
+// import svg from 'svg-progress-bar'
+import sound from '~/assets/audios/baby.mp3'
 
 export default {
   data() {
@@ -72,6 +80,18 @@ export default {
         }
       })
       return timeStrings[0] + ':' + timeStrings[1]
+    },
+    options() {
+       return {
+         radius: 80,
+         text(value) {
+           return this.htmlifyNumber(value) + '<span style="font-size: 0.4em;">%</span>';
+         },
+         rectWidth: 600,
+         rectHeight: 50,
+         rectRadius: 25,
+         duration: 2000
+       }
     },
   },
   methods: {
@@ -117,17 +137,10 @@ export default {
       alert(`授乳の時間になりました`)
     },
     musicstart() {
-    //  const music = new Audio(require("~/assets/baby.mp3"));
-    //   music.play()
-    const music=new Howl({
-      src:['~/assets/audios/.baby.mp3'],
-      autoplay: true,
-    })
-    music.load()
-    // music.play()
-    // music.duration()
-    },
+     const music = new Audio(sound);
+      music.play()
   },
+  }
 }
 </script>
 
