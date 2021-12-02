@@ -21,8 +21,7 @@ export default {
   },
   data() {
     return {
-      unchiArray: [],
-
+      unchiArray7: [],
       calendarOptions: {
         plugins: [dayGridPlugin, interactionPlugin, timegrid, listPlugin],
         initialView: 'dayGridMonth',
@@ -70,59 +69,89 @@ export default {
       // console.log(this.$store.state.allData.unchi);
       // const unchiArray = this.getAllData.unchi;
 
-      const unchiAllData = {
-        title: '最新うんぴ',
-        color: 'rgb(252, 115, 61)',
-        start: '',
-      }
-      const unchiAllArray = [];
+      // 仮データ！！！！ 導入成功！！！
+      const unchiAllArray = []
       const unchiDates = []
-      const unchiDates2 = []
+      const unchiFinalDates = []
       const i = [
         { unchidate: '2021-11-20T11:09', n: 'nnn' },
         { unchidate: '2021-11-26T11:09' },
         { unchidate: '2021-11-12T11:09' },
       ]
-      const unchiArray = this.getAllData.unchi
-      console.log(i)
-      console.log(unchiArray)
+      // console.log(i)
 
       for (let a = 0; a < i.length; a++) {
-        console.log(i[a])
+        // console.log(i[a])
         // console.log( unchiArray[a].unchidate );
-        // unchiDates.push ( unchiArray[a].unchidate + ":00" );
         unchiDates.push(i[a].unchidate + ':00')
         // console.log( unchiDates );
       }
-      console.log(unchiDates)
+      // console.log(unchiDates)
 
-      for (let b = 0; b < unchiDates.length; b++) {
-        console.log(unchiDates[b])
-        const unchiUnchi = unchiDates[b]
-        unchiAllData.start = unchiUnchi
-        console.log(unchiAllData)
+      for (let aa = 0; aa < unchiDates.length; aa++) {
+        // console.log(unchiDates[aa])
+        const unchiObj = {}
+        unchiObj.start = unchiDates[aa]
+        // console.log(unchiObj)
 
-        unchiAllArray.push (unchiAllData)
+        unchiFinalDates.push(unchiObj)
+        // console.log(unchiFinalDates)
+      }
+
+      for (let aaa = 0; aaa < unchiFinalDates.length; aaa++) {
+        // console.log(unchiFinalDates[aaa])
+        const unchiAllData = {
+          title: '最新うんぴ',
+          color: 'rgb(252, 115, 61)',
+        }
+        const unchiEndDates = Object.assign(unchiAllData, unchiFinalDates[aaa])
+        // console.log(unchiEndDates)
+        unchiAllArray.push(unchiEndDates)
         console.log(unchiAllArray)
       }
-      
 
-      // console.log(unchiAllArray);
 
-      // for (let c = 0; c < unchiArray.length; c++) {
-      //   console.log( unchiArray[c]);
-      //   // console.log( unchiArray[a].unchidate );
-      //   // unchiDates.push ( unchiArray[a].unchidate + ":00" );
-      //   unchiDates2.push ( unchiArray[c].unchidate + ":00" );
-      //   // console.log( unchiDates );
-      // }
-      // console.log( unchiDates2 );
+      // firebaseデータ！！！！
+      const unchiAllArray2 = []
+      const unchiDates2 = []
+      const unchiFinalDates2 = []
+      // console.log(this.getAllData)
 
-      // for (let d = 0; d < unchiDates2.length; d++ ) {
-      //   console.log(unchiDates2[d]);
-      //   unchiAllData.start = unchiDates2[d]
-      // console.log(unchiAllData);
-      // }
+      // JSONファイルに変換 -> {Ob_ob ~ }を消去
+      const unchiArray2 = this.getAllData.unchi
+      const unchiArray3 = JSON.stringify(unchiArray2)
+      let unchiArray6 = []
+      if (unchiArray3) {
+        unchiArray6 = JSON.parse(unchiArray3)
+      }
+
+      for (let b = 0; b < unchiArray6.length; b++) {
+        // console.log(unchiArray6[b])
+        unchiDates2.push(unchiArray6[b].unchidate + ':00')
+        // console.log(unchiDates2)
+      }
+
+      for (let bb = 0; bb < unchiDates2.length; bb++) {
+        // console.log(unchiDates2[bb])
+        const unchiObj2 = {}
+        unchiObj2.start = unchiDates2[bb]
+        // console.log(unchiObj2)
+
+        unchiFinalDates2.push(unchiObj2)
+        // console.log(unchiFinalDates2)
+      }
+
+      for (let bbb = 0; bbb < unchiFinalDates2.length; bbb++) {
+        // console.log(unchiFinalDates2[bbb])
+        const unchiAllData2 = {
+          title: 'fireうんぴ',
+          color: 'rgb(252, 115, 61)',
+        }
+        const unchiEndDates2 = Object.assign(unchiAllData2, unchiFinalDates2[bbb])
+        // console.log(unchiEndDates2)
+        unchiAllArray2.push(unchiEndDates2)
+        console.log(unchiAllArray2)
+      }
 
       return {
         firstDay: 1,
@@ -130,26 +159,26 @@ export default {
         navLinks: false,
         selectable: false,
         // events: [
-          // {
-          //   title: this.getAllData.unchi,
-          //   // start: this.$store.state.allData.unchi.unchidate + ":00",
-          //   start: '2021-11-20T11:09' + ':00',
-          //   color: 'rgb(252, 115, 61)',
-          // },
-          // {
-          //   title: 'うんち',
-          //   // start: this.$store.state.allData.unchi.unchidate + ":00",
-          //   start: unchiDates[0],
-          //   color: 'rgb(252, 115, 61)',
-          // },
-          // {
-          //   title: 'うんちっち',
-          //   // start: this.$store.state.allData.unchi.unchidate + ":00",
-          //   start: unchiDates2[2],
-          //   color: 'rgb(252, 115, 61)',
-          // },
+        // {
+        //   title: this.getAllData.unchi,
+        //   // start: this.$store.state.allData.unchi.unchidate + ":00",
+        //   start: '2021-11-20T11:09' + ':00',
+        //   color: 'rgb(252, 115, 61)',
+        // },
+        // {
+        //   title: 'うんち',
+        //   // start: this.$store.state.allData.unchi.unchidate + ":00",
+        //   start: unchiDates[0],
+        //   color: 'rgb(252, 115, 61)',
+        // },
+        // {
+        //   title: 'うんちっち',
+        //   // start: this.$store.state.allData.unchi.unchidate + ":00",
+        //   start: unchiDates2[2],
+        //   color: 'rgb(252, 115, 61)',
+        // },
         // ],
-        events: unchiAllArray,
+        events: unchiAllArray2,
         plugins: [dayGridPlugin, interactionPlugin, timegrid, listPlugin],
         initialView: 'dayGridMonth',
 
