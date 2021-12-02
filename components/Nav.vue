@@ -314,7 +314,7 @@
                 ring-offset-current ring-offset-2
                 hover:text-blue-600
               "
-              >alert</a
+              >Timer</a
             >
           </li>
         </ul>

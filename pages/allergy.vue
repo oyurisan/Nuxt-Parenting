@@ -11,12 +11,10 @@
           width="30px"
           height="30px"
         />
-        <div class="boxs">
           <label name="allergy" class="label">
             {{ item.foodname }}
             <input type="checkbox" name="allergy" class="allergy">
           </label>
-        </div>
       </div>
     </div>
     <p></p>
@@ -101,6 +99,9 @@ if(allergy[i].checked===true){
   display: flex;
   flex-wrap: wrap;
   gap: 10px 10px;
+}
+.boxs{
+  flex-wrap: wrap;
 }
 .title {
   text-align: center;

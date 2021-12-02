@@ -141,6 +141,7 @@ export default {
         unchishape: this.shape,
         unchidate: this.unchidate,
         unchicolor: this.color,
+        start:this.unchidate+`aaaaaa`
       }
       this.unchiupdate(unchis)
       this.$router.push({ name: 'index' })
