@@ -46,10 +46,18 @@
     </div>
   </div>
    <div class="food-title">子守唄</div>
-   <button @click="musicstart">
-   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="100px" height="100px">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-</svg></button>
+  <button @click="komori1">
+     <img src="~/assets/nn.jpg" height="300px">
+  </button>
+  子守唄①
+   <button @click="komori2">
+     <img src="~/assets/nn.jpg" height="300px">
+  </button>
+  子守唄②
+  <button @click="komori3">
+     <img src="~/assets/nn.jpg" height="300px">
+  </button>
+  子守唄③
 
 </div>
 </template>
@@ -57,7 +65,9 @@
 <script>
 // import svg from 'svg-progress-bar'
 import sound from '~/assets/audios/baby.mp3'
-
+import sounds from '~/assets/audios/haru.mp3'
+import soundss from '~/assets/audios/odayaka.mp3'
+import soundsss from '~/assets/audios/neko.mp3'
 export default {
   data() {
     return {
@@ -134,12 +144,27 @@ export default {
     // 時間が経過したら
     complete() {
       clearInterval(this.timerObj)
-      alert(`授乳の時間になりました`)
     },
     musicstart() {
      const music = new Audio(sound);
       music.play()
   },
+  musicstop(){
+     const music = new Audio(sound);
+      music.pause()
+  },
+  komori1(){
+    const sound=new Audio(sounds)
+    sound.play()
+  },
+  komori2(){
+    const sound=new Audio(soundss)
+    sound.play()
+  },
+  komori3(){
+    const sound=new Audio(soundss)
+    sound.play()
+  }
   }
 }
 </script>
