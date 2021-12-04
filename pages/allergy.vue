@@ -1,11 +1,12 @@
 <template>
   <div class="allergy">
     <div class="title">
-      <h2>アレルギーリスト登録画面</h2>
+      アレルギーリスト登録画面
     </div>
     <p>表示義務７品目</p>
     <div class="container">
       <div v-for="item in foodduty" :key="item.foodname" class="allergy">
+    <div class="item">
         <img
           :src="require(`~/assets/` + item.icon)"
           width="30px"
@@ -15,12 +16,13 @@
           {{ item.foodname }}
           <input type="checkbox" name="allergy" class="allergy" :value="item.foodname" >
         </label>
-      </div>
     </div>
-
+    </div>
+</div>
     <p>表示推奨２０品目</p>
-    <div class="container">
+   <div class="container">
       <div v-for="item in foodreco" :key="item.foodname">
+        <div class="item">
         <img
           :src="require(`~/assets/` + item.icon)"
           width="30px"
@@ -30,7 +32,8 @@
           {{ item.foodname }}
           <input type="checkbox" name="allergy" class="allergy" :value="item.foodname">
         </label>
-      </div>
+        </div>
+ </div>    
     </div>
 
       <div class="m-3">
@@ -106,17 +109,19 @@ export default {
 </script>
 
 <style lang="scss">
-.container {
+.container{
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px 10px;
+flex-wrap: wrap;
+align-content:stretch
 }
 .title {
   text-align: center;
+  font-size: 200%;
+  margin-top: 10%;
 }
 .allergy {
-  width: 400px;
-  margin: auto;
+  text-align: center;
+  margin: 5%;
 }
 .touroku {
   border: 2px solid #000;
@@ -130,4 +135,5 @@ export default {
 .button{
   display: flex;
 }
+.item { flex-basis: auto }
 </style>

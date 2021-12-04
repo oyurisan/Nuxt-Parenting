@@ -58,7 +58,7 @@ export const actions = {
           gender: users.gender,
           birthday: users.birthday,
           // picture: users.picture,
-        })
+        }),
       })
       .then(() => {
         commit('userupdate', users)
