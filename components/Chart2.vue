@@ -1,31 +1,27 @@
 <!-- ここで注意すべき点は、<template>タグを記載してはいけないということだ。-->
 <script>
 import { Line } from 'vue-chartjs'
+import { mapGetters } from 'vuex'
 
 export default {
   extends: Line,
+  props: 
+  // { word: {type: Array, required: true} },
+  ['lists2'],
+
   data() {
     return {
+
+      // words: this.word,
+
       chartData: {
-        labels: [
-          '0',
-          '1',
-          '2',
-          '3',
-          '4',
-          '5',
-          '6',
-          '7',
-          '8',
-          '9',
-          '10',
-          '11',
-        ],
+        labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
         datasets: [
           {
             type: 'line',
             label: '身長',
-            data: [50, 51, 53, 55, 56, 58, 61, 63, 65, 68, 70, 71, 73],
+            // data: [50, 51, 53, this.lists, 56, 58, 61, 63, 65, 68, 70, 71, 73],
+            data: this.lists2,
             backgroundColor: 'rgba(177, 60, 89)',
             borderColor: 'rgb(209, 117, 140)',
             // 線下を塗りつぶすかどうか
@@ -128,9 +124,27 @@ export default {
       },
     }
   },
+  computed: {
+
+    ...mapGetters (['getHeightLists2'])
+  },
+
   mounted() {
     this.renderChart(this.chartData, this.options)
+    // console.log(this.lists)
   },
+
+  updated() {
+    console.log(this.lists);
+  }
+
+  
+
+  // created() {
+  //   console.log(this.lists)
+  // },
+
+  
 }
 </script>
 

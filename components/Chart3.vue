@@ -115,6 +115,7 @@ export default {
     }
   },
   computed: {
+    
     ...mapGetters (['getChartData', 'getChartDataW', 'getChartHeight'])
   },
 

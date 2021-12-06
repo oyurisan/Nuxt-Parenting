@@ -24,6 +24,11 @@ export const state = () => ({
 
   // DBから取った全部の情報
   allData: [],
+  // 身長のデータ配列たち
+  heightLists: [],
+  heightLists2: ['aaaa'],
+  // heightLists2: ['', '', '42.9', '43.3', '44.0', '', '', '', '', '', '', '46.5'],
+  heightLists3: [],
 })
 
 export const getters = {
@@ -47,6 +52,8 @@ export const getters = {
   },
   getUnchiLists: state => state.unchiLists,
   getAllData: state => state.allData,
+
+  getHeightLists2: state => state.heightLists2,
 }
 export const actions = {
   // ユーザー情報更新
@@ -242,6 +249,10 @@ export const actions = {
       })
     })
   },
+
+  setHeightLists2({commit}, height2) {
+    commit ("setHeightLists2", height2);
+  },
 }
 
 export const mutations = {
@@ -267,5 +278,9 @@ export const mutations = {
   // DBからの取り出し
   fetchItems(state, Item) {
     state.allData = Item
+  },
+  setHeightLists2(state, height2) {
+    state.heightLists2.concat (height2)
+    console.log(this.state.heightLists2);
   },
 }
