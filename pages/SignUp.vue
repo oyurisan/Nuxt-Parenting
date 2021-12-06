@@ -79,11 +79,11 @@ export default {
         gender: this.gender,
         // picture:this.picture
        }
-      this.userupdate(users)
+      this.updateuser(users)
       this.$router.push({ name: 'index' })
     },
   },
-  ...mapActions(["userupdate"]),
+  ...mapActions(['userupdate']),
 }
 </script>
 

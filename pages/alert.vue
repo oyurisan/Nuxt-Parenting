@@ -1,64 +1,208 @@
 <template>
-<div class="timer">
-   <div class="food-title">授乳タイマー</div>
-   
-  <div id="timer">
-    <div class="timer">
-      <div class="time">
-        次の授乳まで残り🍼<br />
-        <div class="relative mb-4">
+  <div class="timer">
+    <div class="food-title">授乳タイマー</div>
+
+    <div id="timer">
+      <div class="timer">
+        <div class="time">
+          次の授乳まで残り🍼<br />
+          <div class="relative mb-4">
           <div class="overflow-hidden h-2 text-xs flex rounded bg-blue-400">
             <div style="width:30%"
               class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500">
             </div>
           </div>
         </div>
-        <div class="container">
-        <div class="m-3">
-    <button class="w-12 h-12  bg-blue-400 text-lg text-white font-semibold rounded-full hover:bg-blue-500" @click="countup">+</button>
+          <!-- <div :style="styles"></div> -->
+          <k-progress 
+      status="success" 
+      type="line"
+      :percent="20" ></k-progress>
+          <div class="container">
+            <div class="m-3">
+              <button
+                class="
+                  w-12
+                  h-12
+                  bg-blue-400
+                  text-lg text-white
+                  font-semibold
+                  rounded-full
+                  hover:bg-blue-500
+                "
+                @click="countup"
+              >
+                +
+              </button>
+            </div>
+            <div class="math">{{ CountTime }}</div>
+            <div class="m-3">
+              <button
+                class="
+                  w-12
+                  h-12
+                  bg-blue-400
+                  text-lg text-white
+                  font-semibold
+                  rounded-full
+                  hover:bg-blue-500
+                "
+                @click="countups"
+              >
+                +
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="math">{{ CountTime }}</div>
-        <div class="m-3">
-    <button class="w-12 h-12  bg-blue-400 text-lg text-white font-semibold rounded-full hover:bg-blue-500" @click="countups">+</button>
-</div>
-</div>
+        <div class="container">
+          <div class="m-3">
+            <button
+              class="
+                shadow-lg
+                px-2
+                py-1
+                bg-blue-600
+                text-lg text-white
+                font-semibold
+                rounded
+                hover:bg-blue-700 hover:shadow-sm hover:translate-y-0.5
+                transform
+                transition
+              "
+              @click="start"
+            >
+              <div class="button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  width="30px"
+                  height="30px"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                開始
+              </div>
+            </button>
+          </div>
+          <div class="m-3">
+            <button
+              class="
+                shadow-lg
+                px-2
+                py-1
+                bg-blue-600
+                text-lg text-white
+                font-semibold
+                rounded
+                hover:bg-blue-700 hover:shadow-sm hover:translate-y-0.5
+                transform
+                transition
+              "
+              @click="stop"
+            >
+              <div class="button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
+                  />
+                </svg>
+                停止
+              </div>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="container">
-      <div class="m-3">
-    <button class="shadow-lg px-2 py-1  bg-blue-600 text-lg text-white font-semibold rounded  hover:bg-blue-700 hover:shadow-sm hover:translate-y-0.5 transform transition " @click="start">
-      <div class="button">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-      開始</div></button>
-</div>
-<div class="m-3">
-    <button class="shadow-lg px-2 py-1  bg-blue-600 text-lg text-white font-semibold rounded  hover:bg-blue-700 hover:shadow-sm hover:translate-y-0.5 transform transition " @click="stop">
-      <div class="button">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
-</svg>
-      停止</div></button>
-</div>
-</div>
     </div>
+    <div class="food-title">子守唄</div>
+    <button @click="komori1">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+        />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    </button>
+    <button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    </button>
+    子守唄①
+    <button @click="komori2">
+      <img src="~/assets/nn.jpg" height="300px" />
+    </button>
+    子守唄②
+    <button @click="komori3">
+      <img src="~/assets/nn.jpg" height="300px" />
+    </button>
+    子守唄③
   </div>
-   <div class="food-title">子守唄</div>
-   <button @click="musicstart">
-   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="100px" height="100px">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-</svg></button>
-
-</div>
 </template>
-
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 <script>
 // import svg from 'svg-progress-bar'
 import sound from '~/assets/audios/baby.mp3'
-
+import sounds from '~/assets/audios/haru.mp3'
+import soundss from '~/assets/audios/odayaka.mp3'
+import soundsss from '~/assets/audios/neko.mp3'
 export default {
+  components:{
+  
+  },
   data() {
     return {
       min: 0,
@@ -82,16 +226,26 @@ export default {
       return timeStrings[0] + ':' + timeStrings[1]
     },
     options() {
-       return {
-         radius: 80,
-         text(value) {
-           return this.htmlifyNumber(value) + '<span style="font-size: 0.4em;">%</span>';
-         },
-         rectWidth: 600,
-         rectHeight: 50,
-         rectRadius: 25,
-         duration: 2000
-       }
+      return {
+        radius: 80,
+        text(value) {
+          return (
+            this.htmlifyNumber(value) +
+            '<span style="font-size: 0.4em;">%</span>'
+          )
+        },
+        rectWidth: 600,
+        rectHeight: 50,
+        rectRadius: 25,
+        duration: 2000,
+      }
+    },
+    styles() {
+      let width = this.CountTime.length*100
+      return {
+        border: '5px solid blue',
+        width: width + '%',
+      }
     },
   },
   methods: {
@@ -111,7 +265,6 @@ export default {
       else if (this.sec <= 0 && this.min <= 0) {
         this.musicstart()
         this.complete()
-        
       } else {
         // それ以外の処理
         // 秒数を１にする
@@ -134,27 +287,43 @@ export default {
     // 時間が経過したら
     complete() {
       clearInterval(this.timerObj)
-      alert(`授乳の時間になりました`)
     },
     musicstart() {
-     const music = new Audio(sound);
+      const music = new Audio(sound)
       music.play()
+    },
+    musicstop() {
+      const music = new Audio(sound)
+      music.pause()
+    },
+    komori1() {
+      const sound = new Audio(sounds)
+      sound.play()
+    },
+    stopkomori() {},
+    komori2() {
+      const sound = new Audio(soundss)
+      sound.play()
+    },
+    komori3() {
+      const sound = new Audio(soundsss)
+      sound.play()
+    },
   },
-  }
 }
 </script>
 
 <style>
-.container{
+.container {
   display: flex;
 }
-.math{
+.math {
   font-size: 30px;
 }
-.button{
+.button {
   display: flex;
 }
-.timer{
+.timer {
   width: 400px;
   margin: auto;
 }

@@ -69,9 +69,9 @@ export default {
   },
   data() {
     return {
-      name: '崚平',
-      gender: '男の子',
-      birth: '1996/3/24',
+      name: '',
+      gender: '',
+      birth: '',
       picture: null,
 
       foodduty: [

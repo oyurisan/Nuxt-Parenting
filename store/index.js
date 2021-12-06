@@ -1,5 +1,4 @@
 import { vuexfireMutations } from 'vuexfire'
-// import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import firebase from '~/plugins/firebase'
 
 const db = firebase.firestore()
@@ -50,22 +49,22 @@ export const getters = {
   getChartHeight: (state) => {
     return state.heightDatas
   },
-  getUnchiLists: state => state.unchiLists,
-  getAllData: state => state.allData,
+  getUnchiLists: (state) => state.unchiLists,
+  getAllData: (state) => state.allData,
 
-  getHeightLists2: state => state.heightLists2,
+  getHeightLists2: (state) => state.heightLists2,
 }
 export const actions = {
   // ユーザー情報更新
   userupdate(commit, users) {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
-        users:firebase.firestore.FieldValue.arrayUnion({
+        users: firebase.firestore.FieldValue.arrayUnion({
           babyname: users.babyname,
           gender: users.gender,
           birthday: users.birthday,
           // picture: users.picture,
-        })
+        }),
       })
       .then(() => {
         commit('userupdate', users)
@@ -76,7 +75,7 @@ export const actions = {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
         allergy: firebase.firestore.FieldValue.arrayUnion({
-         newallergy: allergys.newallergy,
+          newallergy: allergys.newallergy,
         }),
       })
       .then(() => {
@@ -103,9 +102,9 @@ export const actions = {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
         height: firebase.firestore.FieldValue.arrayUnion({
-        height: heights.height,
-        heightdate:heights.heightdate,
-        babyyear:heights.babyyear
+          height: heights.height,
+          heightdate: heights.heightdate,
+          babyyear: heights.babyyear,
         }),
       })
       .then(() => {
@@ -117,9 +116,9 @@ export const actions = {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
         weight: firebase.firestore.FieldValue.arrayUnion({
-          weight: weights.weight ,
+          weight: weights.weight,
           weightdate: weights.weightdate,
-          babyyear:weights.babyyear
+          babyyear: weights.babyyear,
         }),
       })
       .then(() => {
@@ -135,7 +134,7 @@ export const actions = {
           unchicolor: unchis.unchicolor,
           unchimemo: unchis.unchimemo,
           unchidate: unchis.unchidate,
-          start:unchis.unchidate
+          start: unchis.unchidate,
         }),
       })
       .then(() => {
@@ -157,43 +156,47 @@ export const actions = {
   },
   // 初期情報追加
   adds({ getters }) {
-   db.collection(`User/${getters.userid}`)
-      .add({
-        users:[{
+    db.collection(`User/${getters.userid}`).add({
+      users: [
+        {
           babyname: '',
           birthday: '',
           gender: '',
-        }],
-        allergy:[],
-        food: [{
-            kinds: '',
-            foodmemo: '',
-            fooddate: '',
-            ml: '',
-          }],
-        height: [{
-            height: '',
-            heightdate: '',
-          }],
-        weight: [{
-            weight: '',
-            weightdate: '',
-          }],
-        unchi: [
-          {unchiecolor: '',
-            shape: '',
-            unchimemo: '',
-            unchidate: '',
-          }],
-        urine: [{
-            urinecolor: '',
-            urinememo: '',
-            urinedate: '',
-          }],
-      })
+        },
+      ],
+      allergy: [],
+      food: [
+        {
+          kinds: '',
+          foodmemo: '',
+          fooddate: '',
+          ml: '',
+        },
+      ],
+      height: [
+        {
+          height: '',
+          heightdate: '',
+        },
+      ],
+      weight: [
+        {
+          weight: '',
+          weightdate: '',
+        },
+      ],
+      unchi: [{ unchiecolor: '', shape: '', unchimemo: '', unchidate: '' }],
+      urine: [
+        {
+          urinecolor: '',
+          urinememo: '',
+          urinedate: '',
+        },
+      ],
+    })
   },
   // 新規登録
-  register({ dispatch }, payload) {
+  register({ dispatch, commit }, payload) {
     firebase
       .auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
@@ -201,6 +204,7 @@ export const actions = {
         console.log(user)
         dispatch('checklogin').catch((error) => {
           alert(error)
+          commit('sendemail')
         })
       })
   },
@@ -249,9 +253,17 @@ export const actions = {
       })
     })
   },
-
-  setHeightLists2({commit}, height2) {
-    commit ("setHeightLists2", height2);
+  // 新規登録ユーザーに確認のメールを送信する
+  sendemail(commit) {
+    firebase
+      .auth()
+      .currentUser.sendEmailVerification()
+      .then(() => {
+        commit('sendemail')
+      })
+  },
+  setHeightLists2({ commit }, height2) {
+    commit('setHeightLists2', height2)
   },
 }
 
@@ -280,7 +292,7 @@ export const mutations = {
     state.allData = Item
   },
   setHeightLists2(state, height2) {
-    state.heightLists2.concat (height2)
-    console.log(this.state.heightLists2);
+    state.heightLists2.concat(height2)
+    console.log(this.state.heightLists2)
   },
 }

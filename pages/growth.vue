@@ -2,8 +2,8 @@
   <div class="growth">
     <div class="growth-title">成長管理</div>
       <div>👶身長👶</div>
-    <input v-model="heightdate" type="date" name="Date" /><br>
-      <select v-model="heightcm">
+    日時：<input v-model="heightdate" type="date" name="Date" /><br>
+     身長： <select v-model="heightcm">
         <option v-for="item in height" :key="item.cm" :value="item.cm">
           {{ item.cm }}
         </option>
@@ -14,7 +14,7 @@
         </option>
         </select>&nbsp; cm<br>
         
-      <select v-model="heightyear">
+     年齢： <select v-model="heightyear">
         <option v-for="item in year" :key="item.y" :value="item.y">
 {{item.y}}歳
         </option>
@@ -32,8 +32,8 @@
 </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 保存</div></button></div>
       <div>👶体重👶</div>
-         <input v-model="weightdate" type="date" name="Date" /><br>
-      <select v-model="weightk">
+         日時：<input v-model="weightdate" type="date" name="Date" /><br>
+      体重：<select v-model="weightk">
         <option v-for="item in weight" :key="item.k" :value="item.k">
           {{ item.k }}
         </option></select
@@ -43,7 +43,7 @@
           {{ item.g }}
         </option></select
       >&nbsp; kg<br>
-  <select v-model="weightyear">
+  年齢：<select v-model="weightyear">
         <option v-for="item in year" :key="item.y" :value="item.y">
 {{item.y}}歳
         </option>
@@ -99,8 +99,8 @@ export default {
       weights: [{ g: `1` }, { g: `2` }, { g: `3` },{ g: `4` },{ g: `5` },{ g: `6` },{ g: `7` },{ g: `8` },{ g: `9` },],
       // newheight: this.heightcm+this.heightmm,
       // newweighto:this.weightk+this.weightg,
-      year:[{y:`0`}, {y:`1`}, {y:`2`}, {y:`3`}],
-      month:[{m:`0`},{m:`1`},{m:`2`},{m:`3`},{m:`4`},{m:`5`},{m:`6`},{m:`7`},{m:`8`},{m:`9`},{m:`10`},{m:`11`}, ],
+      year:[{y:`0`}, {y:`1`}, {y:`2`}],
+      month:[{m:`00`},{m:`01`},{m:`02`},{m:`03`},{m:`04`},{m:`05`},{m:`06`},{m:`07`},{m:`08`},{m:`09`},{m:`10`},{m:`11`},{m:`12`} ],
       heightyear:"",
       heightmonth:"",
       weightyear:"",
@@ -119,7 +119,7 @@ export default {
       const heights = {
       height: this.heightcm+`.`+this.heightmm+`cm`,
       heightdate:this.heightdate,
-      babyyear:this.heightyear+`歳`+this.heightmonth+`ヶ月`
+      babyyear:this.heightyear+`.`+this.heightmonth
       }
       this.heightupdate(heights)
       this.heightcm=""
@@ -133,7 +133,7 @@ export default {
       const weights = {
        weight: this.weightk+`.`+this.weightg+`キログラム`,
        weightdate:this.weightdate,
-       babyyear:this.weightyear+`歳`+this.weightmonth+`ヶ月`
+       babyyear:this.weightyear+`.`+this.weightmonth
       }
       this.weightupdate(weights)
       this.weightk=""
