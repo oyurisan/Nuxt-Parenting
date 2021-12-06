@@ -1,5 +1,6 @@
 <template lang="javascript">
 <div class="container">
+   <div class="food-title">日記</div>
      <editor
        api-key="c99sb34ryqc6b8inobijqizl016zw4h1a5t0nazkgqf4lzn4"
        :init="{
@@ -23,7 +24,6 @@
        }"
        v-model="content"
      />
-     {{content}}
         <div class="m-3">
     <button class="px-2 py-1 bg-red-900 text-xl text-white font-semibold rounded hover:bg-red-900 w-56" @click="add">
       <div class="button">
@@ -32,24 +32,11 @@
 </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 保存</div></button></div>
 <h2>日記投稿一覧</h2>
-<table>
-  <tr>
-    <td>
-      日にち
-    </td>
-    <td>
-      内容
-    </td>
-  </tr>
-  <tr>
-    <th>
-      2021-12-09
-    </th>
-    <th v-for="item in diary" :key="item.content">
+
+    <div v-for="item in diary" :key="item.content">
 {{content}}
-    </th>
-  </tr>
-</table>
+    </div>
+
    
 </div>
 </template>
@@ -113,5 +100,10 @@ Vue.component('Editor', Editor)
 }
 .button {
   display: flex;
+}
+.food-title {
+  text-align: center;
+  font-size: 200%;
+  margin-top: 10%;
 }
 </style>

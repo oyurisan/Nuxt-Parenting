@@ -1,5 +1,4 @@
 import { vuexfireMutations } from 'vuexfire'
-// import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import firebase from '~/plugins/firebase'
 
 const db = firebase.firestore()
@@ -186,7 +185,7 @@ export const actions = {
       })
   },
   // 新規登録
-  register({ dispatch }, payload) {
+  register({ dispatch,commit }, payload) {
     firebase
       .auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
@@ -194,6 +193,7 @@ export const actions = {
         console.log(user)
         dispatch('checklogin').catch((error) => {
           alert(error)
+          commit('sendemail')
         })
       })
   },
@@ -242,6 +242,13 @@ export const actions = {
       })
     })
   },
+  // 新規登録ユーザーに確認のメールを送信する
+  sendemail(commit){
+  firebase.auth().currentUser.sendEmailVerification()
+  .then(() => {
+    commit('sendemail')
+  });
+}
 }
 
 export const mutations = {
