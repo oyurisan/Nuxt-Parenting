@@ -258,7 +258,7 @@ export default {
 
 
         // ふくさよう！！！！！！！！！！！！！
-        // return this.heightLists2 = endData2;
+        // return this.heightLists2 = endData2
 
 
 
