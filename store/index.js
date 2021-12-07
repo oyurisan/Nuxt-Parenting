@@ -232,13 +232,17 @@ export const actions = {
         console.log(error)
       })
   },
-
   // 全部のデータ DBから取り出し
-  fetchAllData({ commit }) {
+  fetchAllData({ getters,commit }) {
     UserRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        // console.log(doc.data());
-        commit('fetchItems', doc.data())
+        if(getters.userid){
+          console.log(getters.uid)
+         commit("fetchAllData",{id:doc.id})
+        }
+        else if(getters.userid===null){
+          commit('fetchItems', doc.data())
+        }
       })
     })
   },
@@ -270,9 +274,9 @@ export const mutations = {
   FoodList(state, foods) {
     state.FoodList.push(foods)
   },
-
   // DBからの取り出し
   fetchItems(state, Item) {
     state.allData = Item
   },
+  
 }

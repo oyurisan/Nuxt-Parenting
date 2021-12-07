@@ -117,7 +117,7 @@ export default {
    addheight() {
       alert(`この内容で登録してもよろしいでしょうか`)
       const heights = {
-      height: this.heightcm+`.`+this.heightmm+`cm`,
+      height: this.heightcm+`.`+this.heightmm,
       heightdate:this.heightdate,
       babyyear:this.heightyear+`.`+this.heightmonth
       }
@@ -131,7 +131,7 @@ export default {
     addweight() {
       alert(`この内容で登録してもよろしいでしょうか`)
       const weights = {
-       weight: this.weightk+`.`+this.weightg+`キログラム`,
+       weight: this.weightk+`.`+this.weightg,
        weightdate:this.weightdate,
        babyyear:this.weightyear+`.`+this.weightmonth
       }
