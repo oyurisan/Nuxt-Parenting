@@ -7,7 +7,7 @@ export default {
   extends: Line,
   props: 
   // { word: {type: Array, required: true} },
-  ['lists2'],
+  [ 'lists2', 'lists22' ],
 
   data() {
     return {
@@ -31,9 +31,7 @@ export default {
           {
             type: 'line',
             label: '体重',
-            data: [
-              3, 3.4, 3.7, 4.1, 4.5, 4.8, 5.3, 5.6, 5.8, 6.1, 6.6, 7.4, 7.9,
-            ],
+            data: this.lists22,
             backgroundColor: 'rgba(43, 70, 119)',
             borderColor: 'rgba(95, 137, 185)',
             fill: false,
