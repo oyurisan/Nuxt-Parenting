@@ -13,21 +13,10 @@ export const state = () => ({
   },
   UserInfo: [],
   FoodList: [],
-  chartData: [50, 51, 53, 55, 56, 58, 61, 63, 65, 68, 70, 71],
-  chartDataW: [3, 3.4, 3.7, 4.1, 4.5, 4.8, 5.3, 5.6, 5.8, 6.1, 6.6, 7.4],
-  heightDatas: {
-    height: [50, 51, 53, 55, 56, 58],
-    months: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-  },
-  weightDatas: [{ weight: 3.0, months: 0 }],
 
   // DBから取った全部の情報
   allData: [],
-  // 身長のデータ配列たち
-  heightLists: [],
-  heightLists2: ['aaaa'],
-  // heightLists2: ['', '', '42.9', '43.3', '44.0', '', '', '', '', '', '', '46.5'],
-  heightLists3: [],
+
 })
 
 export const getters = {
@@ -40,19 +29,9 @@ export const getters = {
   Food: (state) => {
     return state.FoodList
   },
-  getChartData: (state) => {
-    return state.chartData
-  },
-  getChartDataW: (state) => {
-    return state.chartDataW
-  },
-  getChartHeight: (state) => {
-    return state.heightDatas
-  },
-  getUnchiLists: (state) => state.unchiLists,
+
   getAllData: (state) => state.allData,
 
-  getHeightLists2: (state) => state.heightLists2,
 }
 export const actions = {
   // ユーザー情報更新
@@ -291,8 +270,5 @@ export const mutations = {
   fetchItems(state, Item) {
     state.allData = Item
   },
-  setHeightLists2(state, height2) {
-    state.heightLists2.concat(height2)
-    console.log(this.state.heightLists2)
-  },
+
 }

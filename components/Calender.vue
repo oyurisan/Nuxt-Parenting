@@ -98,12 +98,8 @@ export default {
         // console.log(unchiAllArray)
       }
 
-
-
       // firebaseデータ格納庫！！！！
       const AllArrays = []
-
-
 
       // うんちデータ
       const unchiDates2 = []
@@ -140,13 +136,14 @@ export default {
           title: 'fireうんぴ',
           color: 'rgb(252, 115, 61)',
         }
-        const unchiEndDates2 = Object.assign(unchiAllData2, unchiFinalDates2[bbb])
+        const unchiEndDates2 = Object.assign(
+          unchiAllData2,
+          unchiFinalDates2[bbb]
+        )
         // console.log(unchiEndDates2)
         AllArrays.push(unchiEndDates2)
         // console.log(AllArrays)
       }
-
-
 
       // ごはんデータ
       const foodDates = []
@@ -189,7 +186,6 @@ export default {
         // console.log(AllArrays)
       }
 
-
       // おしっこデータ
       const urineDates = []
       const urineFinalDates = []
@@ -230,13 +226,25 @@ export default {
         AllArrays.push(urineEndDates)
         // console.log(AllArrays)
       }
-      
 
       return {
-        firstDay: 1,
+        // locale: 'ja',
+        // 終日スロットのタイトル
+        allDayText: '終日',
+        // 表示する日
+        day: 31,
+
+        firstDay: 0,
         editable: false,
         navLinks: false,
         selectable: false,
+        // 日付クリックイベント
+        dayClick() {
+          alert('日付クリックイベント')
+        },
+        eventClick(calEvent, jsEvent, view){
+          alert('イベント発火！')
+        },
         // events: [
         // {
         //   title: this.getAllData.unchi,
@@ -422,5 +430,9 @@ td {
 }
 .fc-col-header-cell {
   background-color: #fff0d1;
+}
+
+.fc-dayGridMonth-view .fc-event-time {
+  display: none;
 }
 </style>

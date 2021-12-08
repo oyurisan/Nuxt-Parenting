@@ -30,7 +30,7 @@
         />
         <label name="allergy">
           {{ item.foodname }}
-          <input type="checkbox" name="allergy" class="allergy" :value="item.foodname">
+          <input type="checkbox" name="allergy" class="allergy" :value="item.icon">
         </label>
         </div>
  </div>    
@@ -92,16 +92,20 @@ export default {
     },
     getallergy() {
       const allergy = document.getElementsByClassName('allergy')
-     let newallergy = []
+      const newallergy = []
       for (let i = 0; i < allergy.length; i++) {
-        if (allergy[i].checked === true) {
-          newallergy += allergy[i].value + `、`
+        console.log(allergy[i]);
+        if (allergy[i].checked === true ) {
+          newallergy.push (allergy[i].value)
+          
+          
         }
       }
       const allergys={
           newallergy
         }
         this.allergyupdate(allergys)
+        console.log(this.allergyupdate);
       },
     ...mapActions(["allergyupdate"])
   },

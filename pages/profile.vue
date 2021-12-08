@@ -1,57 +1,72 @@
 <template>
-  <div class="profileImg">
-    <div class="profile-title">プロフィール画面</div>
-    <div class="profile-container">
-      <div class="upload-img">
-        <upload v-model="picture" />
-      </div>
-      <div class="profile-main">
-        <div>
-          名前 :
-          <span>{{ name }}</span>
+  <div>
+    <div class="profileImg">
+      <div class="profile-title">プロフィール画面</div>
+      <div class="profile-container">
+        <div class="upload-img">
+          <upload v-model="picture" />
         </div>
+        <div class="profile-main">
+          <div>
+            名前 :
+            <span>{{ name }}</span>
+          </div>
 
-        <div>
-          性別 :
-          <span>{{ gender }}</span>
-        </div>
+          <div>
+            性別 :
+            <span>{{ gender }}</span>
+          </div>
 
-        <div>
-          生年月日 :
-          <span>{{ birth }}</span>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      アレルギー :
-      <div class="container">
-        <div v-for="item in foodduty" :key="item.foodname">
-          <img
-            :src="require(`~/assets/` + item.icon)"
-            width="30px"
-            height="30px"
-          />
-          <div class="boxs">
-            <label name="allergy" class="label">
-              {{ item.foodname }}
-            </label>
+          <div>
+            生年月日 :
+            <span>{{ birth }}</span>
           </div>
         </div>
       </div>
 
-      <div class="container">
-        <div v-for="item in foodreco" :key="item.foodname">
-          <img
-            :src="require(`~/assets/` + item.icon)"
-            width="30px"
-            height="30px"
-          />
-          <label name="allergy">
-            {{ item.foodname }}
-          </label>
+      <!-- <div>
+        アレルギー :
+        <div class="container">
+          <div v-for="item in foodduty" :key="item.foodname">
+            <img
+              :src="require(`~/assets/` + item.icon)"
+              width="30px"
+              height="30px"
+            />
+            <div class="boxs">
+              <label name="allergy" class="label">
+                {{ item.foodname }}
+              </label>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="container">
+          <div v-for="item in foodreco" :key="item.foodname">
+            <img
+              :src="require(`~/assets/` + item.icon)"
+              width="30px"
+              height="30px"
+            />
+            <label name="allergy">
+              {{ item.foodname }}
+            </label>
+          </div>
+        </div>
+      </div> -->
+
+      アレルギー : <div v-for="allergyItem in getAllData.allergy" :key="allergyItem.id">
+        <div class="container2">
+          <div v-for="item in allergyItem.newallergy" :key="item.id">
+            <img
+              :src="require(`~/assets/` + item)"
+              width="30px"
+              height="30px"
+            />
+          </div>
         </div>
       </div>
+  
     </div>
 
     <div class="backHome">
@@ -61,12 +76,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Upload from '../components/imgUpLoad'
 
 export default {
   components: {
     Upload,
   },
+
   data() {
     return {
       name: '',
@@ -99,7 +116,6 @@ export default {
         { foodname: `鶏肉`, icon: '21.jpg' },
         { foodname: `豚肉`, icon: '22.jpg' },
         { foodname: `バナナ`, icon: '23.jpg' },
-        { foodname: `豚肉`, icon: '24.jpg' },
         { foodname: `まつたけ`, icon: '25.jpg' },
         { foodname: `もも`, icon: '26.jpg' },
         { foodname: `ヤマイモ`, icon: '27.jpg' },
@@ -108,8 +124,17 @@ export default {
       ],
     }
   },
+
   head: {
     title: 'プロフィール画面',
+  },
+
+  computed: {
+    ...mapGetters(['getAllData']),
+  },
+
+  created() {
+    this.$store.dispatch('fetchAllData')
   },
 }
 </script>
@@ -117,6 +142,12 @@ export default {
 
 <style lang="scss">
 .container {
+  display: flex;
+  flex-wrap: wrap;
+  opacity: 0.5;
+  gap: 10px 10px;
+}
+.container2 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 10px;
