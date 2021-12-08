@@ -105,7 +105,7 @@ export default {
           newallergy
         }
         this.allergyupdate(allergys)
-        console.log(this.allergyupdate);
+        this.$store.dispatch('fetchUser')
       },
     ...mapActions(["allergyupdate"])
   },

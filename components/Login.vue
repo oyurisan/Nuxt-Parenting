@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import firebase from '~/plugins/firebase'
 
 export default {
@@ -38,7 +39,9 @@ export default {
       console.log(user)
       if (user) {
         this.isLogin = true
-        this.userData = user
+        this.userData = user.uid
+        this.$store.dispatch('fetchUser',this.userData)
+        console.log(this.userData)
       } else {
         this.isLogin = false
         this.userData = null
@@ -51,6 +54,7 @@ export default {
         email: this.email,
         password: this.password,
       })
+      this.adds()
       this.$router.push({ name: 'index' })
     },
     logout() {
@@ -58,6 +62,7 @@ export default {
       this.email = ''
       this.password = ''
     },
+    ...mapActions(["adds","fetchUser"])
   },
 }
 </script>

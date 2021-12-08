@@ -501,7 +501,6 @@ export default {
 
     ...mapActions(['setHeightLists2']),
     ...mapGetters(['getAllData', 'getHeightLists2']),
-    
   },
 
   created() {

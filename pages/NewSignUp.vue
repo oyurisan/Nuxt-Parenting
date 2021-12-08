@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -35,8 +36,8 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.getters.user
-    },
+      return this.$store.getters.userid
+    }
   },
   methods: {
     register() {
@@ -49,6 +50,7 @@ export default {
       this.password = ''
       this.$router.push({ name: 'login' })
     },
+    ...mapActions(["adds"])
   },
 }
 </script>

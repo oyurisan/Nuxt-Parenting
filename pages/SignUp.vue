@@ -68,8 +68,9 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('Signup/init')
-    // this.$store.dispatch("adds")
+    this.$store.dispatch('fetchAllData')
+    this.$store.dispatch('fetchUser')
+   console.log(this.$store.state.UserInfo)
   },
   methods: {
     addinfo() {

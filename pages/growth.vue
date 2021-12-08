@@ -1,6 +1,7 @@
 <template>
   <div class="growth">
     <div class="growth-title">成長管理</div>
+    {{this.$store.state.UserInfo}}
       <div>👶身長👶</div>
     日時：<input v-model="heightdate" type="date" name="Date" /><br>
      身長： <select v-model="heightcm">
@@ -117,7 +118,7 @@ export default {
    addheight() {
       alert(`この内容で登録してもよろしいでしょうか`)
       const heights = {
-      height: this.heightcm+`.`+this.heightmm+`cm`,
+      height: this.heightcm+`.`+this.heightmm,
       heightdate:this.heightdate,
       babyyear:this.heightyear+`.`+this.heightmonth
       }
@@ -131,7 +132,7 @@ export default {
     addweight() {
       alert(`この内容で登録してもよろしいでしょうか`)
       const weights = {
-       weight: this.weightk+`.`+this.weightg+`キログラム`,
+       weight: this.weightk+`.`+this.weightg,
        weightdate:this.weightdate,
        babyyear:this.weightyear+`.`+this.weightmonth
       }

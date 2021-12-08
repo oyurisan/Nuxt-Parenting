@@ -11,7 +11,7 @@ export const state = () => ({
     // ログイン状態の真偽値
     login: false,
   },
-  UserInfo: [],
+  UserInfo: '',
   FoodList: [],
 
   // DBから取った全部の情報
@@ -31,12 +31,14 @@ export const getters = {
   },
 
   getAllData: (state) => state.allData,
+  getUserInfo: (state) =>  state.UserInfo
+  }
 
-}
 export const actions = {
   // ユーザー情報更新
-  userupdate(commit, users) {
-    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+  userupdate(commit, {users,userData}) {
+    UserRef.doc(userData)
+    console.log(userData)
       .update({
         users: firebase.firestore.FieldValue.arrayUnion({
           babyname: users.babyname,
@@ -50,8 +52,9 @@ export const actions = {
       })
   },
   // アレルギー更新
-  allergyupdate(commit, allergys) {
-    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+  allergyupdate(commit, {allergys,userData}) {
+    UserRef.doc(userData)
+    console.log(userData)
       .update({
         allergy: firebase.firestore.FieldValue.arrayUnion({
           newallergy: allergys.newallergy,
@@ -61,9 +64,25 @@ export const actions = {
         commit('allergyupdate', allergys)
       })
   },
-  // ご飯更新
-  foodupdate(commit, foods) {
+  // 日記投稿
+  diaryupdate(commit, diarys) {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+      .update({
+        diary: firebase.firestore.FieldValue.arrayUnion({
+          diarydate: diarys.date,
+          message: diarys.message,
+          photo: diarys.photo,
+        }),
+      })
+      .then(() => {
+        commit('diaryupdate', diarys)
+      })
+  },
+  // ご飯更新
+  foodupdate({commit}, foods) {
+    console.log(state.UserInfo)
+    UserRef.doc(state.UserInfo)
+    console.log(getters.getUserInfo)
       .update({
         food: firebase.firestore.FieldValue.arrayUnion({
           foodmemo: foods.foodmemo,
@@ -135,43 +154,18 @@ export const actions = {
   },
   // 初期情報追加
   adds({ getters }) {
-    db.collection(`User/${getters.userid}`).add({
-      users: [
-        {
-          babyname: '',
-          birthday: '',
-          gender: '',
-        },
-      ],
+    console.log('ugoi')
+    console.log(getters)
+    db.collection(`User`).doc(getters.userid)
+    console.log(getters.userid).add({
+      users: [{ babyname: '', birthday: '', gender: '' }],
       allergy: [],
-      food: [
-        {
-          kinds: '',
-          foodmemo: '',
-          fooddate: '',
-          ml: '',
-        },
-      ],
-      height: [
-        {
-          height: '',
-          heightdate: '',
-        },
-      ],
-      weight: [
-        {
-          weight: '',
-          weightdate: '',
-        },
-      ],
+      food: [{ kinds: '', foodmemo: '', fooddate: '', ml: '' }],
+      height: [{ height: '', heightdate: '' }],
+      weight: [{ weight: '', weightdate: '' }],
       unchi: [{ unchiecolor: '', shape: '', unchimemo: '', unchidate: '' }],
-      urine: [
-        {
-          urinecolor: '',
-          urinememo: '',
-          urinedate: '',
-        },
-      ],
+      urine: [{ urinecolor: '', urinememo: '', urinedate: '' }],
+      diary: [{ diarydate: '', message: '', photo: '' }],
     })
   },
   // 新規登録
@@ -181,9 +175,9 @@ export const actions = {
       .createUserWithEmailAndPassword(payload.email, payload.password)
       .then((user) => {
         console.log(user)
-        dispatch('checklogin').catch((error) => {
+        dispatch('checklogin')
+        dispatch('sendemail').catch((error) => {
           alert(error)
-          commit('sendemail')
         })
       })
   },
@@ -197,13 +191,14 @@ export const actions = {
     })
   },
   // ログイン
-  login({ dispatch }, payload) {
+  login({ dispatch, getters }, payload) {
     firebase
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
       .then((user) => {
         dispatch('checkLogin')
         $nuxt.$router.push(`/SignUp`)
+        console.log(getters.userid)
       })
       .catch((error) => {
         alert(error)
@@ -222,15 +217,17 @@ export const actions = {
         console.log(error)
       })
   },
-
   // 全部のデータ DBから取り出し
   fetchAllData({ commit }) {
     UserRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        // console.log(doc.data());
         commit('fetchItems', doc.data())
       })
     })
+  },
+  fetchUser({commit},userData ) {
+   console.log(userData)
+   commit('fetchUser',userData)
   },
   // 新規登録ユーザーに確認のメールを送信する
   sendemail(commit) {
@@ -245,7 +242,6 @@ export const actions = {
     commit('setHeightLists2', height2)
   },
 }
-
 export const mutations = {
   ...vuexfireMutations,
   // データをpayloadに代入
@@ -258,17 +254,22 @@ export const mutations = {
     state.user.login = true
     console.log(state.user.login)
   },
-  adds(state, { info }) {
-    state.UserInfo = info
-    // console.log(UserInfo)
-  },
+  // adds(state, { info }) {
+  //   state.UserInfo = info
+  //   // console.log(UserInfo)
+  // },
   FoodList(state, foods) {
     state.FoodList.push(foods)
   },
-
   // DBからの取り出し
   fetchItems(state, Item) {
     state.allData = Item
+    console.log(Item)
   },
-
+  fetchUser(state, userData) {
+    // state.user.uid= userData
+    state.UserInfo=userData
+    console.log(userData)
+    console.log(state.UserInfo)
+  },
 }

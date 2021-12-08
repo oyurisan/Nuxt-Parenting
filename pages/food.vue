@@ -123,7 +123,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 // import Memo from '../components/addMemo'
 // import DateTime from '../components/addDateTime'
 
@@ -136,7 +136,9 @@ export default {
       message: '',
       fooddate:"",
       kinds:"",
-      ml:""
+      ml:"",
+      userData: null,
+      isLogin: false,
     }
   },
   head: {
@@ -146,12 +148,23 @@ export default {
     Foods() {
       return this.$store.getters.Food
     },
+     user() {
+      return this.$store.getters.user.uid
+    },
+    ...mapGetters(["getUserInfo"])
+  },
+  created(){
+this.$store.dispatch("fetchUser")
   },
   methods: {
     back() {
       this.$router.push({ name: 'index' })
     },
-    addfood() {
+    addfood(){
+      this.$store.commit("switchlogin")
+      console.log(this.user.login)
+      console.log(user)
+      if(user){
       alert(`この内容で登録してもよろしいでしょうか`)
       const foods = {
        foodmemo: this.message,
@@ -159,13 +172,18 @@ export default {
        ml:this.ml,
        fooddate:this.fooddate
       }
-      this.foodupdate(foods)
+       this.userData = this.user
+       console.log(this.userData)
+      this.foodupdate(foods,this.userData)
       this.$router.push({ name: 'index' })
       this.foodmemo=""
       this.kinds=""
       this.ml=""
       this.fooddate=""
-    },
+    }
+    else{
+      console.log('ログインしていません')
+    }},
     ...mapActions(['foodupdate']),
   },
 }
