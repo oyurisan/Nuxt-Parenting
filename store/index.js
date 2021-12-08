@@ -11,7 +11,7 @@ export const state = () => ({
     // ログイン状態の真偽値
     login: false,
   },
-  UserInfo: [],
+  UserInfo: '',
   FoodList: [],
   chartData: [50, 51, 53, 55, 56, 58, 61, 63, 65, 68, 70, 71],
   chartDataW: [3, 3.4, 3.7, 4.1, 4.5, 4.8, 5.3, 5.6, 5.8, 6.1, 6.6, 7.4],
@@ -23,6 +23,11 @@ export const state = () => ({
 
   // DBから取った全部の情報
   allData: [],
+  // 身長のデータ配列たち
+  heightLists: [],
+  heightLists2: ['aaaa'],
+  // heightLists2: ['', '', '42.9', '43.3', '44.0', '', '', '', '', '', '', '46.5'],
+  heightLists3: [],
 })
 
 export const getters = {
@@ -44,15 +49,19 @@ export const getters = {
   getChartHeight: (state) => {
     return state.heightDatas
   },
-  getUnchiLists: state => state.unchiLists,
-  getAllData: state => state.allData,
-}
+  getUnchiLists: (state) => state.unchiLists,
+  getAllData: (state) => state.allData,
+  getHeightLists2: (state) => state.heightLists2,
+  getUserInfo: (state) =>  state.UserInfo
+  }
+
 export const actions = {
   // ユーザー情報更新
-  userupdate(commit, users) {
-    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+  userupdate(commit, {users,userData}) {
+    UserRef.doc(userData)
+    console.log(userData)
       .update({
-        users:firebase.firestore.FieldValue.arrayUnion({
+        users: firebase.firestore.FieldValue.arrayUnion({
           babyname: users.babyname,
           gender: users.gender,
           birthday: users.birthday,
@@ -64,20 +73,37 @@ export const actions = {
       })
   },
   // アレルギー更新
-  allergyupdate(commit, allergys) {
-    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+  allergyupdate(commit, {allergys,userData}) {
+    UserRef.doc(userData)
+    console.log(userData)
       .update({
         allergy: firebase.firestore.FieldValue.arrayUnion({
-         newallergy: allergys.newallergy,
+          newallergy: allergys.newallergy,
         }),
       })
       .then(() => {
         commit('allergyupdate', allergys)
       })
   },
-  // ご飯更新
-  foodupdate(commit, foods) {
+  // 日記投稿
+  diaryupdate(commit, diarys) {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+      .update({
+        diary: firebase.firestore.FieldValue.arrayUnion({
+          diarydate: diarys.date,
+          message: diarys.message,
+          photo: diarys.photo,
+        }),
+      })
+      .then(() => {
+        commit('diaryupdate', diarys)
+      })
+  },
+  // ご飯更新
+  foodupdate({commit}, foods) {
+    console.log(state.UserInfo)
+    UserRef.doc(state.UserInfo)
+    console.log(getters.getUserInfo)
       .update({
         food: firebase.firestore.FieldValue.arrayUnion({
           foodmemo: foods.foodmemo,
@@ -95,9 +121,9 @@ export const actions = {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
         height: firebase.firestore.FieldValue.arrayUnion({
-        height: heights.height,
-        heightdate:heights.heightdate,
-        babyyear:heights.babyyear
+          height: heights.height,
+          heightdate: heights.heightdate,
+          babyyear: heights.babyyear,
         }),
       })
       .then(() => {
@@ -109,9 +135,9 @@ export const actions = {
     UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
       .update({
         weight: firebase.firestore.FieldValue.arrayUnion({
-          weight: weights.weight ,
+          weight: weights.weight,
           weightdate: weights.weightdate,
-          babyyear:weights.babyyear
+          babyyear: weights.babyyear,
         }),
       })
       .then(() => {
@@ -127,7 +153,7 @@ export const actions = {
           unchicolor: unchis.unchicolor,
           unchimemo: unchis.unchimemo,
           unchidate: unchis.unchidate,
-          start:unchis.unchidate
+          start: unchis.unchidate,
         }),
       })
       .then(() => {
@@ -149,51 +175,30 @@ export const actions = {
   },
   // 初期情報追加
   adds({ getters }) {
-   db.collection(`User/${getters.userid}`)
-      .add({
-        users:[{
-          babyname: '',
-          birthday: '',
-          gender: '',
-        }],
-        allergy:[],
-        food: [{
-            kinds: '',
-            foodmemo: '',
-            fooddate: '',
-            ml: '',
-          }],
-        height: [{
-            height: '',
-            heightdate: '',
-          }],
-        weight: [{
-            weight: '',
-            weightdate: '',
-          }],
-        unchi: [
-          {unchiecolor: '',
-            shape: '',
-            unchimemo: '',
-            unchidate: '',
-          }],
-        urine: [{
-            urinecolor: '',
-            urinememo: '',
-            urinedate: '',
-          }],
-      })
+    console.log('ugoi')
+    console.log(getters)
+    db.collection(`User`).doc(getters.userid)
+    console.log(getters.userid).add({
+      users: [{ babyname: '', birthday: '', gender: '' }],
+      allergy: [],
+      food: [{ kinds: '', foodmemo: '', fooddate: '', ml: '' }],
+      height: [{ height: '', heightdate: '' }],
+      weight: [{ weight: '', weightdate: '' }],
+      unchi: [{ unchiecolor: '', shape: '', unchimemo: '', unchidate: '' }],
+      urine: [{ urinecolor: '', urinememo: '', urinedate: '' }],
+      diary: [{ diarydate: '', message: '', photo: '' }],
+    })
   },
   // 新規登録
-  register({ dispatch,commit }, payload) {
+  register({ dispatch, commit }, payload) {
     firebase
       .auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
       .then((user) => {
         console.log(user)
-        dispatch('checklogin').catch((error) => {
+        dispatch('checklogin')
+        dispatch('sendemail').catch((error) => {
           alert(error)
-          commit('sendemail')
         })
       })
   },
@@ -207,13 +212,14 @@ export const actions = {
     })
   },
   // ログイン
-  login({ dispatch }, payload) {
+  login({ dispatch, getters }, payload) {
     firebase
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
       .then((user) => {
         dispatch('checkLogin')
         $nuxt.$router.push(`/SignUp`)
+        console.log(getters.userid)
       })
       .catch((error) => {
         alert(error)
@@ -233,28 +239,30 @@ export const actions = {
       })
   },
   // 全部のデータ DBから取り出し
-  fetchAllData({ getters,commit }) {
+  fetchAllData({ commit }) {
     UserRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        if(getters.userid){
-          console.log(getters.uid)
-         commit("fetchAllData",{id:doc.id})
-        }
-        else if(getters.userid===null){
-          commit('fetchItems', doc.data())
-        }
+        commit('fetchItems', doc.data())
       })
     })
   },
+  fetchUser({commit},userData ) {
+   console.log(userData)
+   commit('fetchUser',userData)
+  },
   // 新規登録ユーザーに確認のメールを送信する
-  sendemail(commit){
-  firebase.auth().currentUser.sendEmailVerification()
-  .then(() => {
-    commit('sendemail')
-  });
+  sendemail(commit) {
+    firebase
+      .auth()
+      .currentUser.sendEmailVerification()
+      .then(() => {
+        commit('sendemail')
+      })
+  },
+  setHeightLists2({ commit }, height2) {
+    commit('setHeightLists2', height2)
+  },
 }
-}
-
 export const mutations = {
   ...vuexfireMutations,
   // データをpayloadに代入
@@ -267,16 +275,22 @@ export const mutations = {
     state.user.login = true
     console.log(state.user.login)
   },
-  adds(state, { info }) {
-    state.UserInfo = info
-    // console.log(UserInfo)
-  },
+  // adds(state, { info }) {
+  //   state.UserInfo = info
+  //   // console.log(UserInfo)
+  // },
   FoodList(state, foods) {
     state.FoodList.push(foods)
   },
   // DBからの取り出し
   fetchItems(state, Item) {
     state.allData = Item
+    console.log(Item)
   },
-  
+  fetchUser(state, userData) {
+    // state.user.uid= userData
+    state.UserInfo=userData
+    console.log(userData)
+    console.log(state.UserInfo)
+  },
 }

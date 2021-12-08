@@ -96,12 +96,12 @@ export default {
       for (let i = 0; i < allergy.length; i++) {
         if (allergy[i].checked === true) {
           newallergy += allergy[i].value + `、`
-        }
-      }
+        }}
       const allergys={
           newallergy
         }
         this.allergyupdate(allergys)
+        this.$store.dispatch('fetchUser')
       },
     ...mapActions(["allergyupdate"])
   },

@@ -39,18 +39,6 @@ export default {
         //   constraint: '予定１',
         //   color: 'rgb(252, 115, 61)',
         // },
-        // {
-        //   title: '休日',
-        //   start: '2021-11-27T00:00:00',
-        //   end: '2021-11-28T23:59:59',
-        //   color: 'rgb(252, 115, 61)',
-        // },
-        //   {
-        //     title: 'うんち',
-        //     // start: this.$store.state.allData.unchi.unchidate + ":00",
-        //     start: "2021-11-20T11:09" + ":00",
-        //     color: 'rgb(252, 115, 61)',
-        //   },
         // ],
         events: this.events,
       },
@@ -107,12 +95,17 @@ export default {
         const unchiEndDates = Object.assign(unchiAllData, unchiFinalDates[aaa])
         // console.log(unchiEndDates)
         unchiAllArray.push(unchiEndDates)
-        console.log(unchiAllArray)
+        // console.log(unchiAllArray)
       }
 
 
-      // firebaseデータ！！！！
-      const unchiAllArray2 = []
+
+      // firebaseデータ格納庫！！！！
+      const AllArrays = []
+
+
+
+      // うんちデータ
       const unchiDates2 = []
       const unchiFinalDates2 = []
       // console.log(this.getAllData)
@@ -149,9 +142,95 @@ export default {
         }
         const unchiEndDates2 = Object.assign(unchiAllData2, unchiFinalDates2[bbb])
         // console.log(unchiEndDates2)
-        unchiAllArray2.push(unchiEndDates2)
-        console.log(unchiAllArray2)
+        AllArrays.push(unchiEndDates2)
+        // console.log(AllArrays)
       }
+
+
+
+      // ごはんデータ
+      const foodDates = []
+      const foodFinalDates = []
+      // console.log(this.getAllData)
+
+      // JSONファイルに変換 -> {Ob_ob ~ }を消去
+      const foodArray2 = this.getAllData.food
+      const foodArray3 = JSON.stringify(foodArray2)
+      let foodArray6 = []
+      if (foodArray3) {
+        foodArray6 = JSON.parse(foodArray3)
+      }
+
+      for (let c = 0; c < foodArray6.length; c++) {
+        // console.log(unchiArray6[c])
+        foodDates.push(foodArray6[c].fooddate + ':00')
+        // console.log(unchiDates)
+      }
+
+      for (let cc = 0; cc < foodDates.length; cc++) {
+        // console.log(unchiDates2[bb])
+        const foodObj = {}
+        foodObj.start = foodDates[cc]
+        // console.log(foodObj)
+
+        foodFinalDates.push(foodObj)
+        // console.log(foodFinalDates)
+      }
+
+      for (let ccc = 0; ccc < foodFinalDates.length; ccc++) {
+        // console.log(unchiFinalDates2[bbb])
+        const foodAllData = {
+          title: 'ごはん食べたよ',
+          color: 'rgb(252, 115, 61)',
+        }
+        const foodEndDates = Object.assign(foodAllData, foodFinalDates[ccc])
+        // console.log(unchiEndDates2)
+        AllArrays.push(foodEndDates)
+        // console.log(AllArrays)
+      }
+
+
+      // おしっこデータ
+      const urineDates = []
+      const urineFinalDates = []
+      // console.log(this.getAllData)
+
+      // JSONファイルに変換 -> {Ob_ob ~ }を消去
+      const urineArray2 = this.getAllData.urine
+      const urineArray3 = JSON.stringify(urineArray2)
+      let urineArray6 = []
+      if (urineArray3) {
+        urineArray6 = JSON.parse(urineArray3)
+      }
+
+      for (let d = 0; d < urineArray6.length; d++) {
+        // console.log(unchiArray6[c])
+        urineDates.push(urineArray6[d].urinedate + ':00')
+        // console.log(unchiDates)
+      }
+
+      for (let dd = 0; dd < urineDates.length; dd++) {
+        // console.log(unchiDates2[bb])
+        const urineObj = {}
+        urineObj.start = urineDates[dd]
+        // console.log(foodObj)
+
+        urineFinalDates.push(urineObj)
+        // console.log(foodFinalDates)
+      }
+
+      for (let ddd = 0; ddd < urineFinalDates.length; ddd++) {
+        // console.log(unchiFinalDates2[bbb])
+        const urineAllData = {
+          title: 'ピッコ',
+          color: 'rgb(252, 115, 61)',
+        }
+        const urineEndDates = Object.assign(urineAllData, urineFinalDates[ddd])
+        // console.log(unchiEndDates2)
+        AllArrays.push(urineEndDates)
+        // console.log(AllArrays)
+      }
+      
 
       return {
         firstDay: 1,
@@ -178,7 +257,7 @@ export default {
         //   color: 'rgb(252, 115, 61)',
         // },
         // ],
-        events: unchiAllArray2,
+        events: AllArrays,
         plugins: [dayGridPlugin, interactionPlugin, timegrid, listPlugin],
         initialView: 'dayGridMonth',
 

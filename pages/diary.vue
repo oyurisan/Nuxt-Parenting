@@ -60,6 +60,7 @@
                       network="twitter"> 
       <a class="buttons" href="https://twitter.com/share?url=https://haniwaman.com/original-share-btn/&text=message" rel="nofollow" target="_blank">Twitter</a>
       <a href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】">LINEで送る</a>
+      
     </share-network>
      <div class="m-3">
     <button class="px-2 py-1 bg-red-900 text-xl text-white font-semibold rounded hover:bg-red-900 w-56" @click="add">
@@ -84,6 +85,7 @@
 <script SRC = "https://unpkg.com/vue-social-sharing@3.0.8/dist/vue-social-sharing.js" > </script>
 <script>
 import Vue from 'vue'
+import { mapActions } from 'vuex'
 import Editor from '@tinymce/tinymce-vue'
 import VueSocialSharing from 'vue-social-sharing'
 import { ShareNetwork } from '../node_modules/vue-social-sharing/dist/vue-social-sharing'
@@ -94,23 +96,29 @@ export default {
   components: { ShareNetwork },
   data() {
     return {
-      diary:[{date:"",message:"",photo:""}]
+      diary:[{date:"",message:"",photo:""}],
+      date:"",
+      message:""
     }
   },
   component:{
   },
   methods: {
     add() {
-      this.diary.push({
-        date:this.date,
+      alert(`この内容を登録してもよろしいでしょうか`)
+      const diarys={
+        diarydate:this.date,
         message:this.message,
         // photo:this.photo
-      })
-      // console.log(this.content)
+        }
+      this.diaryupdate(diarys)
+      this.date=""
+      this.message=""
     },
     mounted() {
       this.createSnsUrl()
     },
+    ...mapActions(["diaryupdate"])
   },
 }
 </script>

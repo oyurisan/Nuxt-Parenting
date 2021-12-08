@@ -1,6 +1,7 @@
 <template>
   <div class="growth">
     <div class="growth-title">成長管理</div>
+    {{this.$store.state.UserInfo}}
       <div>👶身長👶</div>
     日時：<input v-model="heightdate" type="date" name="Date" /><br>
      身長： <select v-model="heightcm">

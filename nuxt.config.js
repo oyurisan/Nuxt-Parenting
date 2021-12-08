@@ -38,7 +38,6 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    'vue-social-sharing/nuxt',
     
   ],
 
