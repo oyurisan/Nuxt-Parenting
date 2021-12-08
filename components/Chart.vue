@@ -4,6 +4,10 @@ import { Line } from 'vue-chartjs'
 
 export default {
   extends: Line,
+   props: 
+  // { word: {type: Array, required: true} },
+  [ 'lists1', 'lists11' ],
+  
   data() {
     return {
       chart1: [],
@@ -27,7 +31,7 @@ export default {
           {
             type: 'line',
             label: '身長',
-            data: [50, 51, 53, 55, 56, 58, 61, 63, 65, 68, 70, 71, 73],
+            data: this.lists1,
             backgroundColor: 'rgba(177, 60, 89)',
             borderColor: 'rgb(209, 117, 140)',
             // 線下を塗りつぶすかどうか
@@ -37,9 +41,7 @@ export default {
           {
             type: 'line',
             label: '体重',
-            data: [
-              3, 3.4, 3.7, 4.1, 4.5, 4.8, 5.3, 5.6, 5.8, 6.1, 6.6, 7.4, 7.9,
-            ],
+            data: this.lists11,
             backgroundColor: 'rgba(43, 70, 119)',
             borderColor: 'rgba(95, 137, 185)',
             fill: false,

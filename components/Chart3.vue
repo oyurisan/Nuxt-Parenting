@@ -5,6 +5,10 @@ import { mapGetters } from 'vuex'
 
 export default {
   extends: Line,
+  props: 
+  // { word: {type: Array, required: true} },
+  [ 'lists3', 'lists33' ],
+
   data() {
     return {
       chartData: {
@@ -13,7 +17,7 @@ export default {
           {
             type: 'line',
             label: '身長',
-            data: this.$store.state.heightDatas.height,
+            data: this.lists3,
             backgroundColor: 'rgba(177, 60, 89)',
             borderColor: 'rgb(209, 117, 140)',
             // 線下を塗りつぶすかどうか
@@ -23,7 +27,7 @@ export default {
           {
             type: 'line',
             label: '体重',
-            data: this.$store.state.chartDataW,
+            data: this.lists33,
             backgroundColor: 'rgba(43, 70, 119)',
             borderColor: 'rgba(95, 137, 185)',
             fill: false,
@@ -115,7 +119,7 @@ export default {
     }
   },
   computed: {
-    
+
     ...mapGetters (['getChartData', 'getChartDataW', 'getChartHeight'])
   },
 
