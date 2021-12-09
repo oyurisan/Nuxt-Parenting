@@ -1,6 +1,6 @@
 <template>
   <div class="growth">
-    <div class="growth-title">成長管理</div>
+    <div class="growth-title">GROWTH PAGE</div>
     {{this.$store.state.UserInfo}}
       <div>👶身長👶</div>
     日時：<input v-model="heightdate" type="date" name="Date" /><br>
@@ -152,6 +152,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
 .growth {
   width: 400px;
   margin: auto;
@@ -175,6 +177,7 @@ export default {
   text-align: center;
   font-size: 200%;
   margin-top: 10%;
+  font-family: 'Gluten', cursive;
 }
 .button{
   display: flex;

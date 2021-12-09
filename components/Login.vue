@@ -1,5 +1,6 @@
-<template>
+<!-- <template>
   <div class="login">
+    <div>{{this.$store.state.UserInfo}}</div>
     メールアドレス<br /><input
       v-model="email"
       type="email"
@@ -17,7 +18,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import firebase from '~/plugins/firebase'
 
 export default {
@@ -25,7 +26,7 @@ export default {
     return {
       email: '',
       password: '',
-      isLogin: false,
+      isLogin: '',
       userData: null,
     }
   },
@@ -33,20 +34,27 @@ export default {
     user() {
       return this.$store.getters.user
     },
+    ...mapGetters(['getUserInfo']),
   },
-  mounted() {
+  created() {
     firebase.auth().onAuthStateChanged((user) => {
       console.log(user)
+      console.log(user.uid); // ○
       if (user) {
         this.isLogin = true
         this.userData = user.uid
-        this.$store.dispatch('fetchUser',this.userData)
         console.log(this.userData)
+        // this.$store.dispatch('fetchUser',this.userData)
+        this.fetchUser (this.userData);
+        console.log('ログイン');
+        console.log(this.$store.state.UserInfo);
       } else {
         this.isLogin = false
         this.userData = null
+        console.log('ログアウト');
       }
     })
+
   },
   methods: {
     login(email, password) {
@@ -62,7 +70,7 @@ export default {
       this.email = ''
       this.password = ''
     },
-    ...mapActions(["adds","fetchUser"])
+    ...mapActions(['adds', 'fetchUser']),
   },
 }
 </script>
@@ -80,4 +88,4 @@ export default {
 .loginOut-btn {
   margin-top: 2%;
 }
-</style>
+</style> -->

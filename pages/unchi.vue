@@ -1,9 +1,8 @@
 <template>
   <div class="unchi-main">
-    <div class="unchi-title">うんち管理</div>
+    <div class="unchi-title">UNCHI PAGE</div>
 
     <div class="unchi-container">
-      <div>💩unchi💩</div>
 
       <div>
         日時 : <input v-model="unchidate" type="datetime-local" name="Date" />
@@ -159,10 +158,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
 .unchi-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
+  margin-top: 5%;
+  font-family: 'Gluten', cursive;
 }
 .unchi-container {
   text-align: center;

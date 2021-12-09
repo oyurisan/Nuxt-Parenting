@@ -133,7 +133,7 @@ export default {
       for (let bbb = 0; bbb < unchiFinalDates2.length; bbb++) {
         // console.log(unchiFinalDates2[bbb])
         const unchiAllData2 = {
-          title: 'fireうんぴ',
+          title: 'うんち',
           color: 'rgb(252, 115, 61)',
         }
         const unchiEndDates2 = Object.assign(
@@ -177,7 +177,7 @@ export default {
       for (let ccc = 0; ccc < foodFinalDates.length; ccc++) {
         // console.log(unchiFinalDates2[bbb])
         const foodAllData = {
-          title: 'ごはん食べたよ',
+          title: 'ごはん',
           color: 'rgb(252, 115, 61)',
         }
         const foodEndDates = Object.assign(foodAllData, foodFinalDates[ccc])
@@ -218,7 +218,7 @@ export default {
       for (let ddd = 0; ddd < urineFinalDates.length; ddd++) {
         // console.log(unchiFinalDates2[bbb])
         const urineAllData = {
-          title: 'ピッコ',
+          title: 'おしっこ',
           color: 'rgb(252, 115, 61)',
         }
         const urineEndDates = Object.assign(urineAllData, urineFinalDates[ddd])
@@ -239,12 +239,13 @@ export default {
         navLinks: false,
         selectable: false,
         // 日付クリックイベント
-        dayClick() {
-          alert('日付クリックイベント')
-        },
-        eventClick(calEvent, jsEvent, view){
-          alert('イベント発火！')
-        },
+        // dayClick() {
+        //   alert('日付クリックイベント')
+        // },
+        // eventClick(calEvent, jsEvent, view){
+        //   alert('イベント発火！')
+        // },
+
         // events: [
         // {
         //   title: this.getAllData.unchi,
@@ -297,7 +298,8 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Estonia&family=Righteous&display=swap');
 
-$fc-width: 95%;
+
+$fc-width: 80%;
 
 @mixin bar-style(
   $color: rgb(253, 232, 237),

@@ -1,9 +1,8 @@
 <template>
   <div class="urine-main">
-    <div class="urine-title">おしっこ管理</div>
+    <div class="urine-title">URINE PAGE</div>
 
     <div class="urine-container">
-      <div>💧urine💧</div>
       <div>
         日時 : <input v-model="urinedate" type="datetime-local" name="Date" />
       </div>
@@ -83,10 +82,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
 .urine-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
+  margin-top: 5%;
+  font-family: 'Gluten', cursive;
 }
 .urine-container {
   text-align: center;

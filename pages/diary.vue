@@ -123,7 +123,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
 .container {
   margin: auto;
   display: flex;
@@ -138,7 +140,8 @@ export default {
 .food-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
+  margin-top: 5%;
+  font-family: 'Gluten', cursive;
 }
 .days{
   font-size: 40px;

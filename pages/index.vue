@@ -3,25 +3,16 @@
     <div class="home-title">Home</div>
 
     <Calender />
-
   </div>
 </template>
 
 <script>
+
 export default {
-  computed: {
-    user() {
-      return this.$store.getters.user
-    },
-    ...mapGetters(['getAllData']),
-  },
-  created() {
-    this.$store.dispatch('fetchAllData')
-  },
-  methods: {
-    data() {
-      console.log(new Date())
-    },
+  data() {
+    return {
+
+    }
   },
 }
 </script>

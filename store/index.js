@@ -4,6 +4,7 @@ import firebase from '~/plugins/firebase'
 const db = firebase.firestore()
 const UserRef = db.collection(`User`)
 
+
 export const state = () => ({
   user: {
     uid: '',
@@ -11,16 +12,20 @@ export const state = () => ({
     // ログイン状態の真偽値
     login: false,
   },
-  UserInfo: '',
+  UserInfo: null,
   FoodList: [],
+
+  months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
 
   // DBから取った全部の情報
   allData: [],
 
+
 })
 
+
 export const getters = {
-  user: (state) => {
+  user: state => {
     return state.user
   },
   userid: (state) => {
@@ -30,8 +35,8 @@ export const getters = {
     return state.FoodList
   },
 
-  getAllData: (state) => state.allData,
-  getUserInfo: (state) =>  state.UserInfo
+  getAllData: state => state.allData,
+  getUserInfo: state =>  state.UserInfo ? state.UserInfo.uid : null, 
   }
 
 export const actions = {
@@ -80,7 +85,6 @@ export const actions = {
   },
   // ご飯更新
   foodupdate({commit}, foods) {
-    console.log(state.UserInfo)
     UserRef.doc(state.UserInfo)
     console.log(getters.getUserInfo)
       .update({
@@ -195,8 +199,8 @@ export const actions = {
     firebase
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
-      .then((user) => {
-        dispatch('checkLogin')
+      .then( () => {
+        dispatch('checklogin')
         $nuxt.$router.push(`/SignUp`)
         console.log(getters.userid)
       })
@@ -225,10 +229,12 @@ export const actions = {
       })
     })
   },
-  fetchUser({commit},userData ) {
-   console.log(userData)
-   commit('fetchUser',userData)
+
+  fetchUser({ commit }, userData ) {
+  console.log(userData)
+  commit('fetchUser',userData)
   },
+
   // 新規登録ユーザーに確認のメールを送信する
   sendemail(commit) {
     firebase
@@ -237,9 +243,6 @@ export const actions = {
       .then(() => {
         commit('sendemail')
       })
-  },
-  setHeightLists2({ commit }, height2) {
-    commit('setHeightLists2', height2)
   },
 }
 export const mutations = {
@@ -268,7 +271,7 @@ export const mutations = {
   },
   fetchUser(state, userData) {
     // state.user.uid= userData
-    state.UserInfo=userData
+    state.UserInfo = userData
     console.log(userData)
     console.log(state.UserInfo)
   },

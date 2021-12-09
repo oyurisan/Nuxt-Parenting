@@ -1,54 +1,88 @@
 <template>
   <div class="allergy">
-    <div class="title">
-      アレルギーリスト登録画面
-    </div>
+    <div class="allergy-title">ALLERGY PAGE</div>
     <p>表示義務７品目</p>
     <div class="container">
       <div v-for="item in foodduty" :key="item.foodname" class="allergy">
-    <div class="item">
-        <img
-          :src="require(`~/assets/` + item.icon)"
-          width="30px"
-          height="30px"
-        />
-        <label name="allergy">
-          {{ item.foodname }}
-          <input type="checkbox" name="allergy" class="allergy" :value="item.foodname" >
-        </label>
+        <div class="item">
+          <img
+            :src="require(`~/assets/` + item.icon)"
+            width="30px"
+            height="30px"
+          />
+          <label name="allergy">
+            {{ item.foodname }}
+            <input
+              type="checkbox"
+              name="allergy"
+              class="allergy"
+              :value="item.foodname"
+            />
+          </label>
+        </div>
+      </div>
     </div>
-    </div>
-</div>
     <p>表示推奨２０品目</p>
-   <div class="container">
+    <div class="container">
       <div v-for="item in foodreco" :key="item.foodname">
         <div class="item">
-        <img
-          :src="require(`~/assets/` + item.icon)"
-          width="30px"
-          height="30px"
-        />
-        <label name="allergy">
-          {{ item.foodname }}
-          <input type="checkbox" name="allergy" class="allergy" :value="item.icon">
-        </label>
+          <img
+            :src="require(`~/assets/` + item.icon)"
+            width="30px"
+            height="30px"
+          />
+          <label name="allergy">
+            {{ item.foodname }}
+            <input
+              type="checkbox"
+              name="allergy"
+              class="allergy"
+              :value="item.icon"
+            />
+          </label>
         </div>
- </div>    
+      </div>
     </div>
 
-      <div class="m-3">
-    <button class="px-2 py-1 bg-red-900 text-xl text-white font-semibold rounded hover:bg-red-900 w-56" @click="getallergy">
-      <div class="button">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-保存</div></button></div>
+    <div class="m-3">
+      <button
+        class="
+          px-2
+          py-1
+          bg-red-900
+          text-xl text-white
+          font-semibold
+          rounded
+          hover:bg-red-900
+          w-56
+        "
+        @click="getallergy"
+      >
+        <div class="button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            width="30px"
+            height="30px"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="{2}"
+              d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+            /></svg
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 保存
+        </div>
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
-
 
 export default {
   data() {
@@ -94,34 +128,35 @@ export default {
       const allergy = document.getElementsByClassName('allergy')
       const newallergy = []
       for (let i = 0; i < allergy.length; i++) {
-        console.log(allergy[i]);
-        if (allergy[i].checked === true ) {
-          newallergy.push (allergy[i].value)
-          
-          
+        console.log(allergy[i])
+        if (allergy[i].checked === true) {
+          newallergy.push(allergy[i].value)
         }
       }
-      const allergys={
-          newallergy
-        }
-        this.allergyupdate(allergys)
-        this.$store.dispatch('fetchUser')
-      },
-    ...mapActions(["allergyupdate"])
+      const allergys = {
+        newallergy,
+      }
+      this.allergyupdate(allergys)
+      this.$store.dispatch('fetchUser')
+    },
+    ...mapActions(['allergyupdate']),
   },
 }
 </script>
 
 <style lang="scss">
-.container{
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
+.container {
   display: flex;
-flex-wrap: wrap;
-align-content:stretch
+  flex-wrap: wrap;
+  align-content: stretch;
 }
-.title {
+.allergy-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
+  margin-top: 15%;
+  font-family: 'Gluten', cursive;
 }
 .allergy {
   text-align: center;
@@ -136,8 +171,10 @@ align-content:stretch
     background: #000;
   }
 }
-.button{
+.button {
   display: flex;
 }
-.item { flex-basis: auto }
+.item {
+  flex-basis: auto;
+}
 </style>
