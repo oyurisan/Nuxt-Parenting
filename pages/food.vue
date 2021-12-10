@@ -4,14 +4,14 @@
 
     <div class="food-container">
       <div>🍼food🍴</div>
-          <div>
-      日時 : <input  v-model="fooddate"  type="datetime-local" name="Date">
-    </div>
+      <div>
+        日時 : <input v-model="fooddate" type="datetime-local" name="Date" />
+      </div>
       <div class="form-main">
         中身 :
         <input
-         id="titi"
-        v-model="kinds"
+          id="titi"
+          v-model="kinds"
           class="radio-food"
           name="folm"
           type="radio"
@@ -89,7 +89,7 @@
           <label class="cp_sl02_selectlabel">ml</label>
         </div>
       </div>
-       <textarea
+      <textarea
         v-model="message"
         class="textarea"
         cols="30"
@@ -99,24 +99,78 @@
         maxlength="500"
       />
       <p>{{ message.length }}/500 文字</p>
-     
+
       <div>
-             <div class="container">
+        <div class="container"></div>
+        <div class="m-3">
+          <button
+            class="
+              px-2
+              py-1
+              bg-dark-red
+              text-xl text-white
+              font-semibold
+              rounded
+              hover:bg-light-red
+              w-56
+            "
+            @click="addfood"
+          >
+            <div class="button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                width="30px"
+                height="30px"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="{2}"
+                  d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+                /></svg
+              >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 保存
+            </div>
+          </button>
         </div>
         <div class="m-3">
-    <button class="px-2 py-1 bg-dark-red text-xl text-white font-semibold rounded hover:bg-light-red w-56" @click="addfood">
-      <div class="button">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-保存</div></button></div>
-        <div class="m-3">
-    <button class="px-2 py-1 bg-blue-900 text-xl text-white font-semibold rounded hover:bg-blue-900 w-56" @click="back">
-      <div class="button">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-戻る</div></button></div>
+          <button
+            class="
+              px-2
+              py-1
+              bg-blue-900
+              text-xl text-white
+              font-semibold
+              rounded
+              hover:bg-blue-900
+              w-56
+            "
+            @click="back"
+          >
+            <div class="button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                width="30px"
+                height="30px"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
+                /></svg
+              >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              戻る
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -128,15 +182,14 @@ import { mapActions, mapGetters } from 'vuex'
 // import DateTime from '../components/addDateTime'
 
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
       food: '',
       message: '',
-      fooddate:"",
-      kinds:"",
-      ml:"",
+      fooddate: '',
+      kinds: '',
+      ml: '',
       userData: null,
       isLogin: false,
     }
@@ -148,42 +201,49 @@ export default {
     Foods() {
       return this.$store.getters.Food
     },
-     user() {
-      return this.$store.getters.user.uid
+    user(){
+      return this.$store.getters.user
     },
-    ...mapGetters(["getUserInfo"])
+    ...mapGetters(['getUserInfo']),
   },
-  created(){
-this.$store.dispatch("fetchUser")
+  created() {
+    // this.$store.dispatch('fetchUser')
+    // console.log(this.fetchUser)
+    // this.$store.commit("UserInfo")
+    console.log(this.$store.state)
   },
   methods: {
     back() {
       this.$router.push({ name: 'index' })
     },
-    addfood(){
-      this.$store.commit("switchlogin")
+    addfood() {
+      this.$store.commit('switchlogin')
+      console.log(user.uid)
+      this.userData = user.uid
       console.log(this.user.login)
+      console.log(this.userData)
       console.log(user)
-      if(user){
-      alert(`この内容で登録してもよろしいでしょうか`)
-      const foods = {
-       foodmemo: this.message,
-       kinds:this.kinds,
-       ml:this.ml,
-       fooddate:this.fooddate
+      if (user) {
+        console.log(user)
+        alert(`この内容で登録してもよろしいでしょうか`)
+        const foods = {
+          foodmemo: this.message,
+          kinds: this.kinds,
+          ml: this.ml,
+          fooddate: this.fooddate,
+        }
+        //  this.userData = this.user
+        console.log(this.userData)
+        this.foodupdate(foods, this.userData)
+        this.$router.push({ name: 'index' })
+        this.foodmemo = ''
+        this.kinds = ''
+        this.ml = ''
+        this.fooddate = ''
+      } else {
+        console.log('ログインしていません')
       }
-       this.userData = this.user
-       console.log(this.userData)
-      this.foodupdate(foods,this.userData)
-      this.$router.push({ name: 'index' })
-      this.foodmemo=""
-      this.kinds=""
-      this.ml=""
-      this.fooddate=""
-    }
-    else{
-      console.log('ログインしていません')
-    }},
+    },
     ...mapActions(['foodupdate']),
   },
 }
@@ -192,7 +252,7 @@ this.$store.dispatch("fetchUser")
 .food-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .food-container {
   text-align: center;
@@ -309,12 +369,12 @@ this.$store.dispatch("fetchUser")
   pointer-events: none;
   opacity: 0.5;
 }
-.container{
+.container {
   display: flex;
   flex-wrap: wrap;
-  display:inline-block
+  display: inline-block;
 }
-.button{
+.button {
   display: flex;
 }
 </style>

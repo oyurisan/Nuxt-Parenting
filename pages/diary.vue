@@ -1,41 +1,6 @@
 <template lang="javascript">
 <div class="container">
-  <div class="food-title">Baby Diary</div>
-   <!-- <div class="food-title">日記</div>
-     <editor
-       api-key="c99sb34ryqc6b8inobijqizl016zw4h1a5t0nazkgqf4lzn4"
-       :init="{
-         selector: 'textarea',
-         height : 300,
-         branding: false,
-         height: 300,
-         language: 'ja',
-         menubar: true,
-         element_format : 'html',
-         plugins: [
-           'advlist autolink lists link image charmap print preview anchor',
-           'searchreplace visualblocks code fullscreen',
-           'insertdatetime media table paste code help wordcount',
-           'image'
-         ],
-         toolbar:
-           'undo redo | formatselect | bold italic backcolor | \
-           alignleft aligncenter alignright alignjustify | \
-           bullist numlist outdent indent | removeformat | link image | emoticons,'
-       }"
-       v-model="content"
-     />
-        <div class="m-3">
-    <button class="px-2 py-1 bg-red-900 text-xl text-white font-semibold rounded hover:bg-red-900 w-56" @click="add">
-      <div class="button">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-保存</div></button></div>
-<h2>日記投稿一覧</h2>
-    <div v-for="item in diary" :key="item.content">
-{{content}}
-    </div> -->
+  <div class="food-title">写真投稿</div>
  <div class="drop_area">
    日時：<input  v-model="date" type="date"> <br>
        <textarea
@@ -138,7 +103,7 @@ export default {
 .food-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .days{
   font-size: 40px;

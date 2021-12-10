@@ -6,49 +6,16 @@
       <div class="timer">
         <div class="time">
           次の授乳まで残り🍼<br />
-          <div class="relative mb-4">
-          <div class="overflow-hidden h-2 text-xs flex rounded bg-blue-400">
-            <div style="width:30%"
-              class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500">
-            </div>
-          </div>
-        </div>
-          <!-- <div :style="styles"></div> -->
-          <k-progress 
-      status="success" 
-      type="line"
-      :percent="20" ></k-progress>
           <div class="container">
             <div class="m-3">
-              <button
-                class="
-                  w-12
-                  h-12
-                  bg-blue-400
-                  text-lg text-white
-                  font-semibold
-                  rounded-full
-                  hover:bg-blue-500
-                "
-                @click="countup"
-              >
+              <button  class="  w-12 h-12   bg-red-800   text-lg text-white   font-semibold rounded-full hover:bg-red-700 " @click="countup" >
                 +
               </button>
             </div>
             <div class="math">{{ CountTime }}</div>
             <div class="m-3">
               <button
-                class="
-                  w-12
-                  h-12
-                  bg-blue-400
-                  text-lg text-white
-                  font-semibold
-                  rounded-full
-                  hover:bg-blue-500
-                "
-                @click="countups"
-              >
+                class=" w-12  h-12  bg-red-800  text-lg text-white  font-semibold rounded-full hover:bg-red-700 " @click="countups">
                 +
               </button>
             </div>
@@ -57,42 +24,14 @@
         <div class="container">
           <div class="m-3">
             <button
-              class="
-                shadow-lg
-                px-2
-                py-1
-                bg-blue-600
-                text-lg text-white
-                font-semibold
-                rounded
-                hover:bg-blue-700 hover:shadow-sm hover:translate-y-0.5
-                transform
-                transition
-              "
-              @click="start"
-            >
+              class="shadow-lg px-2   py-1  bg-red-500  text-lg text-white  font-semibold  rounded  hover:bg-red-600 hover:shadow-sm hover:translate-y-0.5  transform
+                transition " @click="start">
               <div class="button">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  width="30px"
-                  height="30px"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"  fill="none" viewBox="0 0 24 24"  stroke="currentColor"  width="30px"
+                  height="30px">
+                  <path stroke-linecap="round"  stroke-linejoin="round"  stroke-width="2"
+                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                  <path  stroke-linecap="round" stroke-linejoin="round"   stroke-width="2"  d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 開始
               </div>
@@ -100,40 +39,14 @@
           </div>
           <div class="m-3">
             <button
-              class="
-                shadow-lg
-                px-2
-                py-1
-                bg-blue-600
-                text-lg text-white
-                font-semibold
-                rounded
-                hover:bg-blue-700 hover:shadow-sm hover:translate-y-0.5
-                transform
-                transition
-              "
-              @click="stop"
-            >
+              class=" shadow-lg px-2  py-1 bg-red-500  text-lg text-white  font-semibold rounded
+                hover:bg-red-600 hover:shadow-sm hover:translate-y-0.5transform transition " @click="stop">
               <div class="button">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg"  class="h-6 w-6"  fill="none"  viewBox="0 0 24 24" stroke="currentColor">
+                  <path  stroke-linecap="round"  stroke-linejoin="round"  stroke-width="2"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path  stroke-linecap="round"  stroke-linejoin="round"  stroke-width="2"
+                    d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/>
                 </svg>
                 停止
               </div>
@@ -141,55 +54,62 @@
           </div>
         </div>
       </div>
+      <button @click="musicstop">a</button>
     </div>
     <div class="food-title">子守唄</div>
+    <div class="container">
+      <div class="item">
+     <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
     <button @click="komori1">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-        />
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><br>
       </svg>
     </button>
     <button>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"  viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+    </button><br>
+    music1
+  </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <div class="item">
+     <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
+    <button @click="komori2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><br>
       </svg>
     </button>
-    子守唄①
-    <button @click="komori2">
-      <img src="~/assets/nn.jpg" height="300px" />
-    </button>
-    子守唄②
+    <button>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"  viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+    </button><br>
+    music2
+  </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="item">
+     <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
     <button @click="komori3">
-      <img src="~/assets/nn.jpg" height="300px" />
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><br>
+      </svg>
     </button>
-    子守唄③
+    <button>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"  viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+    </button><br>
+    music3
+  </div>
+    </div>
   </div>
 </template>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
@@ -201,7 +121,6 @@ import soundss from '~/assets/audios/odayaka.mp3'
 import soundsss from '~/assets/audios/neko.mp3'
 export default {
   components:{
-  
   },
   data() {
     return {
@@ -282,6 +201,7 @@ export default {
     stop() {
       clearInterval(this.timerObj)
       this.timerOn = false
+      this.musicstop()
       // timerがOFFであることを保持
     },
     // 時間が経過したら
@@ -294,7 +214,10 @@ export default {
     },
     musicstop() {
       const music = new Audio(sound)
-      music.pause()
+      music.pause(sound)
+      console.log(`aa`)
+      music.currentTime = 0;
+      console.log(`pp`)
     },
     komori1() {
       const sound = new Audio(sounds)
@@ -316,9 +239,11 @@ export default {
 <style>
 .container {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;;
 }
 .math {
-  font-size: 30px;
+  font-size: 50px;
 }
 .button {
   display: flex;

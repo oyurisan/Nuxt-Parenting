@@ -111,6 +111,9 @@ export default {
   head: {
     title: 'プロフィール画面',
   },
+  created(){
+ this.$store.dispatch('fetchUser')
+},
 }
 </script>
 

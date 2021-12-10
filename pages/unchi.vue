@@ -129,7 +129,9 @@ export default {
   head: {
     title: 'うんちっち',
   },
-
+created(){
+ this.$store.dispatch('fetchUser')
+},
   computed: {
     ...mapGetters(['getUnchi', 'getUserItems']),
   },
@@ -162,7 +164,7 @@ export default {
 .unchi-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .unchi-container {
   text-align: center;

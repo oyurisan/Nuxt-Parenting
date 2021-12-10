@@ -1,11 +1,9 @@
 <template>
   <div class="signup">
     <h3>新規登録画面</h3>
-
     <div class="profileImg">
       <upload v-model="picture" />
     </div>
-
     <p>赤ちゃんのニックネーム</p>
     <input v-model="babyname" type="text" />
     <br />
@@ -82,7 +80,7 @@ export default {
        }
       this.updateuser(users)
       this.$router.push({ name: 'index' })
-    },
+    }
   },
   ...mapActions(['userupdate']),
 }

@@ -1,41 +1,29 @@
 <template>
   <div class="allergy">
     <div class="title">
-      アレルギーリスト登録画面
+      アレルギー登録画面
     </div>
-    <p>表示義務７品目</p>
+    <div class="box_sample03">
     <div class="container">
-      <div v-for="item in foodduty" :key="item.foodname" class="allergy">
+      <div v-for="item in foodduty" :key="item.foodname" class="allergyy">
     <div class="item">
         <img
           :src="require(`~/assets/` + item.icon)"
-          width="30px"
-          height="30px"
+          width="50px"
+          height="50px"
         />
-        <label name="allergy">
-          {{ item.foodname }}
-          <input type="checkbox" name="allergy" class="allergy" :value="item.foodname" >
-        </label>
+        <!-- <label class="allergy">
+          {{item.foodname}}
+          <input type="checkbox" class="inputall"  name="allergy" :value="item.foodname">
+        <span class="all"></span><span class="alls">
+          </span>
+          </label> -->
+          <input type="checkbox" id="01-A" name="checkbox01" >
+<label for="01-A" class="checkbox01">{{item.foodname}}</label>
     </div>
     </div>
 </div>
-    <p>表示推奨２０品目</p>
-   <div class="container">
-      <div v-for="item in foodreco" :key="item.foodname">
-        <div class="item">
-        <img
-          :src="require(`~/assets/` + item.icon)"
-          width="30px"
-          height="30px"
-        />
-        <label name="allergy">
-          {{ item.foodname }}
-          <input type="checkbox" name="allergy" class="allergy" :value="item.foodname">
-        </label>
-        </div>
- </div>    
-    </div>
-
+</div>
       <div class="m-3">
     <button class="px-2 py-1 bg-red-900 text-xl text-white font-semibold rounded hover:bg-red-900 w-56" @click="getallergy">
       <div class="button">
@@ -49,7 +37,6 @@
 <script>
 import { mapActions } from 'vuex'
 
-
 export default {
   data() {
     return {
@@ -61,9 +48,7 @@ export default {
         { foodname: `卵`, icon: '5.jpg' },
         { foodname: `乳`, icon: '6.jpg' },
         { foodname: `落花生`, icon: '7.jpg' },
-      ],
-      foodreco: [
-        { foodname: `あわび`, icon: '8.jpg' },
+         { foodname: `あわび`, icon: '8.jpg' },
         { foodname: `イカ`, icon: '9.jpg' },
         { foodname: `いくら`, icon: '10.jpg' },
         { foodname: `オレンジ`, icon: '11.jpg' },
@@ -91,7 +76,7 @@ export default {
       this.$router.push({ name: 'index' })
     },
     getallergy() {
-      const allergy = document.getElementsByClassName('allergy')
+      const allergy = document.getElementsByClassName('inputall')
      let newallergy = []
       for (let i = 0; i < allergy.length; i++) {
         if (allergy[i].checked === true) {
@@ -99,9 +84,9 @@ export default {
         }}
       const allergys={
           newallergy
-        }
+          }
         this.allergyupdate(allergys)
-        this.$store.dispatch('fetchUser')
+        // this.$store.dispatch('fetchUser')
       },
     ...mapActions(["allergyupdate"])
   },
@@ -110,18 +95,121 @@ export default {
 
 <style lang="scss">
 .container{
-  display: flex;
+display: flex;
 flex-wrap: wrap;
-align-content:stretch
+align-content:stretch;
+justify-content: center;
 }
+.item { 
+  flex-basis: auto ;
+  flex: 1;
+  flex-basis: 100px;
+  flex-grow :4;
+ flex-basis :auto
+  }
 .title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
 }
-.allergy {
-  text-align: center;
-  margin: 5%;
+.allergyy {
+  padding: 12px 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.inputall {
+  margin: 0;
+  width: 0;
+  opacity: 0;
+}
+.input:hover > .inputall{
+  background: #CCCCCC;
+}
+.input:focus + .all{
+  background: #CCCCCC;
+}
+.input:checked + .all {
+  background: #555555;
+}
+.input:checked + .all::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 35%;
+  height: 2px;
+  transform: translate(-5px, 6px) rotateZ(-135deg);
+  transform-origin: 1px 1px;
+  background: #FFFFFF;
+}
+.input:checked + .all::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 2px;
+  transform: translate(-5px, 6px) rotateZ(-45deg);
+  transform-origin: 1px 1px;
+  background: #FFFFFF;
+}
+.all {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: #F5F5F5;
+  box-shadow: 0 1px 4px rgba(0,0,0, .4) inset;
+}
+.alls {
+  margin-left: 12px;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+}
+input[type=checkbox] {
+    display: none;
+}
+.checkbox01 {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 30px;
+    position: relative;
+    width: auto;
+}
+.checkbox01::before {
+    background: #fff;
+    border: 1px solid #231815;
+    content: '';
+    display: block;
+    height: 16px;
+    left: 5px;
+    margin-top: -8px;
+    position: absolute;
+    top: 50%;
+    width: 16px;
+}
+.checkbox01::after {
+    border-right: 3px solid #ed7a9c;
+    border-bottom: 3px solid #ed7a9c;
+    content: '';
+    display: block;
+    height: 9px;
+    left: 10px;
+    margin-top: -7px;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: rotate(45deg);
+    width: 5px;
+}
+input[type=checkbox]:checked + .checkbox01::after {
+    opacity: 1;
 }
 .touroku {
   border: 2px solid #000;
@@ -135,5 +223,9 @@ align-content:stretch
 .button{
   display: flex;
 }
-.item { flex-basis: auto }
+.box_sample03 {
+ border: 1px solid #9e6e7f;
+ padding: 5px;
+ margin: 0px 0px 10px 0px;
+}
 </style>

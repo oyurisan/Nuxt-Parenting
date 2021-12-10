@@ -3,15 +3,15 @@ import firebase from '~/plugins/firebase'
 
 const db = firebase.firestore()
 const UserRef = db.collection(`User`)
+// this.uid = String(uid)
 
 export const state = () => ({
   user: {
-    uid: '',
+    uid: "",
     email: '',
     // ログイン状態の真偽値
     login: false,
   },
-  UserInfo: '',
   FoodList: [],
   chartData: [50, 51, 53, 55, 56, 58, 61, 63, 65, 68, 70, 71],
   chartDataW: [3, 3.4, 3.7, 4.1, 4.5, 4.8, 5.3, 5.6, 5.8, 6.1, 6.6, 7.4],
@@ -19,8 +19,9 @@ export const state = () => ({
     height: [50, 51, 53, 55, 56, 58],
     months: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
   },
+  // ユーザー情報が入る
+UserInfo:"",
   weightDatas: [{ weight: 3.0, months: 0 }],
-
   // DBから取った全部の情報
   allData: [],
   // 身長のデータ配列たち
@@ -29,10 +30,9 @@ export const state = () => ({
   // heightLists2: ['', '', '42.9', '43.3', '44.0', '', '', '', '', '', '', '46.5'],
   heightLists3: [],
 })
-
 export const getters = {
   user: (state) => {
-    return state.user
+    return state.user.uid
   },
   userid: (state) => {
     return state.user ? state.user.uid : null
@@ -73,9 +73,9 @@ export const actions = {
       })
   },
   // アレルギー更新
-  allergyupdate(commit, {allergys,userData}) {
-    UserRef.doc(userData)
-    console.log(userData)
+  allergyupdate({commit}, allergys) {
+    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
+    // console.log(userData)
       .update({
         allergy: firebase.firestore.FieldValue.arrayUnion({
           newallergy: allergys.newallergy,
@@ -100,10 +100,10 @@ export const actions = {
       })
   },
   // ご飯更新
-  foodupdate({commit}, foods) {
+  foodupdate({commit,state}, foods,) {
     console.log(state.UserInfo)
     UserRef.doc(state.UserInfo)
-    console.log(getters.getUserInfo)
+    console.log(state.UserInfo)
       .update({
         food: firebase.firestore.FieldValue.arrayUnion({
           foodmemo: foods.foodmemo,
@@ -176,7 +176,7 @@ export const actions = {
   // 初期情報追加
   adds({ getters }) {
     console.log('ugoi')
-    console.log(getters)
+    console.log(getters.getUserInfo)
     db.collection(`User`).doc(getters.userid)
     console.log(getters.userid).add({
       users: [{ babyname: '', birthday: '', gender: '' }],
@@ -207,17 +207,18 @@ export const actions = {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         commit('getData', { uid: user.uid, email: user.email })
+        console.log(uid)
         commit('switchlogin')
       }
     })
   },
   // ログイン
-  login({ dispatch, getters }, payload) {
+  login({ getters }, payload) {
     firebase
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
-      .then((user) => {
-        dispatch('checkLogin')
+      .then(() => {
+        dispatch('checklogin')
         $nuxt.$router.push(`/SignUp`)
         console.log(getters.userid)
       })
@@ -246,9 +247,11 @@ export const actions = {
       })
     })
   },
+  // ユーザー情報取得
   fetchUser({commit},userData ) {
-   console.log(userData)
+   console.log(`ff`)
    commit('fetchUser',userData)
+  //  console.log(userData)
   },
   // 新規登録ユーザーに確認のメールを送信する
   sendemail(commit) {
@@ -268,7 +271,9 @@ export const mutations = {
   // データをpayloadに代入
   getData(state, payload) {
     console.log(payload)
+    console.log(state.user.uid)
     state.user.uid = payload.uid
+    console.log(state.user.uid)
     state.user.email = payload.email
   },
   switchlogin(state) {
@@ -287,10 +292,11 @@ export const mutations = {
     state.allData = Item
     console.log(Item)
   },
-  fetchUser(state, userData) {
-    // state.user.uid= userData
+   // ユーザー情報取得
+  fetchUser(state,userData){
+    console.log(`m`)
     state.UserInfo=userData
-    console.log(userData)
     console.log(state.UserInfo)
-  },
+    console.log(userData)
+  }
 }

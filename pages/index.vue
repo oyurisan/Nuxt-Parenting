@@ -38,6 +38,7 @@ export default {
   },
   created() {
     this.$store.dispatch('fetchAllData')
+ this.$store.dispatch('fetchUser')
   },
   methods: {
     data() {

@@ -55,10 +55,13 @@ export default {
       urinedate: '',
     }
   },
+  
   head: {
     title: 'おしっこ',
   },
-
+created(){
+ this.$store.dispatch('fetchUser')
+},
   methods: {
     saveUrine () {
       this.$router.push({ name: 'index' })
@@ -86,7 +89,7 @@ export default {
 .urine-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .urine-container {
   text-align: center;
