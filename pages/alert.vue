@@ -1,6 +1,6 @@
 <template>
   <div class="timer">
-    <div class="food-title">授乳タイマー</div>
+    <div class="timer-title">MILK TIMER</div>
 
     <div id="timer">
       <div class="timer">
@@ -142,7 +142,7 @@
         </div>
       </div>
     </div>
-    <div class="food-title">子守唄</div>
+    <div class="timer-title">LULLABY</div>
     <button @click="komori1">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -313,7 +313,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
 .container {
   display: flex;
 }
@@ -327,9 +329,11 @@ export default {
   width: 400px;
   margin: auto;
 }
-.food-title {
+.timer-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
+  margin: 10% 0 5% 0;
+  font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 </style>

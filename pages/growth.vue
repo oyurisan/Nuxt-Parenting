@@ -176,8 +176,9 @@ export default {
 .growth-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
+  margin: 10% 0 5% 0;
   font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 .button{
   display: flex;

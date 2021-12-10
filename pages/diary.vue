@@ -1,6 +1,6 @@
 <template lang="javascript">
 <div class="container">
-  <div class="food-title">Baby Diary</div>
+  <div class=" diary-title">Baby Diary</div>
    <!-- <div class="food-title">日記</div>
      <editor
        api-key="c99sb34ryqc6b8inobijqizl016zw4h1a5t0nazkgqf4lzn4"
@@ -132,16 +132,17 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  // font-size: 20px;
 }
 .button {
   display: flex;
 }
-.food-title {
+.diary-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 5%;
+  margin: 5% 0 5% 0;
   font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 .days{
   font-size: 40px;

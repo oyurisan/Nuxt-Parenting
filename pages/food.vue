@@ -3,7 +3,6 @@
     <div class="food-title">MILK PAGE</div>
 
     <div class="food-container">
-      <div>🍼food🍴</div>
       <div>
         日時 : <input v-model="fooddate" type="datetime-local" name="Date" />
       </div>
@@ -257,8 +256,9 @@ export default {
 .food-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 5%;
+  margin: 5% 0 5% 0;
   font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 .food-container {
   text-align: center;

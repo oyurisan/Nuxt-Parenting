@@ -87,8 +87,9 @@ export default {
 .urine-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 5%;
+  margin: 5% 0 5% 0;
   font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 .urine-container {
   text-align: center;

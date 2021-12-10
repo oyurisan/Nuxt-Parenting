@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="profileImg">
-      <div class="profile-title">プロフィール画面</div>
+      <div class="profile-title">PROFILE</div>
       <div class="profile-container">
         <div class="upload-img">
           <upload v-model="picture" />
@@ -24,44 +24,13 @@
         </div>
       </div>
 
-      <!-- <div>
-        アレルギー :
-        <div class="container">
-          <div v-for="item in foodduty" :key="item.foodname">
-            <img
-              :src="require(`~/assets/` + item.icon)"
-              width="30px"
-              height="30px"
-            />
-            <div class="boxs">
-              <label name="allergy" class="label">
-                {{ item.foodname }}
-              </label>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- <div class="container">
-          <div v-for="item in foodreco" :key="item.foodname">
-            <img
-              :src="require(`~/assets/` + item.icon)"
-              width="30px"
-              height="30px"
-            />
-            <label name="allergy">
-              {{ item.foodname }}
-            </label>
-          </div>
-        </div>
-      </div> -->
-
       アレルギー : <div v-for="allergyItem in getAllData.allergy" :key="allergyItem.id">
         <div class="container2">
           <div v-for="item in allergyItem.newallergy" :key="item.id">
             <img
               :src="require(`~/assets/` + item)"
-              width="30px"
-              height="30px"
+              width="70px"
+              height="70px"
             />
           </div>
         </div>
@@ -78,19 +47,16 @@
 <script>
 import { mapGetters } from 'vuex'
 import Upload from '../components/imgUpLoad'
-
 export default {
   components: {
     Upload,
   },
-
   data() {
     return {
       name: '',
       gender: '',
       birth: '',
       picture: null,
-
       foodduty: [
         { foodname: `えび`, icon: '1.jpg' },
         { foodname: `かに`, icon: '2.jpg' },
@@ -124,15 +90,12 @@ export default {
       ],
     }
   },
-
   head: {
     title: 'プロフィール画面',
   },
-
   computed: {
     ...mapGetters(['getAllData']),
   },
-
   created() {
     this.$store.dispatch('fetchAllData')
   },
@@ -141,12 +104,8 @@ export default {
 
 
 <style lang="scss">
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  opacity: 0.5;
-  gap: 10px 10px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
 .container2 {
   display: flex;
   flex-wrap: wrap;
@@ -166,6 +125,10 @@ export default {
 }
 .profile-title {
   text-align: center;
+  font-size: 200%;
+  margin-top: 5%;
+  font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 .upload-img {
   text-align: center;

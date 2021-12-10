@@ -155,8 +155,9 @@ export default {
 .allergy-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 15%;
+  margin: 5% 0 5% 0;
   font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 .allergy {
   text-align: center;
