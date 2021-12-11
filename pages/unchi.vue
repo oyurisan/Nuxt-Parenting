@@ -1,6 +1,8 @@
 <template>
   <div class="unchi-main">
     <div class="unchi-title">UNCHI PAGE</div>
+    <div class="unchi-flower"></div>
+
     <div class="unchi-container">
       <div>
         日時 : <input v-model="unchidate" type="datetime-local" name="Date" />
@@ -77,31 +79,86 @@
       </div>
       <textarea
         v-model="unchimemo"
-      placeholder="タップしてテキストを入力"
+        class="textarea"
         cols="30"
         rows="5"
         name="Memo"
+        placeholder="タップしてテキストを入力"
         maxlength="500"
       />
       <p>{{ unchimemo.length }}/500 文字</p>
-      <div class="container">
-        </div>
-        <div class="m-3">
-    <button class="px-2 py-1 bg-dark-red text-xl text-white font-semibold rounded hover:bg-light-red w-56" @click="addunchi">
-      <div class="button">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-保存</div></button></div>
-        <div class="m-3">
-    <button class="px-2 py-1 bg-blue-900 text-xl text-white font-semibold rounded hover:bg-blue-900 w-56" @click="back">
-      <div class="button">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-戻る</div></button></div>
+      <div class="container"></div>
+      <div class="m-3">
+        <button
+          class="
+            px-2
+            py-1
+            bg-dark-red
+            text-xl text-white
+            font-semibold
+            rounded
+            hover:bg-light-red
+            w-56
+          "
+          @click="addunchi"
+        >
+          <div class="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              width="30px"
+              height="30px"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="{2}"
+                d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+              /></svg
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 保存
+          </div>
+        </button>
+      </div>
+      <div class="m-3">
+        <button
+          class="
+            px-2
+            py-1
+            bg-blue-900
+            text-xl text-white
+            font-semibold
+            rounded
+            hover:bg-blue-900
+            w-56
+          "
+          @click="back"
+        >
+          <div class="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              width="30px"
+              height="30px"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
+              /></svg
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            戻る
+          </div>
+        </button>
       </div>
     </div>
+  </div>
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
@@ -168,10 +225,45 @@ created(){
 
 .unchi-title {
   text-align: center;
-  font-size: 200%;
-  margin-top: 2%;
+  margin: 5% 0 5% 0;
   font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
+  font-size: 200%;
+  
+  &::before {
+    content: '✻'; /*花に見せかけるためのアスタリスク*/
+    color: #fff; /* アスタリスクの色 */
+    display: inline-block;
+    font-size: 40px; /* アスタリスクの大きさ */
+    font-weight: bold;
+    left: 62%;
+    top: 25%;
+    position: absolute;
+    transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    text-shadow: 0px 0px 6px #eaa8bf, 0px 0px 10px #fff6f9, 0 0 10px #e4c2ce; /* アスタリスク周りの影 */
+  }
 }
+.unchi-flower {
+  &::before {
+    content: '❋ *'; /*花に見せかけるためのアスタリスク*/
+    color: #fff; /* アスタリスクの色 */
+    display: inline-block;
+    font-size: 35px; /* アスタリスクの大きさ */
+    font-weight: bold;
+    left: 35%;
+    top: 33%;
+    position: absolute;
+    transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    text-shadow: 0px 0px 6px #eaa8bf, 0px 0px 10px #fff6f9, 0 0 10px #e4c2ce; /* アスタリスク周りの影 */
+  }
+}
+
 .unchi-container {
   text-align: center;
   margin: 2%;
@@ -320,12 +412,12 @@ input[type='radio']:checked + .radio-text-yellow:before {
     border-radius: 50%;
   }
 }
-.container{
+.container {
   display: flex;
   flex-wrap: wrap;
-  display:inline-block
+  display: inline-block;
 }
-.button{
+.button {
   display: flex;
 }
 </style>

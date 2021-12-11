@@ -1,8 +1,12 @@
 <template>
   <div>
-    <div class="home-title">Home</div>
+    <div class="home-title">
+      HOME
+    </div>
 
-    <Calender />
+    <div>
+      <Calender />
+    </div>
   </div>
 </template>
 
@@ -17,7 +21,6 @@ export default {
   },
   created() {
     this.$store.dispatch('fetchAllData')
- this.$store.dispatch('fetchUser')
   },
   methods: {
     data() {
@@ -28,11 +31,19 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+.sample {
+  color: rgb(65, 40, 40);
+}
+
 .home-title {
   text-align: center;
   font-size: 200%;
   margin-top: 5%;
+  font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
+
 .link {
   text-align: center;
   margin-top: 5%;

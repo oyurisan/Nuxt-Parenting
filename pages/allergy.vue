@@ -12,12 +12,6 @@
           width="50px"
           height="50px"
         />
-        <!-- <label class="allergy">
-          {{item.foodname}}
-          <input type="checkbox" class="inputall"  name="allergy" :value="item.foodname">
-        <span class="all"></span><span class="alls">
-          </span>
-          </label> -->
           <input type="checkbox" id="01-A" name="checkbox01" >
 <label for="01-A" class="checkbox01">{{item.foodname}}</label>
     </div>
@@ -115,6 +109,9 @@ justify-content: center;
 .title {
   text-align: center;
   font-size: 200%;
+  margin: 5% 0 5% 0;
+  font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 .allergyy {
   padding: 12px 8px;

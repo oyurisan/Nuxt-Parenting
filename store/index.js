@@ -229,6 +229,7 @@ export const actions = {
     UserRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         commit('fetchItems', doc.data())
+        console.log(doc.data());
       })
     })
   },

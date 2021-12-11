@@ -32,6 +32,6 @@ export default {
 
 <style>
 .textarea {
-  border: 1px solid rgb(136, 80, 80);
+  border: 1px solid rgb(179, 161, 161);
 }
 </style>

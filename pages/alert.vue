@@ -1,6 +1,6 @@
 <template>
   <div class="timer">
-    <div class="food-title">授乳タイマー</div>
+    <div class="timer-title">MILK TIMER</div>
 
     <div id="timer">
       <div class="timer">
@@ -56,10 +56,10 @@
       </div>
       <button @click="musicstop">a</button>
     </div>
-    <div class="food-title">子守唄</div>
     <div class="container">
       <div class="item">
      <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
+    <div class="timer-title">LULLABY</div>
     <button @click="komori1">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -236,7 +236,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -252,9 +254,11 @@ export default {
   width: 400px;
   margin: auto;
 }
-.food-title {
+.timer-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 10%;
+  margin: 10% 0 5% 0;
+  font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 </style>

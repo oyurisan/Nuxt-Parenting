@@ -295,7 +295,7 @@
                 ring-offset-current ring-offset-2
                 hover:text-blue-600
               "
-              >Timer &amp; Musci</a
+              >Timer &amp; Music</a
             >
           </li>
         </ul>
@@ -307,7 +307,7 @@
 
 
 <script>
-import firebase from '~/plugins/firebase'
+// import firebase from '~/plugins/firebase'
 
 export default {
   data() {
@@ -315,18 +315,18 @@ export default {
       isLogin: false,
     }
   },
-  mounted() {
-    firebase.auth().onAuthStateChanged((user) => {
-      console.log(user)
-      if (user) {
-        this.isLogin = true
-        this.userData = user
-      } else {
-        this.isLogin = false
-        this.userData = null
-      }
-    })
-  },
+  // mounted() {
+  //   firebase.auth().onAuthStateChanged((user) => {
+  //     console.log(user)
+  //     if (user) {
+  //       this.isLogin = true
+  //       this.userData = user
+  //     } else {
+  //       this.isLogin = false
+  //       this.userData = null
+  //     }
+  //   })
+  // },
 }
 </script>
 

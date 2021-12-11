@@ -1,14 +1,11 @@
 <template>
   <div>
-    <div class="graph-title">
-      成長曲線
-      <div>(身長・体重)</div>
-    </div>
+    <div class="graph-title">GRAPH</div>
 
     <div class="hw-button-frame">
-      <button class="hw-button" @click="active1">~ 1歳</button>
-      <button class="hw-button" @click="active2">1歳 ~ 2歳</button>
-      <button class="hw-button" @click="active3">2歳 ~ 3歳</button>
+      <button class="hw-button1" @click="active1">0歳1ヶ月 ~ 1歳</button>
+      <button class="hw-button2" @click="active2">1歳1ヶ月 ~ 2歳</button>
+      <button class="hw-button3" @click="active3">2歳1ヶ月 ~ 3歳</button>
     </div>
 
     <!-- <div>{{this.heightLists1}}</div>
@@ -19,11 +16,28 @@
     <div>{{this.weightLists3}}</div>
     <div>{{this.word}}</div> -->
 
-
     <div class="chart">
-      <div v-if="isActive"><Chart :options="chartData" :lists1="heightLists1" :lists11="weightLists1"/></div>
-      <div v-if="isActive2"><Chart2 :options="chartData" :lists2="heightLists2" :lists22="weightLists2"/></div>
-      <div v-if="isActive3"><Chart3 :options="chartData" :lists3="heightLists3" :lists33="weightLists3"/></div>
+      <div v-if="isActive">
+        <Chart
+          :options="chartData"
+          :lists1="heightLists1"
+          :lists11="weightLists1"
+        />
+      </div>
+      <div v-if="isActive2">
+        <Chart2
+          :options="chartData"
+          :lists2="heightLists2"
+          :lists22="weightLists2"
+        />
+      </div>
+      <div v-if="isActive3">
+        <Chart3
+          :options="chartData"
+          :lists3="heightLists3"
+          :lists33="weightLists3"
+        />
+      </div>
     </div>
 
     <div class="backHome">
@@ -59,13 +73,12 @@ export default {
       weightLists1: [],
       weightLists2: [],
       weightLists3: [],
-      kari : ['', '', '', '', '', '', '', '', '', '', '', ''],
+      kari: ['', '', '', '', '', '', '', '', '', '', '', ''],
     }
   },
 
   computed: {
     chartData() {
-
       // 0歳01ヶ月 - 0歳12ヶ月 データ (身長)
       const endData0 = ['', '', '', '', '', '', '', '', '', '', '', ''] // 1歳1ヶ月 - 1歳12ヶ月データ 身長
       let data001 = '' // 0歳1ヶ月
@@ -90,71 +103,80 @@ export default {
         // console.log(heightArray3);
       }
 
-      const testArray = []      
-           
-      for(let i=1; i<13; i++){
+      const testArray = []
+
+      for (let i = 1; i < 13; i++) {
         let check = false
-        const hA = heightArray000.map(h => {
-          if(h.babyyear === String(i * 0.01)){
+        const hA = heightArray000.map((h) => {
+          if (h.babyyear === String(i * 0.01)) {
             testArray.push(h.height)
             check = true
           }
           return h
         })
-        if(!check) testArray.push(0)
-        
+        if (!check) testArray.push(0)
       }
-      console.log(testArray, 'testarray');
+      console.log(testArray, 'testarray')
 
       for (let i = 0; i < heightArray000.length; i++) {
         // console.log(heightArray3[i])
         if (heightArray000[i].babyyear === '0.01') {
-          data001 = (heightArray000[i].babyyear === '0.01') && heightArray000[i].height
+          data001 =
+            heightArray000[i].babyyear === '0.01' && heightArray000[i].height
           endData0[0] = data001
         } else if (heightArray000[i].babyyear === '0.02') {
-          data002 = (heightArray000[i].babyyear === '0.02') && heightArray000[i].height
+          data002 =
+            heightArray000[i].babyyear === '0.02' && heightArray000[i].height
           endData0[1] = data002
         } else if (heightArray000[i].babyyear === '0.03') {
-          data003 = (heightArray000[i].babyyear === '0.03') && heightArray000[i].height
+          data003 =
+            heightArray000[i].babyyear === '0.03' && heightArray000[i].height
           endData0[2] = data003
         } else if (heightArray000[i].babyyear === '0.04') {
-          data004 = (heightArray000[i].babyyear === '0.04') && heightArray000[i].height
+          data004 =
+            heightArray000[i].babyyear === '0.04' && heightArray000[i].height
           endData0[3] = data004
         } else if (heightArray000[i].babyyear === '0.05') {
-          data005 = (heightArray000[i].babyyear === '0.05') && heightArray000[i].height
+          data005 =
+            heightArray000[i].babyyear === '0.05' && heightArray000[i].height
           endData0[4] = data005
         } else if (heightArray000[i].babyyear === '0.06') {
-          data006 = (heightArray000[i].babyyear === '0.06') && heightArray000[i].height
+          data006 =
+            heightArray000[i].babyyear === '0.06' && heightArray000[i].height
           endData0[5] = data006
         } else if (heightArray000[i].babyyear === '0.07') {
-          data007 = (heightArray000[i].babyyear === '0.07') && heightArray000[i].height
+          data007 =
+            heightArray000[i].babyyear === '0.07' && heightArray000[i].height
           endData0[6] = data007
         } else if (heightArray000[i].babyyear === '0.08') {
-          data008 = (heightArray000[i].babyyear === '0.08') && heightArray000[i].height
+          data008 =
+            heightArray000[i].babyyear === '0.08' && heightArray000[i].height
           endData0[7] = data008
         } else if (heightArray000[i].babyyear === '0.09') {
-          data009 = (heightArray000[i].babyyear === '0.09') && heightArray000[i].height
+          data009 =
+            heightArray000[i].babyyear === '0.09' && heightArray000[i].height
           endData0[8] = data009
         } else if (heightArray000[i].babyyear === '0.10') {
-          data010 = (heightArray000[i].babyyear === '0.10') && heightArray000[i].height
+          data010 =
+            heightArray000[i].babyyear === '0.10' && heightArray000[i].height
           endData0[9] = data010
         } else if (heightArray000[i].babyyear === '0.11') {
-          data011 = (heightArray000[i].babyyear === '0.11') && heightArray000[i].height
+          data011 =
+            heightArray000[i].babyyear === '0.11' && heightArray000[i].height
           endData0[10] = data011
         } else if (heightArray000[i].babyyear === '0.12') {
-          data012 = (heightArray000[i].babyyear === '0.12') && heightArray000[i].height
+          data012 =
+            heightArray000[i].babyyear === '0.12' && heightArray000[i].height
           endData0[11] = data012
         }
         console.log(endData0, 'endData0')
 
         // ふくさよう！！！！！！！！！！！！！
         this.method1H(endData0)
-        // return this.heightLists2 
+        // return this.heightLists2
       }
 
-
-
-// 0歳01ヶ月 - 0歳12ヶ月 データ (体重)
+      // 0歳01ヶ月 - 0歳12ヶ月 データ (体重)
       const endData0W = ['', '', '', '', '', '', '', '', '', '', '', ''] // 1歳1ヶ月 - 1歳12ヶ月データ 身長
       let data001W = '' // 0歳1ヶ月
       let data002W = '' // 0歳2ヶ月
@@ -181,40 +203,52 @@ export default {
       for (let i = 0; i < weightArray000.length; i++) {
         // console.log(heightArray3[i])
         if (weightArray000[i].babyyear === '0.01') {
-          data001W = (weightArray000[i].babyyear === '0.01') && weightArray000[i].weight
+          data001W =
+            weightArray000[i].babyyear === '0.01' && weightArray000[i].weight
           endData0W[0] = data001W
         } else if (weightArray000[i].babyyear === '0.02') {
-          data002W = (weightArray000[i].babyyear === '0.02') && weightArray000[i].weight
+          data002W =
+            weightArray000[i].babyyear === '0.02' && weightArray000[i].weight
           endData0W[1] = data002W
         } else if (weightArray000[i].babyyear === '0.03') {
-          data003W = (weightArray000[i].babyyear === '0.03') && weightArray000[i].weight
+          data003W =
+            weightArray000[i].babyyear === '0.03' && weightArray000[i].weight
           endData0W[2] = data003W
         } else if (weightArray000[i].babyyear === '0.04') {
-          data004W = (weightArray000[i].babyyear === '0.04') && weightArray000[i].weight
+          data004W =
+            weightArray000[i].babyyear === '0.04' && weightArray000[i].weight
           endData0W[3] = data004W
         } else if (weightArray000[i].babyyear === '0.05') {
-          data005W = (weightArray000[i].babyyear === '0.05') && weightArray000[i].weight
+          data005W =
+            weightArray000[i].babyyear === '0.05' && weightArray000[i].weight
           endData0W[4] = data005W
         } else if (weightArray000[i].babyyear === '0.06') {
-          data006W = (weightArray000[i].babyyear === '0.06') && weightArray000[i].weight
+          data006W =
+            weightArray000[i].babyyear === '0.06' && weightArray000[i].weight
           endData0W[5] = data006W
         } else if (weightArray000[i].babyyear === '0.07') {
-          data007W = (weightArray000[i].babyyear === '0.07') && weightArray000[i].weight
+          data007W =
+            weightArray000[i].babyyear === '0.07' && weightArray000[i].weight
           endData0W[6] = data007W
         } else if (weightArray000[i].babyyear === '0.08') {
-          data008W = (weightArray000[i].babyyear === '0.08') && weightArray000[i].weight
+          data008W =
+            weightArray000[i].babyyear === '0.08' && weightArray000[i].weight
           endData0W[7] = data008W
         } else if (weightArray000[i].babyyear === '0.09') {
-          data009W = (weightArray000[i].babyyear === '0.09') && weightArray000[i].weight
+          data009W =
+            weightArray000[i].babyyear === '0.09' && weightArray000[i].weight
           endData0W[8] = data009W
         } else if (weightArray000[i].babyyear === '0.10') {
-          data010W = (weightArray000[i].babyyear === '0.10') && weightArray000[i].weight
+          data010W =
+            weightArray000[i].babyyear === '0.10' && weightArray000[i].weight
           endData0W[9] = data010W
         } else if (weightArray000[i].babyyear === '0.11') {
-          data011W = (weightArray000[i].babyyear === '0.11') && weightArray000[i].weight
+          data011W =
+            weightArray000[i].babyyear === '0.11' && weightArray000[i].weight
           endData0W[10] = data011W
         } else if (weightArray000[i].babyyear === '0.12') {
-          data012W = (weightArray000[i].babyyear === '0.12') && weightArray000[i].weight
+          data012W =
+            weightArray000[i].babyyear === '0.12' && weightArray000[i].weight
           endData0W[11] = data012W
         }
         // console.log(endData2)
@@ -222,11 +256,10 @@ export default {
         // ふくさよう！！！！！！！！！！！！！
         // this.weightLists1 = endData0W
         this.method1W(endData0W)
-        // return this.heightLists2 
+        // return this.heightLists2
       }
 
-
-       // 1歳01ヶ月 - 1歳12ヶ月 データ (身長)
+      // 1歳01ヶ月 - 1歳12ヶ月 データ (身長)
       const endData2 = ['', '', '', '', '', '', '', '', '', '', '', ''] // 1歳1ヶ月 - 1歳12ヶ月データ 身長
       let data101 = '' // 1歳1ヶ月
       let data102 = '' // 1歳2ヶ月
@@ -253,49 +286,60 @@ export default {
       for (let i = 0; i < heightArray3.length; i++) {
         // console.log(heightArray3[i])
         if (heightArray3[i].babyyear === '1.01') {
-          data101 = (heightArray3[i].babyyear === '1.01') && heightArray3[i].height
+          data101 =
+            heightArray3[i].babyyear === '1.01' && heightArray3[i].height
           endData2[0] = data101
         } else if (heightArray3[i].babyyear === '1.02') {
-          data102 = (heightArray3[i].babyyear === '1.02') && heightArray3[i].height
+          data102 =
+            heightArray3[i].babyyear === '1.02' && heightArray3[i].height
           endData2[1] = data102
         } else if (heightArray3[i].babyyear === '1.03') {
-          data103 = (heightArray3[i].babyyear === '1.03') && heightArray3[i].height
+          data103 =
+            heightArray3[i].babyyear === '1.03' && heightArray3[i].height
           endData2[2] = data103
         } else if (heightArray3[i].babyyear === '1.04') {
-          data104 = (heightArray3[i].babyyear === '1.04') && heightArray3[i].height
+          data104 =
+            heightArray3[i].babyyear === '1.04' && heightArray3[i].height
           endData2[3] = data104
         } else if (heightArray3[i].babyyear === '1.05') {
-          data105 = (heightArray3[i].babyyear === '1.05') && heightArray3[i].height
+          data105 =
+            heightArray3[i].babyyear === '1.05' && heightArray3[i].height
           endData2[4] = data105
         } else if (heightArray3[i].babyyear === '1.06') {
-          data106 = (heightArray3[i].babyyear === '1.06') && heightArray3[i].height
+          data106 =
+            heightArray3[i].babyyear === '1.06' && heightArray3[i].height
           endData2[5] = data106
         } else if (heightArray3[i].babyyear === '1.07') {
-          data107 = (heightArray3[i].babyyear === '1.07') && heightArray3[i].height
+          data107 =
+            heightArray3[i].babyyear === '1.07' && heightArray3[i].height
           endData2[6] = data107
         } else if (heightArray3[i].babyyear === '1.08') {
-          data108 = (heightArray3[i].babyyear === '1.08') && heightArray3[i].height
+          data108 =
+            heightArray3[i].babyyear === '1.08' && heightArray3[i].height
           endData2[7] = data108
         } else if (heightArray3[i].babyyear === '1.09') {
-          data109 = (heightArray3[i].babyyear === '1.09') && heightArray3[i].height
+          data109 =
+            heightArray3[i].babyyear === '1.09' && heightArray3[i].height
           endData2[8] = data109
         } else if (heightArray3[i].babyyear === '1.10') {
-          data110 = (heightArray3[i].babyyear === '1.10') && heightArray3[i].height
+          data110 =
+            heightArray3[i].babyyear === '1.10' && heightArray3[i].height
           endData2[9] = data110
         } else if (heightArray3[i].babyyear === '1.11') {
-          data111 = (heightArray3[i].babyyear === '1.11') && heightArray3[i].height
+          data111 =
+            heightArray3[i].babyyear === '1.11' && heightArray3[i].height
           endData2[10] = data111
         } else if (heightArray3[i].babyyear === '1.12') {
-          data112 = (heightArray3[i].babyyear === '1.12') && heightArray3[i].height
+          data112 =
+            heightArray3[i].babyyear === '1.12' && heightArray3[i].height
           endData2[11] = data112
         }
         // console.log(endData2)
 
         // ふくさよう！！！！！！！！！！！！！
         this.method2H(endData2)
-        // return this.heightLists2 
+        // return this.heightLists2
       }
-
 
       // 1歳01ヶ月 - 1歳12ヶ月 データ (体重)
       const endData2W = ['', '', '', '', '', '', '', '', '', '', '', ''] // 1歳1ヶ月 - 1歳12ヶ月データ 体重
@@ -324,52 +368,61 @@ export default {
       for (let i = 0; i < weightArray3.length; i++) {
         // console.log(heightArray3[i])
         if (weightArray3[i].babyyear === '1.01') {
-          data101W = (weightArray3[i].babyyear === '1.01') && weightArray3[i].weight
+          data101W =
+            weightArray3[i].babyyear === '1.01' && weightArray3[i].weight
           endData2W[0] = data101W
         } else if (weightArray3[i].babyyear === '1.02') {
-          data102W = (weightArray3[i].babyyear === '1.02') && weightArray3[i].weight
+          data102W =
+            weightArray3[i].babyyear === '1.02' && weightArray3[i].weight
           endData2W[1] = data102W
         } else if (weightArray3[i].babyyear === '1.03') {
-          data103W = (weightArray3[i].babyyear === '1.03') && weightArray3[i].weight
+          data103W =
+            weightArray3[i].babyyear === '1.03' && weightArray3[i].weight
           endData2W[2] = data103W
         } else if (weightArray3[i].babyyear === '1.04') {
-          data104W = (weightArray3[i].babyyear === '1.04') && weightArray3[i].weight
+          data104W =
+            weightArray3[i].babyyear === '1.04' && weightArray3[i].weight
           endData2W[3] = data104W
         } else if (weightArray3[i].babyyear === '1.05') {
-          data105W = (weightArray3[i].babyyear === '1.05') && weightArray3[i].weight
+          data105W =
+            weightArray3[i].babyyear === '1.05' && weightArray3[i].weight
           endData2W[4] = data105W
         } else if (weightArray3[i].babyyear === '1.06') {
-          data106W = (weightArray3[i].babyyear === '1.06') && weightArray3[i].weight
+          data106W =
+            weightArray3[i].babyyear === '1.06' && weightArray3[i].weight
           endData2W[5] = data106W
         } else if (weightArray3[i].babyyear === '1.07') {
-          data107W = (weightArray3[i].babyyear === '1.07') && weightArray3[i].weight
+          data107W =
+            weightArray3[i].babyyear === '1.07' && weightArray3[i].weight
           endData2W[6] = data107W
         } else if (weightArray3[i].babyyear === '1.08') {
-          data108W = (weightArray3[i].babyyear === '1.08') && weightArray3[i].weight
+          data108W =
+            weightArray3[i].babyyear === '1.08' && weightArray3[i].weight
           endData2W[7] = data108W
         } else if (weightArray3[i].babyyear === '1.09') {
-          data109W = (weightArray3[i].babyyear === '1.09') && weightArray3[i].weight
+          data109W =
+            weightArray3[i].babyyear === '1.09' && weightArray3[i].weight
           endData2W[8] = data109W
         } else if (weightArray3[i].babyyear === '1.10') {
-          data110W = (weightArray3[i].babyyear === '1.10') && weightArray3[i].weight
+          data110W =
+            weightArray3[i].babyyear === '1.10' && weightArray3[i].weight
           endData2W[9] = data110W
         } else if (weightArray3[i].babyyear === '1.11') {
-          data111W = (weightArray3[i].babyyear === '1.11') && weightArray3[i].weight
+          data111W =
+            weightArray3[i].babyyear === '1.11' && weightArray3[i].weight
           endData2W[10] = data111W
         } else if (weightArray3[i].babyyear === '1.12') {
-          data112W = (weightArray3[i].babyyear === '1.12') && weightArray3[i].weight
+          data112W =
+            weightArray3[i].babyyear === '1.12' && weightArray3[i].weight
           endData2W[11] = data112W
         }
         // console.log(endData2W)
         // ふくさよう！！！！！！！！！！！！！
         this.method2W(endData2W)
-        // return this.heightLists2 
-
+        // return this.heightLists2
       }
 
-
-
-       // 2歳01ヶ月 - 2歳12ヶ月 データ (身長)
+      // 2歳01ヶ月 - 2歳12ヶ月 データ (身長)
       const endData3 = ['', '', '', '', '', '', '', '', '', '', '', ''] // 1歳1ヶ月 - 1歳12ヶ月データ 身長
       let data201 = '' // 1歳1ヶ月
       let data202 = '' // 1歳2ヶ月
@@ -396,51 +449,62 @@ export default {
       for (let i = 0; i < heightArray6.length; i++) {
         // console.log(heightArray3[i])
         if (heightArray6[i].babyyear === '2.01') {
-          data201 = (heightArray6[i].babyyear === '2.01') && heightArray6[i].height
+          data201 =
+            heightArray6[i].babyyear === '2.01' && heightArray6[i].height
           endData3[0] = data201
         } else if (heightArray6[i].babyyear === '2.02') {
-          data202 = (heightArray3[i].babyyear === '2.02') && heightArray6[i].height
+          data202 =
+            heightArray3[i].babyyear === '2.02' && heightArray6[i].height
           endData3[1] = data202
         } else if (heightArray6[i].babyyear === '2.03') {
-          data203 = (heightArray3[i].babyyear === '2.03') && heightArray6[i].height
+          data203 =
+            heightArray3[i].babyyear === '2.03' && heightArray6[i].height
           endData3[2] = data203
         } else if (heightArray6[i].babyyear === '2.04') {
-          data204 = (heightArray3[i].babyyear === '2.04') && heightArray6[i].height
+          data204 =
+            heightArray3[i].babyyear === '2.04' && heightArray6[i].height
           endData3[3] = data204
         } else if (heightArray6[i].babyyear === '2.05') {
-          data205 = (heightArray3[i].babyyear === '2.05') && heightArray6[i].height
+          data205 =
+            heightArray3[i].babyyear === '2.05' && heightArray6[i].height
           endData3[4] = data205
         } else if (heightArray6[i].babyyear === '2.06') {
-          data206 = (heightArray3[i].babyyear === '2.06') && heightArray6[i].height
+          data206 =
+            heightArray3[i].babyyear === '2.06' && heightArray6[i].height
           endData3[5] = data206
         } else if (heightArray6[i].babyyear === '2.07') {
-          data207 = (heightArray3[i].babyyear === '2.07') && heightArray6[i].height
+          data207 =
+            heightArray3[i].babyyear === '2.07' && heightArray6[i].height
           endData3[6] = data207
         } else if (heightArray6[i].babyyear === '2.08') {
-          data208 = (heightArray3[i].babyyear === '2.08') && heightArray6[i].height
+          data208 =
+            heightArray3[i].babyyear === '2.08' && heightArray6[i].height
           endData3[7] = data208
         } else if (heightArray6[i].babyyear === '2.09') {
-          data209 = (heightArray3[i].babyyear === '2.09') && heightArray6[i].height
+          data209 =
+            heightArray3[i].babyyear === '2.09' && heightArray6[i].height
           endData3[8] = data209
         } else if (heightArray6[i].babyyear === '2.10') {
-          data210 = (heightArray3[i].babyyear === '2.10') && heightArray6[i].height
+          data210 =
+            heightArray3[i].babyyear === '2.10' && heightArray6[i].height
           endData3[9] = data210
         } else if (heightArray6[i].babyyear === '2.11') {
-          data211 = (heightArray3[i].babyyear === '2.11') && heightArray6[i].height
+          data211 =
+            heightArray3[i].babyyear === '2.11' && heightArray6[i].height
           endData3[10] = data211
         } else if (heightArray6[i].babyyear === '2.12') {
-          data212 = (heightArray3[i].babyyear === '2.12') && heightArray6[i].height
+          data212 =
+            heightArray3[i].babyyear === '2.12' && heightArray6[i].height
           endData3[11] = data212
         }
         // console.log(endData2)
 
         // ふくさよう！！！！！！！！！！！！！
         this.method3H(endData3)
-        // return this.heightLists2 
+        // return this.heightLists2
       }
 
-
-       // 2歳01ヶ月 - 2歳12ヶ月 データ (体重)
+      // 2歳01ヶ月 - 2歳12ヶ月 データ (体重)
       const endData3W = ['', '', '', '', '', '', '', '', '', '', '', ''] // 2歳1ヶ月 - 2歳12ヶ月データ 身長
       let data201W = '' // 1歳1ヶ月
       let data202W = '' // 1歳2ヶ月
@@ -467,54 +531,63 @@ export default {
       for (let i = 0; i < weightArray6.length; i++) {
         // console.log(heightArray3[i])
         if (weightArray6[i].babyyear === '2.01') {
-          data201W = (weightArray6[i].babyyear === '2.01') && weightArray6[i].weight
+          data201W =
+            weightArray6[i].babyyear === '2.01' && weightArray6[i].weight
           endData3W[0] = data201W
         } else if (weightArray6[i].babyyear === '2.02') {
-          data202W = (weightArray3[i].babyyear === '2.02') && weightArray6[i].weight
+          data202W =
+            weightArray3[i].babyyear === '2.02' && weightArray6[i].weight
           endData3W[1] = data202W
         } else if (weightArray6[i].babyyear === '2.03') {
-          data203W = (weightArray3[i].babyyear === '2.03') && weightArray6[i].weight
+          data203W =
+            weightArray3[i].babyyear === '2.03' && weightArray6[i].weight
           endData3W[2] = data203W
         } else if (weightArray6[i].babyyear === '2.04') {
-          data204W = (weightArray3[i].babyyear === '2.04') && weightArray6[i].weight
+          data204W =
+            weightArray3[i].babyyear === '2.04' && weightArray6[i].weight
           endData3W[3] = data204W
         } else if (weightArray6[i].babyyear === '2.05') {
-          data205W = (weightArray3[i].babyyear === '2.05') && weightArray6[i].weight
+          data205W =
+            weightArray3[i].babyyear === '2.05' && weightArray6[i].weight
           endData3W[4] = data205W
         } else if (weightArray6[i].babyyear === '2.06') {
-          data206W = (weightArray3[i].babyyear === '2.06') && weightArray6[i].weight
+          data206W =
+            weightArray3[i].babyyear === '2.06' && weightArray6[i].weight
           endData3W[5] = data206W
         } else if (weightArray6[i].babyyear === '2.07') {
-          data207W = (weightArray3[i].babyyear === '2.07') && weightArray6[i].weight
+          data207W =
+            weightArray3[i].babyyear === '2.07' && weightArray6[i].weight
           endData3W[6] = data207W
         } else if (weightArray6[i].babyyear === '2.08') {
-          data208W = (weightArray3[i].babyyear === '2.08') && weightArray6[i].weight
+          data208W =
+            weightArray3[i].babyyear === '2.08' && weightArray6[i].weight
           endData3W[7] = data208W
         } else if (weightArray6[i].babyyear === '2.09') {
-          data209W = (weightArray3[i].babyyear === '2.09') && weightArray6[i].weight
+          data209W =
+            weightArray3[i].babyyear === '2.09' && weightArray6[i].weight
           endData3W[8] = data209W
         } else if (weightArray6[i].babyyear === '2.10') {
-          data210W = (weightArray3[i].babyyear === '2.10') && weightArray6[i].weight
+          data210W =
+            weightArray3[i].babyyear === '2.10' && weightArray6[i].weight
           endData3W[9] = data210W
         } else if (weightArray6[i].babyyear === '2.11') {
-          data211W = (weightArray3[i].babyyear === '2.11') && weightArray6[i].weight
+          data211W =
+            weightArray3[i].babyyear === '2.11' && weightArray6[i].weight
           endData3W[10] = data211W
         } else if (weightArray6[i].babyyear === '2.12') {
-          data212W = (weightArray3[i].babyyear === '2.12') && weightArray6[i].weight
+          data212W =
+            weightArray3[i].babyyear === '2.12' && weightArray6[i].weight
           endData3W[11] = data212W
         }
         console.log(endData3W)
 
         // ふくさよう！！！！！！！！！！！！！
         this.method3W(endData3W)
-        // return this.heightLists2 
+        // return this.heightLists2
       }
 
-        return {
-
-        }
-
-  },
+      return {}
+    },
 
     ...mapActions(['setHeightLists2']),
     ...mapGetters(['getAllData', 'getHeightLists2']),
@@ -531,7 +604,6 @@ export default {
     //       storeHeightDataArray3 = JSON.parse(storeHeightDataArray2)
     //     }
     //     console.log(storeHeightDataArray3);
-    
 
     this.$store.dispatch('fetchAllData')
 
@@ -569,16 +641,86 @@ export default {
     method3W(endData3W) {
       this.weightLists3 = endData3W
     },
-
   },
 }
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
+$button-opacity: 0.8;
+
+@mixin button-style (
+  $background-color: rgb(235, 139, 139),
+  $color: rgb(46, 0, 0),
+  $overflow: hidden,
+  $padding: 1% 5% 1% 5%,
+  $margin: 0 1.5% 0 1.5%,
+  $position: relative,
+  $border-radius: 5%
+) {
+  background-color: $background-color;
+  color: $color;
+  overflow: $overflow;
+  padding: $padding;
+  margin: $margin;
+  position: $position;
+  border-radius: $border-radius;
+}
+@mixin button-style-before (
+  $background-color: #fff,
+    $content: '',
+    $display: block,
+    $opacity: 0.3,
+    $transform: rotate(-50deg),
+    $position: absolute,
+    $bottom: -10px,
+    $right: -330px,
+    $width: 500px,
+    $height: 500px,
+) {
+  background-color: $background-color;
+    content: $content;
+    display: $display;
+    opacity: $opacity;
+    transform: $transform;
+    position: $position;
+    bottom: $bottom;
+    right: $right;
+    width: $width;
+    height: $height;
+}
+@mixin button-style-after (
+  $background-color: #fff,
+    $content: '',
+    $display: block,
+    $opacity: 0.3,
+    $transform: rotate(-70deg),
+    $position: absolute,
+    $bottom: -100px,
+    $right: -500px,
+    $width: 500px,
+    $height: 500px,
+) {
+  background-color: $background-color;
+    content: $content;
+    display: $display;
+    opacity: $opacity;
+    transform: $transform;
+    position: $position;
+    bottom: $bottom;
+    right: $right;
+    width: $width;
+    height: $height;
+}
+
+
 .graph-title {
   text-align: center;
-  margin: 10% 0 5% 0;
-  font-size: 36px;
+  font-size: 200%;
+  margin: 5% 0 5% 0;
+  font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 .backHome {
   text-align: center;
@@ -586,22 +728,54 @@ export default {
   background-color: darksalmon;
   width: 10%;
 }
+
 .hw-button-frame {
   margin: 5% auto 5% auto;
   text-align: center;
 }
-.hw-button {
-  background-color: rgb(209, 124, 149);
-  color: rgb(255, 253, 253);
-  width: 15%;
-  padding: 2.5% auto 2.5% auto;
-  text-align: center;
-  margin-left: 2%;
-  border-radius: 7%;
+.hw-button1 {
+  @include button-style();
+
+  &::before {
+    @include button-style-before();
+  }
+
+  &::after {
+    @include button-style-after();
+  }
   &:hover {
-    opacity: 0.8;
+    opacity: $button-opacity;
   }
 }
+.hw-button2 {
+  @include button-style();
+
+  &::before {
+    @include button-style-before();
+  }
+
+  &::after {
+    @include button-style-after();
+  }
+  &:hover {
+    opacity: $button-opacity;
+  }
+}
+.hw-button3 {
+  @include button-style();
+
+  &::before {
+    @include button-style-before();
+  }
+
+  &::after {
+    @include button-style-after();
+  }
+  &:hover {
+    opacity: $button-opacity;
+  }
+}
+
 .chart {
   width: 80%;
   margin: 5% auto 5% auto;
