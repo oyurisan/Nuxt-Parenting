@@ -90,16 +90,6 @@
       <div class="container"></div>
       <div class="m-3">
         <button
-          class="
-            px-2
-            py-1
-            bg-dark-red
-            text-xl text-white
-            font-semibold
-            rounded
-            hover:bg-light-red
-            w-56
-          "
           @click="addunchi"
         >
           <div class="button">
@@ -124,16 +114,6 @@
       </div>
       <div class="m-3">
         <button
-          class="
-            px-2
-            py-1
-            bg-blue-900
-            text-xl text-white
-            font-semibold
-            rounded
-            hover:bg-blue-900
-            w-56
-          "
           @click="back"
         >
           <div class="button">
@@ -181,7 +161,7 @@ export default {
   },
 
   head: {
-    title: 'うんちっち',
+    title: 'うんち管理',
   },
     computed: {
     ...mapGetters(['getUnchi', 'getUserItems']),
@@ -419,5 +399,16 @@ input[type='radio']:checked + .radio-text-yellow:before {
 }
 .button {
   display: flex;
+  // border: 2px solid #000;
+  border-radius: 0;
+   background:rgb(180, 98, 98);
+  margin: 5% 0 5% 0;
+    width: 250px;
+    padding: 5px;
+    border-radius:30px;
+  &:hover {
+    // color: #fff;
+  background: rgb(177, 90, 90);
+}
 }
 </style>

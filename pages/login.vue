@@ -8,8 +8,9 @@
       v-model="email"
       type="email"
       placeholder="email"
+       style="width: 250px;height: 30px;"
     /><br />パスワード<br />
-    <input v-model="password" type="password" placeholder="password" />
+    <input v-model="password" type="password" placeholder="password"  style="width: 250px;height: 30px;"/>
     <div class="loginOut-btn" v-if="!isLogin">
       <button class="logins" @click="login">ログイン</button>
     </div>
@@ -93,12 +94,16 @@ console.log(this.$store.state)
     margin: 7% 0 5% 0
 }
 .logins {
-  border: 2px solid #000;
+  // border: 2px solid #000;
   border-radius: 0;
-  background: #fff;
+   background:rgb(180, 98, 98);
+  margin: 5% 0 5% 0;
+    width: 250px;
+    padding: 5px;
+    border-radius:30px;
   &:hover {
-    color: #fff;
-    background: #000;
+    // color: #fff;
+  background: rgb(177, 90, 90);
   }
 }
 .loginOut-btn {

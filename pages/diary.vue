@@ -63,7 +63,7 @@
       
     </share-network>
      <div class="m-3">
-    <button class="px-2 py-1 bg-red-900 text-xl text-white font-semibold rounded hover:bg-red-900 w-56" @click="add">
+    <button  @click="add">
       <div class="button">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
@@ -100,6 +100,9 @@ export default {
       date:"",
       message:""
     }
+  },
+    head: {
+    title: '思い出',
   },
   component:{
   },
@@ -168,8 +171,21 @@ export default {
   transform: translateY(-50%);
   font-size: 1.2em;
 }
-
     .enter {
     border: 10px dotted powderblue;
     }
+    .button {
+  display: flex;
+  // border: 2px solid #000;
+  border-radius: 0;
+   background:rgb(180, 98, 98);
+  margin: 5% 0 5% 0;
+    width: 250px;
+    padding: 5px;
+    border-radius:30px;
+  &:hover {
+    // color: #fff;
+  background: rgb(177, 90, 90);
+}
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="newsignup">
-    <div class="newSignUp-title">NEW ACCOUNT
+    <div class="newSignUp-title">NEW ACCOUNT MAKE
     </div>
     <div class="login">
       メールアドレス<br /><input
@@ -8,16 +8,19 @@
         class="mail"
         type="email"
         placeholder="email"
+        style="width: 250px;height: 30px;"
       /><br />
       パスワード<br /><input
         v-model="password"
         type="password"
         placeholder="password"
+        style="width: 250px;height: 30px;"
       /><br />
       パスワード(確認用)<br /><input
         v-model="password"
         type="password"
         placeholder="password"
+        style="width: 250px;height: 30px;"
       />
       <div>
         <button class="touroku" @click="register">新規登録</button>
@@ -61,17 +64,24 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
 .newSignUp-title {
   text-align: center;
-  margin: 7% 0 5% 0;
-  font-size: 150%;
+  font-size: 200%;
+  margin-top: 2%;
+  margin: 5% 0 5% 0;
+  font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 .touroku {
-  border: 2px solid #000;
+  // border: 2px solid #000;
   border-radius: 0;
   margin-left: 70%;
-  background: #fff;
+  background:rgb(180, 98, 98);
+  margin: 5% 0 5% 0;
+    width: 250px;
+    padding: 5px;
+    border-radius:30px;
   &:hover {
-    color: #fff;
-    background: #000;
+    // color: #fff;
+    background: rgb(177, 90, 90);
   }
 }
 .newsignup {
@@ -79,8 +89,8 @@ export default {
   // font-size: 200%;
   margin-top: 2%;
   margin: 5% 0 5% 0;
-  font-family: 'Gluten', cursive;
-  color: rgb(133, 110, 110);
+  // font-family: 'Gluten', cursive;
+  // color: rgb(133, 110, 110);
   // width: 400px;
   // margin: auto;
 }

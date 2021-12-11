@@ -5,18 +5,25 @@
     <div id="timer">
       <div class="timer">
         <div class="time">
-          <div class="coundown">次の授乳まで残り</div><br />
+          <div class="countdown">MILK TIME COUNTDOWN</div><br />
           <div class="container">
             <div class="m-3">
               <button  class="  w-12 h-12   bg-red-800   text-lg text-white   font-semibold rounded-full hover:bg-red-700 " @click="countup" >
                 +
+              </button><br>
+               <button  class="  w-12 h-12   bg-red-800   text-lg text-white   font-semibold rounded-full hover:bg-red-700 " @click="countdown" >
+                -
               </button>
-            </div>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div class="math">{{ CountTime }}</div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div class="m-3">
               <button
                 class=" w-12  h-12  bg-red-800  text-lg text-white  font-semibold rounded-full hover:bg-red-700 " @click="countups">
                 +
+              </button><br>
+               <button  class="  w-12 h-12   bg-red-800   text-lg text-white   font-semibold rounded-full hover:bg-red-700 " @click="countdowns" >
+                -
               </button>
             </div>
           </div>
@@ -33,7 +40,7 @@
                     d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
                   <path  stroke-linecap="round" stroke-linejoin="round"   stroke-width="2"  d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-                開始
+                START
               </div>
             </button>
           </div>
@@ -48,7 +55,7 @@
                   <path  stroke-linecap="round"  stroke-linejoin="round"  stroke-width="2"
                     d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/>
                 </svg>
-                停止
+                STOP
               </div>
             </button>
           </div>
@@ -128,6 +135,9 @@ export default {
       sec: 0,
     }
   },
+    head: {
+    title: 'タイマー&子守唄',
+  },
   computed: {
     CountTime() {
       const timeStrings = [
@@ -171,8 +181,14 @@ export default {
     countup() {
       this.min++
     },
+    countdown(){
+       this.min--
+    },
     countups() {
       this.sec++
+    },
+    countdowns(){
+      this.sec--
     },
     count() {
       // 0秒以下かつ1分を切っていない時の処理
@@ -211,6 +227,8 @@ export default {
     musicstart() {
       const music = new Audio(sound)
       music.play()
+      alert(`授乳の時間です`)
+      // music.pause()
     },
     musicstop() {
       const music = new Audio(sound)
@@ -250,9 +268,11 @@ export default {
   margin: 10% 0 5% 0;
   font-family: 'Gluten', cursive;
   color: rgb(61, 53, 53);
+  margin: 5% 0 5% 0;
 }
 .button {
   display: flex;
+  margin: 5% 0 5% 0;
 }
 .timer {
   width: 400px;
@@ -266,8 +286,8 @@ export default {
   color: rgb(133, 110, 110);
 }
 .countdown{
-    text-align: center;
-  font-size: 200%;
+  text-align: center;
+  font-size: 150%;
   margin: 10% 0 5% 0;
   font-family: 'Gluten', cursive;
 }
