@@ -126,7 +126,7 @@ export default {
 .profile-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 5%;
+  margin-top: 2%;
   font-family: 'Gluten', cursive;
   color: rgb(133, 110, 110);
 }

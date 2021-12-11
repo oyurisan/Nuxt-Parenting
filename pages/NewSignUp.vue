@@ -1,6 +1,7 @@
 <template>
   <div class="newsignup">
-    <div class="newSignUp-title">新規アカウント作成</div>
+    <div class="newSignUp-title">NEW ACCOUNT
+    </div>
     <div class="login">
       メールアドレス<br /><input
         v-model="email"
@@ -57,6 +58,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
 .newSignUp-title {
   text-align: center;
   margin: 7% 0 5% 0;
@@ -73,9 +75,14 @@ export default {
   }
 }
 .newsignup {
-  font-family: Meiyou, Georgia, 'Times New Roman', Times, serif;
-  width: 400px;
-  margin: auto;
+    text-align: center;
+  // font-size: 200%;
+  margin-top: 2%;
+  margin: 5% 0 5% 0;
+  font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
+  // width: 400px;
+  // margin: auto;
 }
 .mail {
   width: 60%;

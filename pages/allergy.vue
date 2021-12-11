@@ -1,11 +1,11 @@
 <template>
   <div class="allergy">
     <div class="title">
-      アレルギー登録画面
+      ALLERGY PAGE
     </div>
     <div class="box_sample03">
     <div class="container">
-      <div v-for="item in foodduty" :key="item.foodname" class="allergyy">
+      <div v-for="item in foodduty" :key="item.foodname" class="allergy">
     <div class="item">
         <img
           :src="require(`~/assets/` + item.icon)"
@@ -93,6 +93,7 @@ console.log(this.$store.state.UserInfo)
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
 .container{
 display: flex;
 flex-wrap: wrap;

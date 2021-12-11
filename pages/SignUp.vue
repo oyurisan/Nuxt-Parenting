@@ -74,11 +74,12 @@ export default {
     addinfo() {
       console.log(this.$store.state.UserInfo)
       if(this.$store.state.UserInfo){
+        console.log(this.$store.state.UserInfo)
        const users={
         babyname: this.babyname,
         birthday: this.birthday,
         gender: this.gender,
-        // picture:this.picture
+        picture:this.picture,
         UserInfo:this.$store.state.UserInfo
        }
       this.userupdate(users)

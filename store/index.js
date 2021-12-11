@@ -48,15 +48,14 @@ export const actions = {
     }
   },
   // アレルギー更新
-  allergyupdate(commit, allergys) {
+  allergyupdate({commit},allergys) {
     UserRef.doc(allergys.UserInfo)
       .update({
         allergy: firebase.firestore.FieldValue.arrayUnion({
           newallergy: allergys.newallergy,
         }),
-      })
-      .then(() => {
-        commit('allergyupdate', allergys)
+      }).then(() => {
+      commit('allergyupdate',allergys)
       })
   },
   // 日記投稿
@@ -81,7 +80,8 @@ export const actions = {
         users: firebase.firestore.FieldValue.arrayUnion({
           babyname: users.babyname,
           gender: users.gender,
-          birthday: users.birthday
+          birthday: users.birthday,
+          picture:users.picture
         }),
       })
       .then(() => {

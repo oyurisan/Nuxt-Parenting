@@ -5,7 +5,7 @@
     <div id="timer">
       <div class="timer">
         <div class="time">
-          次の授乳まで残り🍼<br />
+          <div class="coundown">次の授乳まで残り</div><br />
           <div class="container">
             <div class="m-3">
               <button  class="  w-12 h-12   bg-red-800   text-lg text-white   font-semibold rounded-full hover:bg-red-700 " @click="countup" >
@@ -54,12 +54,12 @@
           </div>
         </div>
       </div>
-      <button @click="musicstop">a</button>
+      <!-- <button @click="musicstop">a</button> -->
     </div>
+    <div class="timer-title">LULLABY</div>
     <div class="container">
       <div class="item">
      <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
-    <div class="timer-title">LULLABY</div>
     <button @click="komori1">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -245,7 +245,11 @@ export default {
   flex-direction: row;;
 }
 .math {
-  font-size: 50px;
+  font-size: 70px;
+  text-align: center;
+  margin: 10% 0 5% 0;
+  font-family: 'Gluten', cursive;
+  color: rgb(61, 53, 53);
 }
 .button {
   display: flex;
@@ -260,5 +264,11 @@ export default {
   margin: 10% 0 5% 0;
   font-family: 'Gluten', cursive;
   color: rgb(133, 110, 110);
+}
+.countdown{
+    text-align: center;
+  font-size: 200%;
+  margin: 10% 0 5% 0;
+  font-family: 'Gluten', cursive;
 }
 </style>

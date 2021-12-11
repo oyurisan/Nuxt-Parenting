@@ -1,7 +1,7 @@
 <template>
   <div class="login-main">
       <div class="login-title">
-          ログイン画面
+         LOGIN
       </div>
       <div class="login">
     メールアドレス<br /><input
@@ -17,7 +17,7 @@
       <button class="logins" @click="logout">ログアウト</button>
     </div>
     <p v-if="user.login">ログインに成功<br /></p>
-    <button @click="aa"> aa</button>
+    <!-- <button @click="aa"> aa</button> -->
   </div>
   </div>
 </template>
@@ -57,7 +57,7 @@ export default {
     })
   },
   methods: {
-    login(email, password) {
+    login() {
       this.$store.dispatch('login', {
         email: this.email,
         password: this.password,
@@ -79,9 +79,14 @@ console.log(this.$store.state)
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
 .login-title {
-    font-size: 150%;
-    margin-bottom:  3%;
+  text-align: center;
+  font-size: 200%;
+  margin-top: 2%;
+  margin: 5% 0 5% 0;
+  font-family: 'Gluten', cursive;
+  color: rgb(133, 110, 110);
 }
 .login-main {
     text-align: center;
