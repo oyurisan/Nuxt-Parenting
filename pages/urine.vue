@@ -1,9 +1,8 @@
 <template>
   <div class="urine-main">
-    <div class="urine-title">おしっこ管理</div>
+    <div class="urine-title">URINE PAGE</div>
 
     <div class="urine-container">
-      <div>💧urine💧</div>
       <div>
         日時 : <input v-model="urinedate" type="datetime-local" name="Date" />
       </div>
@@ -41,13 +40,10 @@
 
 <script>
 import { mapActions } from 'vuex'
-// import Memo from '../components/addMemo'
-// import DateTime from '../components/addDateTime'
 
 export default {
   components: {
-    // Memo,
-    // DateTime,
+
   },
   data() {
     return {
@@ -55,12 +51,12 @@ export default {
       urinedate: '',
     }
   },
-  
   head: {
-    title: 'おしっこ',
+    title: 'おしっこ管理',
   },
 created(){
- this.$store.dispatch('fetchUser')
+ console.log(this.$store.state)
+ console.log(this.$store.state.UserInfo)
 },
   methods: {
     saveUrine () {
@@ -70,15 +66,21 @@ created(){
       this.$router.push({ name: 'index' })
     },
     addurine() {
+      if(this.$store.state.UserInfo){
       alert(`この内容で登録してもよろしいでしょうか`)
       const urines = {
         urinememo: this.urinememo,
         urinedate: this.urinedate,
+        UserInfo:this.$store.state.UserInfo
       }
       this.urineupdate(urines)
       this.$router.push({ name: 'index' })
       this.urinememo=""
       this.urinedate=""
+      }else{
+        alert(`ログインしてください`)
+        console.log(`ログインしていません`)
+      }
     },
     ...mapActions(['urineupdate']),
   },
@@ -86,14 +88,17 @@ created(){
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
 .urine-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 5%;
+  margin-top: 2%;
+  font-family: 'Gluten', cursive;
 }
 .urine-container {
   text-align: center;
-  margin: 5%;
+  margin: 2%;
 }
 .container{
   display: flex;

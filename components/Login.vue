@@ -1,9 +1,6 @@
-<template>
-  <div class="login-main">
-      <div class="login-title">
-          ログイン画面
-      </div>
-      <div class="login">
+<!-- <template>
+  <div class="login">
+    <div>{{this.$store.state.UserInfo}}</div>
     メールアドレス<br /><input
       v-model="email"
       type="email"
@@ -17,44 +14,47 @@
       <button class="logins" @click="logout">ログアウト</button>
     </div>
     <p v-if="user.login">ログインに成功<br /></p>
-    <button @click="aa"> aa</button>
-  </div>
   </div>
 </template>
 
 <script>
-import { mapActions, } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import firebase from '~/plugins/firebase'
 
 export default {
-  components: {
-  },
   data() {
     return {
       email: '',
       password: '',
-      isLogin: false,
+      isLogin: '',
       userData: null,
     }
   },
-    computed: {
+  computed: {
     user() {
       return this.$store.getters.user
-    }
+    },
+    ...mapGetters(['getUserInfo']),
   },
-  mounted() {
+  created() {
     firebase.auth().onAuthStateChanged((user) => {
       console.log(user)
+      console.log(user.uid); // ○
       if (user) {
         this.isLogin = true
         this.userData = user.uid
-        this.$store.dispatch('fetchUser',this.userData)
-        console.log(this.$store.state)
+        console.log(this.userData)
+        // this.$store.dispatch('fetchUser',this.userData)
+        this.fetchUser (this.userData);
+        console.log('ログイン');
+        console.log(this.$store.state.UserInfo);
       } else {
         this.isLogin = false
         this.userData = null
+        console.log('ログアウト');
       }
     })
+
   },
   methods: {
     login(email, password) {
@@ -70,23 +70,12 @@ export default {
       this.email = ''
       this.password = ''
     },
-    aa(){
-console.log(this.$store.state)
-    },
-    ...mapActions(["adds","fetchUser"])
+    ...mapActions(['adds', 'fetchUser']),
   },
 }
 </script>
 
 <style lang="scss">
-.login-title {
-    font-size: 150%;
-    margin-bottom:  3%;
-}
-.login-main {
-    text-align: center;
-    margin: 7% 0 5% 0
-}
 .logins {
   border: 2px solid #000;
   border-radius: 0;
@@ -99,4 +88,4 @@ console.log(this.$store.state)
 .loginOut-btn {
   margin-top: 2%;
 }
-</style>
+</style> -->

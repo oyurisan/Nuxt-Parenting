@@ -67,22 +67,30 @@ export default {
   },
   created() {
     this.$store.dispatch('fetchAllData')
-    this.$store.dispatch('fetchUser')
+    console.log(this.$store.state.UserInfo)
    console.log(this.$store.state.UserInfo)
   },
   methods: {
     addinfo() {
+      console.log(this.$store.state.UserInfo)
+      if(this.$store.state.UserInfo){
        const users={
         babyname: this.babyname,
         birthday: this.birthday,
         gender: this.gender,
         // picture:this.picture
+        UserInfo:this.$store.state.UserInfo
        }
-      this.updateuser(users)
+      this.userupdate(users)
+       console.log(this.$store.state.UserInfo)
       this.$router.push({ name: 'index' })
+      }else{
+        alert(`ログインをしてください`)
+        console.log(`ログインしてください`)
+      }
     }
   },
-  ...mapActions(['userupdate']),
+ ...mapActions(['userupdate']),
 }
 </script>
 

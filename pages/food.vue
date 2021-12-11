@@ -1,9 +1,7 @@
 <template>
   <div class="food-main">
-    <div class="food-title">ごはん管理</div>
-
+    <div class="food-title">MILK PAGE</div>
     <div class="food-container">
-      <div>🍼food🍴</div>
       <div>
         日時 : <input v-model="fooddate" type="datetime-local" name="Date" />
       </div>
@@ -178,8 +176,6 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-// import Memo from '../components/addMemo'
-// import DateTime from '../components/addDateTime'
 
 export default {
   components: {},
@@ -201,46 +197,35 @@ export default {
     Foods() {
       return this.$store.getters.Food
     },
-    user(){
-      return this.$store.getters.user
-    },
     ...mapGetters(['getUserInfo']),
   },
   created() {
-    // this.$store.dispatch('fetchUser')
-    // console.log(this.fetchUser)
-    // this.$store.commit("UserInfo")
     console.log(this.$store.state)
+    console.log(this.$store.state.UserInfo)
   },
   methods: {
     back() {
       this.$router.push({ name: 'index' })
     },
     addfood() {
-      this.$store.commit('switchlogin')
-      console.log(user.uid)
-      this.userData = user.uid
-      console.log(this.user.login)
-      console.log(this.userData)
-      console.log(user)
-      if (user) {
-        console.log(user)
+      if (this.$store.state.UserInfo) {
         alert(`この内容で登録してもよろしいでしょうか`)
         const foods = {
           foodmemo: this.message,
           kinds: this.kinds,
           ml: this.ml,
           fooddate: this.fooddate,
+          UserInfo:this.$store.state.UserInfo
         }
-        //  this.userData = this.user
-        console.log(this.userData)
-        this.foodupdate(foods, this.userData)
+        console.log(this.$store.state.UserInfo)
+        this.foodupdate(foods)
         this.$router.push({ name: 'index' })
         this.foodmemo = ''
         this.kinds = ''
         this.ml = ''
         this.fooddate = ''
       } else {
+        alert(`ログインをしてください`)
         console.log('ログインしていません')
       }
     },
@@ -249,14 +234,17 @@ export default {
 }
 </script>
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
 .food-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 5%;
+  margin-top: 2%;
+  font-family: 'Gluten', cursive;
 }
 .food-container {
   text-align: center;
-  margin: 5%;
+  margin: 2%;
 }
 
 /* 形のボタン */

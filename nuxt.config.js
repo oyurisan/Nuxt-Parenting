@@ -27,6 +27,7 @@ export default {
   plugins: [
     // { src: '~/plugins/vue-full-calendar', ssr: false, mode: 'client' }
     // '~/plugins/vue-social-sharing.js',
+    { src: '~/plugins/persistedstate.js', ssr: false}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -47,6 +48,7 @@ export default {
     // '@nuxtjs/axios',
     '@nuxtjs/dotenv',
     "vue2-editor/nuxt",
+    'nuxt-client-init-module'
     // 'vue-social-sharing/nuxt',
   ],
 

@@ -1,10 +1,7 @@
 <template>
   <div class="unchi-main">
-    <div class="unchi-title">うんち管理</div>
-
+    <div class="unchi-title">UNCHI PAGE</div>
     <div class="unchi-container">
-      <div>💩unchi💩</div>
-
       <div>
         日時 : <input v-model="unchidate" type="datetime-local" name="Date" />
       </div>
@@ -129,21 +126,23 @@ export default {
   head: {
     title: 'うんちっち',
   },
-created(){
- this.$store.dispatch('fetchUser')
-},
-  computed: {
+    computed: {
     ...mapGetters(['getUnchi', 'getUserItems']),
   },
+created(){
+  console.log(this.$store.state)
+   console.log(this.$store.state.UserInfo)
+},
   methods: {
     addunchi() {
+      if(this.$store.state.UserInfo){
       alert(`この内容で登録してもよろしいでしょうか`)
       const unchis = {
         unchimemo: this.unchimemo,
         unchishape: this.shape,
         unchidate: this.unchidate,
         unchicolor: this.color,
-        start:this.unchidate+`aaaaaa`
+        UserInfo:this.$store.state.UserInfo
       }
       this.unchiupdate(unchis)
       this.$router.push({ name: 'index' })
@@ -151,6 +150,10 @@ created(){
       this.unchishape=""
       this.unchidate=""
       this.unchicolor=""
+      }else{
+        alert(`ログインをしてください`)
+        console.log(`ログインしていません`)
+      }
     },
     back() {
       this.$router.push({ name: 'index' })
@@ -161,14 +164,17 @@ created(){
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
 .unchi-title {
   text-align: center;
   font-size: 200%;
-  margin-top: 5%;
+  margin-top: 2%;
+  font-family: 'Gluten', cursive;
 }
 .unchi-container {
   text-align: center;
-  margin: 5%;
+  margin: 2%;
 }
 
 /* 色のボタン */

@@ -15,7 +15,7 @@ export default {
       // words: this.word,
 
       chartData: {
-        labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+        labels: this.$store.state.months,
         datasets: [
           {
             type: 'line',

@@ -1,59 +1,97 @@
 <template>
   <div class="growth">
-    <div class="growth-title">成長管理</div>
-    {{this.$store.state.UserInfo}}
-      <div>👶身長👶</div>
+    <div class="growth-title">GROWTH PAGE</div>
+  <div class="growth-container">
+  
     日時：<input v-model="heightdate" type="date" name="Date" /><br>
-     身長： <select v-model="heightcm">
+     身長： <div class="container">
+     <div class="cp_ipselect"><select v-model="heightcm" class="cp_sl02" required>
         <option v-for="item in height" :key="item.cm" :value="item.cm">
           {{ item.cm }}
         </option>
-        </select>.
-      <select v-model="heightmm">
+        </select>
+          <span class="cp_sl02_highlight"></span>
+          <span class="cp_sl02_selectbar"></span>
+          <label class="cp_sl02_selectlabel">センチ</label>
+        </div>
+        <div class="cp_ipselect">
+      <select v-model="heightmm" class="cp_sl02" required>
         <option v-for="item in heights" :key="item.mm" :value="item.mm">
           {{ item.mm }}
         </option>
-        </select>&nbsp; cm<br>
-        
-     年齢： <select v-model="heightyear">
+        </select>
+         <span class="cp_sl02_highlight"></span>
+          <span class="cp_sl02_selectbar"></span>
+          <label class="cp_sl02_selectlabel">ミリメートル</label>
+        </div>
+        </div>
+     年齢：<div class="container"><div class="cp_ipselect"><select v-model="heightyear" class="cp_sl02" required>
         <option v-for="item in year" :key="item.y" :value="item.y">
-{{item.y}}歳
+{{item.y}}
         </option>
       </select>
-      <select v-model="heightmonth">
+      <span class="cp_sl02_highlight"></span>
+          <span class="cp_sl02_selectbar"></span>
+          <label class="cp_sl02_selectlabel">歳</label>
+      </div>
+     <div class="cp_ipselect"><select v-model="heightmonth" class="cp_sl02" required>
         <option v-for="item in month" :key="item.m" :value="item.m">
-{{item.m}}ヶ月
+{{item.m}}
         </option>
-      </select>
+      </select> <span class="cp_sl02_highlight"></span>
+          <span class="cp_sl02_selectbar"></span>
+          <label class="cp_sl02_selectlabel">ヶ月</label>
+          </div> 
+          </div> 
  <div class="m-3">
     <button class="px-2 py-1 bg-dark-red text-xl text-white font-semibold rounded hover:bg-light-red w-56" @click="addheight">
       <div class="button">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
 </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-保存</div></button></div>
-      <div>👶体重👶</div>
+保存
+</div>
+</button></div>
+
          日時：<input v-model="weightdate" type="date" name="Date" /><br>
-      体重：<select v-model="weightk">
+      体重：<div class="container"><div class="cp_ipselect"><select v-model="weightk" class="cp_sl02" required>
         <option v-for="item in weight" :key="item.k" :value="item.k">
           {{ item.k }}
-        </option></select
-      >.
-      <select v-model="weightg">
+        </option>
+        </select>
+         <span class="cp_sl02_highlight"></span>
+          <span class="cp_sl02_selectbar"></span>
+          <label class="cp_sl02_selectlabel">キロ</label>
+        </div>
+      <div class="cp_ipselect"><select v-model="weightg" class="cp_sl02" required>
         <option v-for="item in weights" :key="item.g" :value="item.g">
           {{ item.g }}
-        </option></select
-      >&nbsp; kg<br>
-  年齢：<select v-model="weightyear">
+        </option>
+        </select>
+         <span class="cp_sl02_highlight"></span>
+          <span class="cp_sl02_selectbar"></span>
+          <label class="cp_sl02_selectlabel">グラム</label>
+          </div> 
+      </div>&nbsp; <br>
+  年齢： <div class="container"><div class="cp_ipselect"><select v-model="weightyear" class="cp_sl02" required>
         <option v-for="item in year" :key="item.y" :value="item.y">
-{{item.y}}歳
+{{item.y}}
         </option>
       </select>
-      <select v-model="weightmonth">
+       <span class="cp_sl02_highlight"></span>
+          <span class="cp_sl02_selectbar"></span>
+          <label class="cp_sl02_selectlabel">歳</label>
+      </div>
+       <div class="cp_ipselect"><select v-model="weightmonth" class="cp_sl02" required>
         <option v-for="item in month" :key="item.m" :value="item.m">
-{{item.m}}ヶ月
+{{item.m}}
         </option>
       </select>
+        <span class="cp_sl02_highlight"></span>
+          <span class="cp_sl02_selectbar"></span>
+          <label class="cp_sl02_selectlabel">ヶ月</label>
+          </div>
+      </div>
      <div class="m-3">
     <button class="px-2 py-1 bg-dark-red text-xl text-white font-semibold rounded hover:bg-light-red w-56" @click="addweight">
       <div class="button">
@@ -69,7 +107,7 @@
 </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 戻る</div></button></div>
 
-   
+   </div>
   </div>
 </template>
 
@@ -98,8 +136,6 @@ export default {
       weight: [{ k: `0` }, { k: `1` },{ k: `2` },{ k: `3` },{ k: `4` },{ k: `5` },{ k: `6` },{ k: `7` },{ k: `8` },{ k: `9` }, { k: `10` },
         { k: `11` },{ k: `12` }, { k: `13` },{ k: `14` },{ k: `15` },{ k: `16` },{ k: `17` },{ k: `18` },{ k: `19` },{ k: `20` },],
       weights: [{ g: `1` }, { g: `2` }, { g: `3` },{ g: `4` },{ g: `5` },{ g: `6` },{ g: `7` },{ g: `8` },{ g: `9` },],
-      // newheight: this.heightcm+this.heightmm,
-      // newweighto:this.weightk+this.weightg,
       year:[{y:`0`}, {y:`1`}, {y:`2`}],
       month:[{m:`00`},{m:`01`},{m:`02`},{m:`03`},{m:`04`},{m:`05`},{m:`06`},{m:`07`},{m:`08`},{m:`09`},{m:`10`},{m:`11`},{m:`12`} ],
       heightyear:"",
@@ -114,13 +150,19 @@ export default {
       weightdate:""
     }
   },
+  created(){
+    console.log(this.$store.state)
+console.log(this.$store.state.UserInfo)
+  },
   methods:{
    addheight() {
+      if(this.$store.state.UserInfo){
       alert(`この内容で登録してもよろしいでしょうか`)
       const heights = {
       height: this.heightcm+`.`+this.heightmm,
       heightdate:this.heightdate,
-      babyyear:this.heightyear+`.`+this.heightmonth
+      babyyear:this.heightyear+`.`+this.heightmonth,
+      UserInfo:this.$store.state.UserInfo
       }
       this.heightupdate(heights)
       this.heightcm=""
@@ -128,13 +170,19 @@ export default {
       this.heightdate=""
       this.heightyear=""
       this.heightmonth=""
+      }else{
+        alert(`ログインしてください`)
+        console.log(`ログインしていません`)
+      }
     },
     addweight() {
+      if(this.$store.state.UserInfo){
       alert(`この内容で登録してもよろしいでしょうか`)
       const weights = {
        weight: this.weightk+`.`+this.weightg,
        weightdate:this.weightdate,
-       babyyear:this.weightyear+`.`+this.weightmonth
+       babyyear:this.weightyear+`.`+this.weightmonth,
+       UserInfo:this.$store.state.UserInfo
       }
       this.weightupdate(weights)
       this.weightk=""
@@ -142,6 +190,10 @@ export default {
       this.weightupdate=""
       this.weightyear=""
       this.weightmonth=""
+      }else{
+        alert(`ログインをしてください`)
+        console.log(`ログインしてません`)
+      }
     },
     back() {
       this.$router.push({ name: 'index' })
@@ -152,6 +204,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
+
 .growth {
   width: 400px;
   margin: auto;
@@ -162,6 +216,12 @@ export default {
 .weight {
   display: flex;
 }
+// .growth-container{
+//   text-align: center;
+//   margin: 2%;
+//   display: flex;
+//   flex-wrap: wrap;
+//   }
 .touroku {
   border: 2px solid #000;
   border-radius: 0;
@@ -175,8 +235,104 @@ export default {
   text-align: center;
   font-size: 200%;
   margin-top: 10%;
+  font-family: 'Gluten', cursive;
 }
 .button{
   display: flex;
+}
+/* 量のプルダウン */
+.cp_ipselect {
+  position: relative;
+  width: 30%;
+  margin: 2em auto;
+  text-align: center;
+}
+.cp_sl02 {
+  position: relative;
+  font-family: inherit;
+  background-color: transparent;
+  width: 100%;
+  padding: 10px 10px 10px 0;
+  font-size: 18px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+  }
+}
+.cp_ipselect .cp_sl02 {
+  appearance: none;
+  -webkit-appearance: none;
+}
+.cp_ipselect select::-ms-expand {
+  display: none;
+}
+.cp_ipselect:after {
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+.cp_sl02_selectlabel {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  top: 10px;
+  transition: 0.2s ease all;
+}
+.cp_sl02:focus ~ .cp_sl02_selectlabel,
+.cp_sl02:valid ~ .cp_sl02_selectlabel {
+  color: #da3c41;
+  top: -20px;
+  transition: 0.2s ease all;
+  font-size: 14px;
+}
+.cp_sl02_selectbar {
+  position: relative;
+  display: block;
+  width: 100%;
+  &:before,
+  &:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #da3c41;
+    transition: 0.2s ease all;
+  }
+}
+.cp_sl02_selectbar:before {
+  left: 50%;
+}
+.cp_sl02_selectbar:after {
+  right: 50%;
+}
+.cp_sl02:focus ~ .cp_sl06_selectbar:before,
+.cp_sl06:focus ~ .cp_sl06_selectbar:after {
+  width: 50%;
+}
+.cp_sl02_highlight {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.container{
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>

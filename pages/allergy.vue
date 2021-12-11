@@ -71,24 +71,29 @@ export default {
       ],
     }
   },
+  created(){
+console.log(this.$store.state)
+console.log(this.$store.state.UserInfo)
+  },
   methods: {
     addAllergy() {
       this.$router.push({ name: 'index' })
     },
     getallergy() {
-      const allergy = document.getElementsByClassName('inputall')
-     let newallergy = []
+      const allergy = document.getElementsByClassName('allergy')
+      const newallergy = []
       for (let i = 0; i < allergy.length; i++) {
         if (allergy[i].checked === true) {
-          newallergy += allergy[i].value + `、`
-        }}
-      const allergys={
-          newallergy
-          }
-        this.allergyupdate(allergys)
-        // this.$store.dispatch('fetchUser')
-      },
-    ...mapActions(["allergyupdate"])
+          newallergy.push(allergy[i].value)
+        }
+      }
+      const allergys = {
+        newallergy,
+        UserInfo:this.$store.state.UserInfo
+      }
+      this.allergyupdate(allergys)
+    },
+    ...mapActions(['allergyupdate']),
   },
 }
 </script>
@@ -220,7 +225,7 @@ input[type=checkbox]:checked + .checkbox01::after {
     background: #000;
   }
 }
-.button{
+.button {
   display: flex;
 }
 .box_sample03 {

@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       chartData: {
-        labels: this.$store.state.heightDatas.months,
+        labels: this.$store.state.months,
         datasets: [
           {
             type: 'line',
