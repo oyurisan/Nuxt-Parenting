@@ -48,7 +48,7 @@
       <div class="button">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 保存
 </div>
 </button></div>
@@ -97,14 +97,14 @@
       <div class="button">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 保存</div></button></div>
 <div class="m-3">
     <button  @click="back">
       <div class="button">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 戻る</div></button></div>
 
    </div>
@@ -241,9 +241,6 @@ console.log(this.$store.state.UserInfo)
   font-family: 'Gluten', cursive;
   color: rgb(133, 110, 110);
 }
-.button{
-  display: flex;
-}
 /* 量のプルダウン */
 .cp_ipselect {
   position: relative;
@@ -341,7 +338,6 @@ console.log(this.$store.state.UserInfo)
 }
 .button {
   display: flex;
-  // border: 2px solid #000;
   border-radius: 0;
    background:rgb(180, 98, 98);
   margin: 5% 0 5% 0;
@@ -349,7 +345,6 @@ console.log(this.$store.state.UserInfo)
     padding: 5px;
     border-radius:30px;
   &:hover {
-    // color: #fff;
   background: rgb(177, 90, 90);
 }
 }
