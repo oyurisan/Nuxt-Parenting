@@ -232,6 +232,7 @@ export const actions = {
         console.log(doc.data());
       })
     })
+
   },
   // ユーザー情報取得
   fetchUser({commit},userData ) {

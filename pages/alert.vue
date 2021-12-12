@@ -284,6 +284,29 @@ export default {
   margin: 10% 0 5% 0;
   font-family: 'Gluten', cursive;
   color: rgb(133, 110, 110);
+
+    &::after {
+    background-color: #f3a3a8; /* 1個目（一番左）のドットの色 */
+    border-radius: 50%;
+    content: '';
+    // margin-left: 15px; /* 最後の文字とドットとの余白 */
+    position: absolute;
+    top: 37%;
+    left: 34.9%;
+    width: 5px; /* ドットの幅 */
+    height: 5px; /* ドットの高さ */
+    box-shadow: 20px 0px 0px rgb(217, 204, 179),
+      /* 2個目のドットの位置と色 */ 40px 0px 0px rgb(217, 204, 179),
+      /* 3個目のドットの位置と色 */ 60px 0px 0px rgb(243, 163, 168),
+      /* 4個目のドットの位置と色 */ 80px 0px 0px rgb(217, 204, 179),
+      /* 5個目のドットの位置と色 */ 100px 0px 0px rgb(217, 204, 179),
+      /* 6個目のドットの位置と色 */ 120px 0px 0px rgb(243, 163, 168),
+      /* 7個目のドットの位置と色 */ 140px 0px 0px rgb(217, 204, 179),
+      /* 8個目のドットの位置と色 */ 160px 0px 0px rgb(217, 204, 179),
+      /* 9個目のドットの位置と色 */ 180px 0px 0px rgb(243, 163, 168),
+      /* 10個目のドットの位置と色 */ 200px 0px 0px rgb(217, 204, 179),
+      /* 11個目のドットの位置と色 */ 220px 0px 0px rgb(217, 204, 179); /* 12個目のドットの位置と色 */
+  }
 }
 .countdown{
   text-align: center;

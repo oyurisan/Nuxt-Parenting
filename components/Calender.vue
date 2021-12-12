@@ -298,7 +298,6 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Estonia&family=Righteous&display=swap');
 
-
 $fc-width: 80%;
 
 @mixin bar-style(

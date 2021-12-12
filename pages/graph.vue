@@ -8,14 +8,6 @@
       <button class="hw-button3" @click="active3">2歳1ヶ月 ~ 3歳</button>
     </div>
 
-    <!-- <div>{{this.heightLists1}}</div>
-    <div>{{this.heightLists2}}</div>
-    <div>{{this.heightLists3}}</div>
-    <div>{{this.weightLists1}}</div>
-    <div>{{this.weightLists2}}</div>
-    <div>{{this.weightLists3}}</div>
-    <div>{{this.word}}</div> -->
-
     <div class="chart">
       <div v-if="isActive">
         <Chart
@@ -40,9 +32,6 @@
       </div>
     </div>
 
-    <div class="backHome">
-      <nuxt-link to="/">Home</nuxt-link>
-    </div>
   </div>
 </template>
 
