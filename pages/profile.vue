@@ -38,7 +38,7 @@
       <div class="allergy-nav">
         アレルギー
 
-        <div v-for="allergyItem in getAllData.allergy" :key="allergyItem.id">
+        <div v-for="allergyItem in getUser.allergy" :key="allergyItem.id">
           <div class="container2">
             <div v-for="item in allergyItem.newallergy" :key="item.id">
               <img
@@ -107,7 +107,7 @@ export default {
     title: 'プロフィール画面',
   },
   computed: {
-    ...mapGetters(['getAllData']),
+    ...mapGetters(['getAllData', 'getUser']),
   },
 }
 </script>

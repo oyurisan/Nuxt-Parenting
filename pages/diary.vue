@@ -1,6 +1,6 @@
 <template lang="javascript">
 <div class="container">
-  <div class=" diary-title">Baby Diary</div>
+  <div class=" diary-title">Baby Diary</div><i class="fab fa-twitter"></i>
   <div class="flame-diary">
         <div class="diary-flower" />
  <div class="drop_area">
@@ -32,13 +32,41 @@
 </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 投稿</div></button>
 <div class=" diary-title">Baby Diarys</div>
-  <li v-for="item in diary" :key="item.message">
+  <div v-for="item in diary" :key="item.message">
     {{item.date}}
     {{item.message}}
     {{item.photo}}
-  </li>
-</ol>
-<!-- {{date}}{{message}} -->
+  <div class="containers">
+<div class="item">
+    2021/12/11
+     <img
+          src="~/assets/human.jpg"
+          width="150px"
+          height="150px"
+        />
+        よく笑いました。
+    </div>
+    <div class="item">
+         2021/12/12
+     <img
+          src="~/assets/human.jpg"
+          width="150px"
+          height="150px"
+        />
+        友達ができました。
+        </div>
+        <div class="item">
+         2021/12/13
+     <img
+          src="~/assets/human.jpg"
+          width="150px"
+          height="150px"
+        />
+        ご飯をよく食べました。
+        </div>
+        
+  </div>
+  </div>
 </div>
 </div>
 </div>
@@ -112,6 +140,11 @@ export default {
   justify-content: center;
   align-items: center;
   // font-size: 20px;
+}
+.containers{
+  display: flex;
+  flex-wrap: wrap;
+   justify-content: center; 
 }
 .button {
   display: flex;
@@ -260,8 +293,8 @@ padding:0!important;
 // /* アイコンボタン全体の位置 */
 .snsbtniti{
 display:flex;
-flex-flow:row wrap;
-justify-content:space-around;
+flex-wrap: wrap;
+ justify-content: center; 
 }
 /* アイコンボタン同士の余白 */
 .snsbtniti li{

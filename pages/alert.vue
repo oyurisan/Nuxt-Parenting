@@ -1,7 +1,7 @@
 <template>
   <div class="timer">
     <div class="timer-title">MILK TIMER</div>
-
+  <div class="flame-food">
     <div id="timer">
       <div class="timer">
         <div class="time">
@@ -31,8 +31,7 @@
         <div class="container">
           <div class="m-3">
             <button
-              class="shadow-lg px-2   py-1  bg-red-500  text-lg text-white  font-semibold  rounded  hover:bg-red-600 hover:shadow-sm hover:translate-y-0.5  transform
-                transition " @click="start">
+             @click="start">
               <div class="button">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"  fill="none" viewBox="0 0 24 24"  stroke="currentColor"  width="30px"
                   height="30px">
@@ -46,8 +45,7 @@
           </div>
           <div class="m-3">
             <button
-              class=" shadow-lg px-2  py-1 0  text-lg text-white  font-semibold rounded
-                hover:bg-red-600 hover:shadow-sm hover:translate-y-0.5transform transition " @click="stop">
+             @click="stop">
               <div class="button">
                 <svg xmlns="http://www.w3.org/2000/svg"  class="h-6 w-6"  fill="none"  viewBox="0 0 24 24" stroke="currentColor">
                   <path  stroke-linecap="round"  stroke-linejoin="round"  stroke-width="2"
@@ -61,12 +59,14 @@
           </div>
         </div>
       </div>
-      <!-- <button @click="musicstop">a</button> -->
+ 
     </div>
     <div class="timer-title">LULLABY</div>
     <div class="container">
       <div class="item">
      <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
+      <div class="container">
+     <div class="buttonn">
     <button @click="komori1">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -74,16 +74,20 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><br>
       </svg>
     </button>
+    </div>
+    </div>
+    <div class="buttonn">
     <button>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"  viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
-    </button><br>
+    </button></div><br>
     music1
   </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <div class="item">
      <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
+     <div class="buttonn">
     <button @click="komori2">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -91,31 +95,37 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><br>
       </svg>
     </button>
+    </div>
+      <div class="buttonn">
     <button>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"  viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
-    </button><br>
+    </button>
+    </div><br>
     music2
   </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div class="item">
      <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
+     <div class="buttonn">
     <button @click="komori3">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><br>
       </svg>
-    </button>
+    </button></div>
+    <div class="buttonn">
     <button>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"  viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
-    </button><br>
+    </button></div><br>
     music3
   </div>
+    </div>
     </div>
   </div>
 </template>
@@ -270,9 +280,41 @@ export default {
 }
 .button {
   display: flex;
-  margin: 10% 0 5% 0;
-   color: rgb(133, 110, 110);
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #000000;
+  font-size: 18px;
+  border-radius: 3px;
+  width: 160px;
+  height: 40px;
+  border: 1px solid #bbbbbb;
+  transition: 0.3s;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(209, 209, 209, 1));
+  &:hover {
+  background-image: linear-gradient(180deg, rgba(209, 209, 209, 1), rgba(255, 255, 255, 1));
 }
+}
+.buttonn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #000000;
+  font-size: 18px;
+  border-radius: 3px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #bbbbbb;
+  transition: 0.3s;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(209, 209, 209, 1));
+  &:hover {
+  background-image: linear-gradient(180deg, rgba(209, 209, 209, 1), rgba(255, 255, 255, 1));
+}
+}
+
 .timer {
   width: 400px;
   margin: auto;
@@ -314,4 +356,5 @@ export default {
   margin: 10% 0 5% 0;
   font-family: 'Gluten', cursive;
 }
+
 </style>
