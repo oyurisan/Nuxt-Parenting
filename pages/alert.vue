@@ -65,7 +65,7 @@
     <div class="container">
       <div class="item">
      <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
-      <div class="container">
+    <div class="container">
      <div class="buttonn">
     <button @click="komori1">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
@@ -75,18 +75,21 @@
       </svg>
     </button>
     </div>
-    </div>
+   
     <div class="buttonn">
     <button>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"  viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
-    </button></div><br>
+    </button>
+     </div>
+    </div><br>
     music1
   </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <div class="item">
      <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
+  <div class="container">
      <div class="buttonn">
     <button @click="komori2">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
@@ -103,11 +106,13 @@
           d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
     </button>
+    </div>
     </div><br>
     music2
   </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div class="item">
      <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
+     <div class="container">
      <div class="buttonn">
     <button @click="komori3">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
@@ -122,7 +127,9 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
-    </button></div><br>
+    </button>
+    </div>
+    </div><br>
     music3
   </div>
     </div>
