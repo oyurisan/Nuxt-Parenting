@@ -16,7 +16,9 @@ export const state = () => ({
   months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
   // DBから取った全部の情報
   allData: [],
-  userlist:null
+  userlist:null,
+  Users:[]
+  // ユーザーの情報が入る配列
 })
 export const getters = {
   user: (state) => {
@@ -50,7 +52,7 @@ export const actions = {
           newallergy: allergys.newallergy,
         }),
       }).then(() => {
-      commit('allergyupdate',allergys)
+      commit('allergyupdate',allergys,{root: true} )
       })
   },
   // 日記投稿
@@ -65,7 +67,7 @@ export const actions = {
         }),
       })
       .then(() => {
-        commit('diaryupdate', diarys)
+        commit('diaryupdate', diarys,{root: true} )
       })
   },
   // ユーザー情報更新
@@ -81,7 +83,7 @@ export const actions = {
         }),
       })
       .then(() => {
-        commit('userupdate', users)
+        commit('userupdate', users,{root: true} )
       })
   },
   // ご飯更新
@@ -97,11 +99,11 @@ export const actions = {
         }),
       })
       .then(() => {
-        commit('foodupdate', foods)
+        commit('foodupdate', foods,{root: true} )
       })
   },
   // 身長更新
-  heightupdate(commit, heights) {
+  heightupdate({commit}, heights) {
     UserRef.doc(heights.UserInfo)
       .update({
         height: firebase.firestore.FieldValue.arrayUnion({
@@ -111,11 +113,11 @@ export const actions = {
         }),
       })
       .then(() => {
-        commit('heightupdate', heights)
+        commit('heightupdate', heights,{root: true} )
       })
   },
   // 体重更新
-  weightupdate(commit, weights) {
+  weightupdate({commit}, weights) {
     UserRef.doc(weights.UserInfo)
       .update({
         weight: firebase.firestore.FieldValue.arrayUnion({
@@ -125,11 +127,11 @@ export const actions = {
         }),
       })
       .then(() => {
-        commit('weightupdate', weights)
+        commit('weightupdate', weights,{root: true} )
       })
   },
   // うんち更新
-  unchiupdate(commit, unchis) {
+  unchiupdate({commit}, unchis) {
     UserRef.doc(unchis.UserInfo)
     .update({
         unchi: firebase.firestore.FieldValue.arrayUnion({
@@ -141,11 +143,11 @@ export const actions = {
         }),
       })
       .then(() => {
-        commit('unchiupdate', unchis)
+        commit('unchiupdate', unchis,{root: true} )
       })
   },
   // おしっこ更新
-  urineupdate(commit, urines) {
+  urineupdate({commit}, urines) {
     UserRef.doc(urines.UserInfo)
       .update({
         urine: firebase.firestore.FieldValue.arrayUnion({
@@ -154,7 +156,7 @@ export const actions = {
         }),
       })
       .then(() => {
-        commit('urineupdate', urines)
+        commit('urineupdate', urines,{root: true} )
       })
   },
   // 初期情報追加
@@ -180,7 +182,7 @@ export const actions = {
       .createUserWithEmailAndPassword(payload.email, payload.password)
       .then((user) => {
         console.log(user)
-        dispatch('adds',user.user.uid)
+        dispatch('adds',user.user.uid,{root: true} )
         dispatch('checklogin')
         dispatch('sendemail').catch((error) => {
           alert(error)
@@ -191,7 +193,7 @@ export const actions = {
   checklogin({ commit }) {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-        commit('getData', { uid: user.uid, email: user.email })
+        commit('getData', { uid: user.uid, email: user.email },{root: true} )
         commit('switchlogin')
       }
     })
@@ -231,6 +233,7 @@ export const actions = {
     .doc(UserInfo)
     .get().then((doc) => {
       // commitしてstoreにデータを入れる
+      commit('fetchAllData',doc.data())
         console.log(doc.data());
       })
   },
@@ -282,6 +285,11 @@ export const mutations = {
   fetchItems(state, Item) {
     state.allData = Item
     console.log(Item)
+  },
+  fetchAllData(state,user){
+    state.Users=user
+    console.log(user)
+    console.log(state.Users)
   },
    // ユーザー情報取得
   fetchUser(state,userData){
