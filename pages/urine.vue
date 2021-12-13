@@ -106,8 +106,8 @@ created(){
     content: '';
     // margin-left: 15px; /* 最後の文字とドットとの余白 */
     position: absolute;
-    top: 37%;
-    left: 34.9%;
+    top: 275px;
+    left: 610px;
     width: 5px; /* ドットの幅 */
     height: 5px; /* ドットの高さ */
     box-shadow: 20px 0px 0px rgb(217, 204, 179),

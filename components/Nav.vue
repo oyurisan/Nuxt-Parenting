@@ -240,26 +240,6 @@
           </li>
           <li>
             <a
-              href="/diary"
-              class="
-                px-4
-                py-1
-                mr-1
-                text-base text-gray-500
-                transition
-                duration-500
-                ease-in-out
-                transform
-                rounded-md
-                focus:shadow-outline focus:outline-none focus:ring-2
-                ring-offset-current ring-offset-2
-                hover:text-dark-red
-              "
-              >Diary</a
-            >
-          </li>
-          <li>
-            <a
               href="/allergy"
               class="
                 px-4
@@ -296,6 +276,26 @@
                 hover:text-blue-600
               "
               >Timer &amp; Music</a
+            >
+          </li>
+          <li>
+            <a
+              href="/diary"
+              class="
+                px-4
+                py-1
+                mr-1
+                text-base text-gray-500
+                transition
+                duration-500
+                ease-in-out
+                transform
+                rounded-md
+                focus:shadow-outline focus:outline-none focus:ring-2
+                ring-offset-current ring-offset-2
+                hover:text-dark-red
+              "
+              >Diary</a
             >
           </li>
         </ul>

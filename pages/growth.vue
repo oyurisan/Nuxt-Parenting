@@ -59,8 +59,8 @@
 </div>
 
 
-<div class="flame-weight">
-        <div class="weight-flower" />
+<div class="flame-growth2">
+        <div class="growth-flower2" />
          日時：<input v-model="weightdate" type="date" name="Date" /><br>
       体重：<div class="container"><div class="cp_ipselect"><select v-model="weightk" class="cp_sl02" required>
         <option v-for="item in weight" :key="item.k" :value="item.k">
@@ -248,8 +248,8 @@ console.log(this.$store.state.UserInfo)
     content: '';
     // margin-left: 15px; /* 最後の文字とドットとの余白 */
     position: absolute;
-    top: 37%;
-    left: 31.3%;
+    top: 275px;
+    left: 580px;
     width: 5px; /* ドットの幅 */
     height: 5px; /* ドットの高さ */
     box-shadow: 20px 0px 0px rgb(217, 204, 179),
@@ -287,6 +287,75 @@ console.log(this.$store.state.UserInfo)
     transform: rotate(45deg);
   }
 }
+.flame-growth {
+  margin: 0 auto 3% auto;
+  background-color: #fff2f2e5;
+  padding: 5%;
+  width: 80%;
+  border-left: 5px dotted rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 5px #fff2f2e5;
+
+  &::before {
+    content: '✻'; /*花に見せかけるためのアスタリスク*/
+    color: #fff; /* アスタリスクの色 */
+    display: inline-block;
+    font-size: 40px; /* アスタリスクの大きさ */
+    font-weight: bold;
+    left: 75%;
+    top: 45%;
+    position: absolute;
+    transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    text-shadow: 0px 0px 6px #fff2f2e5, 0px 0px 10px #fff6f9, 0 0 10px #e4c2ce; /* アスタリスク周りの影 */
+  }
+}
+
+.growth-flower2 {
+  &::before {
+    content: '❋ *'; /*花に見せかけるためのアスタリスク*/
+    color: #fff; /* アスタリスクの色 */
+    display: inline-block;
+    font-size: 35px; /* アスタリスクの大きさ */
+    font-weight: bold;
+    left: 20%;
+    top: 90%;
+    position: absolute;
+    transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    text-shadow: 0px 0px 6px #fff2f2e5, 0px 0px 10px #fff6f9, 0 0 10px #e4c2ce; /* アスタリスク周りの影 */
+    transform: rotate(45deg);
+  }
+}
+.flame-growth2 {
+  margin: 0 auto 3% auto;
+  background-color: #f2f6ffe5;
+  padding: 5%;
+  width: 80%;
+  border-left: 5px dotted rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 5px #f2f6ffe5;
+
+  &::before {
+    content: '✻'; /*花に見せかけるためのアスタリスク*/
+    color: #fff; /* アスタリスクの色 */
+    display: inline-block;
+    font-size: 40px; /* アスタリスクの大きさ */
+    font-weight: bold;
+    left: 75%;
+    top: 45%;
+    position: absolute;
+    transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    text-shadow: 0px 0px 6px #fff2f2e5, 0px 0px 10px #fff6f9, 0 0 10px #e4c2ce; /* アスタリスク周りの影 */
+  }
+}
+
+
 /* 量のプルダウン */
 .cp_ipselect {
   position: relative;

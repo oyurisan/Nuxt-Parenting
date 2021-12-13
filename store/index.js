@@ -206,6 +206,7 @@ export const actions = {
       .signInWithEmailAndPassword(payload.email, payload.password)
       .then( () => {
         dispatch('checklogin')
+        console.log(`ログイン`)
         $nuxt.$router.push(`/SignUp`)
       })
       .catch((error) => {
@@ -236,6 +237,19 @@ export const actions = {
         console.log(doc.data());
       })
   },
+
+  deleteSelectData(i) {
+    firebase.firestore().collection(`User`)
+    .doc(UserInfo)
+    .delete(i)
+    .then(() => {
+      console.log("Document successfully deleted!");
+  }).catch((error) => {
+      console.error("Error removing document: ", error);
+  });
+  },
+
+
   // ユーザー情報取得
   fetchUser({commit},userData ) {
    commit('fetchUser',userData)
