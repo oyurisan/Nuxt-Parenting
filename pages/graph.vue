@@ -84,7 +84,7 @@ export default {
       let data012 = '' // 0歳12ヶ月
 
       // JSONファイルに変換 -> {Ob_ob ~ }を消去
-      const heightArray0 = this.getAllData.height
+      const heightArray0 = this.getUser.height
       const heightArray00 = JSON.stringify(heightArray0)
       let heightArray000 = []
       if (heightArray00) {
@@ -181,7 +181,7 @@ export default {
       let data012W = '' // 0歳12ヶ月
 
       // JSONファイルに変換 -> {Ob_ob ~ }を消去
-      const weightArray0 = this.getAllData.weight
+      const weightArray0 = this.getUser.weight
       const weightArray00 = JSON.stringify(weightArray0)
       let weightArray000 = []
       if (weightArray00) {
@@ -264,7 +264,7 @@ export default {
       let data112 = '' // 1歳12ヶ月
 
       // JSONファイルに変換 -> {Ob_ob ~ }を消去
-      const heightArray = this.getAllData.height
+      const heightArray = this.getUser.height
       const heightArray2 = JSON.stringify(heightArray)
       let heightArray3 = []
       if (heightArray2) {
@@ -346,7 +346,7 @@ export default {
       let data112W = '' // 1歳12ヶ月
 
       // JSONファイルに変換 -> {Ob_ob ~ }を消去
-      const weightArray = this.getAllData.weight
+      const weightArray = this.getUser.weight
       const weightArray2 = JSON.stringify(weightArray)
       let weightArray3 = []
       if (weightArray2) {
@@ -427,7 +427,7 @@ export default {
       let data212 = '' // 1歳12ヶ月
 
       // JSONファイルに変換 -> {Ob_ob ~ }を消去
-      const heightArray4 = this.getAllData.height
+      const heightArray4 = this.getUser.height
       const heightArray5 = JSON.stringify(heightArray4)
       let heightArray6 = []
       if (heightArray5) {
@@ -509,7 +509,7 @@ export default {
       let data212W = '' // 1歳12ヶ月
 
       // JSONファイルに変換 -> {Ob_ob ~ }を消去
-      const weightArray4 = this.getAllData.weight
+      const weightArray4 = this.getUser.weight
       const weightArray5 = JSON.stringify(weightArray4)
       let weightArray6 = []
       if (weightArray5) {
@@ -579,7 +579,7 @@ export default {
     },
 
     ...mapActions(['setHeightLists2']),
-    ...mapGetters(['getAllData', 'getHeightLists2']),
+    ...mapGetters(['getAllData', 'getHeightLists2', 'getUser']),
   },
 
   created() {
