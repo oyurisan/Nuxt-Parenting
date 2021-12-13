@@ -12,8 +12,11 @@
           width="50px"
           height="50px"
         />
-          <input type="checkbox" id="01-A" name="checkbox01" >
-<label for="01-A" class="checkbox01">{{item.foodname}}</label>
+<label class="checknox-wrap">
+  <input type="checkbox" >
+  <span class="checkmark"></span>
+  {{item.foodname}}
+</label>
     </div>
     </div>
 </div>
@@ -150,100 +153,6 @@ justify-content: center;
   align-items: center;
   cursor: pointer;
 }
-.inputall {
-  margin: 0;
-  width: 0;
-  opacity: 0;
-}
-.input:hover > .inputall{
-  background: #CCCCCC;
-}
-.input:focus + .all{
-  background: #CCCCCC;
-}
-.input:checked + .all {
-  background: #555555;
-}
-.input:checked + .all::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 35%;
-  height: 2px;
-  transform: translate(-5px, 6px) rotateZ(-135deg);
-  transform-origin: 1px 1px;
-  background: #FFFFFF;
-}
-.input:checked + .all::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 70%;
-  height: 2px;
-  transform: translate(-5px, 6px) rotateZ(-45deg);
-  transform-origin: 1px 1px;
-  background: #FFFFFF;
-}
-.all {
-  position: relative;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 32px;
-  height: 32px;
-  background: #F5F5F5;
-  box-shadow: 0 1px 4px rgba(0,0,0, .4) inset;
-}
-.alls {
-  margin-left: 12px;
-  display: block;
-  font-size: 18px;
-  font-weight: bold;
-}
-input[type=checkbox] {
-    display: none;
-}
-.checkbox01 {
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-block;
-    padding: 5px 30px;
-    position: relative;
-    width: auto;
-}
-.checkbox01::before {
-    background: #fff;
-    border: 1px solid #231815;
-    content: '';
-    display: block;
-    height: 16px;
-    left: 5px;
-    margin-top: -8px;
-    position: absolute;
-    top: 50%;
-    width: 16px;
-}
-.checkbox01::after {
-    border-right: 3px solid #ed7a9c;
-    border-bottom: 3px solid #ed7a9c;
-    content: '';
-    display: block;
-    height: 9px;
-    left: 10px;
-    margin-top: -7px;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    transform: rotate(45deg);
-    width: 5px;
-}
-input[type=checkbox]:checked + .checkbox01::after {
-    opacity: 1;
-}
 .touroku {
   border: 2px solid #000;
   border-radius: 0;
@@ -254,10 +163,6 @@ input[type=checkbox]:checked + .checkbox01::after {
     background: #000;
   }
 }
-// .button {
-//   display: flex;
-//   margin: 5% 0 5% 0;
-// }
 .box_sample03 {
  border: 1px solid #9e6e7f;
  padding: 5%;
@@ -275,6 +180,52 @@ input[type=checkbox]:checked + .checkbox01::after {
   &:hover {
   background: rgb(177, 90, 90);
 }
+}
+/* チェックボックス全体 */
+.checknox-wrap {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+}
+/* デフォルトチェックボックス非表示 */
+.checknox-wrap input {
+  display: none;
+}
+/* チェックボックスのスタイル */
+.checknox-wrap .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #EEE;
+  border: 2px solid #000;
+  box-sizing: border-box;
+}
+/* チェックマーク作成 */
+.checknox-wrap .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 0px;
+  width: 4px;
+  height: 10px;
+  border: 2px solid #FFF;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+/* チェック時のスタイル */
+.checknox-wrap input:checked + .checkmark {
+  background-color: #8b6a87;
+}
+/* チェック時 チェックマーク表示 */
+.checknox-wrap input:checked + .checkmark:after {
+  display: block;
 }
 .m-3 {
   text-align: center;

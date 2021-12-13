@@ -59,8 +59,8 @@
 </div>
 
 
-<div class="flame-weight">
-        <div class="weight-flower" />
+<div class="flame-growth2">
+        <div class="growth-flower2" />
          日時：<input v-model="weightdate" type="date" name="Date" /><br>
       体重：<div class="container"><div class="cp_ipselect"><select v-model="weightk" class="cp_sl02" required>
         <option v-for="item in weight" :key="item.k" :value="item.k">
@@ -287,12 +287,11 @@ console.log(this.$store.state.UserInfo)
     transform: rotate(45deg);
   }
 }
-
 .flame-growth {
   margin: 0 auto 3% auto;
   background-color: #fff2f2e5;
   padding: 5%;
-  width: 70%;
+  width: 80%;
   border-left: 5px dotted rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 0 5px #fff2f2e5;
 
@@ -313,14 +312,14 @@ console.log(this.$store.state.UserInfo)
   }
 }
 
-.wight-flower {
+.growth-flower2 {
   &::before {
     content: '❋ *'; /*花に見せかけるためのアスタリスク*/
     color: #fff; /* アスタリスクの色 */
     display: inline-block;
     font-size: 35px; /* アスタリスクの大きさ */
     font-weight: bold;
-    left: 50%;
+    left: 20%;
     top: 90%;
     position: absolute;
     transform: rotate(20deg);
@@ -331,14 +330,13 @@ console.log(this.$store.state.UserInfo)
     transform: rotate(45deg);
   }
 }
-
-.flame-weight {
+.flame-growth2 {
   margin: 0 auto 3% auto;
-  background-color: #f2faffe5;
+  background-color: #f2f6ffe5;
   padding: 5%;
-  width: 70%;
+  width: 80%;
   border-left: 5px dotted rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 0 5px #f2faffe5;
+  box-shadow: 0 0 0 5px #f2f6ffe5;
 
   &::before {
     content: '✻'; /*花に見せかけるためのアスタリスク*/
@@ -357,9 +355,7 @@ console.log(this.$store.state.UserInfo)
   }
 }
 
-.button{
-  display: flex;
-}
+
 /* 量のプルダウン */
 .cp_ipselect {
   position: relative;
@@ -457,7 +453,6 @@ console.log(this.$store.state.UserInfo)
 }
 .button {
   display: flex;
-  // border: 2px solid #000;
   border-radius: 0;
    background:rgb(180, 98, 98);
   margin: 5% 0 5% 0;
@@ -465,7 +460,6 @@ console.log(this.$store.state.UserInfo)
     padding: 5px;
     border-radius:30px;
   &:hover {
-    // color: #fff;
   background: rgb(177, 90, 90);
 }
 }

@@ -63,16 +63,12 @@ export default {
         email: this.email,
         password: this.password,
       })
-      this.adds()
       this.$router.push({ name: 'index' })
     },
     logout() {
       this.$store.dispatch('logout')
       this.email = ''
       this.password = ''
-    },
-    aa(){
-console.log(this.$store.state)
     },
     ...mapActions(["adds","fetchUser"])
   },

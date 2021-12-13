@@ -594,8 +594,6 @@ export default {
     //     }
     //     console.log(storeHeightDataArray3);
 
-    this.$store.dispatch('fetchAllData')
-
     // this.storeHeightData2 = this.$store.state.heightLists2
     // console.log(this.storeHeightData2)
   },

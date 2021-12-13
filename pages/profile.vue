@@ -1,56 +1,57 @@
 <template>
   <div>
     <div class="profileImg">
-      <div class="profile-title">PROFILE</div>
-      <div class="profile-container">
-        <div class="upload-img">
-          <upload v-model="picture" />
+      <div class="profile-flame">
+        <div class="profile-title">PROFILE</div>
+        <div class="profile-container">
+          <div class="upload-img">
+            <upload v-model="picture" />
+          </div>
+          <div class="profile-main">
+            <div>
+              名前 :
+              <span>{{ name }}</span>
+            </div>
+
+            <div>
+              性別 :
+              <span>{{ gender }}</span>
+            </div>
+
+            <div>
+              生年月日 :
+              <span>{{ birth }}</span>
+            </div>
+
+            <div>
+              身長 :
+              <span>{{ height }} cm</span>
+            </div>
+
+            <div>
+              体重 :
+              <span>{{ weight }} kg</span>
+            </div>
+          </div>
         </div>
-        <div class="profile-main">
-          <div>
-            名前 :
-            <span>{{ name }}</span>
-          </div>
-
-          <div>
-            性別 :
-            <span>{{ gender }}</span>
-          </div>
-
-          <div>
-            生年月日 :
-            <span>{{ birth }}</span>
-          </div>
-
-          <div>
-            身長 :
-            <span>{{ height }} cm</span>
-          </div>
-
-          <div>
-            体重 :
-            <span>{{ weight }} kg</span>
-          </div>
-        </div>
-      </div>
 
       <div class="allergy-nav">
-      アレルギー
-      
-      <div v-for="allergyItem in getAllData.allergy" :key="allergyItem.id">
-        <div class="container2">
-          <div v-for="item in allergyItem.newallergy" :key="item.id">
-            <img
-              :src="require(`~/assets/` + item)"
-              width="70px"
-              height="70px"
-            />
+        アレルギー
+
+        <div v-for="allergyItem in getAllData.allergy" :key="allergyItem.id">
+          <div class="container2">
+            <div v-for="item in allergyItem.newallergy" :key="item.id">
+              <img
+                :src="require(`~/assets/` + item)"
+                width="70px"
+                height="70px"
+              />
+            </div>
           </div>
         </div>
       </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -108,9 +109,6 @@ export default {
   computed: {
     ...mapGetters(['getAllData']),
   },
-  created() {
-    this.$store.dispatch('fetchAllData')
-  },
 }
 </script>
 
@@ -127,7 +125,6 @@ export default {
   display: flex;
   margin: 8% auto 10% auto;
   width: 70%;
-
 }
 .profileImg {
   width: 70%;
@@ -152,8 +149,8 @@ export default {
     content: '';
     // margin-left: 15px; /* 最後の文字とドットとの余白 */
     position: absolute;
-    top: 275px;
-    left: 635px;
+    top: 110px;
+    left: 320px;
     width: 5px; /* ドットの幅 */
     height: 5px; /* ドットの高さ */
     box-shadow: 20px 0px 0px rgb(217, 204, 179),
@@ -163,15 +160,36 @@ export default {
       /* 5個目のドットの位置と色 */ 100px 0px 0px rgb(217, 204, 179),
       /* 6個目のドットの位置と色 */ 120px 0px 0px rgb(243, 163, 168),
       /* 7個目のドットの位置と色 */ 140px 0px 0px rgb(217, 204, 179),
-      /* 8個目のドットの位置と色 */ 160px 0px 0px rgb(217, 204, 179),
+      /* 8個目のドットの位置と色 */ 160px 0px 0px rgb(217, 204, 179);
   }
 }
 .upload-img {
   text-align: center;
-  margin-left: 20%;
+  margin-left: 14%;
 }
 
 .allergy-nav {
   text-align: center;
+  margin-bottom: 10%;
+}
+
+.profile-flame {
+ 	background: none;
+	border: 3px solid #f3cbd0;	/* 線の太さ・種類・色 */
+	margin: 100px; /* 外側の余白 */
+	padding: 10px; /* 内側の余白 */
+	position: relative;
+
+&::after{
+	background: none;
+	border: 2px solid #f3cbd0;	/* 線の太さ・種類・色 */
+	content: '';
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
 }
 </style>

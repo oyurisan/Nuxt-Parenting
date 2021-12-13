@@ -1,44 +1,8 @@
 <template lang="javascript">
 <div class="container">
   <div class=" diary-title">Baby Diary</div>
-
   <div class="flame-diary">
         <div class="diary-flower" />
-   <!-- <div class="food-title">日記</div>
-     <editor
-       api-key="c99sb34ryqc6b8inobijqizl016zw4h1a5t0nazkgqf4lzn4"
-       :init="{
-         selector: 'textarea',
-         height : 300,
-         branding: false,
-         height: 300,
-         language: 'ja',
-         menubar: true,
-         element_format : 'html',
-         plugins: [
-           'advlist autolink lists link image charmap print preview anchor',
-           'searchreplace visualblocks code fullscreen',
-           'insertdatetime media table paste code help wordcount',
-           'image'
-         ],
-         toolbar:
-           'undo redo | formatselect | bold italic backcolor | \
-           alignleft aligncenter alignright alignjustify | \
-           bullist numlist outdent indent | removeformat | link image | emoticons,'
-       }"
-       v-model="content"
-     />
-        <div class="m-3">
-    <button class="px-2 py-1 bg-red-900 text-xl text-white font-semibold rounded hover:bg-red-900 w-56" @click="add">
-      <div class="button">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-保存</div></button></div>
-<h2>日記投稿一覧</h2>
-    <div v-for="item in diary" :key="item.content">
-{{content}}
-    </div> -->
  <div class="drop_area">
    日時：<input  v-model="date" type="date"> <br>
        <textarea
@@ -53,18 +17,13 @@
       /><br>
             <input  type="file"> <br>
         </div>
-      <share-network
-      url = " https://vuejs.org/ "
-                       title = "プログレッシブJavaScriptフレームワーク"
-                       description = "インタラクティブなインターフェースを構築するための直感的で高速かつ構成可能なMVVM。 "
-                       quote = " Vueはユーザーを構築するためのプログレッシブフレームワークですインターフェイス。「
-                      ハッシュタグ=」vuejs、ジャバスクリプト、フレームワーク「
-                      さえずりユーザ=」vuejs "
-                      network="twitter"> 
-      <a class="buttons" href="https://twitter.com/share?url=https://haniwaman.com/original-share-btn/&text=message" rel="nofollow" target="_blank">Twitter</a>
-      <a href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】">LINEで送る</a>
-      
-    </share-network>
+        <ul class="snsbtniti">
+          <li><a  href="https://twitter.com/share?url=https://haniwaman.com/original-share-btn/&text=『３歳以下の子供に使える子育てアプリ』
+      " rel="nofollow" target="_blank" class="flowbtn6 fl_tw1"><i class="fab fa-twitter"></i></a></li>
+    <li><a href="https://www.facebook.com/hogehoge" class="flowbtn6 insta_btn6"><i class="fab fa-instagram"></i></a></li>
+    <li><a href="FacebookページのURL" class="flowbtn6 fl_fb6"><i class="fab fa-facebook-f"></i></a></li>
+    <li><a href="https://line.me/ti/p/%ライン＠のアカウント" class="flowbtn6 fl_li1"><i class="fas fa-at"></i></a></li>
+        </ul>
      <div class="m-3">
     <button  @click="add">
       <div class="button">
@@ -72,7 +31,7 @@
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
 </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 投稿</div></button>
-<!-- <ol><div class="days">Baby Days</div> -->
+<div class=" diary-title">Baby Diarys</div>
   <li v-for="item in diary" :key="item.message">
     {{item.date}}
     {{item.message}}
@@ -88,6 +47,7 @@
 <script  src = " /dist/vue-social-sharing.js "></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <script SRC = "https://unpkg.com/vue-social-sharing@3.0.8/dist/vue-social-sharing.js" >
+
 </script>
 <script>
 import Vue from 'vue'
@@ -95,8 +55,11 @@ import { mapActions } from 'vuex'
 import Editor from '@tinymce/tinymce-vue'
 import VueSocialSharing from 'vue-social-sharing'
 import { ShareNetwork } from '../node_modules/vue-social-sharing/dist/vue-social-sharing'
+// import 'vue-awesome/icons'
+// import Icon from 'vue-awesome/components/Icon'
 Vue.use(VueSocialSharing)
 Vue.component('Editor', Editor)
+// Vue.component('v-icon', Icon)
 
 export default {
   components: { ShareNetwork },
@@ -110,6 +73,10 @@ export default {
   head: {
     title: '思い出',
   },
+    created() {
+    console.log(this.$store.state)
+    console.log(this.$store.state.UserInfo)
+  },
   component: {},
   methods: {
     add() {
@@ -118,6 +85,7 @@ export default {
         diarydate: this.date,
         message: this.message,
         // photo:this.photo
+        UserInfo: this.$store.state.UserInfo,
       }
       this.diaryupdate(diarys)
       this.date = ''
@@ -235,8 +203,8 @@ export default {
   cursor: pointer;
   position: relative;
   text-decoration: none;
-}
-.buttos::after {
+
+  &::after {
   position: absolute;
   content: '\f099';
   font-family: 'Font Awesome 5 Brands';
@@ -246,12 +214,12 @@ export default {
   transform: translateY(-50%);
   font-size: 1.2em;
 }
+}
 .enter {
   border: 10px dotted powderblue;
 }
 .button {
   display: flex;
-  // border: 2px solid #000;
   border-radius: 0;
   background: rgb(180, 98, 98);
   margin: 5% 0 5% 0;
@@ -259,8 +227,90 @@ export default {
   padding: 5px;
   border-radius: 30px;
   &:hover {
-    // color: #fff;
     background: rgb(177, 90, 90);
   }
+}
+/* ボタン全体 */
+.flowbtn6{
+border-radius:13px;		
+position:relative;
+display:inline-block;
+width:50px;
+height:50px;
+font-size:33px;
+color:#fff!important;
+transition:.5s;
+text-decoration:none;
+}
+// /* アイコンをど真ん中に*/
+.flowbtn6 i{
+position:absolute;
+top:50%;
+left:50%;
+-ms-transform:translate(-50%,-50%);
+-webkit-transform:translate(-50%,-50%);
+transform:translate(-50%,-50%);
+}
+/* ulタグの内側余白を０にする */
+ul.snsbtniti{
+padding:0!important;
+}
+// /* アイコンボタン全体の位置 */
+.snsbtniti{
+display:flex;
+flex-flow:row wrap;
+justify-content:space-around;
+}
+/* アイコンボタン同士の余白 */
+.snsbtniti li{
+flex:0 0 33%;
+text-align:center!important;
+}
+/* アイコンボタンにマウスを乗せた時 */
+.flowbtn6:hover{
+-webkit-transform:translateY(-5px);
+-ms-transform:translateY(-5px);
+transform:translateY(-5px);
+}
+/* Twitter */
+.fl_tw1{
+background:#55acee;
+}
+/* LINE@ */
+.fl_li6{
+background:#00c300;			
+}
+/* Instagram紫グラデ背景 */
+.insta_btn6 {
+background:-webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+background:linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+overflow:hidden;	
+}
+/* Instagramオレンジグラデ背景 */
+.insta_btn6:before{
+content: '';
+position: absolute;
+top:27px;
+left:-12px;
+width:59px;
+height:40px;
+background:-webkit-radial-gradient(#ffdb2c 7%, rgba(255, 105, 34, 0.3) 60%, rgba(255, 88, 96, 0) 70%);
+background:radial-gradient(#ffdb2c 7%, rgba(255, 105, 34, 0.3) 60%, rgba(255, 88, 96, 0) 70%);
+}
+/* Facebookアイコン位置 */
+.fl_fb6 .fa-facebook-f{
+position:relative;
+top:23px;
+left:17px;
+font-size:43px;
+}
+/* Facebookアイコン背景*/
+.fl_fb6{
+background:-webkit-linear-gradient(top, #5c80c6 0%, #34528c 74%);	
+background:linear-gradient(to bottom, #5c80c6 0%, #34528c 74%);	
+}
+/* LINE@ */
+.fl_li6{
+background:#00c300;			
 }
 </style>

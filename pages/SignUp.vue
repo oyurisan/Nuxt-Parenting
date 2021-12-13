@@ -65,11 +65,6 @@ export default {
       customerinfo: '',
     }
   },
-  created() {
-    this.$store.dispatch('fetchAllData')
-    console.log(this.$store.state.UserInfo)
-   console.log(this.$store.state.UserInfo)
-  },
   methods: {
     addinfo() {
       console.log(this.$store.state.UserInfo)

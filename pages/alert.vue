@@ -10,7 +10,7 @@
             <div class="m-3">
               <button  class="  w-12 h-12   bg-red-800   text-lg text-white   font-semibold rounded-full hover:bg-red-700 " @click="countup" >
                 +
-              </button><br>
+              </button><br><br>
                <button  class="  w-12 h-12   bg-red-800   text-lg text-white   font-semibold rounded-full hover:bg-red-700 " @click="countdown" >
                 -
               </button>
@@ -21,7 +21,7 @@
               <button
                 class=" w-12  h-12  bg-red-800  text-lg text-white  font-semibold rounded-full hover:bg-red-700 " @click="countups">
                 +
-              </button><br>
+              </button><br><br>
                <button  class="  w-12 h-12   bg-red-800   text-lg text-white   font-semibold rounded-full hover:bg-red-700 " @click="countdowns" >
                 -
               </button>
@@ -227,8 +227,6 @@ export default {
     musicstart() {
       const music = new Audio(sound)
       music.play()
-      alert(`授乳の時間です`)
-      // music.pause()
     },
     musicstop() {
       const music = new Audio(sound)
@@ -272,7 +270,7 @@ export default {
 }
 .button {
   display: flex;
-  margin: 5% 0 5% 0;
+  margin: 10% 0 5% 0;
 }
 .timer {
   width: 400px;
@@ -310,6 +308,7 @@ export default {
 }
 .countdown{
   text-align: center;
+  color: rgb(61, 53, 53);
   font-size: 150%;
   margin: 10% 0 5% 0;
   font-family: 'Gluten', cursive;

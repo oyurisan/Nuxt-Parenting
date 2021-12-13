@@ -3,8 +3,6 @@ import firebase from '~/plugins/firebase'
 
 const db = firebase.firestore()
 const UserRef = db.collection(`User`)
-// this.uid = String(uid)
-
 
 export const state = () => ({
   user: {
@@ -21,8 +19,6 @@ export const state = () => ({
   userlist:null
 })
 export const getters = {
-  getid: (state) => 
-  (id) => state.userlist.find((userlist) => userlist.id === id),
   user: (state) => {
     return state.user.uid
   },
@@ -32,18 +28,17 @@ export const getters = {
   Food: (state) => {
     return state.FoodList
   },
-
   getAllData: state => state.allData,
-  // getUserInfo: state =>  state.UserInfo ? state.UserInfo.uid : null, 
+  getUserInfo: state =>  state.UserInfo ? state.UserInfo.uid : null, 
   }
 
 export const actions = {
-
   // モジュール
-  nuxtClientInit ({ commit },) {
+  nuxtClientInit ({ commit ,dispatch},) {
     const data = JSON.parse(localStorage.getItem('ユーザー情報')) || []
     console.log(data.UserInfo)
     if (data.UserInfo) {
+      dispatch('fetchAllData',data.UserInfo)
       commit('fetchUser', data.UserInfo)
     }
   },
@@ -60,8 +55,9 @@ export const actions = {
   },
   // 日記投稿
   diaryupdate(commit, diarys) {
-    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
-      .update({
+    console.log(UserInfo)
+    UserRef.doc(diarys.UserInfo)
+    .update({
         diary: firebase.firestore.FieldValue.arrayUnion({
           diarydate: diarys.date,
           message: diarys.message,
@@ -163,6 +159,7 @@ export const actions = {
   },
   // 初期情報追加
   adds({ commit },UserInfo) {
+    console.log(UserInfo)
     db.collection(`User`)
     .doc(UserInfo)
     .set({
@@ -200,7 +197,8 @@ export const actions = {
     })
   },
   // ログイン
-  login(payload) {
+  login({dispatch},payload) {
+    console.log(payload)
     firebase
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
@@ -226,18 +224,20 @@ export const actions = {
       })
   },
   // 全部のデータ DBから取り出し
-  fetchAllData({ commit }) {
-    UserRef.get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        commit('fetchItems', doc.data())
+  fetchAllData({ commit},UserInfo) {
+    console.log(UserInfo)
+    firebase.firestore()
+    .collection(`User/`)
+    .doc(UserInfo)
+    .get().then((doc) => {
+      // commitしてstoreにデータを入れる
         console.log(doc.data());
       })
-    })
   },
 
   deleteSelectData(i) {
     firebase.firestore().collection(`User`)
-    .doc(user.uid)
+    .doc(UserInfo)
     .delete(i)
     .then(() => {
       console.log("Document successfully deleted!");
@@ -251,7 +251,6 @@ export const actions = {
   fetchUser({commit},userData ) {
    commit('fetchUser',userData)
   },
-
   // 新規登録ユーザーに確認のメールを送信する
   sendemail() {
     firebase

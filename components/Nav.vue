@@ -240,26 +240,6 @@
           </li>
           <li>
             <a
-              href="/diary"
-              class="
-                px-4
-                py-1
-                mr-1
-                text-base text-gray-500
-                transition
-                duration-500
-                ease-in-out
-                transform
-                rounded-md
-                focus:shadow-outline focus:outline-none focus:ring-2
-                ring-offset-current ring-offset-2
-                hover:text-dark-red
-              "
-              >Diary</a
-            >
-          </li>
-          <li>
-            <a
               href="/allergy"
               class="
                 px-4
@@ -298,6 +278,26 @@
               >Timer &amp; Music</a
             >
           </li>
+          <li>
+            <a
+              href="/diary"
+              class="
+                px-4
+                py-1
+                mr-1
+                text-base text-gray-500
+                transition
+                duration-500
+                ease-in-out
+                transform
+                rounded-md
+                focus:shadow-outline focus:outline-none focus:ring-2
+                ring-offset-current ring-offset-2
+                hover:text-dark-red
+              "
+              >Diary</a
+            >
+          </li>
         </ul>
       </div>
     </div>
@@ -315,18 +315,9 @@ export default {
       isLogin: false,
     }
   },
-  // mounted() {
-  //   firebase.auth().onAuthStateChanged((user) => {
-  //     console.log(user)
-  //     if (user) {
-  //       this.isLogin = true
-  //       this.userData = user
-  //     } else {
-  //       this.isLogin = false
-  //       this.userData = null
-  //     }
-  //   })
-  // },
+  mounted() {
+    console.log(`Nav`)
+  }
 }
 </script>
 
