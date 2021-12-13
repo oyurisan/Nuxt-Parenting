@@ -109,7 +109,7 @@ export default {
       // console.log(this.getAllData)
 
       // JSONファイルに変換 -> {Ob_ob ~ }を消去
-      const unchiArray2 = this.getAllData.unchi
+      const unchiArray2 = this.getUser.unchi
       const unchiArray3 = JSON.stringify(unchiArray2)
       let unchiArray6 = []
       if (unchiArray3) {
@@ -153,7 +153,7 @@ export default {
       // console.log(this.getAllData)
 
       // JSONファイルに変換 -> {Ob_ob ~ }を消去
-      const foodArray2 = this.getAllData.food
+      const foodArray2 = this.getUser.food
       const foodArray3 = JSON.stringify(foodArray2)
       let foodArray6 = []
       if (foodArray3) {
@@ -194,7 +194,7 @@ export default {
       // console.log(this.getAllData)
 
       // JSONファイルに変換 -> {Ob_ob ~ }を消去
-      const urineArray2 = this.getAllData.urine
+      const urineArray2 = this.getUser.urine
       const urineArray3 = JSON.stringify(urineArray2)
       let urineArray6 = []
       if (urineArray3) {
@@ -279,12 +279,12 @@ export default {
         },
       }
     },
-    ...mapGetters(['getAllData']),
+    ...mapGetters(['getAllData', 'getUser']),
 
     hoge: () => {
       // this.calenderOptions.events = this.getAllData.unchi.concat()
       // console.log(this.calenderOptions.events);
-      return this.calenderOptions.events.concat(this.getAllData.unchi)
+      return this.calenderOptions.events.concat(this.getUser.unchi)
     },
   },
 

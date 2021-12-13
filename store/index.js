@@ -32,6 +32,7 @@ export const getters = {
   },
   getAllData: state => state.allData,
   getUserInfo: state =>  state.UserInfo ? state.UserInfo.uid : null, 
+  getUser: state => state.Users,
   }
 
 export const actions = {
