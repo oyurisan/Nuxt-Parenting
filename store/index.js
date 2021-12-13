@@ -287,6 +287,7 @@ export const mutations = {
     state.allData = Item
     console.log(Item)
   },
+  // ユーザー情報取得
   fetchAllData(state,user){
     state.Users=user
     console.log(user)
