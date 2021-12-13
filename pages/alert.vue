@@ -46,7 +46,7 @@
           </div>
           <div class="m-3">
             <button
-              class=" shadow-lg px-2  py-1 bg-red-500  text-lg text-white  font-semibold rounded
+              class=" shadow-lg px-2  py-1 0  text-lg text-white  font-semibold rounded
                 hover:bg-red-600 hover:shadow-sm hover:translate-y-0.5transform transition " @click="stop">
               <div class="button">
                 <svg xmlns="http://www.w3.org/2000/svg"  class="h-6 w-6"  fill="none"  viewBox="0 0 24 24" stroke="currentColor">
@@ -271,6 +271,7 @@ export default {
 .button {
   display: flex;
   margin: 10% 0 5% 0;
+   color: rgb(133, 110, 110);
 }
 .timer {
   width: 400px;

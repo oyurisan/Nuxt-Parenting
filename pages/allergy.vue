@@ -5,7 +5,7 @@
     </div>
     <div class="box_sample03">
     <div class="container">
-      <div v-for="item in foodduty" :key="item.foodname" class="allergy">
+      <div v-for="item in foodduty" :key="item.foodname" class="allergy" value="item.icon">
     <div class="item">
         <img
           :src="require(`~/assets/` + item.icon)"
@@ -84,7 +84,7 @@ console.log(this.$store.state.Users)
       const newallergy = []
       for (let i = 0; i < allergy.length; i++) {
         if (allergy[i].checked === true) {
-          newallergy.push(allergy[i].icon)
+          newallergy.push(allergy[i].value)
         }
       }
       console.log(newallergy)

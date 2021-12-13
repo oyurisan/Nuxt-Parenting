@@ -4,7 +4,7 @@
   <div class="flame-diary">
         <div class="diary-flower" />
  <div class="drop_area">
-   日時：<input  v-model="date" type="date"> <br>
+   日時：<input  v-model="date" type="date"> <br><i class="fab fa-facebook-f"></i>
        <textarea
        v-model="message"
        v-bind="message"
@@ -45,7 +45,9 @@
 </template>
 
 <script  src = " /dist/vue-social-sharing.js "></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script defer src="/your-path-to-fontawesome/js/brands.js"></script>
+  <script defer src="/your-path-to-fontawesome/js/solid.js"></script>
+  <script defer src="/your-path-to-fontawesome/js/fontawesome.js"></script>
 <script SRC = "https://unpkg.com/vue-social-sharing@3.0.8/dist/vue-social-sharing.js" >
 
 </script>

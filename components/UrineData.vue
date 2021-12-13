@@ -7,7 +7,7 @@
         <th>メモ</th>
         <th>{{ kara }}</th>
       </tr>
-      <tr v-for="urineItem in this.getAllData.urine" :key="urineItem.id">
+      <tr v-for="urineItem in this.getUser.urine" :key="urineItem.id">
         <td>
           <div>{{ urineItem.urinedate }}</div>
         </td>
@@ -44,7 +44,7 @@ export default {
     user() {
       return this.$store.getters.user
     },
-    ...mapGetters(['getAllData']),
+    ...mapGetters(['getUser']),
   },
 
   methods: {
