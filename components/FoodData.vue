@@ -3,7 +3,8 @@
     <div class="foodBar">FOOD MEMO</div>
     <table class="data">
       <tr>
-        <th>日付</th>
+        <th>日付
+        </th>
         <th>中身</th>
         <th>量</th>
         <th>メモ</th>
@@ -59,6 +60,7 @@ export default {
     clear(i) {
       this.$store.dispatch('deleteSelectData', i)
     },
+
   },
 }
 </script>
