@@ -1,5 +1,5 @@
 <template>
-  <div class="allergy">
+  <div class="allergyy">
     <div class="allergy-title">
       ALLERGY PAGE
     </div>
@@ -72,8 +72,7 @@ export default {
     title: 'アレルギー管理',
   },
   created(){
-console.log(this.$store.state)
-console.log(this.$store.state.UserInfo)
+console.log(this.$store.state.Users)
   },
   methods: {
     addAllergy() {
@@ -81,16 +80,19 @@ console.log(this.$store.state.UserInfo)
     },
     getallergy() {
       const allergy = document.getElementsByClassName('allergy')
+      console.log(allergy)
       const newallergy = []
       for (let i = 0; i < allergy.length; i++) {
         if (allergy[i].checked === true) {
-          newallergy.push(allergy[i].value)
+          newallergy.push(allergy[i].icon)
         }
       }
+      console.log(newallergy)
       const allergys = {
         newallergy,
         UserInfo:this.$store.state.UserInfo
       }
+      console.log(allergys)
       this.allergyupdate(allergys)
     },
     ...mapActions(['allergyupdate']),
@@ -146,7 +148,7 @@ justify-content: center;
       /* 14個目のドットの位置と色 */ 280px 0px 0px rgb(217, 204, 179);
   }
 }
-.allergy {
+.allergyy {
   margin-left: auto;
   margin-right: auto;
   // padding: 12px 8px;
