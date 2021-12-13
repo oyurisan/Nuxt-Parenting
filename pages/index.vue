@@ -19,8 +19,8 @@ export default {
     },
     ...mapGetters(['getAllData']),
   },
-  created() {
-    this.$store.dispatch('fetchAllData')
+  mounted() {
+    this.$store.dispatch('nuxtClientInit')
   },
   methods: {
     data() {

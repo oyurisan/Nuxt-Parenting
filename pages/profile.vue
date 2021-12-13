@@ -92,9 +92,7 @@ export default {
   computed: {
     ...mapGetters(['getAllData']),
   },
-  created() {
-    this.$store.dispatch('fetchAllData')
-  },
+
 }
 </script>
 

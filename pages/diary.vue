@@ -1,10 +1,8 @@
 <template lang="javascript">
 <div class="container">
   <div class=" diary-title">Baby Diary</div>
-
   <div class="flame-diary">
         <div class="diary-flower" />
- 
  <div class="drop_area">
    日時：<input  v-model="date" type="date"> <br>
        <textarea
@@ -19,19 +17,13 @@
       /><br>
             <input  type="file"> <br>
         </div>
-      <share-network
-      url = " https://vuejs.org/ "
-                       title = "『３歳以下の子供に使える子育てアプリ』"
-                       description = "インタラクティブなインターフェースを構築するための直感的で高速かつ構成可能なMVVM。 "
-                       quote = " Vueはユーザーを構築するためのプログレッシブフレームワークですインターフェイス。「
-                      ハッシュタグ=」vuejs、ジャバスクリプト、フレームワーク「
-                      さえずりユーザ=」vuejs "
-                      network="twitter"> 
-      <a class="buttons" href="https://twitter.com/share?url=https://haniwaman.com/original-share-btn/&text=『３歳以下の子供に使える子育てアプリ』
-      " rel="nofollow" target="_blank">Twitter</a>
-      <a href="https://social-plugins.line.me/lineit/share?url=【子育てアプリのリンクを貼り付ける】">LINEで送る</a>
-      
-    </share-network>
+        <ul class="snsbtniti">
+          <li><a  href="https://twitter.com/share?url=https://haniwaman.com/original-share-btn/&text=『３歳以下の子供に使える子育てアプリ』
+      " rel="nofollow" target="_blank" class="flowbtn6 fl_tw1"><i class="fab fa-twitter"></i></a></li>
+    <li><a href="https://www.facebook.com/hogehoge" class="flowbtn6 insta_btn6"><i class="fab fa-instagram"></i></a></li>
+    <li><a href="FacebookページのURL" class="flowbtn6 fl_fb6"><i class="fab fa-facebook-f"></i></a></li>
+    <li><a href="https://line.me/ti/p/%ライン＠のアカウント" class="flowbtn6 fl_li1"><i class="fas fa-at"></i></a></li>
+        </ul>
      <div class="m-3">
     <button  @click="add">
       <div class="button">
@@ -55,6 +47,7 @@
 <script  src = " /dist/vue-social-sharing.js "></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <script SRC = "https://unpkg.com/vue-social-sharing@3.0.8/dist/vue-social-sharing.js" >
+
 </script>
 <script>
 import Vue from 'vue'
@@ -80,6 +73,10 @@ export default {
   head: {
     title: '思い出',
   },
+    created() {
+    console.log(this.$store.state)
+    console.log(this.$store.state.UserInfo)
+  },
   component: {},
   methods: {
     add() {
@@ -88,6 +85,7 @@ export default {
         diarydate: this.date,
         message: this.message,
         // photo:this.photo
+        UserInfo: this.$store.state.UserInfo,
       }
       this.diaryupdate(diarys)
       this.date = ''
@@ -217,7 +215,6 @@ export default {
   font-size: 1.2em;
 }
 }
-
 .enter {
   border: 10px dotted powderblue;
 }
@@ -232,5 +229,88 @@ export default {
   &:hover {
     background: rgb(177, 90, 90);
   }
+}
+/* ボタン全体 */
+.flowbtn6{
+border-radius:13px;		
+position:relative;
+display:inline-block;
+width:50px;
+height:50px;
+font-size:33px;
+color:#fff!important;
+transition:.5s;
+text-decoration:none;
+}
+// /* アイコンをど真ん中に*/
+.flowbtn6 i{
+position:absolute;
+top:50%;
+left:50%;
+-ms-transform:translate(-50%,-50%);
+-webkit-transform:translate(-50%,-50%);
+transform:translate(-50%,-50%);
+}
+/* ulタグの内側余白を０にする */
+ul.snsbtniti{
+padding:0!important;
+}
+// /* アイコンボタン全体の位置 */
+.snsbtniti{
+display:flex;
+flex-flow:row wrap;
+justify-content:space-around;
+}
+/* アイコンボタン同士の余白 */
+.snsbtniti li{
+flex:0 0 33%;
+text-align:center!important;
+}
+/* アイコンボタンにマウスを乗せた時 */
+.flowbtn6:hover{
+-webkit-transform:translateY(-5px);
+-ms-transform:translateY(-5px);
+transform:translateY(-5px);
+}
+/* Twitter */
+.fl_tw1{
+background:#55acee;
+}
+/* LINE@ */
+.fl_li6{
+background:#00c300;			
+}
+/* Instagram紫グラデ背景 */
+.insta_btn6 {
+background:-webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+background:linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+overflow:hidden;	
+}
+/* Instagramオレンジグラデ背景 */
+.insta_btn6:before{
+content: '';
+position: absolute;
+top:27px;
+left:-12px;
+width:59px;
+height:40px;
+background:-webkit-radial-gradient(#ffdb2c 7%, rgba(255, 105, 34, 0.3) 60%, rgba(255, 88, 96, 0) 70%);
+background:radial-gradient(#ffdb2c 7%, rgba(255, 105, 34, 0.3) 60%, rgba(255, 88, 96, 0) 70%);
+}
+/* Facebookアイコン位置 */
+.fl_fb6 .fa-facebook-f{
+position:relative;
+top:23px;
+left:17px;
+font-size:43px;
+}
+/* Facebookアイコン背景*/
+.fl_fb6{
+background:-webkit-linear-gradient(top, #5c80c6 0%, #34528c 74%);	
+background:linear-gradient(to bottom, #5c80c6 0%, #34528c 74%);	
+}
+/* LINE@ */
+.fl_li6{
+background:#00c300;			
 }
 </style>

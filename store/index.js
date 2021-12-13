@@ -34,10 +34,11 @@ export const getters = {
 
 export const actions = {
   // モジュール
-  nuxtClientInit ({ commit },) {
+  nuxtClientInit ({ commit ,dispatch},) {
     const data = JSON.parse(localStorage.getItem('ユーザー情報')) || []
     console.log(data.UserInfo)
     if (data.UserInfo) {
+      dispatch('fetchAllData',data.UserInfo)
       commit('fetchUser', data.UserInfo)
     }
   },
@@ -54,8 +55,9 @@ export const actions = {
   },
   // 日記投稿
   diaryupdate(commit, diarys) {
-    UserRef.doc(`Z3h6iFpa2jPFY8A2w9z3`)
-      .update({
+    console.log(UserInfo)
+    UserRef.doc(diarys.UserInfo)
+    .update({
         diary: firebase.firestore.FieldValue.arrayUnion({
           diarydate: diarys.date,
           message: diarys.message,
@@ -157,6 +159,7 @@ export const actions = {
   },
   // 初期情報追加
   adds({ commit },UserInfo) {
+    console.log(UserInfo)
     db.collection(`User`)
     .doc(UserInfo)
     .set({
@@ -194,7 +197,8 @@ export const actions = {
     })
   },
   // ログイン
-  login(payload) {
+  login({dispatch},payload) {
+    console.log(payload)
     firebase
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
@@ -219,14 +223,15 @@ export const actions = {
       })
   },
   // 全部のデータ DBから取り出し
-  fetchAllData({ commit,}) {
+  fetchAllData({ commit},UserInfo) {
+    console.log(UserInfo)
     firebase.firestore()
     .collection(`User/`)
-    .get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
+    .doc(UserInfo)
+    .get().then((doc) => {
+      // commitしてstoreにデータを入れる
         console.log(doc.data());
       })
-    })
   },
   // ユーザー情報取得
   fetchUser({commit},userData ) {

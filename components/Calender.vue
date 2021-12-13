@@ -286,9 +286,6 @@ export default {
     },
   },
 
-  created() {
-    this.$store.dispatch('fetchAllData')
-  },
 
   methods: {},
 }

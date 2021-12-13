@@ -50,7 +50,6 @@ export default {
         email: this.email,
         password: this.password,
       })
-      this.adds()
       this.email = ''
       this.password = ''
       this.$router.push({ name: 'login' })

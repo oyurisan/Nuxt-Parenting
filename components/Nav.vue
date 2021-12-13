@@ -315,18 +315,9 @@ export default {
       isLogin: false,
     }
   },
-  // mounted() {
-  //   firebase.auth().onAuthStateChanged((user) => {
-  //     console.log(user)
-  //     if (user) {
-  //       this.isLogin = true
-  //       this.userData = user
-  //     } else {
-  //       this.isLogin = false
-  //       this.userData = null
-  //     }
-  //   })
-  // },
+  mounted() {
+    console.log(`Nav`)
+  }
 }
 </script>
 
