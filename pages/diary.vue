@@ -298,7 +298,7 @@ flex-wrap: wrap;
 }
 /* アイコンボタン同士の余白 */
 .snsbtniti li{
-flex:0 0 33%;
+flex:20% 0 20%;
 text-align:center!important;
 }
 /* アイコンボタンにマウスを乗せた時 */
@@ -334,10 +334,10 @@ overflow:hidden;
 // }
 /* Facebookアイコン位置 */
 .fl_fb6 .fa-facebook-f{
-position:relative;
-top:23px;
-left:17px;
-font-size:43px;
+// position:relative;
+// top:23px;
+// left:17px;
+// font-size:43px;
 }
 // /* Facebookアイコン背景*/
 // .fl_fb6{
