@@ -35,12 +35,8 @@
           </div>
         </div>
       </div>
-  
     </div>
 
-    <div class="backHome">
-      <nuxt-link to="/">Home</nuxt-link>
-    </div>
   </div>
 </template>
 
@@ -133,11 +129,5 @@ export default {
 .upload-img {
   text-align: center;
   margin-left: 20%;
-}
-.backHome {
-  text-align: center;
-  margin: 5% auto 10% auto;
-  background-color: darksalmon;
-  width: 10%;
 }
 </style>

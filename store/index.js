@@ -3,8 +3,6 @@ import firebase from '~/plugins/firebase'
 
 const db = firebase.firestore()
 const UserRef = db.collection(`User`)
-// this.uid = String(uid)
-
 
 export const state = () => ({
   user: {
@@ -21,8 +19,6 @@ export const state = () => ({
   userlist:null
 })
 export const getters = {
-  getid: (state) => 
-  (id) => state.userlist.find((userlist) => userlist.id === id),
   user: (state) => {
     return state.user.uid
   },
@@ -32,13 +28,11 @@ export const getters = {
   Food: (state) => {
     return state.FoodList
   },
-
   getAllData: state => state.allData,
-  // getUserInfo: state =>  state.UserInfo ? state.UserInfo.uid : null, 
+  getUserInfo: state =>  state.UserInfo ? state.UserInfo.uid : null, 
   }
 
 export const actions = {
-
   // モジュール
   nuxtClientInit ({ commit },) {
     const data = JSON.parse(localStorage.getItem('ユーザー情報')) || []
@@ -225,10 +219,11 @@ export const actions = {
       })
   },
   // 全部のデータ DBから取り出し
-  fetchAllData({ commit }) {
-    UserRef.get().then((querySnapshot) => {
+  fetchAllData({ commit,}) {
+    firebase.firestore()
+    .collection(`User/`)
+    .get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        commit('fetchItems', doc.data())
         console.log(doc.data());
       })
     })
@@ -237,7 +232,6 @@ export const actions = {
   fetchUser({commit},userData ) {
    commit('fetchUser',userData)
   },
-
   // 新規登録ユーザーに確認のメールを送信する
   sendemail() {
     firebase

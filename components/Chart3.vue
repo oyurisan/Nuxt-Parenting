@@ -112,7 +112,7 @@ export default {
 
         title: {
           display: true, // タイトルを表示する
-          text: '🌸 ２ ~ ３歳までの成長曲線 🌸', // タイトルのテキスト
+          text: '❁ ２歳１ヶ月 ~ ３歳までの成長曲線 ❁', // タイトルのテキスト
           fontSize: 24,
         },
       },

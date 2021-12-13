@@ -1,7 +1,11 @@
 <template>
   <div class="growth">
     <div class="growth-title">GROWTH PAGE</div>
+
   <div class="growth-container">
+
+    <div class="flame-growth">
+        <div class="growth-flower" />
   
     日時：<input v-model="heightdate" type="date" name="Date" /><br>
      身長： <div class="container">
@@ -48,11 +52,15 @@
       <div class="button">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 保存
 </div>
 </button></div>
+</div>
 
+
+<div class="flame-weight">
+        <div class="weight-flower" />
          日時：<input v-model="weightdate" type="date" name="Date" /><br>
       体重：<div class="container"><div class="cp_ipselect"><select v-model="weightk" class="cp_sl02" required>
         <option v-for="item in weight" :key="item.k" :value="item.k">
@@ -97,15 +105,17 @@
       <div class="button">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 保存</div></button></div>
 <div class="m-3">
     <button  @click="back">
       <div class="button">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 戻る</div></button></div>
+</div>
+
 
    </div>
   </div>
@@ -209,22 +219,13 @@ console.log(this.$store.state.UserInfo)
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
 
-.growth {
-  width: 400px;
-  margin: auto;
-}
 .height {
   display: flex;
 }
 .weight {
   display: flex;
 }
-// .growth-container{
-//   text-align: center;
-//   margin: 2%;
-//   display: flex;
-//   flex-wrap: wrap;
-//   }
+
 .touroku {
   border: 2px solid #000;
   border-radius: 0;
@@ -237,9 +238,54 @@ console.log(this.$store.state.UserInfo)
 .growth-title {
   text-align: center;
   font-size: 200%;
-  margin: 10% 0 5% 0;
+  margin: 5% 0 5% 0;
   font-family: 'Gluten', cursive;
   color: rgb(133, 110, 110);
+
+    &::after {
+    background-color: #f3a3a8; /* 1個目（一番左）のドットの色 */
+    border-radius: 50%;
+    content: '';
+    // margin-left: 15px; /* 最後の文字とドットとの余白 */
+    position: absolute;
+    top: 37%;
+    left: 31.3%;
+    width: 5px; /* ドットの幅 */
+    height: 5px; /* ドットの高さ */
+    box-shadow: 20px 0px 0px rgb(217, 204, 179),
+      /* 2個目のドットの位置と色 */ 40px 0px 0px rgb(217, 204, 179),
+      /* 3個目のドットの位置と色 */ 60px 0px 0px rgb(243, 163, 168),
+      /* 4個目のドットの位置と色 */ 80px 0px 0px rgb(217, 204, 179),
+      /* 5個目のドットの位置と色 */ 100px 0px 0px rgb(217, 204, 179),
+      /* 6個目のドットの位置と色 */ 120px 0px 0px rgb(243, 163, 168),
+      /* 7個目のドットの位置と色 */ 140px 0px 0px rgb(217, 204, 179),
+      /* 8個目のドットの位置と色 */ 160px 0px 0px rgb(217, 204, 179),
+      /* 9個目のドットの位置と色 */ 180px 0px 0px rgb(243, 163, 168),
+      /* 10個目のドットの位置と色 */ 200px 0px 0px rgb(217, 204, 179),
+      /* 11個目のドットの位置と色 */ 220px 0px 0px rgb(217, 204, 179),
+      /* 12個目のドットの位置と色 */ 240px 0px 0px rgb(243, 163, 168),
+      /* 13個目のドットの位置と色 */ 260px 0px 0px rgb(217, 204, 179),
+      /* 14個目のドットの位置と色 */ 280px 0px 0px rgb(217, 204, 179);
+  }
+}
+
+.growth-flower {
+  &::before {
+    content: '❋ *'; /*花に見せかけるためのアスタリスク*/
+    color: #fff; /* アスタリスクの色 */
+    display: inline-block;
+    font-size: 35px; /* アスタリスクの大きさ */
+    font-weight: bold;
+    left: 20%;
+    top: 90%;
+    position: absolute;
+    transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    text-shadow: 0px 0px 6px #fff2f2e5, 0px 0px 10px #fff6f9, 0 0 10px #e4c2ce; /* アスタリスク周りの影 */
+    transform: rotate(45deg);
+  }
 }
 /* 量のプルダウン */
 .cp_ipselect {
@@ -347,5 +393,8 @@ console.log(this.$store.state.UserInfo)
   &:hover {
   background: rgb(177, 90, 90);
 }
+}
+.m-3 {
+  text-align: center;
 }
 </style>
