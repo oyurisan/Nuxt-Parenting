@@ -3,7 +3,9 @@
     <FullCalendar :options="config" />
     <!-- <FullCalendar :options="calendarOptions" /> -->
     <!-- <FullCalendar :plugins="calendarOptions.plugins" :initial-view="calendarOptions.initialView" :header-toolbar="calendarOptions.headerToolbar" /> -->
-  </div>
+    
+
+    </div>
 </template>
 
 <script type="module">
