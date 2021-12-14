@@ -279,7 +279,7 @@ export default {
         },
       }
     },
-    ...mapGetters(['getAllData', 'getUser']),
+    ...mapGetters(['getUser', 'getUser']),
 
     hoge: () => {
       // this.calenderOptions.events = this.getAllData.unchi.concat()

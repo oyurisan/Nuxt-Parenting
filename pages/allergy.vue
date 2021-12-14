@@ -84,7 +84,7 @@ console.log(this.$store.state.Users)
       const newallergy = []
       for (let i = 0; i < allergy.length; i++) {
         if (allergy[i].checked === true) {
-          newallergy.push(allergy[i].icon)
+          newallergy.push(allergy[i].value)
         }
       }
       console.log(newallergy)
@@ -105,8 +105,8 @@ console.log(this.$store.state.Users)
 .container{
 display: flex;
 flex-wrap: wrap;
-align-content:stretch;
 justify-content: center;
+
 }
 .item { 
   flex-basis: auto ;

@@ -1,10 +1,10 @@
 <template lang="javascript">
 <div class="container">
-  <div class=" diary-title">Baby Diary</div>
+  <div class=" diary-title">Baby Diary</div><i class="fab fa-twitter"></i>
   <div class="flame-diary">
         <div class="diary-flower" />
  <div class="drop_area">
-   日時：<input  v-model="date" type="date"> <br>
+   日時：<input  v-model="date" type="date"> <br><i class="fab fa-facebook-f"></i>
        <textarea
        v-model="message"
        v-bind="message"
@@ -19,9 +19,9 @@
         </div>
         <ul class="snsbtniti">
           <li><a  href="https://twitter.com/share?url=https://haniwaman.com/original-share-btn/&text=『３歳以下の子供に使える子育てアプリ』
-      " rel="nofollow" target="_blank" class="flowbtn6 fl_tw1"><i class="fab fa-twitter"></i></a></li>
-    <li><a href="https://www.facebook.com/hogehoge" class="flowbtn6 insta_btn6"><i class="fab fa-instagram"></i></a></li>
-    <li><a href="FacebookページのURL" class="flowbtn6 fl_fb6"><i class="fab fa-facebook-f"></i></a></li>
+      " rel="nofollow" target="_blank" class="flowbtn6 fl_tw1"><img src="~/assets/000a.jpg" width="50px" height="50px" class="pic"></a></li>
+    <li><a href="https://www.facebook.com/hogehoge" class="flowbtn6 insta_btn6"><img src="~/assets/in.jpg" width="50px" height="50px" class="pic"></a></li>
+    <li><a href="FacebookページのURL" class="flowbtn6 fl_fb6"><img src="~/assets/fa.jpg" width="50px" height="50px" class="pic"></a></li>
     <li><a href="https://line.me/ti/p/%ライン＠のアカウント" class="flowbtn6 fl_li1"><i class="fas fa-at"></i></a></li>
         </ul>
      <div class="m-3">
@@ -32,20 +32,50 @@
 </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 投稿</div></button>
 <div class=" diary-title">Baby Diarys</div>
-  <li v-for="item in diary" :key="item.message">
+  <div v-for="item in diary" :key="item.message">
     {{item.date}}
     {{item.message}}
     {{item.photo}}
-  </li>
-</ol>
-<!-- {{date}}{{message}} -->
+  <div class="containers">
+<div class="item">
+    2021/12/11
+     <img
+          src="~/assets/human.jpg"
+          width="150px"
+          height="150px"
+        />
+        よく笑いました。
+    </div>
+    <div class="item">
+         2021/12/12
+     <img
+          src="~/assets/human.jpg"
+          width="150px"
+          height="150px"
+        />
+        友達ができました。
+        </div>
+        <div class="item">
+         2021/12/13
+     <img
+          src="~/assets/human.jpg"
+          width="150px"
+          height="150px"
+        />
+        ご飯をよく食べました。
+        </div>
+        
+  </div>
+  </div>
 </div>
 </div>
 </div>
 </template>
 
 <script  src = " /dist/vue-social-sharing.js "></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script defer src="/your-path-to-fontawesome/js/brands.js"></script>
+  <script defer src="/your-path-to-fontawesome/js/solid.js"></script>
+  <script defer src="/your-path-to-fontawesome/js/fontawesome.js"></script>
 <script SRC = "https://unpkg.com/vue-social-sharing@3.0.8/dist/vue-social-sharing.js" >
 
 </script>
@@ -110,6 +140,11 @@ export default {
   justify-content: center;
   align-items: center;
   // font-size: 20px;
+}
+.containers{
+  display: flex;
+  flex-wrap: wrap;
+   justify-content: center; 
 }
 .button {
   display: flex;
@@ -258,12 +293,12 @@ padding:0!important;
 // /* アイコンボタン全体の位置 */
 .snsbtniti{
 display:flex;
-flex-flow:row wrap;
-justify-content:space-around;
+flex-wrap: wrap;
+ justify-content: center; 
 }
 /* アイコンボタン同士の余白 */
 .snsbtniti li{
-flex:0 0 33%;
+flex:20% 0 20%;
 text-align:center!important;
 }
 /* アイコンボタンにマウスを乗せた時 */
@@ -287,30 +322,33 @@ background:linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
 overflow:hidden;	
 }
 /* Instagramオレンジグラデ背景 */
-.insta_btn6:before{
-content: '';
-position: absolute;
-top:27px;
-left:-12px;
-width:59px;
-height:40px;
-background:-webkit-radial-gradient(#ffdb2c 7%, rgba(255, 105, 34, 0.3) 60%, rgba(255, 88, 96, 0) 70%);
-background:radial-gradient(#ffdb2c 7%, rgba(255, 105, 34, 0.3) 60%, rgba(255, 88, 96, 0) 70%);
-}
+// .insta_btn6:before{
+// content: '';
+// position: absolute;
+// top:27px;
+// left:-12px;
+// width:59px;
+// height:40px;
+// background:-webkit-radial-gradient(#ffdb2c 7%, rgba(255, 105, 34, 0.3) 60%, rgba(255, 88, 96, 0) 70%);
+// background:radial-gradient(#ffdb2c 7%, rgba(255, 105, 34, 0.3) 60%, rgba(255, 88, 96, 0) 70%);
+// }
 /* Facebookアイコン位置 */
 .fl_fb6 .fa-facebook-f{
-position:relative;
-top:23px;
-left:17px;
-font-size:43px;
+// position:relative;
+// top:23px;
+// left:17px;
+// font-size:43px;
 }
-/* Facebookアイコン背景*/
-.fl_fb6{
-background:-webkit-linear-gradient(top, #5c80c6 0%, #34528c 74%);	
-background:linear-gradient(to bottom, #5c80c6 0%, #34528c 74%);	
-}
+// /* Facebookアイコン背景*/
+// .fl_fb6{
+// background:-webkit-linear-gradient(top, #5c80c6 0%, #34528c 74%);	
+// background:linear-gradient(to bottom, #5c80c6 0%, #34528c 65%);	
+// }
 /* LINE@ */
 .fl_li6{
 background:#00c300;			
+}
+.pic{
+  border-radius:20%;
 }
 </style>
