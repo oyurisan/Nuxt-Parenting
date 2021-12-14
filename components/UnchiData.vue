@@ -9,7 +9,7 @@
         <th>メモ</th>
         <th>{{ kara }}</th>
       </tr>
-      <tr v-for="unchiItem in this.getAllData.unchi" :key="unchiItem.id">
+      <tr v-for="unchiItem in this.getUser.unchi" :key="unchiItem.id">
         <td>
           <div>{{ unchiItem.start }}</div>
         </td>
@@ -52,7 +52,7 @@ export default {
     user() {
       return this.$store.getters.user
     },
-    ...mapGetters(['getAllData']),
+    ...mapGetters(['getAllData', 'getUser']),
   },
 
   methods: {

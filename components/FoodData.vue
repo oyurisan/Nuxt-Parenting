@@ -10,7 +10,7 @@
         <th>メモ</th>
         <th>{{ kara }}</th>
       </tr>
-      <tr v-for="foodItem in this.getAllData.food" :key="foodItem.id">
+      <tr v-for="foodItem in this.getUser.food" :key="foodItem.id">
         <td>
           <div>{{ foodItem.fooddate }}</div>
         </td>
@@ -53,7 +53,7 @@ export default {
     user() {
       return this.$store.getters.user
     },
-    ...mapGetters(['getAllData']),
+    ...mapGetters(['getAllData', 'getUser']),
   },
 
   methods: {

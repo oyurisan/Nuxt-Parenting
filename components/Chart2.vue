@@ -56,6 +56,7 @@ export default {
                 display: true,
                 labelString: 'Height (cm)',
                 fontSize: 16,
+                height: 100,
               },
               // 目盛線
               gridLines: {
@@ -66,7 +67,7 @@ export default {
               ticks: {
                 fontColor: 'black',
                 beginAtZero: true,
-                suggestedMax: 90,
+                suggestedMax: 100,
                 stepSize: 10,
               },
             },

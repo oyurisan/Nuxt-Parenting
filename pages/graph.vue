@@ -14,6 +14,7 @@
           :options="chartData"
           :lists1="heightLists1"
           :lists11="weightLists1"
+          height="500"
         />
       </div>
       <div v-if="isActive2">
@@ -786,6 +787,7 @@ $button-opacity: 0.8;
 
 .chart {
   width: 80%;
-  margin: 5% auto 10% auto;
+  margin: 5% auto 5% auto;
+  padding: 5% auto 5% auto;
 }
 </style>

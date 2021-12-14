@@ -63,7 +63,7 @@ export default {
               ticks: {
                 fontColor: 'black',
                 beginAtZero: true,
-                suggestedMax: 80,
+                suggestedMax: 100,
                 stepSize: 10,
               },
             },
