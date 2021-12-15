@@ -2,12 +2,21 @@
   <div class="unchi-main">
     <div class="unchi-title">UNCHI PAGE</div>
 
+    <div><img class="unchi-hr" :src="require(`~/assets/hr.png`)" /></div>
+
     <div class="unchi-container">
       <div class="flame-unchi">
         <div class="unchi-flower" />
+
         <div>
-          日時 : <input v-model="unchidate" type="datetime-local" name="Date" />
+          日時 :
+          <input
+            v-model="unchidate"
+            type="datetime-local"
+            name="datetime-local"
+          />
         </div>
+        <div class="val">{{ Validation.unchidate }}</div>
 
         <div class="color-main">
           色 :
@@ -38,6 +47,7 @@
             <span class="radio-text-yellow">黄</span>
           </label>
         </div>
+        <div class="val">{{ Validation.color }}</div>
 
         <div class="form-main">
           形 :
@@ -78,6 +88,8 @@
           />
           <label for="water">水っぽい</label>
         </div>
+        <div class="val">{{ Validation.shape }}</div>
+
         <textarea
           v-model="unchimemo"
           class="textarea"
@@ -89,54 +101,57 @@
         />
         <p>{{ unchimemo.length }}/500 文字</p>
 
-      <div class="container">
-        <div class="m-3">
-          <button @click="addunchi">
-            <div class="button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                width="30px"
-                height="30px"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="{2}"
-                  d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
-                /></svg
-              ><a class="save">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 保存</a>
-            </div>
-          </button>
-        </div>
+        <div class="container">
+          <div class="m-3">
+            <button @click="addunchi">
+              <div class="button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  width="30px"
+                  height="30px"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="{2}"
+                    d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+                  /></svg
+                ><a class="save"
+                  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  保存</a
+                >
+              </div>
+            </button>
+          </div>
 
-        <div class="m-3">
-          <button @click="back">
-            <div class="button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                width="30px"
-                height="30px"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
-                /></svg
-              >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 戻る
-            </div>
-          </button>
+          <div class="m-3">
+            <button @click="back">
+              <div class="button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  width="30px"
+                  height="30px"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
+                  /></svg
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                戻る
+              </div>
+            </button>
+          </div>
         </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -158,6 +173,12 @@ export default {
       shape: '',
       color: '',
       unchidate: '',
+
+      Validation: {
+        unchidate: '',
+        color: '',
+        shape: '',
+      },
     }
   },
 
@@ -173,25 +194,40 @@ export default {
   },
   methods: {
     addunchi() {
-      if (this.$store.state.UserInfo) {
-        alert(`この内容で登録してもよろしいでしょうか`)
-        const unchis = {
-          unchimemo: this.unchimemo,
-          unchishape: this.shape,
-          unchidate: this.unchidate,
-          unchicolor: this.color,
-          UserInfo: this.$store.state.UserInfo,
-        }
-        this.unchiupdate(unchis)
-        this.$router.push({ name: 'index' })
-        this.unchimemo = ''
-        this.unchishape = ''
-        this.unchidate = ''
-        this.unchicolor = ''
-      } else {
-        alert(`ログインをしてください`)
-        console.log(`ログインしていません`)
+
+      // this.Validation = {};
+      if (this.unchidate === '') {
+        this.Validation.unchidate = '日付はいつですか？'
       }
+
+      if (this.color === '') {
+        this.Validation.color = '色は何色でしたか？'
+      }
+
+      if (this.shape === '') {
+        this.Validation.shape = 'どんな形でしたか？'
+      }
+
+        if (this.$store.state.UserInfo) {
+          alert(`この内容で登録してもよろしいでしょうか`)
+          const unchis = {
+            unchimemo: this.unchimemo,
+            unchishape: this.shape,
+            unchidate: this.unchidate,
+            unchicolor: this.color,
+            UserInfo: this.$store.state.UserInfo,
+          }
+          this.unchiupdate(unchis)
+          this.$router.push({ name: 'index' })
+          this.unchimemo = ''
+          this.unchishape = ''
+          this.unchidate = ''
+          this.unchicolor = ''
+        } else {
+          alert(`ログインをしてください`)
+          console.log(`ログインしていません`)
+        }
+      
     },
     back() {
       this.$router.push({ name: 'index' })
@@ -210,30 +246,14 @@ export default {
   font-family: 'Gluten', cursive;
   color: rgb(133, 110, 110);
   font-size: 200%;
-
-  &::after {
-    background-color: #f3a3a8; /* 1個目（一番左）のドットの色 */
-    border-radius: 50%;
-    content: '';
-    // margin-left: 15px; /* 最後の文字とドットとの余白 */
-    position: absolute;
-    top: 275px;
-    left: 610px;
-    width: 5px; /* ドットの幅 */
-    height: 5px; /* ドットの高さ */
-    box-shadow: 20px 0px 0px rgb(217, 204, 179),
-      /* 2個目のドットの位置と色 */ 40px 0px 0px rgb(217, 204, 179),
-      /* 3個目のドットの位置と色 */ 60px 0px 0px rgb(243, 163, 168),
-      /* 4個目のドットの位置と色 */ 80px 0px 0px rgb(217, 204, 179),
-      /* 5個目のドットの位置と色 */ 100px 0px 0px rgb(217, 204, 179),
-      /* 6個目のドットの位置と色 */ 120px 0px 0px rgb(243, 163, 168),
-      /* 7個目のドットの位置と色 */ 140px 0px 0px rgb(217, 204, 179),
-      /* 8個目のドットの位置と色 */ 160px 0px 0px rgb(217, 204, 179),
-      /* 9個目のドットの位置と色 */ 180px 0px 0px rgb(243, 163, 168),
-      /* 10個目のドットの位置と色 */ 200px 0px 0px rgb(217, 204, 179),
-      /* 11個目のドットの位置と色 */ 220px 0px 0px rgb(217, 204, 179); /* 12個目のドットの位置と色 */
-  }
 }
+
+.unchi-hr {
+  width: 40%;
+  margin: -5% auto 5% auto;
+  // text-align: center;
+}
+
 .unchi-flower {
   &::before {
     content: '❋ *'; /*花に見せかけるためのアスタリスク*/
@@ -444,5 +464,9 @@ input[type='radio']:checked + .radio-text-yellow:before {
     // color: #fff;
     background: rgb(177, 90, 90);
   }
+}
+
+.val {
+  color: #da3838;
 }
 </style>

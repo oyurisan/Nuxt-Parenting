@@ -72,19 +72,19 @@ export const actions = {
       })
   },
   // ユーザー情報更新
-  userupdate({commit}, users) {
-    console.log(users.UserInfo)
-    UserRef.doc(users.UserInfo)
+  userupdate({commit}, usersSign) {
+    console.log(usersSign.UserInfo)
+    UserRef.doc(usersSign.UserInfo)
        .update({
-        users: firebase.firestore.FieldValue.arrayUnion({
-          babyname: users.babyname,
-          gender: users.gender,
-          birthday: users.birthday,
-          picture:users.picture
+        usersSign: firebase.firestore.FieldValue.arrayUnion({
+          babyname: usersSign.babyname,
+          birthday: usersSign.birthday,
+          gender: usersSign.gender,
+          picture: usersSign.picture
         }),
       })
       .then(() => {
-        commit('userupdate', users,{root: true} )
+        commit('userupdate', usersSign,{root: true} )
       })
   },
   // ご飯更新
@@ -166,7 +166,7 @@ export const actions = {
     db.collection(`User`)
     .doc(UserInfo)
     .set({
-      users: [{ babyname: '', birthday: '', gender: '' }],
+      usersSign: [{ babyname: '', birthday: '', gender: '', picture:'' }],
       allergy: [],
       food: [{ kinds: '', foodmemo: '', fooddate: '', ml: '' }],
       height: [{ height: '', heightdate: '' }],
