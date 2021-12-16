@@ -13,7 +13,9 @@
        v-model="diary.message" class="textarea" cols="30"  rows="5"  name="Memo" placeholder=" タップしてテキストを入力"
         maxlength="500"/><br>
          <input type="file" @change="upload">
-         <img  :src="diary.img" alt="" width="50px" height="50px">
+         <div class="picture">
+         <img  :src="diary.img" alt="" width="100px" height="100px">
+         </div>
         </div>
         <ul class="snsbtniti">
           <li><a  href="https://twitter.com/share?url=https://haniwaman.com/original-share-btn/&text=『３歳以下の子供に使える子育てアプリ』" 
@@ -346,5 +348,8 @@ background:#00c300;
 }
 .pic{
   border-radius:20%;
+}
+.picture{
+  margin: 5% 0 5% 0;
 }
 </style>

@@ -73,6 +73,7 @@
     <div class="timer">
     <div class="container">
       <div class="item">
+          music1
      <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
     <div class="container">
      <div class="buttonn">
@@ -84,7 +85,7 @@
       </svg>
     </button>
     </div>
-   
+   &nbsp;&nbsp;&nbsp;&nbsp;
     <div class="buttonn">
     <button>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"  viewBox="0 0 24 24" stroke="currentColor">
@@ -94,9 +95,9 @@
     </button>
      </div>
     </div><br>
-    music1
   </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <div class="item">
+      music2
      <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
   <div class="container">
      <div class="buttonn">
@@ -108,6 +109,7 @@
       </svg>
     </button>
     </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
       <div class="buttonn">
     <button>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"  viewBox="0 0 24 24" stroke="currentColor">
@@ -117,9 +119,9 @@
     </button>
     </div>
     </div><br>
-    music2
   </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div class="item">
+      music3
      <img src="~/assets/background-music.jpeg" width="100px" height="100px"/><br>
      <div class="container">
      <div class="buttonn">
@@ -130,6 +132,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><br>
       </svg>
     </button></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <div class="buttonn">
     <button>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"  viewBox="0 0 24 24" stroke="currentColor">
@@ -139,7 +142,6 @@
     </button>
     </div>
     </div><br>
-    music3
   </div>
     </div>
     </div>
