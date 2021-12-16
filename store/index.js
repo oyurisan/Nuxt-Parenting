@@ -56,21 +56,6 @@ export const actions = {
       commit('allergyupdate',allergys,{root: true} )
       })
   },
-  // 日記投稿
-  diaryupdate(commit, diarys) {
-    console.log(UserInfo)
-    UserRef.doc(diarys.UserInfo)
-    .update({
-        diary: firebase.firestore.FieldValue.arrayUnion({
-          diarydate: diarys.date,
-          message: diarys.message,
-          photo: diarys.photo,
-        }),
-      })
-      .then(() => {
-        commit('diaryupdate', diarys,{root: true} )
-      })
-  },
   // ユーザー情報更新
   userupdate({commit}, users) {
     console.log(users.UserInfo)
@@ -89,7 +74,7 @@ export const actions = {
   },
   // ご飯更新
   foodupdate({commit}, foods) {
-    console.log(foods.UserInfo)
+    // console.log(foods.UserInfo)
     UserRef.doc(foods.UserInfo)
       .update({
         food: firebase.firestore.FieldValue.arrayUnion({
@@ -161,8 +146,7 @@ export const actions = {
       })
   },
   // 初期情報追加
-  adds({ commit },UserInfo) {
-    console.log(UserInfo)
+  adds(UserInfo) {
     db.collection(`User`)
     .doc(UserInfo)
     .set({
@@ -173,7 +157,7 @@ export const actions = {
       weight: [{ weight: '', weightdate: '' }],
       unchi: [{ unchiecolor: '', shape: '', unchimemo: '', unchidate: '' }],
       urine: [{ urinecolor: '', urinememo: '', urinedate: '' }],
-      diary: [{ diarydate: '', message: '', photo: '' }],
+      diary: [{ diarydate: '', message: '', image: '' }],
     })
   },
   // 新規登録
@@ -269,10 +253,10 @@ export const mutations = {
   ...vuexfireMutations,
   // データをpayloadに代入
   getData(state, payload) {
-    console.log(payload)
-    console.log(state.user.uid)
+    // console.log(payload)
+    // console.log(state.user.uid)
     state.user.uid = payload.uid
-    console.log(state.user.uid)
+    // console.log(state.user.uid)
     state.user.email = payload.email
   },
   switchlogin(state) {

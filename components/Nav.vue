@@ -307,17 +307,12 @@
 
 
 <script>
-// import firebase from '~/plugins/firebase'
 
 export default {
   data() {
     return {
-      isLogin: false,
     }
   },
-  mounted() {
-    console.log(`Nav`)
-  }
 }
 </script>
 

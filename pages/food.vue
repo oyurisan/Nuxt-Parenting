@@ -169,8 +169,6 @@ export default {
       fooddate: '',
       kinds: '',
       ml: '',
-      userData: null,
-      isLogin: false,
     }
   },
   head: {

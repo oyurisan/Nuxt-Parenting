@@ -1,130 +1,139 @@
-<template lang="javascript">
+<template >
 <div class="container">
-  <div class=" diary-title">Baby Diary</div><i class="fab fa-twitter"></i>
+  <div class=" diary-title">Baby Diary</div>
   <div class="flame-diary">
         <div class="diary-flower" />
  <div class="drop_area">
-   日時：<input  v-model="date" type="date"> <br><i class="fab fa-facebook-f"></i>
+   日時：<input  v-model="diary.date" type="date"> <br><i class="fab fa-facebook-f"></i>
        <textarea
-       v-model="message"
-       v-bind="message"
-        class="textarea"
-        cols="30"
-        rows="5"
-        name="Memo"
-        placeholder=" タップしてテキストを入力"
-        maxlength="500"
-      /><br>
-            <input  type="file"> <br>
+       v-model="diary.message" class="textarea" cols="30"  rows="5"  name="Memo" placeholder=" タップしてテキストを入力"
+        maxlength="500"/><br>
+         <input type="file" @change="upload">
+         <img  :src="diary.img" alt="" width="50px" height="50px">
         </div>
         <ul class="snsbtniti">
-          <li><a  href="https://twitter.com/share?url=https://haniwaman.com/original-share-btn/&text=『３歳以下の子供に使える子育てアプリ』
-      " rel="nofollow" target="_blank" class="flowbtn6 fl_tw1"><img src="~/assets/000a.jpg" width="50px" height="50px" class="pic"></a></li>
+          <li><a  href="https://twitter.com/share?url=https://haniwaman.com/original-share-btn/&text=『３歳以下の子供に使える子育てアプリ』" 
+           rel="nofollow" target="_blank" class="flowbtn6 fl_tw1"><img src="~/assets/000a.jpg" width="50px" height="50px" class="pic"></a></li>
     <li><a href="https://www.facebook.com/hogehoge" class="flowbtn6 insta_btn6"><img src="~/assets/in.jpg" width="50px" height="50px" class="pic"></a></li>
     <li><a href="FacebookページのURL" class="flowbtn6 fl_fb6"><img src="~/assets/fa.jpg" width="50px" height="50px" class="pic"></a></li>
     <li><a href="https://line.me/ti/p/%ライン＠のアカウント" class="flowbtn6 fl_li1"><i class="fas fa-at"></i></a></li>
         </ul>
      <div class="m-3">
-    <button  @click="add">
+    <button @click="add">
       <div class="button">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
 </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 投稿</div></button>
 <div class=" diary-title">Baby Diarys</div>
-  <div v-for="item in diary" :key="item.message">
-    {{item.date}}
-    {{item.message}}
-    {{item.photo}}
+
   <div class="containers">
-<div class="item">
-    2021/12/11
-     <img
-          src="~/assets/human.jpg"
-          width="150px"
-          height="150px"
-        />
-        よく笑いました。
+<div v-for="item in diary" :key="item.index" class="item">
+  <!-- <div v-for="items in diarys" :key="items.index"></div> -->
+     {{item.img}}
     </div>
-    <div class="item">
-         2021/12/12
-     <img
-          src="~/assets/human.jpg"
-          width="150px"
-          height="150px"
-        />
-        友達ができました。
-        </div>
-        <div class="item">
-         2021/12/13
-     <img
-          src="~/assets/human.jpg"
-          width="150px"
-          height="150px"
-        />
-        ご飯をよく食べました。
-        </div>
-        
   </div>
   </div>
-</div>
 </div>
 </div>
 </template>
 
 <script  src = " /dist/vue-social-sharing.js "></script>
-  <script defer src="/your-path-to-fontawesome/js/brands.js"></script>
-  <script defer src="/your-path-to-fontawesome/js/solid.js"></script>
-  <script defer src="/your-path-to-fontawesome/js/fontawesome.js"></script>
 <script SRC = "https://unpkg.com/vue-social-sharing@3.0.8/dist/vue-social-sharing.js" >
 
 </script>
 <script>
 import Vue from 'vue'
 import { mapActions } from 'vuex'
-import Editor from '@tinymce/tinymce-vue'
 import VueSocialSharing from 'vue-social-sharing'
 import { ShareNetwork } from '../node_modules/vue-social-sharing/dist/vue-social-sharing'
-// import 'vue-awesome/icons'
-// import Icon from 'vue-awesome/components/Icon'
+import firebase from '~/plugins/firebase'
+import 'firebase/storage'
+
+const db = firebase.firestore()
+const UserRef = db.collection(`User`)
+// const ImgRef = firebase.storage().ref(file.name)
+
 Vue.use(VueSocialSharing)
-Vue.component('Editor', Editor)
-// Vue.component('v-icon', Icon)
 
 export default {
   components: { ShareNetwork },
   data() {
     return {
-      diary: [{ date: '', message: '', photo: '' }],
-      date: '',
-      message: '',
+    diary:{
+     date: '', 
+     message: '', 
+     img: '' 
+    }
     }
   },
   head: {
     title: '思い出',
   },
     created() {
-    console.log(this.$store.state)
-    console.log(this.$store.state.UserInfo)
-  },
-  component: {},
+  UserRef.get().then((querySnapshot) => {
+    console.log(querySnapshot)
+  querySnapshot.forEach((doc) => {
+    const data = doc.data().diary
+    console.log(data)
+    const diarys= {
+      img: data.img ? data.img : '/noimage.png',
+      diarydate: data.diarydate? data.diarydate : '',
+      message: data.message ? data.message : 0,
+    }
+    console.log(diarys)
+    this.diary.push(diarys)
+  })
+})
+    },
   methods: {
+    //firebaseへ追加処理
     add() {
-      alert(`この内容を登録してもよろしいでしょうか`)
-      const diarys = {
-        diarydate: this.date,
-        message: this.message,
-        // photo:this.photo
-        UserInfo: this.$store.state.UserInfo,
+      if(this.$store.state.UserInfo){
+        alert(`この内容で登録をしてもよろしいでしょうか`)
+       UserRef
+       .doc(this.$store.state.UserInfo)
+       .update({
+        diary: firebase.firestore.FieldValue.arrayUnion({
+        diarydate: this.diary.date,
+        message: this.diary.message,
+        img:this.diary.img,
+        })
+        })
+        .then((ref) => {
+          console.log(this.$store.state.UserInfo)
+          this.diary.date= ''
+          this.diary.message = ''
+          this.diary.img = ''
+          // this.inputFileReset()
+        })
       }
-      this.diaryupdate(diarys)
-      this.date = ''
-      this.message = ''
     },
-    mounted() {
-      this.createSnsUrl()
-    },
-    ...mapActions(['diaryupdate']),
+    //画像のパス取得&storageへアクセスし保存
+    upload(e) {
+      const file = e.target.files[0]
+      console.log(file)
+      if (!file.type.includes('image')) {
+        this.errorMessage = '画像を指定してください'
+        // this.inputFileReset()
+        return
+      }
+     firebase.storage().ref(file.name).put(file).then(() => {
+      console.log(file)
+        firebase
+          .storage()
+          .ref(file.name)
+          .getDownloadURL()
+          .then((url) => {
+            this.diary.img = url
+            console.log(this.diary.img)
+          })
+          .catch((err) => {
+            this.errorMessage = err
+          })
+      }) 
+  },
+     ...mapActions(['diaryupdate']),
   },
 }
 </script>
