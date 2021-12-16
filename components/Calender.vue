@@ -228,7 +228,8 @@ export default {
         AllArrays.push(urineEndDates)
         // console.log(AllArrays)
       }
-      console.log(AllArrays)
+      
+      // console.log(AllArrays)
 
       return {
         // locale: 'ja',
@@ -242,12 +243,13 @@ export default {
         navLinks: false,
         selectable: false,
         // 日付クリックイベント
-        dayClick() {
-          alert('日付クリックイベント')
-        },
-        eventClick(date, calEvent, jsEvent, view){
-          alert('イベント発火！')
-        },
+        // dayClick() {
+        //   alert('日付クリックイベント')
+        // },
+
+        // eventClick(date, calEvent, jsEvent, view){
+        //   alert('イベント発火！')
+        // },
 
         // events: [
         // {

@@ -39,15 +39,37 @@
     </label>
     <br />
     <div>生年月日</div>
-    <input v-model="birthday" type="date">  
+    <input v-model="birthday" type="date" />
     <br />
-     <div class="m-3">
-    <button class="px-2 py-1 bg-red-900 text-xl text-white font-semibold rounded hover:bg-red-900 w-56" @click="addinfo">
-      <div class="button">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="30px" height="30px">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-</svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-登録</div></button></div>
+
+    <div>身長</div>
+    <input v-model="height" class="height" type="text" /> cm
+
+    <div>体重</div>
+    <input v-model="weight" class="weight" type="text" /> kg
+
+    <div class="m-3">
+      <button @click="addinfo">
+        <div class="button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            width="30px"
+            height="30px"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="{2}"
+              d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+            /></svg
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 登録
+        </div>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -65,33 +87,36 @@ export default {
       babyname: '',
       gender: '',
       birthday: '',
+      height: '',
+      weight: '',
       customerinfo: '',
     }
   },
   methods: {
     addinfo() {
       console.log(this.$store.state.UserInfo)
-      if(this.$store.state.UserInfo){
+      if (this.$store.state.UserInfo) {
         console.log(this.$store.state.UserInfo)
-        console.log(this.userupdate);
-       const usersSign = {
-        babyname: this.babyname,
-        birthday: this.birthday,
-        gender: this.gender,
-        picture:this.picture,
-        UserInfo:this.$store.state.UserInfo
-       }
-       console.log(usersSign);
-      this.userupdate(usersSign)
-       console.log(this.$store.state.UserInfo)
-      this.$router.push({ name: 'index' })
-      }else{
+        const usersSign = {
+          babyname: this.babyname,
+          birthday: this.birthday,
+          gender: this.gender,
+          picture: this.picture,
+          height: this.height,
+          weight: this.weight,
+          UserInfo: this.$store.state.UserInfo,
+        }
+        console.log(usersSign)
+        this.userupdate(usersSign)
+        console.log(this.$store.state.UserInfo)
+        this.$router.push({ name: 'index' })
+      } else {
         alert(`ログインをしてください`)
         console.log(`ログインしてください`)
       }
-    }
+    },
+    ...mapActions(['userupdate']),
   },
- ...mapActions(['userupdate']),
 }
 </script>
 
@@ -115,7 +140,6 @@ export default {
   // text-align: center;
 }
 
-
 .touroku {
   border: 2px solid #000;
   border-radius: 0;
@@ -138,7 +162,25 @@ export default {
   width: 50%;
   margin: 5% auto 10% auto;
 }
-.button{
+.button {
   display: flex;
+  // border: 2px solid #000;
+  border-radius: 0;
+  background: rgb(180, 98, 98);
+  margin: 5% 0 5% 0;
+  width: 250px;
+  padding: 5px;
+  border-radius: 30px;
+  &:hover {
+    // color: #fff;
+    background: rgb(177, 90, 90);
+  }
+}
+
+.height {
+  text-align: center;
+}
+.weight {
+  text-align: center;
 }
 </style>

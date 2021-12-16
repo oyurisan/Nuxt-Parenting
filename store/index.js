@@ -80,7 +80,9 @@ export const actions = {
           babyname: usersSign.babyname,
           birthday: usersSign.birthday,
           gender: usersSign.gender,
-          picture: usersSign.picture
+          picture: usersSign.picture,
+          height: usersSign.height,
+          weight: usersSign.weight,
         }),
       })
       .then(() => {
@@ -166,14 +168,23 @@ export const actions = {
     db.collection(`User`)
     .doc(UserInfo)
     .set({
-      usersSign: [{ babyname: '', birthday: '', gender: '', picture:'' }],
+      // usersSign: [{ babyname: '', birthday: '', gender: '', picture:'' }],
+      // allergy: [],
+      // food: [{ kinds: '', foodmemo: '', fooddate: '', ml: '' }],
+      // height: [{ height: '', heightdate: '' }],
+      // weight: [{ weight: '', weightdate: '' }],
+      // unchi: [{ unchiecolor: '', shape: '', unchimemo: '', unchidate: '' }],
+      // urine: [{ urinecolor: '', urinememo: '', urinedate: '' }],
+      // diary: [{ diarydate: '', message: '', photo: '' }],
+      usersSign: [],
       allergy: [],
-      food: [{ kinds: '', foodmemo: '', fooddate: '', ml: '' }],
-      height: [{ height: '', heightdate: '' }],
-      weight: [{ weight: '', weightdate: '' }],
-      unchi: [{ unchiecolor: '', shape: '', unchimemo: '', unchidate: '' }],
-      urine: [{ urinecolor: '', urinememo: '', urinedate: '' }],
-      diary: [{ diarydate: '', message: '', photo: '' }],
+      food: [],
+      height: [],
+      weight: [],
+      unchi: [],
+      urine: [],
+      diary: [],
+
     })
   },
   // 新規登録
@@ -329,17 +340,17 @@ export const mutations = {
   // DBからの取り出し
   fetchItems(state, Item) {
     state.allData = Item
-    console.log(Item)
+    // console.log(Item)
   },
   // ユーザー情報取得
   fetchAllData(state,user){
     state.Users=user
-    console.log(user)
-    console.log(state.Users)
+    // console.log(user)
+    // console.log(state.Users)
   },
    // ユーザー情報取得
   fetchUser(state,userData){
     state.UserInfo=userData
-    console.log(state.UserInfo)
+    // console.log(state.UserInfo)
   }
 }

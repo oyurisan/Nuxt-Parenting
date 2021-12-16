@@ -10,30 +10,34 @@
           <upload v-model="picture" />
         </div>
         <div class="profile-main">
-          <div>
-            名前 :
-            <span>{{ name }}</span>
+
+          <div v-for="userItem in this.getUser.usersSign" :key="userItem.id">
+            <div>
+              名前 :
+              <span>{{ userItem.babyname }}</span>
+            </div>
+
+            <div>
+              性別 :
+              <span>{{ userItem.gender }}</span>
+            </div>
+
+            <div>
+              生年月日 :
+              <span>{{ userItem.birthday }}</span>
+            </div>
+
+            <div>
+              身長 :
+              <span>{{ userItem.height }} cm</span>
+            </div>
+
+            <div>
+              体重 :
+              <span>{{ userItem.weight }} kg</span>
+            </div>
           </div>
 
-          <div>
-            性別 :
-            <span>{{ gender }}</span>
-          </div>
-
-          <div>
-            生年月日 :
-            <span>{{ birth }}</span>
-          </div>
-
-          <div>
-            身長 :
-            <span>{{ height }} cm</span>
-          </div>
-
-          <div>
-            体重 :
-            <span>{{ weight }} kg</span>
-          </div>
         </div>
       </div>
 
@@ -41,13 +45,12 @@
         アレルギー
         <div v-for="allergyI in FinalImg" :key="allergyI.id">
           <div class="container2">
-            <div v-for="i in allergyI.newallergy" :key="i.id">
+            <div class="container2" v-for="i in allergyI.newallergy" :key="i.id">
               <img :src="i" width="70px" height="70px" />
             </div>
           </div>
         </div>
       </div>
-      
     </div>
   </div>
 </template>
@@ -61,43 +64,12 @@ export default {
   },
   data() {
     return {
-      name: '優子',
-      gender: '女の子',
+      name: '',
+      gender: '',
       birth: '',
       height: '',
       weight: '',
       picture: null,
-      foodduty: [
-        { foodname: `えび`, icon: '1.jpg' },
-        { foodname: `かに`, icon: '2.jpg' },
-        { foodname: `小麦`, icon: '3.jpg' },
-        { foodname: `そば`, icon: '4.jpg' },
-        { foodname: `卵`, icon: '5.jpg' },
-        { foodname: `乳`, icon: '6.jpg' },
-        { foodname: `落花生`, icon: '7.jpg' },
-      ],
-      foodreco: [
-        { foodname: `あわび`, icon: '8.jpg' },
-        { foodname: `イカ`, icon: '9.jpg' },
-        { foodname: `いくら`, icon: '10.jpg' },
-        { foodname: `オレンジ`, icon: '11.jpg' },
-        { foodname: `カシューナッツ`, icon: '12.jpg' },
-        { foodname: `キウイフルーツ`, icon: '13.jpg' },
-        { foodname: `牛肉`, icon: '15.jpg' },
-        { foodname: `くるみ`, icon: '16.jpg' },
-        { foodname: `ごま`, icon: '17.jpg' },
-        { foodname: `さけ`, icon: '18.jpg' },
-        { foodname: `さば`, icon: '19.jpg' },
-        { foodname: `大豆`, icon: '20.jpg' },
-        { foodname: `鶏肉`, icon: '21.jpg' },
-        { foodname: `豚肉`, icon: '22.jpg' },
-        { foodname: `バナナ`, icon: '23.jpg' },
-        { foodname: `まつたけ`, icon: '25.jpg' },
-        { foodname: `もも`, icon: '26.jpg' },
-        { foodname: `ヤマイモ`, icon: '27.jpg' },
-        { foodname: `りんご`, icon: '28.jpg' },
-        { foodname: `ゼラチン`, icon: '29.jpg' },
-      ],
       FinalImg: [],
     }
   },
@@ -140,11 +112,11 @@ export default {
 .container2 {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 10px;
+  margin: 2% auto 0 auto;
+  text-align: center;
 }
 .profile-container {
-  display: flex;
-  margin: 8% auto 10% auto;
+  margin: 0 auto 0 auto;
   width: 70%;
 }
 .profileImg {
@@ -172,11 +144,12 @@ export default {
 }
 .upload-img {
   text-align: center;
-  margin-left: 14%;
 }
 
 .allergy-nav {
   text-align: center;
+  margin-top: 5%;
   margin-bottom: 10%;
+  font-size: 20px;
 }
 </style>
