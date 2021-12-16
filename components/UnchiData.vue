@@ -9,7 +9,7 @@
         <th>メモ</th>
         <th>{{ kara }}</th>
       </tr>
-      <tr v-for="unchiItem in this.getUser.unchi" :key="unchiItem.id">
+      <tr v-for="(unchiItem, index) in this.getUser.unchi" :key="index">
         <td>
           <div>{{ unchiItem.start }}</div>
         </td>
@@ -24,7 +24,7 @@
         </td>
         <td>
           <div>
-            <button @click="clear(urineItem.id)">
+            <button @click="clear(unchiItem)">
               <img
                 :src="require(`~/assets/trush.png`)"
                 width="25px"
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -57,8 +57,23 @@ export default {
 
   methods: {
     clear(i) {
-      this.$store.dispatch('deleteSelectData', i)
+      if (this.$store.state.UserInfo) {
+          alert(`消去しますか？`)
+
+          const unchisD = {
+            unchiList: i,
+            UserInfo: this.$store.state.UserInfo,
+          }
+  
+      // console.log(this.$store.getters.user);
+      // console.log(i);
+
+      // this.$store.dispatch("deleteSelectData", i)
+      this.deleteUnchiData(unchisD)
+      }
     },
+
+    ...mapActions(['deleteUnchiData']),
   },
 }
 </script>

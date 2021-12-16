@@ -16,7 +16,7 @@
         </td>
         <td>
           <div>
-            <button @click="clear(urineItem.id)">
+            <button @click="clear(urineItem)">
               <img
                 :src="require(`~/assets/trush.png`)"
                 width="25px"
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -49,8 +49,21 @@ export default {
 
   methods: {
     clear(i) {
-      this.$store.dispatch('deleteSelectData', i)
+      if (this.$store.state.UserInfo) {
+          alert(`消去しますか？`)
+
+          const urinesD = {
+            urineList: i,
+            UserInfo: this.$store.state.UserInfo,
+          }
+  
+      // console.log(this.$store.getters.user);
+      // console.log(i);
+      this.deleteUrineData(urinesD)
+      }
     },
+
+    ...mapActions(['deleteUrineData']),
   },
 }
 </script>

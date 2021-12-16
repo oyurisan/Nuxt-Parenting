@@ -239,16 +239,60 @@ export const actions = {
       })
   },
 
-  deleteSelectData(i) {
-    firebase.firestore().collection(`User`)
-    .doc(UserInfo)
-    .delete(i)
+  // うんちデータの消去機能
+  deleteUnchiData( { commit }, unchisD) {
+    // console.log(unchisD);
+    firebase
+    .firestore()
+    db
+    .collection(`User`)
+    .doc(unchisD.UserInfo)
+    .update({
+      unchi : firebase.firestore.FieldValue.arrayRemove(unchisD.unchiList)
+    })
     .then(() => {
       console.log("Document successfully deleted!");
   }).catch((error) => {
       console.error("Error removing document: ", error);
   });
   },
+
+  // おしっこデータの消去機能
+  deleteUrineData( { commit }, urinesD) {
+    // console.log(urinesD);
+    firebase
+    .firestore()
+    db
+    .collection(`User`)
+    .doc(urinesD.UserInfo)
+    .update({
+      urine : firebase.firestore.FieldValue.arrayRemove(urinesD.urineList)
+    })
+    .then(() => {
+      console.log("Document successfully deleted!");
+  }).catch((error) => {
+      console.error("Error removing document: ", error);
+  });
+  },
+
+  // ご飯データの消去機能
+  deleteFoodData( { commit }, foodsD) {
+    // console.log(foodsD);
+    firebase
+    .firestore()
+    db
+    .collection(`User`)
+    .doc(foodsD.UserInfo)
+    .update({
+      food : firebase.firestore.FieldValue.arrayRemove(foodsD.foodList)
+    })
+    .then(() => {
+      console.log("Document successfully deleted!");
+  }).catch((error) => {
+      console.error("Error removing document: ", error);
+  });
+  },
+  
 
 
   // ユーザー情報取得
