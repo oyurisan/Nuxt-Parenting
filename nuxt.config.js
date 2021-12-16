@@ -1,6 +1,7 @@
 import Sass from 'sass'
 
 export default {
+  mode: 'universal',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'rc',
@@ -27,7 +28,8 @@ export default {
   plugins: [
     // { src: '~/plugins/vue-full-calendar', ssr: false, mode: 'client' }
     // '~/plugins/vue-social-sharing.js',
-    { src: '~/plugins/persistedstate.js', ssr: false}
+    { src: '~/plugins/persistedstate.js', ssr: false},
+    { src: '@/plugins/vee-validate'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -74,6 +76,12 @@ export default {
         //   fiber: Fiber
         // }
       },
-    }
-  }
+    },
+    transpile: [
+      'vee-validate/dist/rules',
+    ],
+  },
+
+  
+  
 }

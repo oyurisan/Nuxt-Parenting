@@ -1,56 +1,53 @@
 <template>
   <div>
     <div class="profileImg">
-      <div class="profile-flame">
-        <div class="profile-title">PROFILE</div>
-        <div class="profile-container">
-          <div class="upload-img">
-            <upload v-model="picture" />
+      <div class="profile-title">PROFILE</div>
+
+      <div><img class="profile-hr" :src="require(`~/assets/hr.png`)" /></div>
+
+      <div class="profile-container">
+        <div class="upload-img">
+          <upload v-model="picture" />
+        </div>
+        <div class="profile-main">
+          <div>
+            名前 :
+            <span>{{ name }}</span>
           </div>
-          <div class="profile-main">
-            <div>
-              名前 :
-              <span>{{ name }}</span>
-            </div>
 
-            <div>
-              性別 :
-              <span>{{ gender }}</span>
-            </div>
+          <div>
+            性別 :
+            <span>{{ gender }}</span>
+          </div>
 
-            <div>
-              生年月日 :
-              <span>{{ birth }}</span>
-            </div>
+          <div>
+            生年月日 :
+            <span>{{ birth }}</span>
+          </div>
 
-            <div>
-              身長 :
-              <span>{{ height }} cm</span>
-            </div>
+          <div>
+            身長 :
+            <span>{{ height }} cm</span>
+          </div>
 
-            <div>
-              体重 :
-              <span>{{ weight }} kg</span>
-            </div>
+          <div>
+            体重 :
+            <span>{{ weight }} kg</span>
           </div>
         </div>
+      </div>
 
       <div class="allergy-nav">
         アレルギー
-
-        <div v-for="allergyItem in getUser.allergy" :key="allergyItem.id">
+        <div v-for="allergyI in FinalImg" :key="allergyI.id">
           <div class="container2">
-            <div v-for="item in allergyItem.newallergy" :key="item.id">
-              <img
-                :src="require(`~/assets/` + item)"
-                width="70px"
-                height="70px"
-              />
+            <div v-for="i in allergyI.newallergy" :key="i.id">
+              <img :src="i" width="70px" height="70px" />
             </div>
           </div>
         </div>
       </div>
-      </div>
+      
     </div>
   </div>
 </template>
@@ -101,6 +98,7 @@ export default {
         { foodname: `りんご`, icon: '28.jpg' },
         { foodname: `ゼラチン`, icon: '29.jpg' },
       ],
+      FinalImg: [],
     }
   },
   head: {
@@ -108,6 +106,29 @@ export default {
   },
   computed: {
     ...mapGetters(['getAllData', 'getUser']),
+  },
+  created() {
+    const lastImg = this.getUser.allergy
+    const lastImg2 = []
+    console.log(lastImg)
+
+    const lastImgArray1 = lastImg
+    const lastImgArray2 = JSON.stringify(lastImgArray1)
+    let lastImgArray3 = []
+    if (lastImgArray2) {
+      lastImgArray3 = JSON.parse(lastImgArray2)
+    }
+    // console.log(lastImgArray3);
+
+    for (let i = 0; i < lastImgArray3.length; i++) {
+      // console.log(lastImgArray3[i]);
+
+      const finalImg = lastImg2.concat(lastImgArray3[i])
+      // console.log(finalImg);
+
+      this.FinalImg = finalImg
+      // console.log(this.FinalImg);
+    }
   },
 }
 </script>
@@ -119,7 +140,7 @@ export default {
 .container2 {
   display: flex;
   flex-wrap: wrap;
-  // gap: 10px 10px;
+  gap: 10px 10px;
 }
 .profile-container {
   display: flex;
@@ -142,26 +163,12 @@ export default {
   margin: 5% 0 5% 0;
   font-family: 'Gluten', cursive;
   color: rgb(133, 110, 110);
+}
 
-  &::after {
-    background-color: #f3a3a8; /* 1個目（一番左）のドットの色 */
-    border-radius: 50%;
-    content: '';
-    // margin-left: 15px; /* 最後の文字とドットとの余白 */
-    position: absolute;
-    top: 110px;
-    left: 320px;
-    width: 5px; /* ドットの幅 */
-    height: 5px; /* ドットの高さ */
-    box-shadow: 20px 0px 0px rgb(217, 204, 179),
-      /* 2個目のドットの位置と色 */ 40px 0px 0px rgb(217, 204, 179),
-      /* 3個目のドットの位置と色 */ 60px 0px 0px rgb(243, 163, 168),
-      /* 4個目のドットの位置と色 */ 80px 0px 0px rgb(217, 204, 179),
-      /* 5個目のドットの位置と色 */ 100px 0px 0px rgb(217, 204, 179),
-      /* 6個目のドットの位置と色 */ 120px 0px 0px rgb(243, 163, 168),
-      /* 7個目のドットの位置と色 */ 140px 0px 0px rgb(217, 204, 179),
-      /* 8個目のドットの位置と色 */ 160px 0px 0px rgb(217, 204, 179);
-  }
+.profile-hr {
+  width: 40%;
+  margin: -5% auto 5% auto;
+  // text-align: center;
 }
 .upload-img {
   text-align: center;
@@ -171,25 +178,5 @@ export default {
 .allergy-nav {
   text-align: center;
   margin-bottom: 10%;
-}
-
-.profile-flame {
- 	background: none;
-	border: 3px solid #f3cbd0;	/* 線の太さ・種類・色 */
-	margin: 100px; /* 外側の余白 */
-	padding: 10px; /* 内側の余白 */
-	position: relative;
-
-&::after{
-	background: none;
-	border: 2px solid #f3cbd0;	/* 線の太さ・種類・色 */
-	content: '';
-	position: absolute;
-	top: 15px;
-	left: 15px;
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-}
 }
 </style>
