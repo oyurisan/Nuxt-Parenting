@@ -307,31 +307,12 @@
 
 
 <script>
-import firebase from '~/plugins/firebase'
 
 export default {
   data() {
     return {
-      isLogin: false,
     }
   },
-
-  computed: {
-    user() {
-      return this.$store.getters.user
-    }
-  },
-
-  mounted() {
-    console.log(`Nav`)
-    firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        this.isLogin = true
-      } else {
-        this.isLogin = false
-      }
-    })
-  }
 }
 </script>
 

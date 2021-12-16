@@ -11,10 +11,10 @@
        style="width: 250px;height: 30px;"
     /><br />パスワード<br />
     <input v-model="password" type="password" placeholder="password"  style="width: 250px;height: 30px;"/>
-    <div class="loginOut-btn" v-if="!isLogin">
+    <div v-if="!isLogin" class="loginOut-btn">
       <button class="logins" @click="login">ログイン</button>
     </div>
-    <div class="loginOut-btn" v-if="isLogin">
+    <div  v-if="isLogin" class="loginOut-btn">
       <button class="logins" @click="logout">ログアウト</button>
     </div>
     <p v-if="user.login">ログインに成功<br /></p>
