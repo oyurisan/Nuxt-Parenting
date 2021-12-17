@@ -60,7 +60,6 @@
             width="30px"
             height="30px"
           >
-
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -70,7 +69,7 @@
           >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 登録
         </div>
       </button>
-       <!-- <img :src="newnew" width="350px" height="300px"> -->
+       <img :src="newnew" width="350px" height="300px">
     </div>
   </div>
 </template>
