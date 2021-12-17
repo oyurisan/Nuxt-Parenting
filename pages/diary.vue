@@ -14,13 +14,12 @@
         maxlength="500"/><br>
          <input type="file" @change="upload">
          <div class="picture">
-         <!-- <img  :src="diary.img" alt="" width="100px" height="100px"> -->
          </div>
         </div>
         <ul class="snsbtniti">
           <li><a  href="https://twitter.com/share?url=https://haniwaman.com/original-share-btn/&text=『３歳以下の子供に使える子育てアプリ』" 
            rel="nofollow" target="_blank" class="flowbtn6 fl_tw1"><img src="~/assets/000a.jpg" width="50px" height="50px" class="pic"></a></li>
-    <li><a  class="js-sns-link" href="//timeline.line.me/social-plugin/share?url=&text=『３歳以下の子供に使える子育てアプリ』" target="_blank" rel="nofollow noopener noreferrer">LINE</a><img src="~/assets/in.jpg" width="50px" height="50px" class="pic"></li>
+    <li><a  class="js-sns-link" href="//timeline.line.me/social-plugin/share?url=&text=『３歳以下の子供に使える子育てアプリ』" target="_blank" rel="nofollow noopener noreferrer"></a><img src="~/assets/in.jpg" width="50px" height="50px" class="pic"></li>
     <li><a class="js-sns-link" href="//www.facebook.com/sharer/sharer.php?u=&t=『３歳以下の子供に使える子育てアプリ』" target="_blank" rel="nofollow noopener noreferrer"><img src="~/assets/fa.jpg" width="50px" height="50px" class="pic"></a></li>
         </ul>
      <div class="m-3">
@@ -35,7 +34,12 @@
 <div v-for="item in lastdata" :key="item.index" class="item">
   {{item.diarydate}}<br>
 {{item.message}}<br>
+<div v-if="item.img">
  <img :src="item.img" width="350px" height="300px">
+ </div>
+ <div v-if="!item.img"> 
+    <img src="~/assets/noimage.png" width="350px" height="350px" class="pic">
+ </div>
     </div>
   </div>
   </div>

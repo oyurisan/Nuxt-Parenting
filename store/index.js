@@ -56,24 +56,7 @@ export const actions = {
       commit('allergyupdate',allergys,{root: true} )
       })
   },
-  // ユーザー情報更新
-  userupdate({commit}, usersSign) {
-    console.log(usersSign.UserInfo)
-    UserRef.doc(usersSign.UserInfo)
-       .update({
-        usersSign: firebase.firestore.FieldValue.arrayUnion({
-          babyname: usersSign.babyname,
-          birthday: usersSign.birthday,
-          gender: usersSign.gender,
-          picture: usersSign.picture,
-          height: usersSign.height,
-          weight: usersSign.weight,
-        }),
-      })
-      .then(() => {
-        commit('userupdate', usersSign,{root: true} )
-      })
-  },
+
   // ご飯更新
   foodupdate({commit}, foods) {
     // console.log(foods.UserInfo)
@@ -250,7 +233,6 @@ export const actions = {
       console.error("Error removing document: ", error);
   });
   },
-
   // おしっこデータの消去機能
   deleteUrineData( { commit }, urinesD) {
     // console.log(urinesD);
@@ -286,8 +268,6 @@ export const actions = {
       console.error("Error removing document: ", error);
   });
   },
-  
-
 
   // ユーザー情報取得
   fetchUser({commit},userData ) {
@@ -315,7 +295,6 @@ export const mutations = {
   },
   switchlogin(state) {
     state.user.login = true
-    console.log(state.user.login)
   },
   FoodList(state, foods) {
     state.FoodList.push(foods)
@@ -328,12 +307,9 @@ export const mutations = {
   // ユーザー情報取得
   fetchAllData(state,user){
     state.Users=user
-    // console.log(user)
-    // console.log(state.Users)
   },
    // ユーザー情報取得
   fetchUser(state,userData){
     state.UserInfo=userData
-    // console.log(state.UserInfo)
   }
 }

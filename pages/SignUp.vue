@@ -1,11 +1,11 @@
 <template>
   <div class="signup">
     <div class="signup-title">SIGN UP</div>
-
     <div><img class="signup-hr" :src="require(`~/assets/hr.png`)" /></div>
 
     <div class="profileImg">
-      <upload v-model="picture" />
+       <!-- <img :src="item.img" width="350px" height="300px"> -->
+       <input type="file" @change="upload">
     </div>
     <p>赤ちゃんのニックネーム</p>
     <input v-model="babyname" type="text" />
@@ -60,6 +60,7 @@
             width="30px"
             height="30px"
           >
+
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -69,17 +70,23 @@
           >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 登録
         </div>
       </button>
+       <!-- <img :src="newnew" width="350px" height="300px"> -->
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import Upload from '../components/imgUpLoad'
+import { mapActions, mapGetters } from 'vuex'
+// import Upload from '../components/imgUpLoad'
+import firebase from '~/plugins/firebase'
+import 'firebase/storage'
+
+const db = firebase.firestore()
+const UserRef = db.collection(`User`)
 
 export default {
   components: {
-    Upload,
+    // Upload,
   },
   data() {
     return {
@@ -90,31 +97,80 @@ export default {
       height: '',
       weight: '',
       customerinfo: '',
+      newnew:[]
     }
+  },
+    computed:{
+    ...mapGetters(['getUser'])
+  },
+  created(){
+    const newpicture= this.getUser.usersSign
+    console.log(newpicture)
+    const newpicture1=[]
+
+    const newpicture2 = JSON.stringify(newpicture)
+
+    let newpicture3 = []
+    if (newpicture2) {
+        newpicture3 = JSON.parse(newpicture2)
+        console.log(newpicture3)
+  
+     const newpicture4= newpicture1.concat(newpicture3)
+  
+     this.newnew=newpicture4
+      console.log(this.newnew)
+      }
+
   },
   methods: {
     addinfo() {
-      console.log(this.$store.state.UserInfo)
-      if (this.$store.state.UserInfo) {
-        console.log(this.$store.state.UserInfo)
-        const usersSign = {
+      if(this.$store.state.UserInfo){
+        alert(`この内容で登録をしてもよろしいでしょうか`)
+       UserRef
+       .doc(this.$store.state.UserInfo)
+       .update({
+        usersSign: firebase.firestore.FieldValue.arrayUnion({
           babyname: this.babyname,
           birthday: this.birthday,
           gender: this.gender,
           picture: this.picture,
           height: this.height,
           weight: this.weight,
-          UserInfo: this.$store.state.UserInfo,
-        }
-        console.log(usersSign)
-        this.userupdate(usersSign)
-        console.log(this.$store.state.UserInfo)
-        this.$router.push({ name: 'index' })
-      } else {
-        alert(`ログインをしてください`)
-        console.log(`ログインしてください`)
+        })
+        })
+        .then((ref) => {
+          console.log(this.$store.state.UserInfo)
+          console.log(this.getUser)
+           this.babyname=""
+           this.birthday=""
+           this.gender=""
+           this.picture=""
+           this.height=""
+           this.weight=""
+        })
       }
     },
+    // 画像のパス取得&storageへアクセスし保存
+    upload(e) {
+      const file = e.target.files[0]
+      console.log(file)
+      if (!file.type.includes('image')) {
+        this.errorMessage = '画像を指定してください'
+        // this.inputFileReset()
+        return
+      }
+     firebase.storage().ref(file.name).put(file).then(() => {
+      console.log(file)
+        firebase
+          .storage()
+          .ref(file.name)
+          .getDownloadURL()
+          .then((url) => {
+            this.picture = url
+            console.log(this.picture)
+          })
+      }) 
+  },
     ...mapActions(['userupdate']),
   },
 }

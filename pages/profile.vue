@@ -10,7 +10,6 @@
           <upload v-model="picture" />
         </div>
         <div class="profile-main">
-
           <div v-for="userItem in this.getUser.usersSign" :key="userItem.id">
             <div>
               名前 :
