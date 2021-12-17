@@ -14,15 +14,14 @@
         maxlength="500"/><br>
          <input type="file" @change="upload">
          <div class="picture">
-         <img  :src="diary.img" alt="" width="100px" height="100px">
+         <!-- <img  :src="diary.img" alt="" width="100px" height="100px"> -->
          </div>
         </div>
         <ul class="snsbtniti">
           <li><a  href="https://twitter.com/share?url=https://haniwaman.com/original-share-btn/&text=『３歳以下の子供に使える子育てアプリ』" 
            rel="nofollow" target="_blank" class="flowbtn6 fl_tw1"><img src="~/assets/000a.jpg" width="50px" height="50px" class="pic"></a></li>
-    <li><a href="https://www.facebook.com/hogehoge" class="flowbtn6 insta_btn6"><img src="~/assets/in.jpg" width="50px" height="50px" class="pic"></a></li>
-    <li><a href="FacebookページのURL" class="flowbtn6 fl_fb6"><img src="~/assets/fa.jpg" width="50px" height="50px" class="pic"></a></li>
-    <li><a href="https://line.me/ti/p/%ライン＠のアカウント" class="flowbtn6 fl_li1"><i class="fas fa-at"></i></a></li>
+    <li><a  class="js-sns-link" href="//timeline.line.me/social-plugin/share?url=&text=『３歳以下の子供に使える子育てアプリ』" target="_blank" rel="nofollow noopener noreferrer">LINE</a><img src="~/assets/in.jpg" width="50px" height="50px" class="pic"></li>
+    <li><a class="js-sns-link" href="//www.facebook.com/sharer/sharer.php?u=&t=『３歳以下の子供に使える子育てアプリ』" target="_blank" rel="nofollow noopener noreferrer"><img src="~/assets/fa.jpg" width="50px" height="50px" class="pic"></a></li>
         </ul>
      <div class="m-3">
     <button @click="add">
@@ -32,11 +31,11 @@
 </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 投稿</div></button>
 <div class=" diary-title">Baby Diarys</div>
-
   <div class="containers">
-<div v-for="item in diary" :key="item.index" class="item">
-  <!-- <div v-for="items in diarys" :key="items.index"></div> -->
-     {{item.img}}
+<div v-for="item in lastdata" :key="item.index" class="item">
+  {{item.diarydate}}<br>
+{{item.message}}<br>
+ <img :src="item.img" width="350px" height="300px">
     </div>
   </div>
   </div>
@@ -58,32 +57,44 @@ import 'firebase/storage'
 
 const db = firebase.firestore()
 const UserRef = db.collection(`User`)
-// const ImgRef = firebase.storage().ref(file.name)
 
 Vue.use(VueSocialSharing)
 
 export default {
-  components: { ShareNetwork },
   data() {
     return {
-    diary:{
-     date: '', 
-     message: '', 
-     img: '' 
-    }
+    diary:{date: '', message: '', img: '' },
+    data:[],
+    lastdata:[]
     }
   },
   head: {
     title: '思い出',
   },
-    created() {
+  created() {
+  //データ表示
   UserRef.get().then((querySnapshot) => {
-    console.log(querySnapshot)
+  console.log(querySnapshot)
   querySnapshot.forEach((doc) => {
-    const data = doc.data().diary
-    console.log(data)
+    this.data = doc.data().diary
+    console.log(this.data)
+    const newdata= this.data
+    const newnewnewdata=[]
+
+    const newdata1 = JSON.stringify(newdata)
+
+    let newdata2 = []
+    if (newdata1) {
+        newdata2 = JSON.parse(newdata1)
+  
+     const datadata= newnewnewdata.concat(newdata2)
+  
+     this.lastdata=datadata
+      console.log(this.lastdata)
+      }
+
     const diarys= {
-      img: data.img ? data.img : '/noimage.png',
+      img: lastdata.img ? lastdata.img : '/noimage.png',
       diarydate: data.diarydate? data.diarydate : '',
       message: data.message ? data.message : 0,
     }
@@ -134,9 +145,6 @@ export default {
             this.diary.img = url
             console.log(this.diary.img)
           })
-          .catch((err) => {
-            this.errorMessage = err
-          })
       }) 
   },
      ...mapActions(['diaryupdate']),
@@ -147,6 +155,9 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap');
 
+.containerss{
+  display: flex;
+}
 .container {
   text-align: center;
   margin: auto;

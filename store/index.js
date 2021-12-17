@@ -148,27 +148,26 @@ export const actions = {
       })
   },
   // 初期情報追加
-  adds(UserInfo) {
+  adds({commit},UserInfo) {
     db.collection(`User`)
     .doc(UserInfo)
     .set({
-      // usersSign: [{ babyname: '', birthday: '', gender: '', picture:'' }],
+      usersSign: [{ babyname: '', birthday: '', gender: '', picture:'' }],
+      allergy: [''],
+      food: [{ kinds: '', foodmemo: '', fooddate: '', ml: '' }],
+      height: [{ height: '', heightdate: '' }],
+      weight: [{ weight: '', weightdate: '' }],
+      unchi: [{ unchiecolor: '', shape: '', unchimemo: '', unchidate: '' }],
+      urine: [{ urinecolor: '', urinememo: '', urinedate: '' }],
+      diary: [{ diarydate: '', message: '', photo: '' }],
+      // usersSign: [],
       // allergy: [],
-      // food: [{ kinds: '', foodmemo: '', fooddate: '', ml: '' }],
-      // height: [{ height: '', heightdate: '' }],
-      // weight: [{ weight: '', weightdate: '' }],
-      // unchi: [{ unchiecolor: '', shape: '', unchimemo: '', unchidate: '' }],
-      // urine: [{ urinecolor: '', urinememo: '', urinedate: '' }],
-      // diary: [{ diarydate: '', message: '', photo: '' }],
-      usersSign: [],
-      allergy: [],
-      food: [],
-      height: [],
-      weight: [],
-      unchi: [],
-      urine: [],
-      diary: [],
-
+      // food: [],
+      // height: [],
+      // weight: [],
+      // unchi: [],
+      // urine: [],
+      // diary: [],
     })
   },
   // 新規登録

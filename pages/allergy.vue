@@ -95,6 +95,7 @@ export default {
       this.$router.push({ name: 'index' })
     },
     getallergy() {
+      alert(`アレルギーを登録してもよろしいでしょうか`)
       const newallergy = []
       const allergy = document.getElementsByName('allergy')
       const allergyImg = document.getElementsByClassName('allergy')
@@ -105,14 +106,11 @@ export default {
         for (let j = 0; j < allergyImg.length; j++) {
           if (allergy[i].checked) {
             if ( i === j ) {
-              // console.log(allergyImg[j]);
-              // console.log(allergy[i])
             newallergy.push(allergyImg[j].currentSrc)
             console.log(newallergy)
             }
           }
         }
-        // console.log(allergy[i].checked)
       }
       console.log(newallergy)
       const allergys = {
