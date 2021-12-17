@@ -1,4 +1,6 @@
 import Sass from 'sass'
+require('dotenv').config();
+const {VUE_APP_FIREBASE_PROJECT_ID} = process.env
 
 export default {
   mode: 'universal',
@@ -81,6 +83,10 @@ export default {
       'vee-validate/dist/rules',
     ],
   },
+
+  env: {
+    VUE_APP_FIREBASE_PROJECT_ID
+  }
 
   
   

@@ -248,6 +248,8 @@ export default {
       }, 1000)
       this.timerOn = true // timerがONであることを保持
     },
+
+
   updateProgress() {
     // プログレスバーの進捗値を更新し、プログレスバーに反映させる
     val += 1;
@@ -260,6 +262,8 @@ export default {
       document.getElementById("myButton").disabled = false;
     }
   },
+
+  
     stop() {
       clearInterval(this.timerObj)
       this.timerOn = false

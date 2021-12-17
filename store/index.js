@@ -152,22 +152,22 @@ export const actions = {
     db.collection(`User`)
     .doc(UserInfo)
     .set({
-      usersSign: [{ babyname: '', birthday: '', gender: '', picture:'' }],
-      allergy: [''],
-      food: [{ kinds: '', foodmemo: '', fooddate: '', ml: '' }],
-      height: [{ height: '', heightdate: '' }],
-      weight: [{ weight: '', weightdate: '' }],
-      unchi: [{ unchiecolor: '', shape: '', unchimemo: '', unchidate: '' }],
-      urine: [{ urinecolor: '', urinememo: '', urinedate: '' }],
-      diary: [{ diarydate: '', message: '', photo: '' }],
-      // usersSign: [],
-      // allergy: [],
-      // food: [],
-      // height: [],
-      // weight: [],
-      // unchi: [],
-      // urine: [],
-      // diary: [],
+      // usersSign: [{ babyname: '', birthday: '', gender: '', picture:'' }],
+      // allergy: [''],
+      // food: [{ kinds: '', foodmemo: '', fooddate: '', ml: '' }],
+      // height: [{ height: '', heightdate: '' }],
+      // weight: [{ weight: '', weightdate: '' }],
+      // unchi: [{ unchiecolor: '', shape: '', unchimemo: '', unchidate: '' }],
+      // urine: [{ urinecolor: '', urinememo: '', urinedate: '' }],
+      // diary: [{ diarydate: '', message: '', photo: '' }],
+      usersSign: [],
+      allergy: [],
+      food: [],
+      height: [],
+      weight: [],
+      unchi: [],
+      urine: [],
+      diary: [],
     })
   },
   // 新規登録
@@ -202,7 +202,7 @@ export const actions = {
       .then( () => {
         dispatch('checklogin')
         console.log(`ログイン`)
-        $nuxt.$router.push(`/SignUp`)
+        // $nuxt.$router.push(`/SignUp`)
       })
       .catch((error) => {
         alert(error)

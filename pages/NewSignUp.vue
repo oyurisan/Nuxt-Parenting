@@ -52,7 +52,7 @@ export default {
       })
       this.email = ''
       this.password = ''
-      this.$router.push({ name: 'login' })
+      this.$router.push({ name: 'SignUp' })
     },
     ...mapActions(["adds"])
   },
