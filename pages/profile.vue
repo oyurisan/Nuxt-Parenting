@@ -5,35 +5,40 @@
 
       <div><img class="profile-hr" :src="require(`~/assets/hr.png`)" /></div>
 
+      <div>
+        <img :src="FinalproImg2" />
+      </div>
+
       <div class="profile-container">
-        <div class="upload-img">
+        <!-- デプロイ後 -->
+        <!-- <div class="upload-img">
           <upload v-model="picture" />
-        </div>
+        </div> -->
         <div class="profile-main">
-          <div v-for="userItem in this.getUser.usersSign" :key="userItem.id">
-            <div>
+          <div>
+            <div v-for="userItemName in FinalMainData.babyname" :key="userItemName.id">
               名前 :
-              <span>{{ userItem.babyname }}</span>
+              <span>{{ userItemName }}</span>
             </div>
 
-            <div>
+            <div v-for="userItemGender in FinalMainData.gender" :key="userItemGender.id">
               性別 :
-              <span>{{ userItem.gender }}</span>
+              <span>{{ userItemGender }}</span>
             </div>
 
-            <div>
+            <div v-for="userItemBirth in FinalMainData.birth" :key="userItemBirth.id">
               生年月日 :
-              <span>{{ userItem.birthday }}</span>
+              <span>{{ userItemBirth }}</span>
             </div>
 
-            <div>
+            <div v-for="userItemHeight in FinalMainData.height" :key="userItemHeight.id">
               身長 :
-              <span>{{ userItem.height }} cm</span>
+              <span>{{ userItemHeight }} cm</span>
             </div>
 
-            <div>
+            <div v-for="userItemWeight in FinalMainData.weight" :key="userItemWeight.id">
               体重 :
-              <span>{{ userItem.weight }} kg</span>
+              <span>{{ userItemWeight }} kg</span>
             </div>
           </div>
 
@@ -56,11 +61,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Upload from '../components/imgUpLoad'
+// import Upload from '../components/imgUpLoad'
 export default {
-  components: {
-    Upload,
-  },
+  // components: {
+  //   Upload,
+  // },
   data() {
     return {
       name: '',
@@ -70,6 +75,10 @@ export default {
       weight: '',
       picture: null,
       FinalImg: [],
+      FinalproImg: [],
+      FinalproImg2: "",
+      // オブジェクト型にして保存、配列から呼び出し
+      FinalMainData: [],
     }
   },
   head: {
@@ -79,6 +88,7 @@ export default {
     ...mapGetters(['getAllData', 'getUser']),
   },
   created() {
+    // アレルギー！
     const lastImg = this.getUser.allergy
     const lastImg2 = []
     console.log(lastImg)
@@ -100,6 +110,58 @@ export default {
       this.FinalImg = finalImg
       // console.log(this.FinalImg);
     }
+
+// プロフィール画像
+    const proImg = this.getUser.usersSign
+    const proImg2 = []
+    // console.log(proImg);
+
+    const lastProImgArray1 = proImg
+    const lastProImgArray2 = JSON.stringify(lastProImgArray1)
+    let lastProImgArray3 = []
+    if (lastProImgArray2) {
+      lastProImgArray3 = JSON.parse(lastProImgArray2)
+
+      // console.log(lastProImgArray3);
+
+    for ( let ii = 0; ii < lastProImgArray3.length; ii++ ) {
+
+      // console.log(lastProImgArray3[ii].picture);
+
+      const finalproImg = proImg2.concat(lastProImgArray3[ii].picture)
+      this.FinalproImg2 = finalproImg
+    }
+    // console.log(this.FinalproImg2);
+    }
+
+
+    // 名前とか体重まで
+    const mainData = this.getUser.usersSign
+    const mainData2 = []
+
+    const mainDataArray1 = mainData
+    const mainDataArray2 = JSON.stringify(mainDataArray1)
+    let mainDataArray3 = []
+    if (mainDataArray2) {
+      mainDataArray3 = JSON.parse(mainDataArray2)
+      console.log(mainDataArray3);
+    }
+    for ( let ii = 0; ii < mainDataArray3.length; ii++ ) {
+
+      console.log(mainDataArray3[ii]);
+
+      const finalMainDataName = mainData2.concat(mainDataArray3[ii].babyname)
+      const finalMainDataGender = mainData2.concat(mainDataArray3[ii].gender)
+      const finalMainDataBirth = mainData2.concat(mainDataArray3[ii].birthday)
+      const finalMainDataHeight = mainData2.concat(mainDataArray3[ii].height)
+      const finalMainDataWeight = mainData2.concat(mainDataArray3[ii].weight)
+      this.FinalMainData.babyname = finalMainDataName
+      this.FinalMainData.gender = finalMainDataGender
+      this.FinalMainData.birthday = finalMainDataBirth
+      this.FinalMainData.height = finalMainDataHeight
+      this.FinalMainData.weight = finalMainDataWeight
+    }
+    console.log(this.FinalMainData);
   },
 }
 </script>

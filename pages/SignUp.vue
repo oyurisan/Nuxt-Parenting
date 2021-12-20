@@ -6,6 +6,7 @@
     <div class="profileImg">
        <!-- <img :src="item.img" width="350px" height="300px"> -->
        <input type="file" @change="upload">
+       {{this.picture}}
     </div>
     <p>赤ちゃんのニックネーム</p>
     <input v-model="babyname" type="text" />
@@ -152,7 +153,7 @@ export default {
     // 画像のパス取得&storageへアクセスし保存
     upload(e) {
       const file = e.target.files[0]
-      console.log(file)
+      console.log(file.name)
       if (!file.type.includes('image')) {
         this.errorMessage = '画像を指定してください'
         // this.inputFileReset()
