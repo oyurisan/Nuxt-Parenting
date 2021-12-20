@@ -38,7 +38,7 @@
 
             <div v-for="userItemWeight in FinalMainData.weight" :key="userItemWeight.id">
               体重 :
-              <span>{{ userItemWeight }} kg</span>
+              <span>{{ userItemWeight }} g</span>
             </div>
           </div>
 
