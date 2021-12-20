@@ -1,0 +1,1 @@
+export PATH=$HOME/.npm-global/lib/node_modules/n/bin:$PATH
